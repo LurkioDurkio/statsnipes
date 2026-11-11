@@ -1,0 +1,21 @@
+{
+  "name": "StatSnipes — Daily Sports Stat Trivia",
+  "short_name": "StatSnipes",
+  "description": "Hunt #85–#100 on 1,159+ daily NBA, NFL & MLB stat lists without going over #100.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

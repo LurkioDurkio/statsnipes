@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StatSnipes — Daily NBA, NFL &amp; MLB Top 100 Trivia</title>
+  <meta name="description" content="Hunt #85–#100 on 1,159+ daily NBA, NFL &amp; MLB stat lists without going over #100 — plus endless Pass &amp; Play and Target Stat modes." />
+  <meta name="theme-color" content="#090d16" />
+  <link rel="canonical" href="https://statsnipes.com/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="StatSnipes" />
+  <meta property="og:url" content="https://statsnipes.com/" />
+  <meta property="og:title" content="StatSnipes — Can You Snipe #90–#100?" />
+  <meta property="og:description" content="Daily NBA, NFL &amp; MLB niche stat trivia. 5 shots to pinpoint the deepest Top 100 names without going over #100." />
+  <meta property="og:image" content="https://statsnipes.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="StatSnipes — Can You Snipe #90–#100?" />
+  <meta name="twitter:description" content="Daily NBA, NFL &amp; MLB niche stat trivia. 5 shots to hit #85–#100 without going over." />
+  <meta name="twitter:image" content="https://statsnipes.com/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=17" />
+</head>
+<body data-sport="NBA">
+  <!-- Background Ambient Glows -->
+  <div class="ambient-bg">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Top Broadcast Header -->
+  <header class="top-header">
+    <div class="header-left">
+      <div class="brand-logo" id="brandLogo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 512 512" width="38" height="38" aria-hidden="true">
+            <defs>
+              <linearGradient id="hdBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+              <linearGradient id="hdR1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+              <linearGradient id="hdR2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+            </defs>
+            <rect width="512" height="512" rx="112" fill="url(#hdBg)"/>
+            <circle cx="256" cy="256" r="182" fill="none" stroke="url(#hdR1)" stroke-width="36"/>
+            <circle cx="256" cy="256" r="114" fill="none" stroke="url(#hdR2)" stroke-width="32"/>
+            <circle cx="256" cy="256" r="46" fill="#f59e0b"/>
+            <rect x="242" y="34" width="28" height="62" rx="14" fill="#f8fafc" opacity="0.9"/>
+            <rect x="242" y="416" width="28" height="62" rx="14" fill="#f8fafc" opacity="0.9"/>
+            <rect x="34" y="242" width="62" height="28" rx="14" fill="#f8fafc" opacity="0.9"/>
+            <rect x="416" y="242" width="62" height="28" rx="14" fill="#f8fafc" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">STATSNIPES</span>
+          <span class="logo-tag">NBA • NFL • MLB</span>
+        </div>
+      </div>
+
+      <!-- Sport Selector Pills -->
+      <div class="sport-switcher" role="tablist" aria-label="Select Sport">
+        <button class="sport-pill active" data-sport="NBA" id="sportBtnNBA">
+          <span class="sport-emoji">🏀</span> NBA
+        </button>
+        <button class="sport-pill" data-sport="NFL" id="sportBtnNFL">
+          <span class="sport-emoji">🏈</span> NFL
+        </button>
+        <button class="sport-pill" data-sport="MLB" id="sportBtnMLB">
+          <span class="sport-emoji">⚾</span> MLB
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Mode Navigation -->
+    <nav class="mode-nav" aria-label="Game Modes">
+      <button class="mode-tab active" data-mode="daily" id="tabDaily">
+        <span class="mode-icon">📅</span>
+        <span>Daily</span>
+      </button>
+      <button class="mode-tab" data-mode="top100" id="tabTop100">
+        <span class="mode-icon">🔥</span>
+        <span>Endless Top 100</span>
+      </button>
+      <button class="mode-tab" data-mode="target" id="tabTarget">
+        <span class="mode-icon">⚡</span>
+        <span>Target Score</span>
+      </button>
+      <button class="mode-tab" data-mode="custom" id="tabCustom">
+        <span class="mode-icon">🛠️</span>
+        <span>Setup &amp; Couch</span>
+      </button>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="header-right">
+      <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound Effects" aria-label="Toggle Sound Effects">
+        🔊
+      </button>
+      <button class="secondary-btn" id="howToPlayBtn">
+        <span>❓ Rules</span>
+      </button>
+      <button class="primary-btn" id="newGameQuickBtn">
+        <span>🔄 New Match</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Daily Challenge Hub Bar (Visible when in Daily Mode) -->
+  <section class="daily-bar hidden" id="dailyChallengeBar">
+    <div class="daily-bar-inner">
+      <div class="daily-left-col">
+        <div class="daily-badge-wrap">
+          <span class="daily-live-dot"></span>
+          <span class="daily-date-label" id="dailyDateLabel">DAILY STATSNIPES</span>
+          <select id="dailyArchiveSelect" class="daily-archive-select" aria-label="Select Daily Date or Past Archive" title="Play today's official Daily or browse past Daily puzzles!"></select>
+          <span class="daily-countdown-pill" id="dailyCountdownLabel">⏳ Next in 12h</span>
+        </div>
+        <div class="daily-streak-pills" id="dailyStreakSummary">
+          <!-- Populated by JS: Streak, Best Streak, Today's Progress, Career Snipes -->
+        </div>
+      </div>
+      <div class="daily-sport-cards" id="dailySportCards">
+        <!-- Populated by JS: Daily 5-Shot Sniper & Daily Target Stat cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace Container -->
+  <main class="studio-container">
+
+    <!-- Custom Game Builder Panel (Toggled via Game Setup Tab) -->
+    <section class="setup-panel hidden" id="customSetupPanel">
+      <div class="setup-header">
+        <div>
+          <h2>🛠️ Custom Game & Multiplayer Setup</h2>
+          <p>Configure your StatSnipes rules, players, lives, and stat category — play solo or pass-and-play with up to 4 friends!</p>
+        </div>
+        <button class="close-setup-btn" id="closeSetupBtn">✕ Back to Arena</button>
+      </div>
+
+      <div class="setup-grid">
+        <!-- Column 1: Sport & Mode -->
+        <div class="setup-card">
+          <div class="setup-card-header-inline">
+            <h3>1. League & Game Mode</h3>
+            <button type="button" class="preset-crew-btn" id="setupMysteryBagBtn" title="Randomize Stat, Timeframe & Constraint!">
+              🎲 Randomize
+            </button>
+          </div>
+          <div class="form-group">
+            <label>Select League</label>
+            <div class="segmented-control" id="setupSportSelect">
+              <button type="button" class="seg-btn active" data-val="NBA">🏀 NBA</button>
+              <button type="button" class="seg-btn" data-val="NFL">🏈 NFL</button>
+              <button type="button" class="seg-btn" data-val="MLB">⚾ MLB</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Game Mode</label>
+            <div class="mode-radio-cards" id="setupModeSelect">
+              <div class="radio-card active" data-val="top100">
+                <div class="rc-title">🔥 Top 100 Survival</div>
+                <div class="rc-desc">Rank #1 = 1 pt, Rank #100 = 100 pts. Guess outside the list and lose a life! 3 strikes and you're out.</div>
+              </div>
+              <div class="radio-card" data-val="target">
+                <div class="rc-title">⚡ Target Stat Total (Closest to Score)</div>
+                <div class="rc-desc">Draft players to get your combined career stats as close to the Target Number as possible!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="setupStatSelect">Stat</label>
+            <select id="setupStatSelect" class="studio-select"></select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="setupTimeframeSelect">When</label>
+              <select id="setupTimeframeSelect" class="studio-select">
+                <option value="alltime" selected>🏆 All-Time Career</option>
+                <option value="since">📈 Since Year...</option>
+                <option value="season">📅 Single Season...</option>
+                <option value="range">🗓️ Year Span (From–To)...</option>
+                <option value="peak">🔥 Single-Season Peak</option>
+              </select>
+            </div>
+            <div class="form-group hidden" id="setupYearField">
+              <label for="setupYearSelect" id="setupYearLabel">Year</label>
+              <select id="setupYearSelect" class="studio-select"></select>
+            </div>
+            <div class="form-group hidden" id="setupYearEndField">
+              <label for="setupYearEndSelect">To Year</label>
+              <select id="setupYearEndSelect" class="studio-select"></select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="setupTeamSelect">Team Filter</label>
+              <select id="setupTeamSelect" class="studio-select">
+                <option value="ALL" selected>🏟️ All Teams</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="setupConstraintSelect">Player Constraint</label>
+              <select id="setupConstraintSelect" class="studio-select">
+                <option value="none" selected>🎯 All Players</option>
+                <option value="active">⚡ Active Only</option>
+                <option value="retired">🏛️ Retired Only</option>
+                <option value="antichalk">💎 No Top 25 Career</option>
+                <option value="journeyman">🧳 3+ Teams</option>
+                <option value="oneteam">🛡️ 1 Team Only</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Rules & Modifiers -->
+        <div class="setup-card">
+          <h3>2. Match Rules</h3>
+
+          <!-- Top 100 Specific Rules -->
+          <div id="top100RulesGroup">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="setupLivesSelect">Lives (Strikes)</label>
+                <select id="setupLivesSelect" class="studio-select">
+                  <option value="1">1 Life (Sudden Death 💀)</option>
+                  <option value="2">2 Lives</option>
+                  <option value="3" selected>3 Lives (Classic ❤️❤️❤️)</option>
+                  <option value="4">4 Lives</option>
+                  <option value="5">5 Lives</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="setupCutoffSelect">List Cutoff</label>
+                <select id="setupCutoffSelect" class="studio-select">
+                  <option value="50">Top 50 (Harder)</option>
+                  <option value="75">Top 75</option>
+                  <option value="100" selected>Top 100 (Standard)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="setupWinCondSelect">Multiplayer Win Condition</label>
+              <select id="setupWinCondSelect" class="studio-select">
+                <option value="points" selected>Most Points When Everyone Is Out (Classic)</option>
+                <option value="survival">Last Player Standing Wins Immediately</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-card-label" for="setupRedemptionCheck">
+                <input type="checkbox" id="setupRedemptionCheck" checked />
+                <div>
+                  <div class="cb-title">🐦‍🔥 90–100 Redemption Revival</div>
+                  <div class="cb-desc">If eliminated, you still get turns to guess — sniping #90–#100 gives 1 life ❤️ back + those points!</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-card-label" for="setupShowMissRankCheck">
+                <input type="checkbox" id="setupShowMissRankCheck" checked />
+                <div>
+                  <div class="cb-title">📊 Show Ranking When Outside Top 100</div>
+                  <div class="cb-desc">When a guess is outside the cutoff (#101+), reveal their exact ranking and stat total!</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Target Score Specific Rules -->
+          <div id="targetRulesGroup" class="hidden">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="setupTargetInput">Target Stat Total</label>
+                <input type="number" id="setupTargetInput" class="studio-input" value="115000" step="500" />
+              </div>
+              <div class="form-group">
+                <label for="setupPicksSelect">Picks Per Player</label>
+                <select id="setupPicksSelect" class="studio-select">
+                  <option value="3">3 Picks</option>
+                  <option value="4">4 Picks</option>
+                  <option value="5" selected>5 Picks (Standard)</option>
+                  <option value="6">6 Picks</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="setupBustRuleSelect">Over Target Rule</label>
+              <select id="setupBustRuleSelect" class="studio-select">
+                <option value="bust" selected>Blackjack Rule (Going Over = Bust!)</option>
+                <option value="closest">Absolute Closest (Over or Under Allowed)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="setupTimerSelect">Shot Clock Timer</label>
+              <select id="setupTimerSelect" class="studio-select">
+                <option value="0" selected>No Timer (Relaxed)</option>
+                <option value="20">20 Seconds (Fast Pace)</option>
+                <option value="30">30 Seconds (Broadcast)</option>
+                <option value="45">45 Seconds</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="setupBoardHintSelect">Board Hints</label>
+              <select id="setupBoardHintSelect" class="studio-select">
+                <option value="none" selected>Hidden Until Guessed</option>
+                <option value="team">Show Team & Era Clues on Board</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Players (1 to 4 Players) -->
+        <div class="setup-card">
+          <div class="setup-card-header-inline">
+            <h3>3. Players (1–4)</h3>
+          </div>
+
+          <div class="form-group">
+            <label>Number of Players</label>
+            <div class="segmented-control" id="setupPlayerCount">
+              <button type="button" class="seg-btn active" data-val="1">1P Solo</button>
+              <button type="button" class="seg-btn" data-val="2">2P H2H</button>
+              <button type="button" class="seg-btn" data-val="3">3P Crew</button>
+              <button type="button" class="seg-btn" data-val="4">4P Squad</button>
+            </div>
+          </div>
+
+          <div class="player-name-inputs" id="playerNameInputs">
+            <div class="player-input-row">
+              <span class="p-badge p-1">P1</span>
+              <input type="text" class="studio-input player-name-field" data-idx="0" value="Player 1" maxlength="18" />
+            </div>
+            <div class="player-input-row hidden">
+              <span class="p-badge p-2">P2</span>
+              <input type="text" class="studio-input player-name-field" data-idx="1" value="Player 2" maxlength="18" />
+            </div>
+            <div class="player-input-row hidden">
+              <span class="p-badge p-3">P3</span>
+              <input type="text" class="studio-input player-name-field" data-idx="2" value="Player 3" maxlength="18" />
+            </div>
+            <div class="player-input-row hidden">
+              <span class="p-badge p-4">P4</span>
+              <input type="text" class="studio-input player-name-field" data-idx="3" value="Player 4" maxlength="18" />
+            </div>
+          </div>
+
+          <button type="button" class="launch-match-btn" id="startCustomGameBtn">
+            🚀 Launch StatSnipes Match
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Active Game Arena -->
+    <div id="gameArena">
+      <!-- Category Hero Banner with Integrated Stat / Timeframe / Year / Constraint Pickers -->
+      <section class="category-banner">
+        <div class="cat-banner-top">
+          <div class="cat-banner-left">
+            <div class="cat-meta-pills">
+              <span class="sport-tag-pill" id="activeSportPill">🏀 NBA</span>
+              <span class="mode-tag-pill" id="activeModePill">TOP 100 SURVIVAL</span>
+              <span class="rule-tag-pill" id="activeRulePill">Rank #100 = 100 PTS • 3 Lives</span>
+            </div>
+            <h1 class="category-title" id="activeCategoryTitle">All-Time Career Points</h1>
+            <p class="category-subtitle" id="activeCategorySubtitle">NBA Regular Season Career Scoring Leaders</p>
+          </div>
+
+          <div class="cat-banner-right">
+            <div class="banner-action-pills" id="bannerActionPills">
+              <button type="button" class="banner-action-btn mystery-btn" id="mysteryBagBtn" title="Roll a random fun Stat + Era + Constraint challenge!">
+                🎲 Mystery Bag
+              </button>
+              <button type="button" class="banner-action-btn share-link-btn" id="shareChallengeLinkBtn" title="Copy a direct link to this exact category & rules to send to friends!">
+                🔗 Share Link
+              </button>
+              <button type="button" class="banner-action-btn mobile-filter-toggle" id="mobileFilterToggleBtn" aria-expanded="false">
+                ⚙️ Filters ▾
+              </button>
+            </div>
+            <div class="banner-stat-summary" id="bannerStatSummary">
+              <div class="b-stat">
+                <span class="b-stat-val" id="boardFoundCount">0 / 100</span>
+                <span class="b-stat-lbl">SNIPED</span>
+              </div>
+              <div class="b-stat" id="cutoffStatBox">
+                <span class="b-stat-val" id="cutoffRankLabel">#100</span>
+                <span class="b-stat-lbl">MAX RANK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clean Inline Category & Filter Bar -->
+        <div class="cat-filter-strip" id="constraintExplorerBar">
+          <div class="exp-field">
+            <label for="explorerStatSelect">Stat</label>
+            <select id="explorerStatSelect" class="studio-select compact"></select>
+          </div>
+
+          <div class="exp-field">
+            <label for="explorerTimeframeSelect">When</label>
+            <select id="explorerTimeframeSelect" class="studio-select compact">
+              <option value="alltime" selected>🏆 All-Time Career</option>
+              <option value="since">📈 Since Year...</option>
+              <option value="season">📅 Single Season...</option>
+              <option value="range">🗓️ Year Span (From–To)...</option>
+              <option value="peak">🔥 Single-Season Peak</option>
+            </select>
+          </div>
+
+          <div class="exp-field hidden" id="explorerYearField">
+            <label for="explorerYearSelect" id="explorerYearLabel">Year</label>
+            <select id="explorerYearSelect" class="studio-select compact"></select>
+          </div>
+
+          <div class="exp-field hidden" id="explorerYearEndField">
+            <label for="explorerYearEndSelect">To Year</label>
+            <select id="explorerYearEndSelect" class="studio-select compact"></select>
+          </div>
+
+          <div class="exp-field">
+            <label for="explorerTeamSelect">Team</label>
+            <select id="explorerTeamSelect" class="studio-select compact">
+              <option value="ALL" selected>🏟️ All Teams</option>
+            </select>
+          </div>
+
+          <div class="exp-field">
+            <label for="explorerConstraintSelect">Constraint</label>
+            <select id="explorerConstraintSelect" class="studio-select compact">
+              <option value="none" selected>🎯 All Players</option>
+              <option value="active">⚡ Active Only</option>
+              <option value="retired">🏛️ Retired Only</option>
+              <option value="antichalk">💎 No Top 25 Career</option>
+              <option value="journeyman">🧳 3+ Teams</option>
+              <option value="oneteam">🛡️ 1 Team Only</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Couch Pass-and-Play Series Tracker Bar (Visible in 2-4P Couch Mode) -->
+      <section class="couch-series-bar hidden" id="couchSeriesBar" aria-label="Couch Series Standings">
+        <!-- Populated dynamically by app.js -->
+      </section>
+
+      <!-- Scoreboard Strip (1 to 4 Players) -->
+      <section class="scoreboard-strip" id="scoreboardStrip" aria-label="Player Scoreboard">
+        <!-- Populated dynamically by app.js -->
+      </section>
+
+      <!-- Search & Action Command Center -->
+      <section class="command-center" id="commandCenterSection">
+        <div class="turn-indicator-bar">
+          <div class="turn-left">
+            <span class="turn-dot"></span>
+            <span id="currentTurnPrompt"><strong>Player 1's Turn</strong> — Name a player in the Top 100!</span>
+          </div>
+          <div class="turn-right">
+            <div class="shot-clock hidden" id="shotClockBox">
+              <span class="clock-icon">⏱️</span>
+              <span id="shotClockValue">30s</span>
+            </div>
+            <button type="button" class="util-chip-btn" id="undoGuessBtn" disabled title="Undo the last guess (Pass & Play / Practice only)">
+              ↩️ Undo
+            </button>
+            <button type="button" class="util-chip-btn" id="getClueBtn" title="Progressive 3-Stage Hint for an unrevealed #75–#100 player">
+              💡 Clue
+            </button>
+            <button type="button" class="util-chip-btn danger-chip" id="endRevealBtn" title="End current game and reveal the Top 100 board">
+              👁️ Reveal Board
+            </button>
+          </div>
+        </div>
+
+        <!-- Progressive 3-Stage Clue Toast -->
+        <div class="clue-toast hidden" id="clueToast">
+          <div class="clue-toast-left">
+            <span class="clue-badge" id="clueStageBadge">💡 HINT 1/3</span>
+            <span id="clueText">Rank #91 • Era: 1994–2013</span>
+          </div>
+          <div class="clue-toast-actions">
+            <button type="button" class="clue-step-btn" id="nextClueStageBtn">Reveal More (2/3) →</button>
+            <button type="button" class="clue-step-btn secondary" id="newClueRankBtn" title="Pick a different unrevealed #75–#100 rank">🎲 New Rank</button>
+            <button type="button" class="clue-close" id="closeClueBtn" title="Close Hint">✕</button>
+          </div>
+        </div>
+
+        <!-- Search Input & Autocomplete Dropdown -->
+        <div class="search-box-wrapper" id="searchBoxWrapper">
+          <div class="search-input-container">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="playerSearchInput"
+              class="player-search-input"
+              placeholder="Type an NBA, NFL, or MLB player name (e.g. Chris Webber, Tony Romo, Ichiro)..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="button" class="lock-in-btn" id="submitGuessBtn">
+              LOCK IN 🎯
+            </button>
+          </div>
+          <!-- Autocomplete Suggestions List -->
+          <div class="autocomplete-dropdown hidden" id="autocompleteDropdown" role="listbox"></div>
+        </div>
+
+        <!-- Live Result Feedback Banner (Animates on every pick) -->
+        <div class="feedback-banner hidden" id="feedbackBanner" role="status" aria-live="polite">
+          <!-- Populated dynamically on each pick -->
+        </div>
+      </section>
+
+      <!-- Main Lower Split: Left = Top 100 Grid OR Target Meter | Right = Pick History Log -->
+      <section class="arena-split" id="arenaSplitSection">
+        <!-- Left Panel: Top 100 Board (Mode: top100) -->
+        <div class="board-panel" id="top100BoardPanel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h2>📋 The Top <span id="boardHeaderCutoff">100</span> Board</h2>
+              <span class="tier-legend">
+                <span class="legend-dot tier-legendary"></span> #90–100 Elite Snipe
+                <span class="legend-dot tier-deep"></span> #75–89 Deep Bag
+                <span class="legend-dot tier-solid"></span> #50–74 Solid
+                <span class="legend-dot tier-safe"></span> #1–49 Safe
+              </span>
+            </div>
+            <div class="board-filters">
+              <button type="button" class="filter-chip active" data-filter="all">All</button>
+              <button type="button" class="filter-chip" data-filter="found">Guessed</button>
+              <button type="button" class="filter-chip" data-filter="1-50">#1–#50</button>
+              <button type="button" class="filter-chip" data-filter="51-100">#51–#100</button>
+              <button type="button" class="filter-chip toggle-clues-chip" id="toggleBoardCluesBtn">🔍 Team Clues: Off</button>
+            </div>
+          </div>
+
+          <div class="top100-grid" id="top100Grid">
+            <!-- 100 interactive rank tiles rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Left Panel Alternative: Target Score Arena (Mode: target) -->
+        <div class="board-panel hidden" id="targetScorePanel">
+          <div class="panel-header">
+            <div>
+              <h2>⚡ Target Stat Race</h2>
+              <p class="panel-sub" id="targetRuleExplanation">Draft 5 players to get as close to the target stat total as possible without going over!</p>
+            </div>
+            <div class="target-goal-pill">
+              <span>TARGET:</span>
+              <strong id="targetGoalDisplay">115,000 PTS</strong>
+            </div>
+          </div>
+
+          <div class="target-players-cards" id="targetPlayersContainer">
+            <!-- Rendered by JS for each player's progress bar & lineup slots -->
+          </div>
+        </div>
+
+        <!-- Right Sidebar: Pick Feed & Leaderboard Summary -->
+        <aside class="feed-sidebar" id="pickFeedSidebar">
+          <div class="panel-header">
+            <h2>🎙️ Broadcast Pick Log</h2>
+            <span class="pick-count-badge" id="totalPicksBadge">0 Picks</span>
+          </div>
+          <div class="pick-feed-list" id="pickFeedList">
+            <div class="empty-feed-state">
+              <div class="empty-icon">🎯</div>
+              <p>No players locked in yet! Search for a player above to start sniping.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <!-- Game Over / Victory Summary Modal -->
+  <div class="modal-backdrop hidden" id="gameOverModal">
+    <div class="modal-card gameover-card">
+      <div class="modal-header-row" style="margin-bottom: 0.45rem;">
+        <div class="modal-badge" id="gameOverBadge" style="margin-bottom: 0;">🏆 MATCH COMPLETE</div>
+        <button type="button" class="close-modal-x" id="closeGameOverBtn" title="Close without spoiling unguessed players" aria-label="Close results modal">✕</button>
+      </div>
+      <h2 id="gameOverTitle">Player 1 Wins!</h2>
+      <p id="gameOverSubtitle">What a deep bag performance!</p>
+
+      <div class="final-standings" id="finalStandingsList">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="best-pulls-showcase" id="bestPullsShowcase">
+        <!-- Highlights best pinpoint pick & closest miss -->
+      </div>
+
+      <pre class="daily-share-preview hidden" id="dailySharePreviewBox"></pre>
+      <div class="daily-share-legend hidden" id="dailyShareLegend">
+        🟪 #90–100 &nbsp; 🟩 #75–89 &nbsp; 🟦 #50–74 &nbsp; 🟨 #1–49 &nbsp; 🟥 Strike
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary-btn" id="undoLastModalBtn" title="Undo the final guess and resume the match!">
+          ↩️ Undo Final Guess & Resume
+        </button>
+        <button type="button" class="secondary-btn" id="shareScoreBtn">
+          📲 Copy Result
+        </button>
+        <button type="button" class="secondary-btn" id="inspectBoardAfterBtn">
+          👁️ Reveal All 100 (Spoiler)
+        </button>
+        <button type="button" class="primary-btn" id="playAgainModalBtn">
+          🔄 Play Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to Play / Rules Modal -->
+  <div class="modal-backdrop hidden" id="rulesModal">
+    <div class="modal-card rules-card">
+      <div class="modal-header-row">
+        <h2>🎯 How to Play STATSNIPES</h2>
+        <button type="button" class="close-modal-x" id="closeRulesBtn">✕</button>
+      </div>
+
+      <div class="rules-content">
+        <div class="rule-block">
+          <h3>🔥 Mode 1: Top 100 Survival</h3>
+          <ul>
+            <li><strong>The Goal:</strong> Name players who rank in the <strong>Top 100</strong> for the active NBA, NFL, or MLB statistical category.</li>
+            <li><strong>Rank = Points:</strong> You earn points equal to the player's exact rank on the list!
+              <ul>
+                <li>Guessing <strong>#1</strong> (e.g., LeBron James in Career Points) gives you just <strong>1 point</strong>.</li>
+                <li>Guessing <strong>#99</strong> (e.g., Chris Bosh) gives you <strong>99 points</strong>!</li>
+              </ul>
+            </li>
+            <li><strong>3 Lives (Strikes):</strong> Everyone starts with <strong>3 Lives ❤️❤️❤️</strong>. If you guess a player who is <em>outside</em> the Top 100 (like #101 Grant Hill!), you score 0 points and <strong>lose a life 💔</strong>!</li>
+            <li><strong>Winning:</strong> Play solo for a high score or pass-and-play with 2–4 friends until everyone is out of lives or one player is the last standing!</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <h3>⚡ Mode 2: Target Stat Total (Closest Without Busting)</h3>
+          <ul>
+            <li><strong>The Goal:</strong> You are given a <strong>Target Stat Total</strong> (e.g., <em>115,000 Career NBA Points</em> or <em>2,500 Career MLB Home Runs</em>).</li>
+            <li><strong>Draft Your Lineup:</strong> Over 5 picks, lock in players whose real career stats add up as close to the target number as possible.</li>
+            <li><strong>Don't Bust:</strong> Under standard Blackjack rules, going over the target total busts that pick!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="primary-btn" id="gotItRulesBtn">Lock In 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data/nba_data.js?v=17"></script>
+  <script src="data/nfl_data.js?v=17"></script>
+  <script src="data/mlb_data.js?v=17"></script>
+  <script src="data/extra_players.js?v=17"></script>
+  <script src="data/seasons_data.js?v=17"></script>
+  <script src="data/niche/manifest.js?v=17"></script>
+  <script src="app.js?v=17"></script>
+</body>
+</html>
