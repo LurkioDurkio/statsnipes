@@ -18,15 +18,74 @@
   // Build master searchable player directory per sport (so autocomplete never spoils Top 100 status)
   const SPORT_PLAYER_DIRECTORY = { NBA: [], NFL: [], MLB: [] };
 
+  // Distinct father/son or unrelated pairs sharing a base name across suffixes
+  const DISTINCT_SUFFIX_BASE_MAP = {
+    NBA: new Set([
+      "tim hardaway", "gary trent", "jaren jackson", "gary payton",
+      "kenyon martin", "john lucas", "larry nance", "glenn robinson",
+      "kevin porter", "jabari smith"
+    ]),
+    NFL: new Set([
+      "steve smith", "patrick surtain", "oronde gadsden", "william fuller",
+      "michael pittman", "cedrick wilson", "antoine winfield", "marvin harrison",
+      "byron murphy", "anthony brown"
+    ]),
+    MLB: new Set([
+      "sandy alomar", "billy sullivan", "earl averill", "jim bagby",
+      "tony gwynn", "jose cruz", "gary matthews", "tony pena",
+      "john mayberry", "eric young", "vladimir guerrero", "fernando tatis",
+      "bobby witt", "luis garcia", "mark leiter"
+    ])
+  };
+
+  function normalizePlayerKey(s) {
+    return (s || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/\s*\(.*?\)\s*/g, "")
+      .replace(/[.']/g, "")
+      .replace(/\u2019/g, "")
+      .replace(/-/g, " ")
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  function stripPlayerSuffix(normKey) {
+    return (normKey || "").replace(/\s+(jr|sr|ii|iii|iv|v)$/i, "").trim();
+  }
+
+  function isSamePlayerAliasAllowed(sport, normKey) {
+    const base = stripPlayerSuffix(normKey);
+    const distinctSet = DISTINCT_SUFFIX_BASE_MAP[sport];
+    return !(distinctSet && distinctSet.has(base));
+  }
+
+  function getCanonicalDirectoryKey(sport, name) {
+    const n = normalizePlayerKey(name);
+    return isSamePlayerAliasAllowed(sport, n) ? stripPlayerSuffix(n) : n;
+  }
+
+  function keysMatchForCategory(sport, a, b) {
+    const na = normalizePlayerKey(a);
+    const nb = normalizePlayerKey(b);
+    if (!na || !nb) return false;
+    if (na === nb) return true;
+    const ba = stripPlayerSuffix(na);
+    const bb = stripPlayerSuffix(nb);
+    if (ba !== bb) return false;
+    return isSamePlayerAliasAllowed(sport, ba);
+  }
+
   function registerNicheCategoryToDirectory(cat) {
     if (!cat || !cat.sport || !SPORT_PLAYER_DIRECTORY[cat.sport] || cat._dirRegistered) return;
     cat._dirRegistered = true;
     const dir = SPORT_PLAYER_DIRECTORY[cat.sport];
-    const existing = new Set(dir.map((p) => p.name.toLowerCase()));
+    const existing = new Set(dir.map((p) => getCanonicalDirectoryKey(cat.sport, p.name)));
     let added = false;
     (cat.players || []).forEach((p) => {
-      const k = p.name.toLowerCase();
-      if (!existing.has(k)) {
+      const k = getCanonicalDirectoryKey(cat.sport, p.name);
+      if (k && !existing.has(k)) {
         existing.add(k);
         dir.push({
           name: p.name,
@@ -108,8 +167,8 @@
         .filter((c) => c.sport === sport)
         .forEach((cat) => {
           cat.players.forEach((p) => {
-            const key = p.name.toLowerCase();
-            if (!map.has(key)) {
+            const key = getCanonicalDirectoryKey(sport, p.name);
+            if (key && !map.has(key)) {
               map.set(key, {
                 name: p.name,
                 team: p.team.replace(/\s*\(.*?\)/g, ""), // Strip trap notes from autocomplete!
@@ -120,8 +179,8 @@
           if (Array.isArray(cat.extraRanks)) {
             cat.extraRanks.forEach((pair) => {
               const nm = pair[0];
-              const key = nm.toLowerCase();
-              if (!map.has(key)) {
+              const key = getCanonicalDirectoryKey(sport, nm);
+              if (key && !map.has(key)) {
                 map.set(key, {
                   name: nm,
                   team: sport,
@@ -132,28 +191,15 @@
           }
         });
 
-      // Add extra players + daily niche extra names (preloaded in manifest)
+      // Add extra players + seasonal players before unverified niche stub names
       const extras = (window.EXTRA_SPORT_PLAYERS && window.EXTRA_SPORT_PLAYERS[sport]) || [];
       extras.forEach((p) => {
-        const key = p.name.toLowerCase();
-        if (!map.has(key)) {
+        const key = getCanonicalDirectoryKey(sport, p.name);
+        if (key && !map.has(key)) {
           map.set(key, {
             name: p.name,
             team: p.team,
             era: p.era
-          });
-        }
-      });
-
-      const nicheExtras = NICHE_EXTRA_NAMES[sport] || [];
-      nicheExtras.forEach((row) => {
-        const nm = row[0];
-        const key = nm.toLowerCase();
-        if (!map.has(key)) {
-          map.set(key, {
-            name: nm,
-            team: row[1] || sport,
-            era: row[2] || "Career"
           });
         }
       });
@@ -165,8 +211,8 @@
           (sLogs[yr] || []).forEach((row) => {
             const pName = row[0];
             const pTeam = row[1] || sport;
-            const key = pName.toLowerCase();
-            if (!map.has(key)) {
+            const key = getCanonicalDirectoryKey(sport, pName);
+            if (key && !map.has(key)) {
               map.set(key, {
                 name: pName,
                 team: pTeam,
@@ -176,6 +222,19 @@
           });
         });
       }
+
+      const nicheExtras = NICHE_EXTRA_NAMES[sport] || [];
+      nicheExtras.forEach((row) => {
+        const nm = row[0];
+        const key = getCanonicalDirectoryKey(sport, nm);
+        if (key && !map.has(key)) {
+          map.set(key, {
+            name: nm,
+            team: row[1] || sport,
+            era: row[2] || "Career"
+          });
+        }
+      });
 
       SPORT_PLAYER_DIRECTORY[sport] = Array.from(map.values()).sort((a, b) =>
         a.name.localeCompare(b.name)
@@ -383,26 +442,58 @@
     if (!cat || !Array.isArray(cat.extraRanks)) return null;
     if (!cat._extraRankMap) {
       const m = new Map();
+      const aliasMap = new Map();
       const baseRank = (cat.players ? cat.players.length : 150) + 1;
       cat.extraRanks.forEach((pair, idx) => {
         const nk = normalizePlayerKey(pair[0]);
         if (nk && !m.has(nk)) {
-          m.set(nk, { rank: baseRank + idx, stat: pair[1] });
+          const entry = { rank: baseRank + idx, stat: pair[1] };
+          m.set(nk, entry);
+          const ck = getCanonicalDirectoryKey(cat.sport, pair[0]);
+          if (ck && !aliasMap.has(ck)) aliasMap.set(ck, entry);
         }
       });
       cat._extraRankMap = m;
+      cat._extraRankAliasMap = aliasMap;
     }
     return cat._extraRankMap;
   }
 
-  function normalizePlayerKey(s) {
-    return (s || "")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .replace(/\s*\(.*?\)\s*/g, "")
-      .trim()
-      .replace(/\s+/g, " ");
+  function findCategoryPlayer(cat, playerName) {
+    if (!cat || !Array.isArray(cat.players) || !playerName) return null;
+    const norm = normalizePlayerKey(playerName);
+    const exact = cat.players.find((p) => normalizePlayerKey(p.name) === norm);
+    if (exact) return exact;
+    if (isSamePlayerAliasAllowed(cat.sport, norm)) {
+      return cat.players.find((p) => keysMatchForCategory(cat.sport, p.name, playerName)) || null;
+    }
+    return null;
+  }
+
+  function findExtraRankEntry(cat, playerName) {
+    const extraMap = getCategoryExtraRankMap(cat);
+    if (!extraMap || !playerName) return null;
+    const norm = normalizePlayerKey(playerName);
+    if (extraMap.has(norm)) return extraMap.get(norm);
+    if (isSamePlayerAliasAllowed(cat.sport, norm) && cat._extraRankAliasMap) {
+      const ck = getCanonicalDirectoryKey(cat.sport, playerName);
+      if (ck && cat._extraRankAliasMap.has(ck)) return cat._extraRankAliasMap.get(ck);
+    }
+    return null;
+  }
+
+  function findWindowMapValue(sport, mapObj, playerName) {
+    if (!mapObj || !playerName) return undefined;
+    const norm = normalizePlayerKey(playerName);
+    if (Object.prototype.hasOwnProperty.call(mapObj, norm)) return mapObj[norm];
+    if (isSamePlayerAliasAllowed(sport, norm)) {
+      const base = stripPlayerSuffix(norm);
+      const keys = Object.keys(mapObj);
+      for (let i = 0; i < keys.length; i++) {
+        if (stripPlayerSuffix(keys[i]) === base) return mapObj[keys[i]];
+      }
+    }
+    return undefined;
   }
 
   function parseNicheWindowConfig(cat) {
@@ -500,22 +591,28 @@
   function getPlayerStatForCategory(playerName, cat) {
     if (!playerName || !cat) return 0;
     const norm = normalizePlayerKey(playerName);
-    const ranked = cat.players.find((p) => normalizePlayerKey(p.name) === norm);
+    const ranked = findCategoryPlayer(cat, playerName);
     if (ranked) return ranked.stat;
-    const extraMap = getCategoryExtraRankMap(cat);
-    if (extraMap && extraMap.has(norm)) {
-      return extraMap.get(norm).stat;
-    }
-    if (cat.customCrossMap && typeof cat.customCrossMap[norm] === "number") {
-      return cat.customCrossMap[norm];
-    }
+    const extraEntry = findExtraRankEntry(cat, playerName);
+    if (extraEntry) return extraEntry.stat;
+    const customStat = findWindowMapValue(cat.sport, cat.customCrossMap, playerName);
+    if (typeof customStat === "number") return customStat;
     const winCat = getVerifiedWindowFallback(cat);
-    if (winCat && winCat.customCrossMap && typeof winCat.customCrossMap[norm] === "number") {
-      return winCat.customCrossMap[norm];
+    if (winCat) {
+      const winStat = findWindowMapValue(cat.sport, winCat.customCrossMap, playerName);
+      if (typeof winStat === "number") return winStat;
     }
-    if (window.PLAYER_CROSS_STATS && window.PLAYER_CROSS_STATS[norm]) {
-      const val = window.PLAYER_CROSS_STATS[norm][cat.id];
-      if (typeof val === "number") return val;
+    if (window.PLAYER_CROSS_STATS) {
+      const crossEntry =
+        window.PLAYER_CROSS_STATS[norm] ||
+        (isSamePlayerAliasAllowed(cat.sport, norm)
+          ? (() => {
+              const base = stripPlayerSuffix(norm);
+              const hitKey = Object.keys(window.PLAYER_CROSS_STATS).find((k) => stripPlayerSuffix(k) === base);
+              return hitKey ? window.PLAYER_CROSS_STATS[hitKey] : null;
+            })()
+          : null);
+      if (crossEntry && typeof crossEntry[cat.id] === "number") return crossEntry[cat.id];
     }
     // Fallback: sum from seasonal logs if base category metric exists
     const metrics = SPORT_METRICS[cat.sport] || [];
@@ -525,7 +622,7 @@
       let total = 0;
       Object.keys(sLogs).forEach((yr) => {
         (sLogs[yr] || []).forEach((r) => {
-          if (normalizePlayerKey(r[0]) === norm) {
+          if (keysMatchForCategory(cat.sport, r[0], playerName)) {
             total += m.calc ? m.calc(r) : (r[m.idx] || 0);
           }
         });
@@ -540,19 +637,20 @@
     if (!playerName || !cat) return { rank: null, stat: 0, team: "", statKnown: false, maxKnownRank: 100 };
     const maxKnownRank = (cat.players ? cat.players.length : 0) + (Array.isArray(cat.extraRanks) ? cat.extraRanks.length : 0);
     const norm = normalizePlayerKey(playerName);
-    const ranked = cat.players.find((p) => normalizePlayerKey(p.name) === norm);
+    const ranked = findCategoryPlayer(cat, playerName);
     if (ranked) {
       return { rank: ranked.rank, stat: ranked.stat, team: ranked.team || "", statKnown: true, maxKnownRank };
     }
-    const extraMap = getCategoryExtraRankMap(cat);
-    if (extraMap && extraMap.has(norm)) {
-      const entry = extraMap.get(norm);
-      return { rank: entry.rank, stat: entry.stat, team: "", statKnown: true, maxKnownRank };
+    const extraEntry = findExtraRankEntry(cat, playerName);
+    if (extraEntry) {
+      return { rank: extraEntry.rank, stat: extraEntry.stat, team: "", statKnown: true, maxKnownRank };
     }
-    if (cat.customRankMap && cat.customRankMap[norm]) {
+    const customRank = findWindowMapValue(cat.sport, cat.customRankMap, playerName);
+    if (customRank) {
+      const customStat = findWindowMapValue(cat.sport, cat.customCrossMap, playerName) || 0;
       return {
-        rank: cat.customRankMap[norm],
-        stat: (cat.customCrossMap && cat.customCrossMap[norm]) || 0,
+        rank: customRank,
+        stat: customStat,
         team: "",
         statKnown: true,
         maxKnownRank
@@ -560,24 +658,25 @@
     }
     const winCat = getVerifiedWindowFallback(cat);
     if (winCat) {
-      if (winCat.customRankMap && winCat.customRankMap[norm]) {
+      const winRank = findWindowMapValue(cat.sport, winCat.customRankMap, playerName);
+      if (winRank) {
+        const winStat = findWindowMapValue(cat.sport, winCat.customCrossMap, playerName) || 0;
         return {
-          rank: winCat.customRankMap[norm],
-          stat: (winCat.customCrossMap && winCat.customCrossMap[norm]) || 0,
+          rank: winRank,
+          stat: winStat,
           team: "",
           statKnown: true,
           maxKnownRank
         };
       }
-      if (
-        cat._unconstrainedWindowCat &&
-        cat._unconstrainedWindowCat.customCrossMap &&
-        cat._unconstrainedWindowCat.customCrossMap[norm] > 0
-      ) {
+      const rawUncStat = cat._unconstrainedWindowCat
+        ? findWindowMapValue(cat.sport, cat._unconstrainedWindowCat.customCrossMap, playerName)
+        : 0;
+      if (rawUncStat > 0) {
         return {
           rank: null,
           stat: 0,
-          rawStat: cat._unconstrainedWindowCat.customCrossMap[norm],
+          rawStat: rawUncStat,
           team: "",
           statKnown: true,
           excludedByConstraint: cat._verifiedConstraint,
@@ -1784,16 +1883,22 @@
   }
 
   // 6. Guess Submission & Evaluation Logic
+  function hasAlreadyGuessedPlayer(sport, name) {
+    const ck = getCanonicalDirectoryKey(sport, name);
+    const rawLow = (name || "").trim().toLowerCase();
+    return state.guessedNames.has(ck) || (rawLow && state.guessedNames.has(rawLow));
+  }
+
   function handleGuessSubmission(rawName) {
     if (state.gameOver) return;
     const query = (rawName || "").trim();
     if (!query) return;
 
     const cat = getActiveCategory();
-    const normQuery = query.toLowerCase();
+    const normQuery = normalizePlayerKey(query);
 
     // Check if already guessed
-    if (state.guessedNames.has(normQuery)) {
+    if (hasAlreadyGuessedPlayer(cat.sport, query)) {
       showFeedbackBanner({
         tierClass: "tier-safe",
         rankBadge: "⚠️",
@@ -1804,39 +1909,48 @@
       return;
     }
 
-    // Find exact or best match in current category's player list
-    let matchedCatPlayer = cat.players.find((p) => p.name.toLowerCase() === normQuery);
-
-    // Also check if user typed a partial name that uniquely matches top autocomplete suggestion
-    if (!matchedCatPlayer && state.acMatches.length > 0) {
-      const exactAc = state.acMatches.find((m) => m.name.toLowerCase() === normQuery);
-      const chosenAc = exactAc || state.acMatches[Math.max(0, state.acHighlightIndex)];
-      if (chosenAc) {
-        const chosenNorm = chosenAc.name.toLowerCase();
-        if (state.guessedNames.has(chosenNorm)) {
-          showFeedbackBanner({
-            tierClass: "tier-safe",
-            rankBadge: "⚠️",
-            title: `${chosenAc.name} was already guessed!`,
-            subtitle: "Pick a different player — your turn is still active.",
-            pointsText: "TRY AGAIN"
-          });
-          return;
-        }
-        matchedCatPlayer = cat.players.find((p) => p.name.toLowerCase() === chosenNorm);
-        // Use canonical name from directory
-        rawName = chosenAc.name;
-      }
-    } else if (matchedCatPlayer) {
+    // 1. Direct normalized/suffix-alias match in current category
+    let matchedCatPlayer = findCategoryPlayer(cat, query);
+    if (matchedCatPlayer) {
       rawName = matchedCatPlayer.name;
+    } else {
+      // 2. Direct exact/alias match in sport player directory (handles mobile autocorrect / closed dropdown / suffix omission)
+      const dirPool = SPORT_PLAYER_DIRECTORY[state.sport] || [];
+      const exactDir =
+        dirPool.find((p) => normalizePlayerKey(p.name) === normQuery) ||
+        (isSamePlayerAliasAllowed(cat.sport, normQuery)
+          ? dirPool.find((p) => keysMatchForCategory(cat.sport, p.name, query))
+          : null);
+      if (exactDir) {
+        rawName = exactDir.name;
+        matchedCatPlayer = findCategoryPlayer(cat, exactDir.name);
+      } else if (state.acMatches.length > 0) {
+        // 3. Partial prefix typing -> use highlighted autocomplete suggestion
+        const chosenAc = state.acMatches[Math.max(0, state.acHighlightIndex)];
+        if (chosenAc) {
+          rawName = chosenAc.name;
+          matchedCatPlayer = findCategoryPlayer(cat, chosenAc.name);
+        }
+      }
     }
 
-    const canonicalNorm = rawName.trim().toLowerCase();
+    if (hasAlreadyGuessedPlayer(cat.sport, rawName)) {
+      showFeedbackBanner({
+        tierClass: "tier-safe",
+        rankBadge: "⚠️",
+        title: `${rawName.trim()} was already guessed!`,
+        subtitle: "Pick a different player — your turn is still active.",
+        pointsText: "TRY AGAIN"
+      });
+      return;
+    }
+
+    const canonicalKey = getCanonicalDirectoryKey(cat.sport, rawName);
 
     // Save undo snapshot before mutating state
     pushUndoSnapshot(rawName.trim());
 
-    state.guessedNames.add(canonicalNorm);
+    state.guessedNames.add(canonicalKey);
 
     // Clear input
     const input = document.getElementById("playerSearchInput");
@@ -2194,7 +2308,7 @@
     if (!statVal || statVal <= 0) {
       state.undoStack.pop();
       updateUndoButtonState();
-      state.guessedNames.delete(displayName.trim().toLowerCase());
+      state.guessedNames.delete(getCanonicalDirectoryKey(cat.sport, displayName));
       if (statInfo.excludedByConstraint) {
         showFeedbackBanner({
           tierClass: "tier-safe",
@@ -2620,7 +2734,7 @@
   };
 
   function expandQueryVariants(q) {
-    const clean = q.replace(/\./g, "");
+    const clean = q.replace(/[.']/g, "").replace(/\u2019/g, "").replace(/-/g, " ").replace(/\s+/g, " ").trim();
     const variants = [q];
     if (clean !== q) variants.push(clean);
     const parts = clean.split(/\s+/);
@@ -2647,15 +2761,15 @@
     for (let i = 0; i < pool.length; i++) {
       const p = pool[i];
       const nameLow = p.name.toLowerCase();
-      const nameNoDots = nameLow.replace(/\./g, "");
+      const nameClean = normalizePlayerKey(p.name);
       let bestPrio = 99;
       for (let v = 0; v < qVariants.length; v++) {
         const qv = qVariants[v];
-        if (nameLow.startsWith(qv) || nameNoDots.startsWith(qv)) {
+        if (nameLow.startsWith(qv) || nameClean.startsWith(qv)) {
           bestPrio = Math.min(bestPrio, v === 0 ? 1 : 2);
-        } else if (nameLow.split(/\s+/).some((part) => part.replace(/\./g, "").startsWith(qv))) {
+        } else if (nameClean.split(/\s+/).some((part) => part.startsWith(qv))) {
           bestPrio = Math.min(bestPrio, 2);
-        } else if (nameLow.includes(qv) || nameNoDots.includes(qv)) {
+        } else if (nameLow.includes(qv) || nameClean.includes(qv)) {
           bestPrio = Math.min(bestPrio, 3);
         }
       }
@@ -2681,7 +2795,7 @@
     const dropdown = document.getElementById("autocompleteDropdown");
     dropdown.innerHTML = state.acMatches
       .map((p, idx) => {
-        const alreadyPicked = state.guessedNames.has(p.name.toLowerCase());
+        const alreadyPicked = hasAlreadyGuessedPlayer(state.sport, p.name);
         const classes = [
           "ac-item",
           idx === state.acHighlightIndex ? "highlighted" : "",
