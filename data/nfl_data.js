@@ -8265,9 +8265,9 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 118,
-        "name": "Clay Matthews",
+        "name": "Clay Matthews Jr.",
         "stat": 69.5,
-        "team": "GB/LAR",
+        "team": "CLE/ATL",
         "era": "1978\u20131996"
       },
       {

@@ -23,20 +23,61 @@
     NBA: new Set([
       "tim hardaway", "gary trent", "jaren jackson", "gary payton",
       "kenyon martin", "john lucas", "larry nance", "glenn robinson",
-      "kevin porter", "jabari smith"
+      "kevin porter", "jabari smith", "ron harper"
     ]),
     NFL: new Set([
       "steve smith", "patrick surtain", "oronde gadsden", "william fuller",
       "michael pittman", "cedrick wilson", "antoine winfield", "marvin harrison",
-      "byron murphy", "anthony brown"
+      "byron murphy", "anthony brown", "clay matthews"
     ]),
     MLB: new Set([
       "sandy alomar", "billy sullivan", "earl averill", "jim bagby",
       "tony gwynn", "jose cruz", "gary matthews", "tony pena",
       "john mayberry", "eric young", "vladimir guerrero", "fernando tatis",
-      "bobby witt", "luis garcia", "mark leiter"
+      "bobby witt", "luis garcia", "mark leiter", "ken griffey",
+      "roy smalley"
     ])
   };
+
+  // Sport-scoped canonical name aliases for punctuation/nickname/alternate-name forms
+  const PLAYER_ALIAS_MAP = {
+    NBA: {
+      "jo jo white": "jojo white",
+      "tiny archibald": "nate archibald",
+      "nene hilario": "nene",
+      "ron artest": "metta world peace",
+      "enes kanter": "enes freedom",
+      "penny hardaway": "anfernee hardaway",
+      "herb jones": "herbert jones",
+      "nicolas claxton": "nic claxton",
+      "nahshon hyland": "bones hyland",
+      "mohamed bamba": "mo bamba",
+      "cameron thomas": "cam thomas",
+      "cam johnson": "cameron johnson",
+      "alexandre sarr": "alex sarr",
+      "carlton carrington": "bub carrington"
+    },
+    NFL: {
+      "gabriel davis": "gabe davis",
+      "robby anderson": "robbie chosen",
+      "robbie anderson": "robbie chosen",
+      "marquise brown": "hollywood brown",
+      "chigoziem okonkwo": "chig okonkwo",
+      "will fuller": "william fuller v",
+      "matt stafford": "matthew stafford",
+      "mitch trubisky": "mitchell trubisky",
+      "chad ochocinco": "chad johnson"
+    },
+    MLB: {
+      "kike hernandez": "enrique hernandez",
+      "dee gordon": "dee strange gordon"
+    }
+  };
+
+  function resolveSportAlias(sport, normKey) {
+    const map = PLAYER_ALIAS_MAP[sport];
+    return (map && map[normKey]) || normKey;
+  }
 
   function normalizePlayerKey(s) {
     return (s || "")
@@ -47,6 +88,7 @@
       .replace(/[.']/g, "")
       .replace(/\u2019/g, "")
       .replace(/-/g, " ")
+      .replace(/\b([a-z])\s+([a-z])\s+/g, "$1$2 ")
       .trim()
       .replace(/\s+/g, " ");
   }
@@ -56,25 +98,34 @@
   }
 
   function isSamePlayerAliasAllowed(sport, normKey) {
-    const base = stripPlayerSuffix(normKey);
+    const resolved = resolveSportAlias(sport, normKey);
+    const base = stripPlayerSuffix(resolved);
     const distinctSet = DISTINCT_SUFFIX_BASE_MAP[sport];
     return !(distinctSet && distinctSet.has(base));
   }
 
   function getCanonicalDirectoryKey(sport, name) {
-    const n = normalizePlayerKey(name);
-    return isSamePlayerAliasAllowed(sport, n) ? stripPlayerSuffix(n) : n;
+    const n = resolveSportAlias(sport, normalizePlayerKey(name));
+    const ck = isSamePlayerAliasAllowed(sport, n) ? stripPlayerSuffix(n) : n;
+    return resolveSportAlias(sport, ck);
+  }
+
+  function isDefensiveJohnsonMatch(cat, a, b) {
+    if (!cat || cat.sport !== "NFL") return false;
+    const id = cat.id || "";
+    if (!id.includes("sack") && !id.includes("fumble")) return false;
+    const na = normalizePlayerKey(a);
+    const nb = normalizePlayerKey(b);
+    return (
+      (na === "charles johnson" || na === "charles l johnson") &&
+      (nb === "charles johnson" || nb === "charles l johnson")
+    );
   }
 
   function keysMatchForCategory(sport, a, b) {
-    const na = normalizePlayerKey(a);
-    const nb = normalizePlayerKey(b);
-    if (!na || !nb) return false;
-    if (na === nb) return true;
-    const ba = stripPlayerSuffix(na);
-    const bb = stripPlayerSuffix(nb);
-    if (ba !== bb) return false;
-    return isSamePlayerAliasAllowed(sport, ba);
+    const ca = getCanonicalDirectoryKey(sport, a);
+    const cb = getCanonicalDirectoryKey(sport, b);
+    return Boolean(ca && cb && ca === cb);
   }
 
   function registerNicheCategoryToDirectory(cat) {
@@ -118,6 +169,7 @@
       title: raw.title,
       subtitle: raw.subtitle,
       unit: raw.unit,
+      sortDir: raw.sortDir || "desc",
       defaultTarget: raw.defaultTarget,
       targetDesc: raw.targetDesc,
       players,
@@ -150,7 +202,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=18`;
+      s.src = `data/niche/${shardName}.js?v=19`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -464,10 +516,13 @@
     const norm = normalizePlayerKey(playerName);
     const exact = cat.players.find((p) => normalizePlayerKey(p.name) === norm);
     if (exact) return exact;
-    if (isSamePlayerAliasAllowed(cat.sport, norm)) {
-      return cat.players.find((p) => keysMatchForCategory(cat.sport, p.name, playerName)) || null;
-    }
-    return null;
+    return (
+      cat.players.find(
+        (p) =>
+          keysMatchForCategory(cat.sport, p.name, playerName) ||
+          isDefensiveJohnsonMatch(cat, p.name, playerName)
+      ) || null
+    );
   }
 
   function findExtraRankEntry(cat, playerName) {
@@ -475,9 +530,12 @@
     if (!extraMap || !playerName) return null;
     const norm = normalizePlayerKey(playerName);
     if (extraMap.has(norm)) return extraMap.get(norm);
-    if (isSamePlayerAliasAllowed(cat.sport, norm) && cat._extraRankAliasMap) {
+    if (cat._extraRankAliasMap) {
       const ck = getCanonicalDirectoryKey(cat.sport, playerName);
       if (ck && cat._extraRankAliasMap.has(ck)) return cat._extraRankAliasMap.get(ck);
+    }
+    if (isDefensiveJohnsonMatch(cat, "Charles Johnson", playerName)) {
+      return extraMap.get("charles johnson") || extraMap.get("charles l johnson") || null;
     }
     return null;
   }
@@ -486,14 +544,53 @@
     if (!mapObj || !playerName) return undefined;
     const norm = normalizePlayerKey(playerName);
     if (Object.prototype.hasOwnProperty.call(mapObj, norm)) return mapObj[norm];
-    if (isSamePlayerAliasAllowed(sport, norm)) {
-      const base = stripPlayerSuffix(norm);
-      const keys = Object.keys(mapObj);
-      for (let i = 0; i < keys.length; i++) {
-        if (stripPlayerSuffix(keys[i]) === base) return mapObj[keys[i]];
-      }
+    const ck = getCanonicalDirectoryKey(sport, playerName);
+    if (ck && Object.prototype.hasOwnProperty.call(mapObj, ck)) return mapObj[ck];
+    const keys = Object.keys(mapObj);
+    for (let i = 0; i < keys.length; i++) {
+      if (getCanonicalDirectoryKey(sport, keys[i]) === ck) return mapObj[keys[i]];
     }
     return undefined;
+  }
+
+  let _pcsCache = null;
+  function getNormalizedCrossStatsIndex() {
+    if (_pcsCache) return _pcsCache;
+    const raw = window.PLAYER_CROSS_STATS;
+    if (!raw) return null;
+    const byNorm = new Map();
+    const byBase = new Map();
+    const entries = [];
+    Object.keys(raw).forEach((rk) => {
+      const entry = raw[rk];
+      const nk = normalizePlayerKey(rk);
+      if (!nk) return;
+      entries.push({ rk, nk, entry });
+      if (!byNorm.has(nk)) byNorm.set(nk, entry);
+      const bk = stripPlayerSuffix(nk);
+      if (!byBase.has(bk)) byBase.set(bk, []);
+      byBase.get(bk).push({ nk, entry });
+    });
+    _pcsCache = { byNorm, byBase, entries };
+    return _pcsCache;
+  }
+
+  function getCrossStatsEntry(sport, playerName) {
+    const idx = getNormalizedCrossStatsIndex();
+    if (!idx || !playerName) return null;
+    const norm = normalizePlayerKey(playerName);
+    if (idx.byNorm.has(norm)) return idx.byNorm.get(norm);
+    const alias = resolveSportAlias(sport, norm);
+    if (idx.byNorm.has(alias)) return idx.byNorm.get(alias);
+    const ck = getCanonicalDirectoryKey(sport, playerName);
+    const bk = stripPlayerSuffix(ck);
+    const candidates = idx.byBase.get(bk) || [];
+    for (let i = 0; i < candidates.length; i++) {
+      if (getCanonicalDirectoryKey(sport, candidates[i].nk) === ck) {
+        return candidates[i].entry;
+      }
+    }
+    return null;
   }
 
   function parseNicheWindowConfig(cat) {
@@ -573,7 +670,7 @@
       return (
         a &&
         b &&
-        normalizePlayerKey(a.name) === normalizePlayerKey(b.name) &&
+        keysMatchForCategory(cat.sport, a.name, b.name) &&
         Math.abs(a.stat - b.stat) <= Math.max(1, Math.round(a.stat * 0.015))
       );
     }).length;
@@ -602,18 +699,8 @@
       const winStat = findWindowMapValue(cat.sport, winCat.customCrossMap, playerName);
       if (typeof winStat === "number") return winStat;
     }
-    if (window.PLAYER_CROSS_STATS) {
-      const crossEntry =
-        window.PLAYER_CROSS_STATS[norm] ||
-        (isSamePlayerAliasAllowed(cat.sport, norm)
-          ? (() => {
-              const base = stripPlayerSuffix(norm);
-              const hitKey = Object.keys(window.PLAYER_CROSS_STATS).find((k) => stripPlayerSuffix(k) === base);
-              return hitKey ? window.PLAYER_CROSS_STATS[hitKey] : null;
-            })()
-          : null);
-      if (crossEntry && typeof crossEntry[cat.id] === "number") return crossEntry[cat.id];
-    }
+    const crossEntry = getCrossStatsEntry(cat.sport, playerName);
+    if (crossEntry && typeof crossEntry[cat.id] === "number") return crossEntry[cat.id];
     // Fallback: sum from seasonal logs if base category metric exists
     const metrics = SPORT_METRICS[cat.sport] || [];
     const m = metrics.find((x) => x.baseId === cat.id);
@@ -622,7 +709,10 @@
       let total = 0;
       Object.keys(sLogs).forEach((yr) => {
         (sLogs[yr] || []).forEach((r) => {
-          if (keysMatchForCategory(cat.sport, r[0], playerName)) {
+          if (
+            keysMatchForCategory(cat.sport, r[0], playerName) ||
+            isDefensiveJohnsonMatch(cat, r[0], playerName)
+          ) {
             total += m.calc ? m.calc(r) : (r[m.idx] || 0);
           }
         });
@@ -689,13 +779,14 @@
     if (statVal > 0) {
       const higherSet = new Set();
       cat.players.forEach((p) => {
-        if (p.stat > statVal) higherSet.add(normalizePlayerKey(p.name));
+        if (p.stat > statVal) higherSet.add(getCanonicalDirectoryKey(cat.sport, p.name));
       });
-      if (window.PLAYER_CROSS_STATS) {
-        Object.keys(window.PLAYER_CROSS_STATS).forEach((nk) => {
-          const v = window.PLAYER_CROSS_STATS[nk][cat.id];
+      const pcsIdx = getNormalizedCrossStatsIndex();
+      if (pcsIdx) {
+        pcsIdx.entries.forEach(({ nk, entry }) => {
+          const v = entry[cat.id];
           if (typeof v === "number" && v > statVal) {
-            higherSet.add(nk);
+            higherSet.add(getCanonicalDirectoryKey(cat.sport, nk));
           }
         });
       }
@@ -708,7 +799,7 @@
           const scMap = new Map();
           Object.keys(sLogs).forEach((yr) => {
             (sLogs[yr] || []).forEach((r) => {
-              const nk = normalizePlayerKey(r[0]);
+              const nk = getCanonicalDirectoryKey(cat.sport, r[0]);
               const v = m.calc ? m.calc(r) : (r[m.idx] || 0);
               if (v > 0) scMap.set(nk, (scMap.get(nk) || 0) + v);
             });
@@ -830,14 +921,14 @@
     }
 
     const activeList = (window.SEASON_LOGS && window.SEASON_LOGS.active && window.SEASON_LOGS.active[sport]) || [];
-    const activeSet = new Set(activeList.map((n) => normalizePlayerKey(n)));
+    const activeSet = new Set(activeList.map((n) => getCanonicalDirectoryKey(sport, n)));
 
     // Build Top 25 Career Chalk Set for Anti-Chalk constraint
     const top25ChalkSet = new Set();
     if (m.baseId) {
       const baseCat = ALL_CATEGORIES.find((c) => c.id === m.baseId);
       if (baseCat) {
-        baseCat.players.slice(0, 25).forEach((p) => top25ChalkSet.add(normalizePlayerKey(p.name)));
+        baseCat.players.slice(0, 25).forEach((p) => top25ChalkSet.add(getCanonicalDirectoryKey(sport, p.name)));
       }
     }
 
@@ -845,7 +936,7 @@
     const metaByNorm = new Map();
     ALL_CATEGORIES.filter((c) => c.sport === sport).forEach((c) => {
       c.players.forEach((p) => {
-        const nk = normalizePlayerKey(p.name);
+        const nk = getCanonicalDirectoryKey(sport, p.name);
         if (!metaByNorm.has(nk)) {
           metaByNorm.set(nk, { name: p.name, teams: new Set(p.team.split("/").filter(Boolean)), era: p.era });
         }
@@ -855,7 +946,7 @@
     const sLogs = (window.SEASON_LOGS && window.SEASON_LOGS[sport]) || {};
     Object.keys(sLogs).forEach((yStr) => {
       (sLogs[yStr] || []).forEach((r) => {
-        const nk = normalizePlayerKey(r[0]);
+        const nk = getCanonicalDirectoryKey(sport, r[0]);
         const tm = r[1];
         if (!metaByNorm.has(nk)) {
           metaByNorm.set(nk, { name: r[0], teams: new Set(), era: `${yStr}` });
@@ -878,16 +969,18 @@
       const valMap = new Map();
       if (baseCat) {
         baseCat.players.forEach((p) => {
-          valMap.set(normalizePlayerKey(p.name), { name: p.name, stat: p.stat, team: p.team, era: p.era });
+          valMap.set(getCanonicalDirectoryKey(sport, p.name), { name: p.name, stat: p.stat, team: p.team, era: p.era });
         });
       }
-      if (window.PLAYER_CROSS_STATS) {
-        Object.keys(window.PLAYER_CROSS_STATS).forEach((nk) => {
-          const v = window.PLAYER_CROSS_STATS[nk][m.baseId];
-          if (typeof v === "number" && v > 0 && !valMap.has(nk)) {
-            const meta = metaByNorm.get(nk);
+      const pcsIdx = getNormalizedCrossStatsIndex();
+      if (pcsIdx) {
+        pcsIdx.entries.forEach(({ nk, entry }) => {
+          const v = entry[m.baseId];
+          const ck = getCanonicalDirectoryKey(sport, nk);
+          if (typeof v === "number" && v > 0 && !valMap.has(ck)) {
+            const meta = metaByNorm.get(ck);
             if (meta) {
-              valMap.set(nk, {
+              valMap.set(ck, {
                 name: meta.name,
                 stat: v,
                 team: Array.from(meta.teams).slice(0, 3).join("/") || sport,
@@ -937,7 +1030,7 @@
           if (teamFilter !== "ALL" && pTeam !== teamFilter) return;
           const val = m.calc ? m.calc(r) : (r[m.idx] || 0);
           if (val <= 0) return;
-          const nk = normalizePlayerKey(pName);
+          const nk = getCanonicalDirectoryKey(sport, pName);
           if (!agg.has(nk)) {
             agg.set(nk, {
               nk,
@@ -1918,9 +2011,12 @@
       const dirPool = SPORT_PLAYER_DIRECTORY[state.sport] || [];
       const exactDir =
         dirPool.find((p) => normalizePlayerKey(p.name) === normQuery) ||
-        (isSamePlayerAliasAllowed(cat.sport, normQuery)
-          ? dirPool.find((p) => keysMatchForCategory(cat.sport, p.name, query))
-          : null);
+        dirPool.find(
+          (p) =>
+            keysMatchForCategory(cat.sport, p.name, query) ||
+            isDefensiveJohnsonMatch(cat, p.name, query)
+        ) ||
+        null;
       if (exactDir) {
         rawName = exactDir.name;
         matchedCatPlayer = findCategoryPlayer(cat, exactDir.name);
@@ -2730,18 +2826,44 @@
     pat: "patrick",
     tony: "anthony",
     ken: "kenneth",
-    kenny: "kenneth"
+    kenny: "kenneth",
+    mitch: "mitchell",
+    mitchell: "mitch",
+    gabe: "gabriel",
+    gabriel: "gabe",
+    herb: "herbert",
+    herbert: "herb",
+    nic: "nicolas",
+    cam: "cameron",
+    cameron: "cam",
+    chig: "chigoziem",
+    chigoziem: "chig"
   };
 
-  function expandQueryVariants(q) {
-    const clean = q.replace(/[.']/g, "").replace(/\u2019/g, "").replace(/-/g, " ").replace(/\s+/g, " ").trim();
+  function expandQueryVariants(q, sport) {
+    const clean = normalizePlayerKey(q);
     const variants = [q];
-    if (clean !== q) variants.push(clean);
-    const parts = clean.split(/\s+/);
+    if (clean && !variants.includes(clean)) variants.push(clean);
+    const aliasMap = PLAYER_ALIAS_MAP[sport];
+    if (aliasMap && clean) {
+      if (aliasMap[clean] && !variants.includes(aliasMap[clean])) {
+        variants.push(aliasMap[clean]);
+      }
+      if (clean.length >= 4) {
+        // Also match partial prefix of known aliases (e.g. "ron art" -> "metta world peace", "jo jo" -> "jojo white")
+        Object.keys(aliasMap).forEach((fromKey) => {
+          const toKey = aliasMap[fromKey];
+          if (fromKey.startsWith(clean) && !variants.includes(toKey)) variants.push(toKey);
+          if (toKey.startsWith(clean) && !variants.includes(fromKey)) variants.push(fromKey);
+        });
+      }
+    }
+    const parts = clean ? clean.split(/\s+/) : [];
     if (parts.length >= 1 && NICKNAME_EXPANSIONS[parts[0]]) {
       const altParts = [...parts];
       altParts[0] = NICKNAME_EXPANSIONS[parts[0]];
-      variants.push(altParts.join(" "));
+      const joined = altParts.join(" ");
+      if (!variants.includes(joined)) variants.push(joined);
     }
     return variants;
   }
@@ -2754,7 +2876,7 @@
       return;
     }
 
-    const qVariants = expandQueryVariants(q);
+    const qVariants = expandQueryVariants(q, state.sport);
     const pool = SPORT_PLAYER_DIRECTORY[state.sport] || [];
     // Score matches: startsWith first, then word startsWith, then includes
     const matches = [];
@@ -4211,7 +4333,8 @@
         }
       } else if (e.key === "Enter") {
         e.preventDefault();
-        if (state.acMatches.length > 0 && state.acHighlightIndex >= 0) {
+        const ddOpen = !document.getElementById("autocompleteDropdown").classList.contains("hidden");
+        if (ddOpen && state.acMatches.length > 0 && state.acHighlightIndex >= 0) {
           handleGuessSubmission(state.acMatches[state.acHighlightIndex].name);
         } else {
           handleGuessSubmission(searchInput.value);
@@ -4222,7 +4345,8 @@
     });
 
     document.getElementById("submitGuessBtn").addEventListener("click", () => {
-      if (state.acMatches.length > 0 && state.acHighlightIndex >= 0) {
+      const ddOpen = !document.getElementById("autocompleteDropdown").classList.contains("hidden");
+      if (ddOpen && state.acMatches.length > 0 && state.acHighlightIndex >= 0) {
         handleGuessSubmission(state.acMatches[state.acHighlightIndex].name);
       } else {
         handleGuessSubmission(searchInput.value);
