@@ -91,7 +91,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=17`;
+      s.src = `data/niche/${shardName}.js?v=18`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -1131,7 +1131,7 @@
                 </span>
               </div>
               <div style="font-size:0.76rem;color:var(--text-secondary);margin-top:2px;">
-                Hunt #85–#100 for max points — guessing outside the Top 100 scores 0.
+                Hunt #90–#100 for max points — guessing outside the Top 100 scores 0.
               </div>
             </div>
             <div class="sniper-score-big" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;">
