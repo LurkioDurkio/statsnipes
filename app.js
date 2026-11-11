@@ -1142,23 +1142,11 @@
       strip.innerHTML = `
         <div class="daily-sniper-card">
           <div class="sniper-header-row">
-            <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-              <span style="font-weight:800;font-size:0.88rem;color:var(--text-secondary);">
-                Grade: <strong style="color:var(--text-main);">${gInfo.grade} (${gInfo.label})</strong>
-              </span>
-            </div>
-            <div class="sniper-score-big" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;">
-              <div>
-                ${formatNumber(p.score)} <span style="font-size:0.85rem;color:var(--text-secondary);">/ 490 PTS</span>
-              </div>
-              ${
-                state.gameOver
-                  ? `<div style="display:flex;gap:0.4rem;flex-wrap:wrap;justify-content:flex-end;">
-                      <button type="button" class="prompt-inline-btn" id="sniperShareBtn">📲 Share Score</button>
-                      <button type="button" class="prompt-inline-btn secondary" id="sniperOpenModalBtn">📊 Summary</button>
-                    </div>`
-                  : ""
-              }
+            <span class="sniper-grade-label">
+              Grade: <strong>${gInfo.grade} (${gInfo.label})</strong>
+            </span>
+            <div class="sniper-score-big">
+              ${formatNumber(p.score)} <span class="sniper-score-max">/ 490 PTS</span>
             </div>
           </div>
           <div class="sniper-slots-grid">
@@ -1166,19 +1154,6 @@
           </div>
         </div>
       `;
-
-      const sniperShareBtn = document.getElementById("sniperShareBtn");
-      if (sniperShareBtn) {
-        sniperShareBtn.addEventListener("click", (e) => {
-          copyCurrentResultText(e.currentTarget);
-        });
-      }
-      const sniperModalBtn = document.getElementById("sniperOpenModalBtn");
-      if (sniperModalBtn) {
-        sniperModalBtn.addEventListener("click", () => {
-          document.getElementById("gameOverModal").classList.remove("hidden");
-        });
-      }
       return;
     }
 
@@ -1400,18 +1375,30 @@
 
   function renderTurnPrompt() {
     const promptEl = document.getElementById("currentTurnPrompt");
+    const searchWrap = document.getElementById("searchBoxWrapper");
+    const cmdSec = document.getElementById("commandCenterSection");
+    const hideDailySearch = Boolean(state.isDaily && state.gameOver);
+    if (searchWrap) searchWrap.classList.toggle("hidden", hideDailySearch);
+    if (cmdSec) cmdSec.classList.toggle("is-complete-compact", hideDailySearch);
+
     if (state.gameOver) {
-      const label = state.isDaily ? "Daily Complete!" : "Match Complete!";
-      const sub = state.isDaily
-        ? "Your picks are saved — share your score or inspect the board if you don't mind spoilers."
-        : "Share your result, inspect the board below, or start a new match.";
-      promptEl.innerHTML = `
-        <strong>${label}</strong> — ${sub}
-        <span class="prompt-inline-actions">
-          <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">📲 Share ${state.isDaily ? "Daily Score" : "Result"}</button>
-          <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">📊 Summary</button>
-        </span>
-      `;
+      if (state.isDaily) {
+        promptEl.innerHTML = `
+          <strong>✅ Daily Complete!</strong>
+          <span class="prompt-inline-actions">
+            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">📲 Share Score</button>
+            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">📊 Summary</button>
+          </span>
+        `;
+      } else {
+        promptEl.innerHTML = `
+          <strong>Match Complete!</strong> — Share your result, inspect the board below, or start a new match.
+          <span class="prompt-inline-actions">
+            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">📲 Share Result</button>
+            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">📊 Summary</button>
+          </span>
+        `;
+      }
       const pShare = document.getElementById("promptShareScoreBtn");
       if (pShare) {
         pShare.addEventListener("click", (e) => copyCurrentResultText(e.currentTarget));
@@ -2848,7 +2835,7 @@
     const doneTarget = getDailyCompletion(sp, "target", activeDate);
 
     const sniperBadge = doneSniper
-      ? `<span class="completed-check">✓ ${formatNumber(doneSniper.score)} (${getSniperGrade(doneSniper.score).grade})</span>`
+      ? `<span class="completed-check">✓ ${formatNumber(doneSniper.score)}</span>`
       : `<span style="color:var(--sport-secondary);font-size:0.72rem;font-weight:800;">Play →</span>`;
 
     const targetPct = doneTarget
