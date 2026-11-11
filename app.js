@@ -1000,7 +1000,12 @@
     const cat = getActiveCategory();
     document.getElementById("activeSportPill").textContent = `${getSportIcon(cat.sport)} ${cat.sport}`;
     document.getElementById("activeCategoryTitle").textContent = cat.title;
-    document.getElementById("activeCategorySubtitle").textContent = cat.subtitle;
+    const subEl = document.getElementById("activeCategorySubtitle");
+    if (subEl) {
+      subEl.textContent = cat.subtitle;
+      const keepSubInDaily = !state.isDaily || /\bmin(?:imum)?\b/i.test(cat.subtitle || "");
+      subEl.classList.toggle("hidden", !keepSubInDaily);
+    }
 
     const expBar = document.getElementById("constraintExplorerBar");
     if (expBar) {
@@ -1009,8 +1014,10 @@
     const actionPills = document.getElementById("bannerActionPills");
     if (actionPills) {
       const mysBtn = document.getElementById("mysteryBagBtn");
+      const shareBtn = document.getElementById("shareChallengeLinkBtn");
       const mobFilterBtn = document.getElementById("mobileFilterToggleBtn");
       if (mysBtn) mysBtn.classList.toggle("hidden", state.isDaily);
+      if (shareBtn) shareBtn.classList.toggle("hidden", state.isDaily);
       if (mobFilterBtn) mobFilterBtn.classList.toggle("hidden", state.isDaily);
     }
 
@@ -1030,15 +1037,16 @@
       }
     }
 
+    const rulePillEl = document.getElementById("activeRulePill");
     if (state.mode === "top100") {
       const redMin = Math.max(1, state.cutoff - 10);
-      const exclusiveTag = state.isDaily && cat.dailyOnly ? " • DAILY NICHE" : "";
       document.getElementById("activeModePill").textContent = state.isDaily
-        ? `🎯 5-SHOT SNIPER${exclusiveTag}${state.dailyPracticeReplay ? " (PRACTICE)" : ""}`
+        ? `🎯 5-SHOT SNIPER${state.dailyPracticeReplay ? " (PRACTICE)" : ""}`
         : `TOP ${state.cutoff} SURVIVAL`;
-      document.getElementById("activeRulePill").textContent = state.isDaily
-        ? `5 Shots • #100 = 100 PTS • Miss = 0 PTS`
-        : `Rank #${state.cutoff} = ${state.cutoff} PTS • ${state.maxLives} ${state.maxLives === 1 ? "Life" : "Lives"}${state.redemptionEnabled ? ` • 🐦‍🔥 #${redMin}-${state.cutoff} Revive` : ""}`;
+      if (rulePillEl) {
+        rulePillEl.classList.toggle("hidden", state.isDaily);
+        rulePillEl.textContent = `Rank #${state.cutoff} = ${state.cutoff} PTS • ${state.maxLives} ${state.maxLives === 1 ? "Life" : "Lives"}${state.redemptionEnabled ? ` • 🐦‍🔥 #${redMin}-${state.cutoff} Revive` : ""}`;
+      }
       document.getElementById("bannerStatSummary").classList.toggle("hidden", state.isDaily);
       document.getElementById("boardFoundCount").textContent = `${state.revealedRanks.size} / ${state.cutoff}`;
       document.getElementById("cutoffRankLabel").textContent = `#${state.cutoff}`;
@@ -1056,11 +1064,13 @@
         missRankBtn.classList.toggle("active-redemption-chip", state.showMissRank);
       }
     } else {
-      const exclusiveTag = state.isDaily && cat.dailyOnly ? " • DAILY NICHE" : "";
       document.getElementById("activeModePill").textContent = state.isDaily
-        ? `⚡ TARGET STAT${exclusiveTag}${state.dailyPracticeReplay ? " (PRACTICE)" : ""}`
+        ? `⚡ TARGET STAT${state.dailyPracticeReplay ? " (PRACTICE)" : ""}`
         : "TARGET SCORE";
-      document.getElementById("activeRulePill").textContent = `Target: ${formatNumber(state.targetGoal)} ${cat.unit} • ${state.maxPicks} Picks • Don't Bust`;
+      if (rulePillEl) {
+        rulePillEl.classList.remove("hidden");
+        rulePillEl.textContent = `Target: ${formatNumber(state.targetGoal)} ${cat.unit} • ${state.maxPicks} Picks • Don't Bust`;
+      }
       document.getElementById("bannerStatSummary").classList.add("hidden");
       document.getElementById("getClueBtn").classList.add("hidden");
       const redBtn = document.getElementById("toggleRedemptionQuickBtn");
@@ -1132,18 +1142,10 @@
       strip.innerHTML = `
         <div class="daily-sniper-card">
           <div class="sniper-header-row">
-            <div>
-              <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-                <span style="font-weight:800;font-size:0.95rem;">
-                  ${state.gameOver ? "All 5 Shots Complete" : `Shot ${Math.min(state.dailyMaxShots, shots.length + 1)} of ${state.dailyMaxShots}`}
-                </span>
-                <span style="font-size:0.78rem;color:var(--text-secondary);">
-                  • Grade: <strong style="color:var(--text-main);">${gInfo.grade} (${gInfo.label})</strong>
-                </span>
-              </div>
-              <div style="font-size:0.76rem;color:var(--text-secondary);margin-top:2px;">
-                Hunt #90–#100 for max points — guessing outside the Top 100 scores 0.
-              </div>
+            <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
+              <span style="font-weight:800;font-size:0.88rem;color:var(--text-secondary);">
+                Grade: <strong style="color:var(--text-main);">${gInfo.grade} (${gInfo.label})</strong>
+              </span>
             </div>
             <div class="sniper-score-big" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;">
               <div>
@@ -1428,7 +1430,7 @@
     if (state.mode === "top100") {
       if (state.isDaily && state.dailySubmode === "sniper") {
         const shotNum = Math.min(state.dailyMaxShots, (activePlayer.sniperShots ? activePlayer.sniperShots.length : 0) + 1);
-        promptEl.innerHTML = `🎯 <strong>Daily Sniper Shot ${shotNum} of ${state.dailyMaxShots}</strong> — Aim as close to <strong>#100</strong> as you dare without going over!`;
+        promptEl.innerHTML = `🎯 <strong>Shot ${shotNum} of ${state.dailyMaxShots}</strong> • Hunt #90–#100`;
       } else if (activePlayer.eliminated && state.redemptionEnabled) {
         const redMin = Math.max(1, state.cutoff - 10);
         promptEl.innerHTML = `🐦‍🔥 <strong>${escapeHtml(activePlayer.name)}'s REDEMPTION SHOT!</strong> — Eliminated! Snipe a player ranked <strong>#${redMin}–#${state.cutoff}</strong> to earn <strong>1 Life ❤️ back + those points!</strong>`;
@@ -1438,7 +1440,11 @@
     } else {
       const cat = getActiveCategory();
       const remaining = state.targetGoal - activePlayer.score;
-      promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Pick (${activePlayer.picks.length + 1}/${state.maxPicks})</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> to hit target!`;
+      if (state.isDaily) {
+        promptEl.innerHTML = `⚡ <strong>Pick ${activePlayer.picks.length + 1} of ${state.maxPicks}</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong>`;
+      } else {
+        promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Pick (${activePlayer.picks.length + 1}/${state.maxPicks})</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> to hit target!`;
+      }
     }
   }
 
@@ -2758,7 +2764,7 @@
       const doneS = Boolean(getDailyCompletion(state.sport, "sniper", ds));
       const doneT = Boolean(getDailyCompletion(state.sport, "target", ds));
       const checkMark = doneS && doneT ? " ✅" : doneS || doneT ? " ☑️" : "";
-      const labelPrefix = i === 0 ? `🔥 Today (Daily #${num})` : i === 1 ? `📅 Yesterday (#${num})` : `📅 Archive #${num} (${ds})`;
+      const labelPrefix = i === 0 ? `🔥 Today` : i === 1 ? `📅 Yesterday` : `📅 #${num} (${ds})`;
       opts.push(`<option value="${ds}" ${ds === activeDate ? "selected" : ""}>${labelPrefix}${checkMark}</option>`);
     }
     sel.innerHTML = opts.join("");
@@ -2775,12 +2781,11 @@
       : `DAILY STATSNIPES #${dailyNum}`;
     const cdEl = document.getElementById("dailyCountdownLabel");
     if (cdEl) {
-      cdEl.textContent = isArchive ? `📅 Playing ${activeDate}` : getNextDailyCountdownText();
+      cdEl.textContent = isArchive ? `📅 ${activeDate}` : getNextDailyCountdownText();
     }
 
     populateDailyArchiveSelect();
 
-    const prof = getDailyProfile();
     let dateDoneCount = 0;
     ["NBA", "NFL", "MLB"].forEach((sp) => {
       if (getDailyCompletion(sp, "sniper", activeDate)) dateDoneCount++;
@@ -2790,8 +2795,7 @@
     const streakEl = document.getElementById("dailyStreakSummary");
     if (streakEl) {
       streakEl.innerHTML = `
-        <span class="daily-stat-pill streak-fire">🔥 Streak: ${prof.currentStreak || 0}d</span>
-        <span class="daily-stat-pill">✅ ${dateDoneCount}/6 Today</span>
+        <span class="daily-stat-pill">✅ ${dateDoneCount}/6</span>
       `;
     }
 
@@ -2892,7 +2896,10 @@
       const titleEl = document.getElementById("activeCategoryTitle");
       const subEl = document.getElementById("activeCategorySubtitle");
       if (titleEl) titleEl.textContent = cat.title;
-      if (subEl) subEl.textContent = "Loading verified Top 100 niche dataset...";
+      if (subEl) {
+        subEl.textContent = "Loading verified Top 100 niche dataset...";
+        subEl.classList.remove("hidden");
+      }
       ensureDailyShardLoaded(cat.shard).then(() => {
         if (reqId !== dailyLaunchSeq || !state.isDaily) return;
         launchDailyChallenge(sport, submode, isPractice, activeDate);

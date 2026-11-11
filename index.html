@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=19" />
+  <link rel="stylesheet" href="styles.css?v=20" />
 </head>
 <body data-sport="NBA">
   <!-- Background Ambient Glows -->
@@ -119,10 +119,12 @@
           <span class="daily-live-dot"></span>
           <span class="daily-date-label" id="dailyDateLabel">DAILY STATSNIPES</span>
           <select id="dailyArchiveSelect" class="daily-archive-select" aria-label="Select Daily Date or Past Archive" title="Play today's official Daily or browse past Daily puzzles!"></select>
-          <span class="daily-countdown-pill" id="dailyCountdownLabel">⏳ Next in 12h</span>
         </div>
-        <div class="daily-streak-pills" id="dailyStreakSummary">
-          <!-- Populated by JS: Streak & Today's Total Progress -->
+        <div class="daily-top-right">
+          <span class="daily-countdown-pill" id="dailyCountdownLabel">⏳ Next: 12h</span>
+          <div class="daily-streak-pills" id="dailyStreakSummary">
+            <!-- Populated by JS: Daily Progress (e.g. 0/6) -->
+          </div>
         </div>
       </div>
       <div class="daily-hub-controls">
@@ -720,6 +722,6 @@
   <script src="data/extra_players.js?v=18"></script>
   <script src="data/seasons_data.js?v=18"></script>
   <script src="data/niche/manifest.js?v=18"></script>
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=20"></script>
 </body>
 </html>

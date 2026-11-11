@@ -334,6 +334,13 @@ body.is-daily-mode .top-header .sport-switcher {
   flex-wrap: wrap;
 }
 
+.daily-top-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+}
+
 .daily-hub-controls {
   display: flex;
   align-items: center;
@@ -1078,6 +1085,13 @@ body.is-daily-mode .top-header .sport-switcher {
 
 #gameArena.daily-layout .category-banner {
   order: 1;
+  padding: 0.9rem 1.25rem;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+#gameArena.daily-layout .cat-banner-right {
+  display: none;
 }
 
 #gameArena.daily-layout .couch-series-bar {
@@ -2572,6 +2586,22 @@ body.is-daily-mode .top-header .sport-switcher {
     gap: 0.32rem;
   }
 
+  .daily-top-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  #gameArena.daily-layout .category-banner {
+    padding: 0.68rem 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .cat-meta-pills {
+    margin-bottom: 0.28rem;
+    gap: 0.35rem;
+  }
+
   .daily-badge-wrap {
     font-size: 0.78rem;
     gap: 0.35rem;
@@ -2778,6 +2808,17 @@ body.is-daily-mode .top-header .sport-switcher {
     position: relative;
     top: auto;
     z-index: 30;
+  }
+
+  #gameArena.daily-layout .turn-left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  #gameArena.daily-layout .turn-right {
+    width: auto;
+    flex-shrink: 0;
+    padding-bottom: 0;
   }
 
   .rules-tab-btn {
