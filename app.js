@@ -2121,10 +2121,13 @@
     }
   }
 
-  function finishGame(reasonText) {
+  function finishGame(reasonText, opts = {}) {
+    const { autoOpenModal = true, silentSfx = false } = opts;
     stopShotClock();
     state.gameOver = true;
-    sfx.playVictory();
+    if (!silentSfx) {
+      sfx.playVictory();
+    }
 
     document.getElementById("playerSearchInput").disabled = true;
     document.getElementById("submitGuessBtn").disabled = true;
@@ -2177,6 +2180,7 @@
         playAgainBtn.textContent = "🔄 Practice Replay (Unofficial)";
       }
       if (shareBtn) {
+        shareBtn.removeAttribute("data-orig-label");
         shareBtn.textContent = "📲 Share Daily Grid";
       }
       if (undoModalBtn) {
@@ -2191,7 +2195,10 @@
       if (sharePreviewEl) sharePreviewEl.classList.add("hidden");
       if (shareLegendEl) shareLegendEl.classList.add("hidden");
       if (playAgainBtn) playAgainBtn.textContent = "🔄 Play Again";
-      if (shareBtn) shareBtn.textContent = "📋 Copy Result";
+      if (shareBtn) {
+        shareBtn.removeAttribute("data-orig-label");
+        shareBtn.textContent = "📲 Share Result";
+      }
       if (undoModalBtn) {
         undoModalBtn.classList.toggle("hidden", state.undoStack.length === 0);
       }
@@ -2250,7 +2257,9 @@
       showcaseEl.innerHTML = `🎯 Category: <strong>${escapeHtml(cat.sport)} — ${escapeHtml(cat.title)}</strong>`;
     }
 
-    document.getElementById("gameOverModal").classList.remove("hidden");
+    if (autoOpenModal) {
+      document.getElementById("gameOverModal").classList.remove("hidden");
+    }
   }
 
   // 7. Shot Clock Timer
@@ -2725,16 +2734,96 @@
     document.body.removeChild(ta);
   }
 
-  function copyCurrentResultText(btnEl) {
-    const text = buildMatchShareText();
-    copyMatchTextToClipboard(text);
+  const DAILY_SUMMARY_DISMISSED_KEY = "statsnipes_summary_dismissed_v1";
+  const dismissedDailySummariesMem = new Set();
+
+  function getDailyPuzzleKey(sport, submode, dateStr) {
+    return `${sport || state.sport}_${submode || state.dailySubmode}_${dateStr || state.dailyDateStr || getTodayString()}`;
+  }
+
+  function hasDismissedDailySummary(sport, submode, dateStr) {
+    const key = getDailyPuzzleKey(sport, submode, dateStr);
+    if (dismissedDailySummariesMem.has(key)) return true;
+    try {
+      const raw = localStorage.getItem(DAILY_SUMMARY_DISMISSED_KEY);
+      if (raw) {
+        const list = JSON.parse(raw);
+        if (Array.isArray(list) && list.includes(key)) {
+          dismissedDailySummariesMem.add(key);
+          return true;
+        }
+      }
+    } catch (e) {
+      // Ignore storage errors
+    }
+    return false;
+  }
+
+  function markDailySummaryDismissed(sport, submode, dateStr) {
+    const key = getDailyPuzzleKey(sport, submode, dateStr);
+    dismissedDailySummariesMem.add(key);
+    try {
+      const raw = localStorage.getItem(DAILY_SUMMARY_DISMISSED_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      const next = Array.isArray(list) ? list.filter((item) => item !== key) : [];
+      next.push(key);
+      localStorage.setItem(DAILY_SUMMARY_DISMISSED_KEY, JSON.stringify(next.slice(-60)));
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }
+
+  function closeGameOverModal(markDismissed = true) {
+    const modal = document.getElementById("gameOverModal");
+    if (modal) modal.classList.add("hidden");
+    if (markDismissed && state.isDaily && !state.dailyPracticeReplay) {
+      markDailySummaryDismissed(state.sport, state.dailySubmode, state.dailyDateStr || getTodayString());
+    }
+  }
+
+  function flashActionFeedback(btnEl, statusText) {
     if (!btnEl) return;
     const orig = btnEl.getAttribute("data-orig-label") || btnEl.textContent;
     btnEl.setAttribute("data-orig-label", orig);
-    btnEl.textContent = "✅ Copied!";
+    btnEl.textContent = statusText;
     setTimeout(() => {
       btnEl.textContent = orig;
     }, 2000);
+  }
+
+  function shareOrCopyPayload({ shareData, clipboardText, btnEl, sharedLabel = "✅ Shared!", copiedLabel = "✅ Copied!" }) {
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        const sharePromise = navigator.share(shareData);
+        if (sharePromise && typeof sharePromise.then === "function") {
+          sharePromise
+            .then(() => {
+              flashActionFeedback(btnEl, sharedLabel);
+            })
+            .catch((err) => {
+              if (err && err.name === "AbortError") return;
+              copyMatchTextToClipboard(clipboardText);
+              flashActionFeedback(btnEl, copiedLabel);
+            });
+          return;
+        }
+      } catch (e) {
+        // Fall through to clipboard copy if synchronous share throws
+      }
+    }
+    copyMatchTextToClipboard(clipboardText);
+    flashActionFeedback(btnEl, copiedLabel);
+  }
+
+  function copyCurrentResultText(btnEl) {
+    const text = buildMatchShareText();
+    shareOrCopyPayload({
+      shareData: { title: "StatSnipes", text },
+      clipboardText: text,
+      btnEl,
+      sharedLabel: "✅ Shared!",
+      copiedLabel: "✅ Copied!"
+    });
   }
 
   function populateDailyArchiveSelect() {
@@ -2932,8 +3021,10 @@
       if (Array.isArray(saved.pickHistory)) {
         state.pickHistory = saved.pickHistory;
       }
+      const alreadyDismissed = hasDismissedDailySummary(sport, submode, activeDate);
       finishGame(
-        `You already completed this official Daily Puzzle (${activeDate})! Copy your grid below or click Practice Replay.`
+        `You already completed this official Daily Puzzle (${activeDate})! Copy your grid below or click Practice Replay.`,
+        { autoOpenModal: !alreadyDismissed, silentSfx: true }
       );
     }
   }
@@ -3526,15 +3617,17 @@
     if (shareLinkBtn) {
       shareLinkBtn.addEventListener("click", (e) => {
         const shareUrl = buildChallengeShareUrl();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(shareUrl);
-        }
-        const btn = e.currentTarget;
-        const orig = btn.innerHTML;
-        btn.textContent = "✅ Link Copied!";
-        setTimeout(() => {
-          btn.innerHTML = orig;
-        }, 2000);
+        shareOrCopyPayload({
+          shareData: {
+            title: "StatSnipes Challenge",
+            text: "Can you beat this StatSnipes challenge?",
+            url: shareUrl
+          },
+          clipboardText: shareUrl,
+          btnEl: e.currentTarget,
+          sharedLabel: "✅ Shared!",
+          copiedLabel: "✅ Link Copied!"
+        });
       });
     }
     const mobFilterBtn = document.getElementById("mobileFilterToggleBtn");
@@ -3771,7 +3864,7 @@
     document.getElementById("inspectBoardAfterBtn").addEventListener("click", () => {
       state.boardRevealedPostgame = true;
       state.boardFilter = "all";
-      document.getElementById("gameOverModal").classList.add("hidden");
+      closeGameOverModal(true);
       renderCategoryBanner();
       renderMainArena();
     });
@@ -3783,7 +3876,7 @@
     const closeGameOverBtn = document.getElementById("closeGameOverBtn");
     if (closeGameOverBtn) {
       closeGameOverBtn.addEventListener("click", () => {
-        document.getElementById("gameOverModal").classList.add("hidden");
+        closeGameOverModal(true);
       });
     }
 
@@ -3791,7 +3884,7 @@
     if (gameOverBackdrop) {
       gameOverBackdrop.addEventListener("click", (e) => {
         if (e.target === gameOverBackdrop) {
-          gameOverBackdrop.classList.add("hidden");
+          closeGameOverModal(true);
         }
       });
     }
@@ -3800,7 +3893,7 @@
       if (e.key === "Escape") {
         const goModal = document.getElementById("gameOverModal");
         if (goModal && !goModal.classList.contains("hidden")) {
-          goModal.classList.add("hidden");
+          closeGameOverModal(true);
         }
         const rulesModal = document.getElementById("rulesModal");
         if (rulesModal && !rulesModal.classList.contains("hidden")) {
