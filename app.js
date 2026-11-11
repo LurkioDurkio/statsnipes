@@ -405,6 +405,97 @@
       .replace(/\s+/g, " ");
   }
 
+  function parseNicheWindowConfig(cat) {
+    if (!cat || !cat.id || !window.SEASON_LOGS || !window.SEASON_LOGS[cat.sport]) return null;
+    const id = cat.id;
+    if (id.indexOf("_w_") === -1) return null;
+
+    const sport = cat.sport;
+    const metrics = SPORT_METRICS[sport] || [];
+    let m = null;
+    if (sport === "MLB") {
+      const mlbMap = {
+        hitting_homeRuns: "hr",
+        hitting_hits: "hits",
+        hitting_rbi: "rbi",
+        hitting_runs: "runs",
+        hitting_stolenBases: "sb",
+        pitching_strikeOuts: "so",
+        pitching_wins: "wins",
+        pitching_saves: "sv"
+      };
+      const mlbKey = Object.keys(mlbMap).find((k) => id.includes(`_${k}_`) || id.endsWith(`_${k}`));
+      if (mlbKey) m = metrics.find((x) => x.key === mlbMap[mlbKey]);
+    } else {
+      m = metrics.find((x) => id.includes(`_w_${x.key}_`));
+    }
+    if (!m) return null;
+
+    let timeframe = "since";
+    let year = sport === "NFL" ? 2000 : 1996;
+    let yearEnd = 2025;
+    const rangeM = id.match(/(\d{4})_(\d{4})/);
+    const decM = id.match(/(\d{4})s_decade/);
+    const sinceM = id.match(/since_(\d{4})/);
+    const singleM = id.match(/_(\d{4})$/);
+
+    if (id.includes("1_season_peak")) {
+      timeframe = "peak";
+    } else if (rangeM) {
+      timeframe = "range";
+      year = parseInt(rangeM[1], 10);
+      yearEnd = parseInt(rangeM[2], 10);
+    } else if (decM) {
+      timeframe = "range";
+      year = parseInt(decM[1], 10);
+      yearEnd = year + 9;
+    } else if (sinceM) {
+      timeframe = "since";
+      year = parseInt(sinceM[1], 10);
+    } else if (singleM) {
+      timeframe = "season";
+      year = parseInt(singleM[1], 10);
+    }
+
+    let constraint = "none";
+    if (id.includes("active_only")) constraint = "active";
+    else if (id.includes("retired_only") || id.includes("retired_legends")) constraint = "retired";
+    else if (id.includes("anti_chalk") || id.includes("no_top_25")) constraint = "antichalk";
+    else if (id.includes("1_team_loyalty")) constraint = "oneteam";
+    else if (id.includes("journeymen")) constraint = "journeyman";
+
+    return { sport, metricKey: m.key, timeframe, year, yearEnd, team: "ALL", constraint };
+  }
+
+  function getVerifiedWindowFallback(cat) {
+    if (!cat || cat._windowFallbackChecked) return cat ? cat._verifiedWindowCat : null;
+    cat._windowFallbackChecked = true;
+    cat._verifiedWindowCat = null;
+    cat._unconstrainedWindowCat = null;
+    const cfg = parseNicheWindowConfig(cat);
+    if (!cfg || !cat.players || cat.players.length < 3) return null;
+    const built = buildDynamicCategory(cfg);
+    if (!built || !built.players || built.players.length < 3) return null;
+    const matchCount = [0, 1, 2].filter((idx) => {
+      const a = cat.players[idx];
+      const b = built.players[idx];
+      return (
+        a &&
+        b &&
+        normalizePlayerKey(a.name) === normalizePlayerKey(b.name) &&
+        Math.abs(a.stat - b.stat) <= Math.max(1, Math.round(a.stat * 0.015))
+      );
+    }).length;
+    if (matchCount >= 2) {
+      cat._verifiedWindowCat = built;
+      cat._verifiedConstraint = cfg.constraint;
+      if (cfg.constraint !== "none") {
+        cat._unconstrainedWindowCat = buildDynamicCategory({ ...cfg, constraint: "none" });
+      }
+    }
+    return cat._verifiedWindowCat;
+  }
+
   // Helper: Get a player's career or filtered stat for any category
   function getPlayerStatForCategory(playerName, cat) {
     if (!playerName || !cat) return 0;
@@ -417,6 +508,10 @@
     }
     if (cat.customCrossMap && typeof cat.customCrossMap[norm] === "number") {
       return cat.customCrossMap[norm];
+    }
+    const winCat = getVerifiedWindowFallback(cat);
+    if (winCat && winCat.customCrossMap && typeof winCat.customCrossMap[norm] === "number") {
+      return winCat.customCrossMap[norm];
     }
     if (window.PLAYER_CROSS_STATS && window.PLAYER_CROSS_STATS[norm]) {
       const val = window.PLAYER_CROSS_STATS[norm][cat.id];
@@ -442,23 +537,54 @@
 
   // Helper: Get a player's exact rank (#1 to #3000+) and stat in the active category
   function getPlayerRankAndStat(playerName, cat) {
-    if (!playerName || !cat) return { rank: null, stat: 0, team: "" };
+    if (!playerName || !cat) return { rank: null, stat: 0, team: "", statKnown: false, maxKnownRank: 100 };
+    const maxKnownRank = (cat.players ? cat.players.length : 0) + (Array.isArray(cat.extraRanks) ? cat.extraRanks.length : 0);
     const norm = normalizePlayerKey(playerName);
     const ranked = cat.players.find((p) => normalizePlayerKey(p.name) === norm);
     if (ranked) {
-      return { rank: ranked.rank, stat: ranked.stat, team: ranked.team || "" };
+      return { rank: ranked.rank, stat: ranked.stat, team: ranked.team || "", statKnown: true, maxKnownRank };
     }
     const extraMap = getCategoryExtraRankMap(cat);
     if (extraMap && extraMap.has(norm)) {
       const entry = extraMap.get(norm);
-      return { rank: entry.rank, stat: entry.stat, team: "" };
+      return { rank: entry.rank, stat: entry.stat, team: "", statKnown: true, maxKnownRank };
     }
     if (cat.customRankMap && cat.customRankMap[norm]) {
       return {
         rank: cat.customRankMap[norm],
         stat: (cat.customCrossMap && cat.customCrossMap[norm]) || 0,
-        team: ""
+        team: "",
+        statKnown: true,
+        maxKnownRank
       };
+    }
+    const winCat = getVerifiedWindowFallback(cat);
+    if (winCat) {
+      if (winCat.customRankMap && winCat.customRankMap[norm]) {
+        return {
+          rank: winCat.customRankMap[norm],
+          stat: (winCat.customCrossMap && winCat.customCrossMap[norm]) || 0,
+          team: "",
+          statKnown: true,
+          maxKnownRank
+        };
+      }
+      if (
+        cat._unconstrainedWindowCat &&
+        cat._unconstrainedWindowCat.customCrossMap &&
+        cat._unconstrainedWindowCat.customCrossMap[norm] > 0
+      ) {
+        return {
+          rank: null,
+          stat: 0,
+          rawStat: cat._unconstrainedWindowCat.customCrossMap[norm],
+          team: "",
+          statKnown: true,
+          excludedByConstraint: cat._verifiedConstraint,
+          maxKnownRank
+        };
+      }
+      return { rank: null, stat: 0, team: "", statKnown: true, maxKnownRank };
     }
     const statVal = getPlayerStatForCategory(playerName, cat);
     if (statVal > 0) {
@@ -494,9 +620,9 @@
           if (tot > statVal) higherSet.add(nk);
         });
       }
-      return { rank: higherSet.size + 1, stat: statVal, team: "" };
+      return { rank: higherSet.size + 1, stat: statVal, team: "", statKnown: true, maxKnownRank };
     }
-    return { rank: null, stat: 0, team: "" };
+    return { rank: null, stat: null, team: "", statKnown: false, maxKnownRank };
   }
 
   function formatNumber(n) {
@@ -1127,8 +1253,27 @@
             : sh.rank >= 75
             ? "filled-deep"
             : "filled-hit";
-          const badgeEmoji = !sh.hit ? "💔 STRIKE" : sh.rank >= 90 ? `🔥 #${sh.rank}` : sh.rank >= 75 ? `💎 #${sh.rank}` : `✅ #${sh.rank}`;
-          const ptsText = sh.hit ? `+${sh.pts} PTS` : sh.rank ? `#${sh.rank} (0 PTS)` : `UNRANKED (0 PTS)`;
+          const badgeEmoji = sh.hit
+            ? sh.rank >= 90
+              ? `🔥 #${sh.rank}`
+              : sh.rank >= 75
+              ? `💎 #${sh.rank}`
+              : `✅ #${sh.rank}`
+            : sh.rank
+            ? `💔 #${sh.rank}`
+            : sh.excludedByConstraint
+            ? `🚫 OUT`
+            : `💔 MISS`;
+          const hasStat = typeof sh.stat === "number" && (sh.statKnown === true || sh.hit || sh.rank || sh.stat > 0);
+          const statText = sh.hit
+            ? `${formatNumber(sh.stat)} ${cat.unit}`
+            : sh.excludedByConstraint && sh.rawStat > 0
+            ? `${formatNumber(sh.rawStat)} ${cat.unit}`
+            : hasStat
+            ? `${formatNumber(sh.stat)} ${cat.unit}`
+            : `Not in Top ${sh.maxKnownRank || 360}`;
+          const statColor = sh.hit ? "var(--sport-secondary)" : hasStat || sh.rawStat > 0 ? "#fca5a5" : "var(--text-secondary)";
+          const ptsChip = sh.hit ? `+${sh.pts} pts` : `0 pts`;
           slotsHtml.push(`
             <div class="sniper-slot ${slotCls}">
               <div class="ss-top">
@@ -1136,7 +1281,10 @@
                 <span>${badgeEmoji}</span>
               </div>
               <div class="ss-player" title="${escapeHtml(sh.name)}">${escapeHtml(sh.name)}</div>
-              <div class="ss-pts" style="color:${sh.hit ? "var(--sport-secondary)" : "#fca5a5"}">${ptsText}</div>
+              <div class="ss-stat-row">
+                <span class="ss-stat" style="color:${statColor}">${statText}</span>
+                <span class="ss-pts-chip ${sh.hit ? "hit" : "miss"}">${ptsChip}</span>
+              </div>
             </div>
           `);
         } else {
@@ -1561,10 +1709,10 @@
           const pick = p.picks[s];
           if (pick) {
             slotsHtml.push(`
-              <div class="tpb-slot filled">
+              <div class="tpb-slot filled ${pick.bustedPick ? "busted" : ""}">
                 <div style="font-weight:700;font-size:0.82rem;">${escapeHtml(pick.name)}</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--sport-secondary);">
-                  +${formatNumber(pick.stat)} ${cat.unit}
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:${pick.bustedPick ? "#fca5a5" : "var(--sport-secondary)"};">
+                  ${pick.bustedPick ? `${formatNumber(pick.stat)} ${cat.unit} (BUST 💥)` : `+${formatNumber(pick.stat)} ${cat.unit}`}
                 </div>
               </div>
             `);
@@ -1738,6 +1886,7 @@
           name: matchedCatPlayer.name,
           rank,
           stat: matchedCatPlayer.stat,
+          statKnown: true,
           pts,
           hit: true,
           tier: tier.cls
@@ -1747,50 +1896,100 @@
           tierClass: tier.cls,
           rankBadge: `#${rank}`,
           title: `SHOT ${shotNum}/${state.dailyMaxShots}: ${tier.label} — ${matchedCatPlayer.name}`,
-          subtitle: `Ranked #${rank} with ${formatNumber(matchedCatPlayer.stat)} ${cat.unit} (${matchedCatPlayer.team})`,
-          pointsText: `+${pts} PTS`
+          subtitle: `Ranked #${rank} (${matchedCatPlayer.team}) • Earned +${pts} PTS`,
+          pointsText: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit}`,
+          pointsSubText: `+${pts} PTS`
         });
 
         state.pickHistory.unshift({
           playerName: matchedCatPlayer.name,
           pickerName: `Shot #${shotNum}`,
           subtitle: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit} • ${tier.short}`,
-          pointsLabel: `+${pts} PTS`,
+          pointsLabel: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit} (+${pts})`,
           rankLabel: `Rank #${rank}`,
           tierClass: tier.cls
         });
       } else {
         sfx.playStrike();
         const missInfo = getPlayerRankAndStat(displayName, cat);
+        const cut100 = cat.players && cat.players[Math.min(state.cutoff - 1, cat.players.length - 1)];
+        const cut100Text = cut100 ? `#100 cut: ${formatNumber(cut100.stat)} ${cat.unit}` : `Outside Top ${state.cutoff}`;
+        const constraintNames = {
+          active: "Active Only",
+          retired: "Retired Only",
+          antichalk: "Anti-Chalk (No Top 25)",
+          oneteam: "1-Team Loyalty",
+          journeyman: "3+ Teams Only"
+        };
+
         activePlayer.sniperShots.push({
           shotNum,
           name: displayName,
           rank: missInfo.rank,
-          stat: missInfo.stat,
+          stat: missInfo.statKnown ? missInfo.stat : null,
+          rawStat: missInfo.rawStat || 0,
+          statKnown: Boolean(missInfo.statKnown),
+          excludedByConstraint: missInfo.excludedByConstraint || "",
+          maxKnownRank: missInfo.maxKnownRank || 360,
           pts: 0,
           hit: false,
           tier: "tier-strike"
         });
 
-        const rankTag = missInfo.rank ? `#${missInfo.rank}` : "UNRANKED";
-        const subText = missInfo.rank
-          ? `Ranked #${missInfo.rank} with ${formatNumber(missInfo.stat)} ${cat.unit} — Outside Top ${state.cutoff}!`
-          : `0 ${cat.unit} recorded in ${cat.title} (Unranked)!`;
+        let badgeTxt = "💔";
+        let fbTitle = `SHOT ${shotNum}/${state.dailyMaxShots}: MISS — ${displayName}`;
+        let subText = "";
+        let statBannerText = "";
+        let subPtsText = "0 PTS 💔";
+        let rankLabel = "MISS";
+
+        if (missInfo.rank) {
+          badgeTxt = `#${missInfo.rank}`;
+          subText = `Ranked #${missInfo.rank} (Outside Top ${state.cutoff} • ${cut100Text})`;
+          statBannerText = `${formatNumber(missInfo.stat)} ${cat.unit}`;
+          rankLabel = `Rank #${missInfo.rank}`;
+        } else if (missInfo.excludedByConstraint) {
+          badgeTxt = "🚫";
+          fbTitle = `SHOT ${shotNum}/${state.dailyMaxShots}: INELIGIBLE — ${displayName}`;
+          const fName = constraintNames[missInfo.excludedByConstraint] || "Filter";
+          subText = `${fName} excluded from list (${cut100Text})`;
+          statBannerText = `${formatNumber(missInfo.rawStat)} ${cat.unit}`;
+          subPtsText = "0 PTS (OUT)";
+          rankLabel = "INELIGIBLE";
+        } else if (missInfo.statKnown) {
+          badgeTxt = "0";
+          subText = `0 ${cat.unit} recorded in ${cat.title} • ${cut100Text}`;
+          statBannerText = `0 ${cat.unit}`;
+          rankLabel = `0 ${cat.unit}`;
+        } else {
+          const maxK = missInfo.maxKnownRank || (cat.players ? cat.players.length : 100);
+          const cutMaxStat =
+            cat.extraRanks && cat.extraRanks.length
+              ? cat.extraRanks[cat.extraRanks.length - 1][1]
+              : cat.players && cat.players.length
+              ? cat.players[cat.players.length - 1].stat
+              : null;
+          badgeTxt = `>${maxK}`;
+          subText = `Not ranked in Top ${maxK} (${cut100Text}${cutMaxStat ? ` • #${maxK} cut: ${formatNumber(cutMaxStat)} ${cat.unit}` : ""})`;
+          statBannerText = `Not in Top ${maxK}`;
+          rankLabel = `>${maxK}`;
+        }
 
         showFeedbackBanner({
           tierClass: "tier-strike",
-          rankBadge: missInfo.rank ? `#${missInfo.rank}` : "💔",
-          title: `SHOT ${shotNum}/${state.dailyMaxShots}: 💔 STRIKE! ${displayName} missed the Top ${state.cutoff}!`,
-          subtitle: `${subText} (0 PTS on Shot #${shotNum})`,
-          pointsText: "+0 PTS 💔"
+          rankBadge: badgeTxt,
+          title: fbTitle,
+          subtitle: subText,
+          pointsText: statBannerText,
+          pointsSubText: subPtsText
         });
 
         state.pickHistory.unshift({
           playerName: displayName,
           pickerName: `Shot #${shotNum}`,
           subtitle: subText,
-          pointsLabel: "0 PTS 💔",
-          rankLabel: missInfo.rank ? `Rank #${missInfo.rank}` : "UNRANKED",
+          pointsLabel: `${statBannerText} (0 PTS)`,
+          rankLabel,
           tierClass: "tier-strike"
         });
       }
@@ -1985,24 +2184,51 @@
   }
 
   function evaluateTargetPick(activePlayer, displayName, matchedCatPlayer, cat) {
-    const statVal = getPlayerStatForCategory(displayName, cat);
+    const statInfo = getPlayerRankAndStat(displayName, cat);
+    const statVal =
+      statInfo.statKnown && typeof statInfo.stat === "number"
+        ? statInfo.stat
+        : getPlayerStatForCategory(displayName, cat);
 
-    // If a player genuinely has 0 in this specific stat (e.g. picking a QB for Sacks, or a Pitcher for Home Runs), don't waste their pick!
-    if (statVal <= 0) {
+    // If a player genuinely has 0 in this specific stat or isn't in the stored list, don't waste their pick!
+    if (!statVal || statVal <= 0) {
       state.undoStack.pop();
       updateUndoButtonState();
       state.guessedNames.delete(displayName.trim().toLowerCase());
-      showFeedbackBanner({
-        tierClass: "tier-safe",
-        rankBadge: "⚠️",
-        title: `${displayName} has 0 ${cat.unit} in ${cat.title}!`,
-        subtitle: `Pick a player who recorded ${cat.unit} — your draft pick was NOT used.`,
-        pointsText: "TRY AGAIN"
-      });
+      if (statInfo.excludedByConstraint) {
+        showFeedbackBanner({
+          tierClass: "tier-safe",
+          rankBadge: "🚫",
+          title: `${displayName} is excluded by this filter!`,
+          subtitle: `Has ${formatNumber(statInfo.rawStat)} ${cat.unit}, but didn't qualify for ${cat.title} — pick NOT used.`,
+          pointsText: `${formatNumber(statInfo.rawStat)} ${cat.unit}`,
+          pointsSubText: "PICK NOT USED"
+        });
+      } else if (!statInfo.statKnown) {
+        const maxK = statInfo.maxKnownRank || 360;
+        showFeedbackBanner({
+          tierClass: "tier-safe",
+          rankBadge: `>${maxK}`,
+          title: `${displayName} is not in the Top ${maxK}`,
+          subtitle: `Only the Top ${maxK} are tracked for ${cat.title} — your pick was NOT used.`,
+          pointsText: `Not in Top ${maxK}`,
+          pointsSubText: "TRY AGAIN"
+        });
+      } else {
+        showFeedbackBanner({
+          tierClass: "tier-safe",
+          rankBadge: "0",
+          title: `${displayName} has 0 ${cat.unit} in ${cat.title}!`,
+          subtitle: `Pick a player who recorded ${cat.unit} — your draft pick was NOT used.`,
+          pointsText: `0 ${cat.unit}`,
+          pointsSubText: "TRY AGAIN"
+        });
+      }
       return;
     }
 
     const newTotal = activePlayer.score + statVal;
+    const rankDisplay = statInfo.rank ? `Rank #${statInfo.rank}` : "Career Total";
 
     if (state.bustRule === "bust" && newTotal > state.targetGoal) {
       // Busted on this pick!
@@ -2016,8 +2242,9 @@
         tierClass: "tier-strike",
         rankBadge: "💥",
         title: `BUSTED PICK! ${displayName} has ${formatNumber(statVal)} ${cat.unit}!`,
-        subtitle: `Adding ${formatNumber(statVal)} would put ${activePlayer.name} at ${formatNumber(newTotal)} (Over ${formatNumber(state.targetGoal)} target)! Pick scores 0.`,
-        pointsText: "+0 (OVER)"
+        subtitle: `Adding ${formatNumber(statVal)} would put total at ${formatNumber(newTotal)} (Over ${formatNumber(state.targetGoal)}) • Pick scores 0.`,
+        pointsText: `${formatNumber(statVal)} ${cat.unit}`,
+        pointsSubText: "+0 (BUST 💥)"
       });
 
       state.pickHistory.unshift({
@@ -2025,7 +2252,7 @@
         pickerName: activePlayer.name,
         subtitle: `${formatNumber(statVal)} ${cat.unit} went over target!`,
         pointsLabel: "OVER 💥",
-        rankLabel: matchedCatPlayer ? `Rank #${matchedCatPlayer.rank}` : "Career Total",
+        rankLabel: rankDisplay,
         tierClass: "tier-strike"
       });
     } else {
@@ -2037,12 +2264,16 @@
       sfx.playDeepPull();
 
       const rem = state.targetGoal - activePlayer.score;
+      const subProg = state.isDaily
+        ? `Total: ${formatNumber(activePlayer.score)} / ${formatNumber(state.targetGoal)} ${cat.unit} (${formatNumber(Math.abs(rem))} remaining)`
+        : `${activePlayer.name} is now at ${formatNumber(activePlayer.score)} ${cat.unit} (${formatNumber(Math.abs(rem))} ${rem >= 0 ? "remaining" : "over"})`;
       showFeedbackBanner({
         tierClass: "tier-deep",
-        rankBadge: matchedCatPlayer ? `#${matchedCatPlayer.rank}` : "⚡",
+        rankBadge: statInfo.rank ? `#${statInfo.rank}` : "⚡",
         title: `${displayName} — +${formatNumber(statVal)} ${cat.unit}`,
-        subtitle: `${activePlayer.name} is now at ${formatNumber(activePlayer.score)} ${cat.unit} (${formatNumber(Math.abs(rem))} ${rem >= 0 ? "remaining" : "over"})`,
-        pointsText: `+${formatNumber(statVal)}`
+        subtitle: subProg,
+        pointsText: `+${formatNumber(statVal)} ${cat.unit}`,
+        pointsSubText: `${formatNumber(activePlayer.score)} / ${formatNumber(state.targetGoal)}`
       });
 
       state.pickHistory.unshift({
@@ -2050,7 +2281,7 @@
         pickerName: activePlayer.name,
         subtitle: `Total: ${formatNumber(activePlayer.score)} ${cat.unit}`,
         pointsLabel: `+${formatNumber(statVal)}`,
-        rankLabel: matchedCatPlayer ? `Rank #${matchedCatPlayer.rank}` : "Career Total",
+        rankLabel: rankDisplay,
         tierClass: "tier-deep"
       });
     }
@@ -2062,7 +2293,7 @@
     advanceTurnOrEndGame();
   }
 
-  function showFeedbackBanner({ tierClass, rankBadge, title, subtitle, pointsText }) {
+  function showFeedbackBanner({ tierClass, rankBadge, title, subtitle, pointsText, pointsSubText = "" }) {
     const fb = document.getElementById("feedbackBanner");
     fb.className = `feedback-banner ${tierClass}`;
     fb.innerHTML = `
@@ -2073,7 +2304,10 @@
           <div class="fb-sub">${escapeHtml(subtitle)}</div>
         </div>
       </div>
-      <div class="fb-points-award">${escapeHtml(pointsText)}</div>
+      <div class="fb-right-stat">
+        <div class="fb-points-award">${escapeHtml(pointsText)}</div>
+        ${pointsSubText ? `<div class="fb-points-sub">${escapeHtml(pointsSubText)}</div>` : ""}
+      </div>
     `;
   }
 

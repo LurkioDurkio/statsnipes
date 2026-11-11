@@ -691,6 +691,40 @@ body.is-daily-mode .top-header .sport-switcher {
   font-size: 0.78rem;
 }
 
+.ss-stat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.ss-stat {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.ss-pts-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.08rem 0.34rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.ss-pts-chip.hit {
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--text-main);
+}
+
+.ss-pts-chip.miss {
+  background: rgba(239, 68, 68, 0.14);
+  color: #fca5a5;
+}
+
 .daily-share-preview {
   background: var(--bg-input);
   border: 1px solid var(--border-highlight);
@@ -1711,10 +1745,27 @@ body.is-daily-mode .top-header .sport-switcher {
   color: var(--text-secondary);
 }
 
+.fb-right-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.14rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+
 .fb-points-award {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+
+.fb-points-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
@@ -1978,6 +2029,11 @@ body.is-daily-mode .top-header .sport-switcher {
 .tpb-slot.filled {
   border-style: solid;
   border-color: var(--border-highlight);
+}
+
+.tpb-slot.filled.busted {
+  border-color: var(--tier-strike);
+  background: var(--tier-strike-bg);
 }
 
 /* Broadcast Pick Log Sidebar */
@@ -2943,7 +2999,19 @@ body.is-daily-mode .top-header .sport-switcher {
   }
 
   .fb-points-award {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
+  }
+
+  .fb-points-sub {
+    font-size: 0.68rem;
+  }
+
+  .ss-stat {
+    font-size: 0.74rem;
+  }
+
+  .ss-pts-chip {
+    font-size: 0.64rem;
   }
 }
 
