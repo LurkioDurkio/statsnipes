@@ -23,10 +23,34 @@
   <meta name="twitter:title" content="StatSnipes — Daily NBA, NFL &amp; MLB Stat Trivia" />
   <meta name="twitter:description" content="Daily NBA, NFL &amp; MLB niche stat trivia. 5 shots to hit #90–#100 without going over." />
   <meta name="twitter:image" content="https://statsnipes.com/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StatSnipes",
+    "url": "https://statsnipes.com/",
+    "description": "Daily NBA, NFL & MLB Top 100 stat trivia game. Play 5-Shot Sniper (#90–#100 Elite Snipes), Daily Target Stat, and Endless Pass & Play.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2N2LXCYRXP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2N2LXCYRXP');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=23" />
+  <link rel="stylesheet" href="styles.css?v=24" />
 </head>
 <body data-sport="NBA">
   <!-- Background Ambient Glows -->
@@ -603,6 +627,10 @@
         </aside>
       </section>
     </div>
+
+    <footer class="site-footer">
+      <strong>StatSnipes</strong> — Daily NBA, NFL &amp; MLB Top 100 stat trivia. Hunt #90–#100 Elite Snipes in 5-Shot Sniper, hit the Target Stat without busting, or play Endless Pass &amp; Play.
+    </footer>
   </main>
 
   <!-- Game Over / Victory Summary Modal -->
@@ -722,6 +750,6 @@
   <script src="data/extra_players.js?v=18"></script>
   <script src="data/seasons_data.js?v=18"></script>
   <script src="data/niche/manifest.js?v=18"></script>
-  <script src="app.js?v=23"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>

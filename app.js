@@ -887,11 +887,21 @@
   }
 
   // 4. Initialize or Reset Match
-  function startMatch() {
+  function startMatch(skipAnalytics = false) {
     stopShotClock();
     const cat = getActiveCategory();
     state.sport = cat.sport;
     document.body.setAttribute("data-sport", state.sport);
+
+    if (!skipAnalytics) {
+      trackEvent("puzzle_start", {
+        sport: state.sport,
+        mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode,
+        is_daily: Boolean(state.isDaily),
+        player_count: state.playerCount,
+        category_id: cat.id
+      });
+    }
 
     state.guessedNames.clear();
     state.revealedRanks.clear();
@@ -2273,6 +2283,16 @@
     if (autoOpenModal) {
       document.getElementById("gameOverModal").classList.remove("hidden");
     }
+    if (!silentSfx) {
+      trackEvent("puzzle_complete", {
+        sport: cat.sport,
+        mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode,
+        is_daily: Boolean(state.isDaily),
+        is_practice: Boolean(state.dailyPracticeReplay),
+        score: winner ? winner.score : 0,
+        category_id: cat.id
+      });
+    }
   }
 
   // 7. Shot Clock Timer
@@ -2804,18 +2824,35 @@
     }, 2000);
   }
 
+  function trackEvent(eventName, params = {}) {
+    try {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, params);
+      }
+    } catch (e) {
+      // Ignore analytics errors
+    }
+  }
+
   function shareOrCopyPayload({ shareData, clipboardText, btnEl, sharedLabel = "✅ Shared!", copiedLabel = "✅ Copied!" }) {
+    const shareProps = {
+      sport: state.sport,
+      mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode,
+      is_daily: Boolean(state.isDaily)
+    };
     if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
         const sharePromise = navigator.share(shareData);
         if (sharePromise && typeof sharePromise.then === "function") {
           sharePromise
             .then(() => {
+              trackEvent("share_click", { ...shareProps, method: "native" });
               flashActionFeedback(btnEl, sharedLabel);
             })
             .catch((err) => {
               if (err && err.name === "AbortError") return;
               copyMatchTextToClipboard(clipboardText);
+              trackEvent("share_click", { ...shareProps, method: "clipboard" });
               flashActionFeedback(btnEl, copiedLabel);
             });
           return;
@@ -2825,6 +2862,7 @@
       }
     }
     copyMatchTextToClipboard(clipboardText);
+    trackEvent("share_click", { ...shareProps, method: "clipboard" });
     flashActionFeedback(btnEl, copiedLabel);
   }
 
@@ -3017,10 +3055,11 @@
     state.playerCount = 1;
     state.playerNamesConfig[0] = "Daily Challenger";
     document.getElementById("customSetupPanel").classList.add("hidden");
-    startMatch();
+
+    const saved = !isPractice ? getDailyCompletion(sport, submode, activeDate) : null;
+    startMatch(Boolean(saved));
 
     // If the user already completed this exact Daily Puzzle and isn't clicking Practice Replay, show their official completed state!
-    const saved = !isPractice ? getDailyCompletion(sport, submode, activeDate) : null;
     if (saved && state.players[0]) {
       const p = state.players[0];
       p.score = saved.score || 0;

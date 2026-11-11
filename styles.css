@@ -2057,6 +2057,21 @@ body.is-daily-mode .top-header .sport-switcher {
   color: var(--text-secondary);
 }
 
+/* Footer */
+.site-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.site-footer strong {
+  color: var(--text-secondary);
+}
+
 /* Modals */
 .modal-backdrop {
   position: fixed;
