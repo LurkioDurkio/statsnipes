@@ -2948,6 +2948,26 @@ body.is-daily-mode .top-header .sport-switcher {
     gap: 0.5rem;
   }
 
+  #gameArena.daily-layout #targetScorePanel .panel-header {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.55rem;
+  }
+
+  #gameArena.daily-layout #targetScorePanel .panel-header h2 {
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
+  #gameArena.daily-layout .target-goal-pill {
+    padding: 0.28rem 0.55rem;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
   .board-filters {
     width: 100%;
     overflow-x: auto;

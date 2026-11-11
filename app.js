@@ -988,7 +988,7 @@
     if (newBtn) {
       if (state.isDaily) {
         newBtn.classList.toggle("hidden", !state.gameOver && !state.dailyPracticeReplay);
-        newBtn.innerHTML = "<span>🔄 Practice Replay</span>";
+        newBtn.innerHTML = "<span>🔄 Replay</span>";
       } else {
         newBtn.classList.remove("hidden");
         newBtn.innerHTML = "<span>🔄 New Match</span>";
@@ -1068,7 +1068,7 @@
         ? `⚡ TARGET STAT${state.dailyPracticeReplay ? " (PRACTICE)" : ""}`
         : "TARGET SCORE";
       if (rulePillEl) {
-        rulePillEl.classList.remove("hidden");
+        rulePillEl.classList.toggle("hidden", state.isDaily);
         rulePillEl.textContent = `Target: ${formatNumber(state.targetGoal)} ${cat.unit} • ${state.maxPicks} Picks • Don't Bust`;
       }
       document.getElementById("bannerStatSummary").classList.add("hidden");
@@ -1092,6 +1092,12 @@
   function renderScoreboard() {
     const strip = document.getElementById("scoreboardStrip");
     const cat = getActiveCategory();
+    if (state.isDaily && state.dailySubmode === "target") {
+      strip.classList.add("hidden");
+      strip.innerHTML = "";
+      return;
+    }
+    strip.classList.remove("hidden");
     strip.classList.toggle("single-player-strip", state.isDaily || state.playerCount === 1);
 
     // Special 5-Shot Sniper Rack for Daily 5-Shot Sniper Mode!
@@ -1527,10 +1533,14 @@
   function renderTargetArena() {
     const cat = getActiveCategory();
     document.getElementById("targetGoalDisplay").textContent = `${formatNumber(state.targetGoal)} ${cat.unit}`;
-    document.getElementById("targetRuleExplanation").textContent =
-      state.bustRule === "bust"
-        ? `Draft ${state.maxPicks} players to get as close to ${formatNumber(state.targetGoal)} ${cat.unit} as possible WITHOUT going over!`
-        : `Draft ${state.maxPicks} players to get as close to ${formatNumber(state.targetGoal)} ${cat.unit} as possible (over or under allowed)!`;
+    const targetRuleEl = document.getElementById("targetRuleExplanation");
+    if (targetRuleEl) {
+      targetRuleEl.classList.toggle("hidden", Boolean(state.isDaily));
+      targetRuleEl.textContent =
+        state.bustRule === "bust"
+          ? `Draft ${state.maxPicks} players to get as close to ${formatNumber(state.targetGoal)} ${cat.unit} as possible WITHOUT going over!`
+          : `Draft ${state.maxPicks} players to get as close to ${formatNumber(state.targetGoal)} ${cat.unit} as possible (over or under allowed)!`;
+    }
 
     const container = document.getElementById("targetPlayersContainer");
     container.innerHTML = state.players
@@ -1557,12 +1567,15 @@
           }
         }
 
+        const headerLeft = state.isDaily
+          ? `<strong>5-Pick Progress</strong>`
+          : `<span class="p-badge p-${idx + 1}">P${idx + 1}</span> <strong>${escapeHtml(p.name)}</strong>`;
+
         return `
           <div class="target-player-box">
             <div class="tpb-header">
               <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span class="p-badge p-${idx + 1}">P${idx + 1}</span>
-                <strong>${escapeHtml(p.name)}</strong>
+                ${headerLeft}
               </div>
               <div style="font-family:'JetBrains Mono',monospace;font-weight:800;">
                 ${formatNumber(p.score)} / ${formatNumber(state.targetGoal)} ${cat.unit} (${pct}%)
