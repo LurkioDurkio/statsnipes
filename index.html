@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=18" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body data-sport="NBA">
   <!-- Background Ambient Glows -->
@@ -114,7 +114,7 @@
   <!-- Daily Challenge Hub Bar (Visible when in Daily Mode) -->
   <section class="daily-bar hidden" id="dailyChallengeBar">
     <div class="daily-bar-inner">
-      <div class="daily-left-col">
+      <div class="daily-top-row">
         <div class="daily-badge-wrap">
           <span class="daily-live-dot"></span>
           <span class="daily-date-label" id="dailyDateLabel">DAILY STATSNIPES</span>
@@ -122,11 +122,22 @@
           <span class="daily-countdown-pill" id="dailyCountdownLabel">⏳ Next in 12h</span>
         </div>
         <div class="daily-streak-pills" id="dailyStreakSummary">
-          <!-- Populated by JS: Streak, Best Streak, Today's Progress, Career Snipes -->
+          <!-- Populated by JS: Streak & Today's Total Progress -->
         </div>
       </div>
-      <div class="daily-sport-cards" id="dailySportCards">
-        <!-- Populated by JS: Daily 5-Shot Sniper & Daily Target Stat cards -->
+      <div class="daily-hub-controls">
+        <div class="daily-league-group">
+          <span class="daily-group-label">DAILY LEAGUES</span>
+          <div class="daily-league-pills" id="dailyLeaguePills" role="tablist" aria-label="Select Daily League">
+            <!-- Populated by JS: NBA 0/2, NFL 0/2, MLB 0/2 -->
+          </div>
+        </div>
+        <div class="daily-mode-group">
+          <span class="daily-group-label" id="dailyGamesGroupLabel">DAILY GAMES</span>
+          <div class="daily-sport-cards" id="dailySportCards">
+            <!-- Populated by JS: Daily 5-Shot Sniper & Daily Target Stat cards -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -511,7 +522,7 @@
               type="text"
               id="playerSearchInput"
               class="player-search-input"
-              placeholder="Type an NBA, NFL, or MLB player name (e.g. Chris Webber, Tony Romo, Ichiro)..."
+              placeholder="Search NBA player..."
               autocomplete="off"
               spellcheck="false"
             />
@@ -633,41 +644,71 @@
   </div>
 
   <!-- How to Play / Rules Modal -->
-  <div class="modal-backdrop hidden" id="rulesModal">
+  <div class="modal-backdrop hidden" id="rulesModal" role="dialog" aria-modal="true" aria-labelledby="rulesModalTitle">
     <div class="modal-card rules-card">
       <div class="modal-header-row">
-        <h2>🎯 How to Play STATSNIPES</h2>
-        <button type="button" class="close-modal-x" id="closeRulesBtn">✕</button>
+        <div>
+          <span class="modal-badge">QUICK GUIDE</span>
+          <h2 id="rulesModalTitle">🎯 How to Play STATSNIPES</h2>
+        </div>
+        <button type="button" class="close-modal-x" id="closeRulesBtn" aria-label="Close How to Play">✕</button>
       </div>
 
-      <div class="rules-content">
+      <div class="rules-tabs" role="tablist" aria-label="Rules Sections">
+        <button type="button" class="rules-tab-btn active" data-rulestab="daily" id="rulesTabDailyBtn">
+          📅 Daily Challenge
+        </button>
+        <button type="button" class="rules-tab-btn" data-rulestab="couch" id="rulesTabCouchBtn">
+          🛋️ Endless &amp; Couch Mode
+        </button>
+      </div>
+
+      <div class="rules-content" id="rulesDailyPane">
         <div class="rule-block">
-          <h3>🔥 Mode 1: Top 100 Survival</h3>
+          <h3>🎯 Daily 5-Shot Sniper <span class="rule-sub-tag">Max 490 PTS</span></h3>
           <ul>
-            <li><strong>The Goal:</strong> Name players who rank in the <strong>Top 100</strong> for the active NBA, NFL, or MLB statistical category.</li>
-            <li><strong>Rank = Points:</strong> You earn points equal to the player's exact rank on the list!
-              <ul>
-                <li>Guessing <strong>#1</strong> (e.g., LeBron James in Career Points) gives you just <strong>1 point</strong>.</li>
-                <li>Guessing <strong>#99</strong> (e.g., Chris Bosh) gives you <strong>99 points</strong>!</li>
-              </ul>
-            </li>
-            <li><strong>3 Lives (Strikes):</strong> Everyone starts with <strong>3 Lives ❤️❤️❤️</strong>. If you guess a player who is <em>outside</em> the Top 100 (like #101 Grant Hill!), you score 0 points and <strong>lose a life 💔</strong>!</li>
-            <li><strong>Winning:</strong> Play solo for a high score or pass-and-play with 2–4 friends until everyone is out of lives or one player is the last standing!</li>
+            <li><strong>3 Leagues Every Day:</strong> Play fresh daily puzzles for <strong>🏀 NBA</strong>, <strong>🏈 NFL</strong>, and <strong>⚾ MLB</strong> — switch leagues right in the Daily Hub (6 puzzles total).</li>
+            <li><strong>Rank = Points (#1–#100):</strong> Guessing <strong>#1</strong> scores <strong>1 pt</strong>; guessing <strong>#100</strong> scores <strong>100 pts</strong>.</li>
+            <li><strong>Hunt #90–#100:</strong> Nail ranks <strong>#90–#100</strong> for purple <strong>Elite Snipes 🟪</strong> without going past #100!</li>
+            <li><strong>5 Fixed Shots:</strong> Names outside the Top 100 score <strong>0 pts</strong> — no lives lost, and all 5 shots count.</li>
+          </ul>
+          <div class="rules-tier-legend">
+            <span class="rtl-pill safe">🟦 #1–49 Safe</span>
+            <span class="rtl-pill solid">🟩 #50–74 Solid</span>
+            <span class="rtl-pill deep">🟨 #75–89 Deep</span>
+            <span class="rtl-pill elite">🟪 #90–100 Snipe</span>
+            <span class="rtl-pill miss">🟥 &gt;#100 Miss (0)</span>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <h3>⚡ Daily Target Stat <span class="rule-sub-tag">Closest Wins</span></h3>
+          <ul>
+            <li><strong>Draft 5 Players:</strong> Combine player stats across <strong>5 picks</strong> to land as close to the daily <strong>Target Total</strong> as possible without going over (<strong>Bust</strong>).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rules-content hidden" id="rulesCouchPane">
+        <div class="rule-block">
+          <h3>🔥 Endless Top 100 Survival <span class="rule-sub-tag">1–4 Players</span></h3>
+          <ul>
+            <li><strong>3 Lives ❤️❤️❤️:</strong> Every pick inside the Top 100 scores its exact rank (<strong>#1</strong> = 1 pt, <strong>#100</strong> = 100 pts). Guessing <strong>#101+</strong> costs a life!</li>
+            <li><strong>🐦‍🔥 #90–#100 Revival:</strong> Eliminated players stay in rotation for a clutch <strong>#90–#100</strong> snipe to win back <strong>+1 Life ❤️</strong> (toggleable).</li>
+            <li><strong>Custom Filters &amp; Pass-and-Play:</strong> Use the category dropdowns, <strong>🎲 Mystery Bag</strong>, or <strong>🛠️ Setup &amp; Couch</strong> to filter stats, teams, eras, and add 2–4 local players or a Shot Clock.</li>
           </ul>
         </div>
 
         <div class="rule-block">
-          <h3>⚡ Mode 2: Target Stat Total (Closest Without Busting)</h3>
+          <h3>⚡ Couch Target Score <span class="rule-sub-tag">Blackjack Rules</span></h3>
           <ul>
-            <li><strong>The Goal:</strong> You are given a <strong>Target Stat Total</strong> (e.g., <em>115,000 Career NBA Points</em> or <em>2,500 Career MLB Home Runs</em>).</li>
-            <li><strong>Draft Your Lineup:</strong> Over 5 picks, lock in players whose real career stats add up as close to the target number as possible.</li>
-            <li><strong>Don't Bust:</strong> Under standard Blackjack rules, going over the target total busts that pick!</li>
+            <li><strong>Draft 5 Players:</strong> Take turns drafting players whose stats add up closest to the Target Total. Play strict Blackjack Bust rules or turn off Bust in Setup.</li>
           </ul>
         </div>
       </div>
 
       <div class="modal-actions">
-        <button type="button" class="primary-btn" id="gotItRulesBtn">Lock In 🚀</button>
+        <button type="button" class="primary-btn" id="gotItRulesBtn">Let's Play 🚀</button>
       </div>
     </div>
   </div>
@@ -679,6 +720,6 @@
   <script src="data/extra_players.js?v=18"></script>
   <script src="data/seasons_data.js?v=18"></script>
   <script src="data/niche/manifest.js?v=18"></script>
-  <script src="app.js?v=18"></script>
+  <script src="app.js?v=19"></script>
 </body>
 </html>

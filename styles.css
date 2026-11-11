@@ -176,6 +176,10 @@ body {
 }
 
 /* Sport Switcher */
+body.is-daily-mode .top-header .sport-switcher {
+  display: none;
+}
+
 .sport-switcher {
   display: flex;
   background: var(--bg-input);
@@ -307,16 +311,30 @@ body {
   filter: brightness(1.08);
 }
 
-/* Daily Challenge Bar (Slim Single-Row Hub) */
+/* Daily Challenge Hub Bar */
 .daily-bar {
   background: linear-gradient(90deg, rgba(17, 24, 39, 0.96), rgba(27, 36, 54, 0.96));
   border-bottom: 1px solid var(--border-subtle);
-  padding: 0.55rem 1.5rem;
+  padding: 0.55rem 1.5rem 0.65rem;
 }
 
 .daily-bar-inner {
   max-width: 1360px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.daily-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.daily-hub-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -324,11 +342,93 @@ body {
   flex-wrap: wrap;
 }
 
-.daily-left-col {
+.daily-league-group,
+.daily-mode-group {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
   flex-wrap: wrap;
+}
+
+.daily-group-label {
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.daily-league-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-input);
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+}
+
+.daily-league-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.34rem 0.72rem;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.daily-league-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.daily-league-btn.active {
+  background: var(--sport-gradient);
+  color: #fff;
+  box-shadow: 0 2px 10px var(--sport-glow);
+}
+
+.daily-league-btn.all-done:not(.active) {
+  border-color: rgba(16, 185, 129, 0.32);
+  color: #d1fae5;
+}
+
+.dl-prog {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.08rem 0.38rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+}
+
+.dl-prog.partial {
+  background: rgba(250, 204, 21, 0.18);
+  color: #fde047;
+}
+
+.daily-league-btn.active .dl-prog.partial {
+  background: rgba(0, 0, 0, 0.25);
+  color: #fde047;
+}
+
+.dl-prog.done {
+  background: rgba(16, 185, 129, 0.22);
+  color: #6ee7b7;
+}
+
+.daily-league-btn.active .dl-prog.done {
+  background: rgba(0, 0, 0, 0.26);
+  color: #a7f3d0;
 }
 
 .daily-badge-wrap {
@@ -971,6 +1071,38 @@ body {
 }
 
 /* Scoreboard Strip */
+#gameArena {
+  display: flex;
+  flex-direction: column;
+}
+
+#gameArena.daily-layout .category-banner {
+  order: 1;
+}
+
+#gameArena.daily-layout .couch-series-bar {
+  order: 2;
+}
+
+#gameArena.daily-layout .command-center {
+  order: 3;
+  position: relative;
+  top: auto;
+  z-index: 30;
+}
+
+#gameArena.daily-layout .scoreboard-strip {
+  order: 4;
+}
+
+#gameArena.daily-layout .arena-split {
+  order: 5;
+}
+
+.command-center {
+  scroll-margin-top: 96px;
+}
+
 .scoreboard-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1140,6 +1272,7 @@ body {
 }
 
 .turn-dot {
+  flex-shrink: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -1991,11 +2124,89 @@ body {
   color: var(--text-main);
 }
 
+.rules-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  background: var(--bg-input);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.95rem;
+}
+
+.rules-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.84rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.rules-tab-btn:hover {
+  color: var(--text-main);
+}
+
+.rules-tab-btn.active {
+  background: var(--sport-gradient);
+  color: #fff;
+  box-shadow: 0 2px 10px var(--sport-glow);
+}
+
+.rule-sub-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--sport-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.12rem 0.45rem;
+  border-radius: 5px;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+.rules-tier-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rtl-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+}
+
+.rtl-pill.elite {
+  border-color: rgba(168, 85, 247, 0.55);
+  background: rgba(168, 85, 247, 0.16);
+  color: #e9d5ff;
+}
+
+.rtl-pill.miss {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
 .rules-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
 }
 
 .rule-block {
@@ -2350,16 +2561,63 @@ body {
   }
 
   .daily-bar {
-    padding: 0.5rem 0.65rem;
+    padding: 0.48rem 0.65rem 0.55rem;
   }
 
   .daily-bar-inner {
-    gap: 0.45rem;
+    gap: 0.42rem;
   }
 
-  .daily-left-col {
-    min-width: 0;
+  .daily-top-row {
+    gap: 0.32rem;
+  }
+
+  .daily-badge-wrap {
+    font-size: 0.78rem;
+    gap: 0.35rem;
+  }
+
+  .daily-countdown-pill {
+    font-size: 0.66rem;
+    padding: 0.12rem 0.38rem;
+  }
+
+  .daily-stat-pill {
+    font-size: 0.68rem;
+    padding: 0.16rem 0.42rem;
+  }
+
+  .daily-hub-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.42rem;
+  }
+
+  .daily-league-group,
+  .daily-mode-group {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.22rem;
+  }
+
+  .daily-group-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .daily-league-pills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+
+  .daily-league-btn {
+    justify-content: center;
+    padding: 0.32rem 0.28rem;
+    font-size: 0.73rem;
+    gap: 0.28rem;
   }
 
   .cat-banner-left {
@@ -2373,8 +2631,8 @@ body {
 
   .mode-tab {
     flex-shrink: 0;
-    padding: 0.38rem 0.68rem;
-    font-size: 0.78rem;
+    padding: 0.34rem 0.54rem;
+    font-size: 0.73rem;
   }
 
   #howToPlayBtn span,
@@ -2393,9 +2651,9 @@ body {
 
   /* Category Banner & Collapsible Filter Drawer on Mobile */
   .category-banner {
-    padding: 0.85rem 0.95rem;
-    gap: 0.65rem;
-    margin-bottom: 0.75rem;
+    padding: 0.72rem 0.85rem;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
   }
 
   .category-title {
@@ -2493,18 +2751,19 @@ body {
 
   .daily-sport-cards {
     width: 100%;
-    justify-content: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
   }
 
   .daily-card-btn {
-    flex: 1 1 0;
     min-width: 0;
     justify-content: space-between;
-    padding: 0.42rem 0.55rem;
+    padding: 0.42rem 0.52rem;
     font-size: 0.74rem;
   }
 
-  /* Sticky Search & Turn Command Center on Mobile */
+  /* Sticky Search & Turn Command Center on Mobile (Normal in Daily where it sits above slots) */
   .command-center {
     position: sticky;
     top: 0.35rem;
@@ -2513,6 +2772,17 @@ body {
     margin-bottom: 0.85rem;
     background: rgba(17, 24, 39, 0.97);
     backdrop-filter: blur(12px);
+  }
+
+  #gameArena.daily-layout .command-center {
+    position: relative;
+    top: auto;
+    z-index: 30;
+  }
+
+  .rules-tab-btn {
+    font-size: 0.78rem;
+    padding: 0.44rem 0.45rem;
   }
 
   .turn-indicator-bar {
@@ -2542,8 +2812,8 @@ body {
   }
 
   .lock-in-btn {
-    padding: 0.55rem 0.9rem;
-    font-size: 0.82rem;
+    padding: 0.52rem 0.76rem;
+    font-size: 0.8rem;
   }
 
   .feedback-banner {

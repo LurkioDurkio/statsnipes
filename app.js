@@ -951,6 +951,17 @@
 
   // 5. Render Functions
   function renderHeaderState() {
+    document.body.setAttribute("data-sport", state.sport || "NBA");
+    document.body.classList.toggle("is-daily-mode", Boolean(state.isDaily));
+    const arenaEl = document.getElementById("gameArena");
+    if (arenaEl) {
+      arenaEl.classList.toggle("daily-layout", Boolean(state.isDaily));
+    }
+    const searchInputEl = document.getElementById("playerSearchInput");
+    if (searchInputEl) {
+      searchInputEl.placeholder = `Search ${state.sport || "NBA"} player...`;
+    }
+
     // Sport buttons
     document.querySelectorAll(".sport-pill").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.sport === state.sport);
@@ -2485,7 +2496,7 @@
     const diffMs = Math.max(0, tomorrow.getTime() - now.getTime());
     const hrs = Math.floor(diffMs / 3600000);
     const mins = Math.floor((diffMs % 3600000) / 60000);
-    return `⏳ Next Daily in ${hrs}h ${mins}m`;
+    return `⏳ Next: ${hrs}h ${mins}m`;
   }
 
   function hashString(str) {
@@ -2780,8 +2791,41 @@
     if (streakEl) {
       streakEl.innerHTML = `
         <span class="daily-stat-pill streak-fire">🔥 Streak: ${prof.currentStreak || 0}d</span>
-        <span class="daily-stat-pill">✅ ${dateDoneCount}/6</span>
+        <span class="daily-stat-pill">✅ ${dateDoneCount}/6 Today</span>
       `;
+    }
+
+    const leaguePillsEl = document.getElementById("dailyLeaguePills");
+    if (leaguePillsEl) {
+      leaguePillsEl.innerHTML = ["NBA", "NFL", "MLB"]
+        .map((lg) => {
+          const lgS = Boolean(getDailyCompletion(lg, "sniper", activeDate));
+          const lgT = Boolean(getDailyCompletion(lg, "target", activeDate));
+          const lgDone = (lgS ? 1 : 0) + (lgT ? 1 : 0);
+          const progCls = lgDone === 2 ? "done" : lgDone === 1 ? "partial" : "";
+          const progTxt = lgDone === 2 ? "✓ 2/2" : `${lgDone}/2`;
+          return `
+            <button type="button" class="daily-league-btn ${lg === state.sport ? "active" : ""} ${lgDone === 2 ? "all-done" : ""}" data-dailyleague="${lg}" role="tab" aria-selected="${lg === state.sport}">
+              <span>${getSportIcon(lg)} ${lg}</span>
+              <span class="dl-prog ${progCls}">${progTxt}</span>
+            </button>
+          `;
+        })
+        .join("");
+
+      leaguePillsEl.querySelectorAll(".daily-league-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const lg = btn.getAttribute("data-dailyleague");
+          if (!lg) return;
+          populateExplorerControls(lg);
+          launchDailyChallenge(lg, state.dailySubmode || "sniper", false, activeDate);
+        });
+      });
+    }
+
+    const gamesLabelEl = document.getElementById("dailyGamesGroupLabel");
+    if (gamesLabelEl) {
+      gamesLabelEl.textContent = `${getSportIcon(state.sport)} ${state.sport} DAILY GAMES`;
     }
 
     const container = document.getElementById("dailySportCards");
@@ -3338,6 +3382,49 @@
       .replace(/"/g, "&quot;");
   }
 
+  const RULES_SEEN_STORAGE_KEY = "statsnipes_rules_seen_v1";
+
+  function hasSeenRulesModal() {
+    try {
+      return localStorage.getItem(RULES_SEEN_STORAGE_KEY) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markRulesModalSeen() {
+    try {
+      localStorage.setItem(RULES_SEEN_STORAGE_KEY, "1");
+    } catch (e) {
+      // Ignore storage errors in private browsing
+    }
+  }
+
+  function setRulesModalTab(tabName = "daily") {
+    const activeTab = tabName === "couch" ? "couch" : "daily";
+    const dailyBtn = document.getElementById("rulesTabDailyBtn");
+    const couchBtn = document.getElementById("rulesTabCouchBtn");
+    const dailyPane = document.getElementById("rulesDailyPane");
+    const couchPane = document.getElementById("rulesCouchPane");
+    if (dailyBtn) dailyBtn.classList.toggle("active", activeTab === "daily");
+    if (couchBtn) couchBtn.classList.toggle("active", activeTab === "couch");
+    if (dailyPane) dailyPane.classList.toggle("hidden", activeTab !== "daily");
+    if (couchPane) couchPane.classList.toggle("hidden", activeTab !== "couch");
+  }
+
+  function openRulesModal(tabName) {
+    const chosen = tabName || (state.isDaily ? "daily" : "couch");
+    setRulesModalTab(chosen);
+    const modal = document.getElementById("rulesModal");
+    if (modal) modal.classList.remove("hidden");
+  }
+
+  function closeRulesModal(markSeen = true) {
+    if (markSeen) markRulesModalSeen();
+    const modal = document.getElementById("rulesModal");
+    if (modal) modal.classList.add("hidden");
+  }
+
   // 12. Wire Up Event Listeners
   function bindEvents() {
     // Sport Switcher Pills
@@ -3490,14 +3577,30 @@
 
     // Rules Modal
     document.getElementById("howToPlayBtn").addEventListener("click", () => {
-      document.getElementById("rulesModal").classList.remove("hidden");
+      openRulesModal();
     });
     document.getElementById("closeRulesBtn").addEventListener("click", () => {
-      document.getElementById("rulesModal").classList.add("hidden");
+      closeRulesModal(true);
     });
     document.getElementById("gotItRulesBtn").addEventListener("click", () => {
-      document.getElementById("rulesModal").classList.add("hidden");
+      closeRulesModal(true);
     });
+    const rulesDailyTabBtn = document.getElementById("rulesTabDailyBtn");
+    if (rulesDailyTabBtn) {
+      rulesDailyTabBtn.addEventListener("click", () => setRulesModalTab("daily"));
+    }
+    const rulesCouchTabBtn = document.getElementById("rulesTabCouchBtn");
+    if (rulesCouchTabBtn) {
+      rulesCouchTabBtn.addEventListener("click", () => setRulesModalTab("couch"));
+    }
+    const rulesBackdrop = document.getElementById("rulesModal");
+    if (rulesBackdrop) {
+      rulesBackdrop.addEventListener("click", (e) => {
+        if (e.target === rulesBackdrop) {
+          closeRulesModal(true);
+        }
+      });
+    }
 
     // New Match Quick Button (Practice Replay in Daily, Fresh Match in Endless)
     document.getElementById("newGameQuickBtn").addEventListener("click", () => {
@@ -3707,7 +3810,7 @@
         }
         const rulesModal = document.getElementById("rulesModal");
         if (rulesModal && !rulesModal.classList.contains("hidden")) {
-          rulesModal.classList.add("hidden");
+          closeRulesModal(true);
         }
       }
     });
@@ -3809,5 +3912,8 @@
   bindEvents();
   if (!applyUrlChallengeParams()) {
     launchDailyChallenge(state.sport || "NBA", "sniper", false, getTodayString());
+  }
+  if (!hasSeenRulesModal()) {
+    openRulesModal(state.isDaily ? "daily" : "couch");
   }
 })();
