@@ -1275,6 +1275,7 @@
 
   // 4. Initialize or Reset Match
   function startMatch(skipAnalytics = false) {
+    if (!state.isDaily) dailyLaunchSeq += 1;
     stopShotClock();
     const cat = getActiveCategory();
     state.sport = cat.sport;
@@ -1912,6 +1913,7 @@
     const toggleCluesBtn = document.getElementById("toggleBoardCluesBtn");
     toggleCluesBtn.textContent = `🔍 Team Clues: ${state.boardHints ? "On" : "Off"}`;
     toggleCluesBtn.classList.toggle("active", state.boardHints);
+    toggleCluesBtn.classList.toggle("hidden", Boolean(state.boardRevealedPostgame));
 
     const grid = document.getElementById("top100Grid");
     const list = cat.players.filter((p) => p.rank <= boardCutoff);
@@ -3679,6 +3681,7 @@
   }
 
   function launchDailyChallenge(sport, submode = state.dailySubmode || "sniper", isPractice = false, dateStr = "", opts = {}) {
+    const reqId = ++dailyLaunchSeq;
     const activeDate = dateStr || state.dailyDateStr || getTodayString();
     state.dailyDateStr = activeDate;
     state.isDaily = true;
@@ -3690,7 +3693,6 @@
     let cat = getDailyCategoryForSport(sport, submode, activeDate);
     if (cat && cat._manifestStub && cat.shard && !dailyTriedShards[cat.shard]) {
       dailyTriedShards[cat.shard] = true;
-      const reqId = ++dailyLaunchSeq;
       renderHeaderState();
       renderDailyBar();
       const titleEl = document.getElementById("activeCategoryTitle");
