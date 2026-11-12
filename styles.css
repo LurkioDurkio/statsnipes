@@ -1867,6 +1867,13 @@ body.is-daily-mode .top-header .sport-switcher {
   grid-template-columns: 1fr;
 }
 
+.arena-primary-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  min-width: 0;
+}
+
 .util-chip-btn.armed-danger {
   background: rgba(239, 68, 68, 0.22);
   border-color: #ef4444;
@@ -1879,6 +1886,10 @@ body.is-daily-mode .top-header .sport-switcher {
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
   padding: 1.15rem;
+}
+
+.board-panel {
+  scroll-margin-top: 84px;
 }
 
 .panel-header {

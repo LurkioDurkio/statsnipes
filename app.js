@@ -1298,6 +1298,10 @@
     state.undoStack = [];
     state.gameOver = false;
     state.boardRevealedPostgame = false;
+    state.boardFilter = "all";
+    document.querySelectorAll(".filter-chip[data-filter]").forEach((b) => {
+      b.classList.toggle("active", b.getAttribute("data-filter") === "all");
+    });
     state.currentTurnIndex = 0;
     state.activeClueRank = null;
     state.activeClueStage = 0;
@@ -1429,10 +1433,12 @@
         endRevealBtn.classList.toggle("hidden", state.mode !== "top100");
       } else if (state.isDaily) {
         endRevealBtn.textContent = "👁️ Reveal All 100";
-        endRevealBtn.classList.toggle("hidden", state.mode !== "top100" || state.boardRevealedPostgame);
+        const hideDailyTargetBeforeFinish = state.mode !== "top100" && !state.gameOver;
+        endRevealBtn.classList.toggle("hidden", hideDailyTargetBeforeFinish || state.boardRevealedPostgame);
       } else {
-        endRevealBtn.textContent = "👁️ Reveal Board";
-        endRevealBtn.classList.toggle("hidden", state.mode !== "top100");
+        endRevealBtn.textContent = state.mode === "target" ? "👁️ Reveal All 100" : "👁️ Reveal Board";
+        const hideEndlessTargetBtn = state.mode === "target" && (!state.gameOver || state.boardRevealedPostgame);
+        endRevealBtn.classList.toggle("hidden", hideEndlessTargetBtn);
       }
     }
 
@@ -1887,26 +1893,54 @@
         renderTop100Board();
       }
     } else {
-      top100Panel.classList.add("hidden");
       targetPanel.classList.remove("hidden");
       renderTargetArena();
+      const showTargetTop100 = Boolean(state.gameOver && state.boardRevealedPostgame);
+      top100Panel.classList.toggle("hidden", !showTargetTop100);
+      if (showTargetTop100) {
+        renderTop100Board();
+      }
     }
   }
 
   function renderTop100Board() {
     const cat = getActiveCategory();
-    document.getElementById("boardHeaderCutoff").textContent = state.cutoff;
-    document.getElementById("boardFoundCount").textContent = `${state.revealedRanks.size} / ${state.cutoff}`;
+    const boardCutoff = state.mode === "target" ? Math.min(100, (cat.players || []).length) : state.cutoff;
+    document.getElementById("boardHeaderCutoff").textContent = boardCutoff;
+    document.getElementById("boardFoundCount").textContent = `${state.revealedRanks.size} / ${boardCutoff}`;
 
     const toggleCluesBtn = document.getElementById("toggleBoardCluesBtn");
     toggleCluesBtn.textContent = `🔍 Team Clues: ${state.boardHints ? "On" : "Off"}`;
     toggleCluesBtn.classList.toggle("active", state.boardHints);
 
     const grid = document.getElementById("top100Grid");
-    const list = cat.players.filter((p) => p.rank <= state.cutoff);
+    const list = cat.players.filter((p) => p.rank <= boardCutoff);
+
+    const targetPickMap = new Map();
+    if (state.mode === "target" && state.revealedRanks.size === 0) {
+      const sportKey = cat.sport || state.sport;
+      (state.players || []).forEach((pl) => {
+        (pl.picks || []).forEach((pk) => {
+          if (pk && !pk.bustedPick && pk.name) {
+            const key = getCanonicalDirectoryKey(sportKey, pk.name);
+            if (key && !targetPickMap.has(key)) {
+              targetPickMap.set(key, { playerObj: pk, pickedBy: pl.id });
+            }
+          }
+        });
+      });
+    }
+    const getRevealedTileInfo = (p) => {
+      const direct = state.revealedRanks.get(p.rank);
+      if (direct) return direct;
+      if (targetPickMap.size > 0) {
+        return targetPickMap.get(getCanonicalDirectoryKey(cat.sport || state.sport, p.name)) || null;
+      }
+      return null;
+    };
 
     const filtered = list.filter((p) => {
-      if (state.boardFilter === "found") return state.revealedRanks.has(p.rank);
+      if (state.boardFilter === "found") return Boolean(getRevealedTileInfo(p));
       if (state.boardFilter === "1-50") return p.rank >= 1 && p.rank <= 50;
       if (state.boardFilter === "51-100") return p.rank >= 51 && p.rank <= 100;
       return true;
@@ -1919,9 +1953,9 @@
 
     grid.innerHTML = filtered
       .map((p) => {
-        const revealedInfo = state.revealedRanks.get(p.rank);
+        const revealedInfo = getRevealedTileInfo(p);
         const isRevealed = Boolean(revealedInfo) || state.boardRevealedPostgame;
-        const tier = getTierInfo(p.rank, state.cutoff);
+        const tier = getTierInfo(p.rank, boardCutoff);
 
         if (isRevealed) {
           const postgameClass = !revealedInfo && state.boardRevealedPostgame ? "postgame-reveal" : "";
@@ -2623,8 +2657,17 @@
       activePlayer.score = newTotal;
       activePlayer.picks.push({
         name: displayName,
-        stat: statVal
+        stat: statVal,
+        rank: statInfo.rank || null
       });
+      const targetBoardLimit = Math.min(100, (cat.players || []).length);
+      if (statInfo.rank && statInfo.rank <= targetBoardLimit) {
+        const tileObj =
+          matchedCatPlayer && matchedCatPlayer.rank === statInfo.rank
+            ? matchedCatPlayer
+            : { name: displayName, stat: statVal, team: statInfo.team || "", rank: statInfo.rank };
+        revealTop100HitOnBoard(statInfo.rank, tileObj, activePlayer.id, false);
+      }
       sfx.playDeepPull();
 
       const rem = state.targetGoal - activePlayer.score;
@@ -4480,13 +4523,25 @@
       document.getElementById("clueToast").classList.add("hidden");
     });
 
+    function revealPostgameTop100Board() {
+      state.boardRevealedPostgame = true;
+      state.boardFilter = "all";
+      document.querySelectorAll(".filter-chip[data-filter]").forEach((b) => {
+        b.classList.toggle("active", b.getAttribute("data-filter") === "all");
+      });
+      renderCategoryBanner();
+      renderMainArena();
+      const topPanel = document.getElementById("top100BoardPanel");
+      if (state.mode === "target" && topPanel && !topPanel.classList.contains("hidden")) {
+        topPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
     document.getElementById("endRevealBtn").addEventListener("click", (e) => {
+      if (state.mode !== "top100" && !state.gameOver) return;
       const btn = e.currentTarget;
-      if (state.isDaily && state.gameOver) {
-        state.boardRevealedPostgame = true;
-        state.boardFilter = "all";
-        renderCategoryBanner();
-        renderMainArena();
+      if (state.gameOver) {
+        revealPostgameTop100Board();
         return;
       }
       if (state.isDaily && !state.dailyPracticeReplay && !btn.getAttribute("data-armed")) {
@@ -4594,11 +4649,8 @@
     });
 
     document.getElementById("inspectBoardAfterBtn").addEventListener("click", () => {
-      state.boardRevealedPostgame = true;
-      state.boardFilter = "all";
       closeGameOverModal(true);
-      renderCategoryBanner();
-      renderMainArena();
+      revealPostgameTop100Board();
     });
 
     document.getElementById("shareScoreBtn").addEventListener("click", (e) => {

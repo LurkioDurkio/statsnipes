@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="styles.css?v=30" />
 </head>
 <body data-sport="NBA">
   <!-- Background Ambient Glows -->
@@ -580,47 +580,49 @@
 
       <!-- Main Lower Split: Left = Top 100 Grid OR Target Meter | Right = Pick History Log -->
       <section class="arena-split" id="arenaSplitSection">
-        <!-- Left Panel: Top 100 Board (Mode: top100) -->
-        <div class="board-panel" id="top100BoardPanel">
-          <div class="panel-header">
-            <div class="panel-title-group">
-              <h2>📋 The Top <span id="boardHeaderCutoff">100</span> Board</h2>
-              <span class="tier-legend">
-                <span class="legend-dot tier-legendary"></span> #90–100 Elite Snipe
-                <span class="legend-dot tier-deep"></span> #75–89 Deep Bag
-                <span class="legend-dot tier-solid"></span> #50–74 Solid
-                <span class="legend-dot tier-safe"></span> #1–49 Safe
-              </span>
+        <div class="arena-primary-col" id="arenaPrimaryCol">
+          <!-- Left Panel Alternative: Target Score Arena (Mode: target) -->
+          <div class="board-panel hidden" id="targetScorePanel">
+            <div class="panel-header">
+              <div>
+                <h2>⚡ Target Stat Race</h2>
+                <p class="panel-sub" id="targetRuleExplanation">Draft 5 players to get as close to the target stat total as possible without going over!</p>
+              </div>
+              <div class="target-goal-pill">
+                <span>TARGET:</span>
+                <strong id="targetGoalDisplay">115,000 PTS</strong>
+              </div>
             </div>
-            <div class="board-filters">
-              <button type="button" class="filter-chip active" data-filter="all">All</button>
-              <button type="button" class="filter-chip" data-filter="found">Guessed</button>
-              <button type="button" class="filter-chip" data-filter="1-50">#1–#50</button>
-              <button type="button" class="filter-chip" data-filter="51-100">#51–#100</button>
-              <button type="button" class="filter-chip toggle-clues-chip" id="toggleBoardCluesBtn">🔍 Team Clues: Off</button>
+
+            <div class="target-players-cards" id="targetPlayersContainer">
+              <!-- Rendered by JS for each player's progress bar & lineup slots -->
             </div>
           </div>
 
-          <div class="top100-grid" id="top100Grid">
-            <!-- 100 interactive rank tiles rendered by JS -->
-          </div>
-        </div>
-
-        <!-- Left Panel Alternative: Target Score Arena (Mode: target) -->
-        <div class="board-panel hidden" id="targetScorePanel">
-          <div class="panel-header">
-            <div>
-              <h2>⚡ Target Stat Race</h2>
-              <p class="panel-sub" id="targetRuleExplanation">Draft 5 players to get as close to the target stat total as possible without going over!</p>
+          <!-- Left Panel: Top 100 Board (Mode: top100, or revealed postgame in Target mode) -->
+          <div class="board-panel" id="top100BoardPanel">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h2>📋 The Top <span id="boardHeaderCutoff">100</span> Board</h2>
+                <span class="tier-legend">
+                  <span class="legend-dot tier-legendary"></span> #90–100 Elite Snipe
+                  <span class="legend-dot tier-deep"></span> #75–89 Deep Bag
+                  <span class="legend-dot tier-solid"></span> #50–74 Solid
+                  <span class="legend-dot tier-safe"></span> #1–49 Safe
+                </span>
+              </div>
+              <div class="board-filters">
+                <button type="button" class="filter-chip active" data-filter="all">All</button>
+                <button type="button" class="filter-chip" data-filter="found">Guessed</button>
+                <button type="button" class="filter-chip" data-filter="1-50">#1–#50</button>
+                <button type="button" class="filter-chip" data-filter="51-100">#51–#100</button>
+                <button type="button" class="filter-chip toggle-clues-chip" id="toggleBoardCluesBtn">🔍 Team Clues: Off</button>
+              </div>
             </div>
-            <div class="target-goal-pill">
-              <span>TARGET:</span>
-              <strong id="targetGoalDisplay">115,000 PTS</strong>
-            </div>
-          </div>
 
-          <div class="target-players-cards" id="targetPlayersContainer">
-            <!-- Rendered by JS for each player's progress bar & lineup slots -->
+            <div class="top100-grid" id="top100Grid">
+              <!-- 100 interactive rank tiles rendered by JS -->
+            </div>
           </div>
         </div>
 
@@ -762,6 +764,6 @@
   <script src="data/extra_players.js?v=21"></script>
   <script src="data/seasons_data.js?v=21"></script>
   <script src="data/niche/manifest.js?v=22"></script>
-  <script src="app.js?v=30"></script>
+  <script src="app.js?v=31"></script>
 </body>
 </html>
