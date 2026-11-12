@@ -13,8 +13,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 1,
         "name": "LeBron James",
-        "stat": 43558,
-        "team": "CLE/MIA/LAL",
+        "stat": 43591,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -41,8 +41,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 5,
         "name": "Kevin Durant",
-        "stat": 32784,
-        "team": "OKC/GSW/PHX",
+        "stat": 32828,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -69,8 +69,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 9,
         "name": "James Harden",
-        "stat": 29489,
-        "team": "OKC/HOU/LAC",
+        "stat": 29507,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -105,8 +105,8 @@ window.NBA_CATEGORIES = [
         "rank": 14,
         "name": "Russell Westbrook",
         "stat": 27176,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 15,
@@ -117,16 +117,16 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 16,
-        "name": "DeMar DeRozan",
-        "stat": 26775,
-        "team": "TOR/SAS/CHI",
+        "name": "Stephen Curry",
+        "stat": 26803,
+        "team": "GSW",
         "era": "2009\u2013Pres"
       },
       {
         "rank": 17,
-        "name": "Stephen Curry",
-        "stat": 26737,
-        "team": "GSW",
+        "name": "DeMar DeRozan",
+        "stat": 26793,
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -259,13 +259,13 @@ window.NBA_CATEGORIES = [
         "rank": 36,
         "name": "Chris Paul",
         "stat": 23058,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 37,
         "name": "Damian Lillard",
-        "stat": 22761,
+        "stat": 22798,
         "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
@@ -278,24 +278,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 39,
+        "name": "Giannis Antetokounmpo",
+        "stat": 21836,
+        "team": "MIL/MIA",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 40,
         "name": "Gary Payton",
         "stat": 21813,
         "team": "SEA/LAL",
         "era": "1990\u20132007"
       },
       {
-        "rank": 40,
+        "rank": 41,
         "name": "Larry Bird",
         "stat": 21791,
         "team": "BOS",
         "era": "1979\u20131992"
-      },
-      {
-        "rank": 41,
-        "name": "Giannis Antetokounmpo",
-        "stat": 21777,
-        "team": "MIL",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 42,
@@ -390,31 +390,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 55,
+        "name": "Anthony Davis",
+        "stat": 19616,
+        "team": "NOP/NOH/DAL/WAS",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 56,
         "name": "Clifford Robinson",
         "stat": 19591,
         "team": "POR/PHX",
         "era": "1989\u20132007"
       },
       {
-        "rank": 56,
-        "name": "Anthony Davis",
-        "stat": 19572,
-        "team": "NOP/LAL",
-        "era": "2012\u2013Pres"
+        "rank": 57,
+        "name": "Paul George",
+        "stat": 19558,
+        "team": "IND/OKC/PHI/BOS",
+        "era": "2010\u2013Pres"
       },
       {
-        "rank": 57,
+        "rank": 58,
         "name": "Walter Davis",
         "stat": 19521,
         "team": "PHX/DEN",
         "era": "1977\u20131992"
-      },
-      {
-        "rank": 58,
-        "name": "Paul George",
-        "stat": 19495,
-        "team": "IND/OKC/LAC",
-        "era": "2010\u2013Pres"
       },
       {
         "rank": 59,
@@ -517,8 +517,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 73,
         "name": "Kyrie Irving",
-        "stat": 18583,
-        "team": "CLE/BOS/DAL",
+        "stat": 18639,
+        "team": "CLE/BOS/DAL/BKN",
         "era": "2011\u2013Pres"
       },
       {
@@ -558,43 +558,43 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 79,
+        "name": "Devin Booker",
+        "stat": 18371,
+        "team": "PHX",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 80,
         "name": "Julius Erving",
         "stat": 18364,
         "team": "PHI",
         "era": "1976\u20131987"
       },
       {
-        "rank": 80,
+        "rank": 81,
         "name": "Glen Rice",
         "stat": 18336,
         "team": "MIA/CHA",
         "era": "1989\u20132004"
       },
       {
-        "rank": 81,
+        "rank": 82,
         "name": "Dave Bing",
         "stat": 18327,
         "team": "DET/WAS",
         "era": "1966\u20131978"
       },
       {
-        "rank": 82,
-        "name": "Devin Booker",
-        "stat": 18298,
-        "team": "PHX",
-        "era": "2015\u2013Pres"
-      },
-      {
         "rank": 83,
         "name": "Brook Lopez",
-        "stat": 18259,
-        "team": "BKN/MIL",
+        "stat": 18287,
+        "team": "NJN/BKN/LAL/LAC",
         "era": "2008\u2013Pres"
       },
       {
         "rank": 84,
         "name": "Nikola Jokic",
-        "stat": 18173,
+        "stat": 18217,
         "team": "DEN",
         "era": "2015\u2013Pres"
       },
@@ -642,17 +642,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 91,
+        "name": "Nikola Vucevic",
+        "stat": 17711,
+        "team": "PHI/ORL/CHI/BOS",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 92,
         "name": "Magic Johnson",
         "stat": 17707,
         "team": "LAL",
         "era": "1979\u20131996"
-      },
-      {
-        "rank": 92,
-        "name": "Nikola Vucevic",
-        "stat": 17706,
-        "team": "ORL/CHI",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 93,
@@ -692,8 +692,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 98,
         "name": "Klay Thompson",
-        "stat": 17470,
-        "team": "GSW/DAL",
+        "stat": 17504,
+        "team": "GSW/DAL/MIA",
         "era": "2011\u2013Pres"
       },
       {
@@ -706,8 +706,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 100,
         "name": "Jrue Holiday",
-        "stat": 17393,
-        "team": "NOP/MIL/BOS",
+        "stat": 17415,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
@@ -726,17 +726,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 103,
+        "name": "Bradley Beal",
+        "stat": 17306,
+        "team": "WAS/PHX/LAC",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 104,
         "name": "Michael Finley",
         "stat": 17306,
         "team": "DAL/SAS",
         "era": "1995\u20132010"
-      },
-      {
-        "rank": 104,
-        "name": "Bradley Beal",
-        "stat": 17306,
-        "team": "WAS/PHX",
-        "era": "2012\u2013Pres"
       },
       {
         "rank": 105,
@@ -783,8 +783,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 111,
         "name": "CJ McCollum",
-        "stat": 16971,
-        "team": "POR/NOP",
+        "stat": 17001,
+        "team": "POR/NOP/ATL",
         "era": "2013\u2013Pres"
       },
       {
@@ -811,8 +811,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 115,
         "name": "Mike Conley",
-        "stat": 16724,
-        "team": "MEM/UTA/MIN",
+        "stat": 16727,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -826,22 +826,22 @@ window.NBA_CATEGORIES = [
         "rank": 117,
         "name": "Jimmy Butler III",
         "stat": 16658,
-        "team": "CHI/MIN/PHI",
+        "team": "CHI/MIN/PHI/MIA",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 118,
-        "name": "Kawhi Leonard",
-        "stat": 16585,
-        "team": "SAS/LAC",
-        "era": "2011\u2013Pres"
+        "name": "Karl-Anthony Towns",
+        "stat": 16593,
+        "team": "MIN/NYK",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 119,
-        "name": "Karl-Anthony Towns",
-        "stat": 16543,
-        "team": "MIN/NYK",
-        "era": "2015\u2013Pres"
+        "name": "Kawhi Leonard",
+        "stat": 16585,
+        "team": "SAS/TOR/LAC",
+        "era": "2011\u2013Pres"
       },
       {
         "rank": 120,
@@ -854,7 +854,7 @@ window.NBA_CATEGORIES = [
         "rank": 121,
         "name": "Tobias Harris",
         "stat": 16440,
-        "team": "LAC/PHI",
+        "team": "MIL/DET/LAC/ORL",
         "era": "2011\u2013Pres"
       },
       {
@@ -875,8 +875,8 @@ window.NBA_CATEGORIES = [
         "rank": 124,
         "name": "Kyle Lowry",
         "stat": 16373,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 125,
@@ -922,17 +922,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 131,
-        "name": "Rasheed Wallace",
-        "stat": 16006,
-        "team": "POR/DET",
-        "era": "1995\u20132013"
-      },
-      {
-        "rank": 132,
         "name": "Derek Harper",
         "stat": 16006,
         "team": "DAL/NYK",
         "era": "1983\u20131999"
+      },
+      {
+        "rank": 132,
+        "name": "Rasheed Wallace",
+        "stat": 16006,
+        "team": "POR/DET",
+        "era": "1995\u20132013"
       },
       {
         "rank": 133,
@@ -994,7 +994,7 @@ window.NBA_CATEGORIES = [
         "rank": 141,
         "name": "Kevin Love",
         "stat": 15669,
-        "team": "MIN/CLE/MIA",
+        "team": "MIN/CLE/MIA/UTA",
         "era": "2008\u2013Pres"
       },
       {
@@ -1083,8 +1083,8 @@ window.NBA_CATEGORIES = [
         "rank": 2,
         "name": "Chris Paul",
         "stat": 12552,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 3,
@@ -1096,16 +1096,16 @@ window.NBA_CATEGORIES = [
       {
         "rank": 4,
         "name": "LeBron James",
-        "stat": 12071,
-        "team": "CLE/MIA/LAL",
+        "stat": 12081,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
         "rank": 5,
         "name": "Russell Westbrook",
         "stat": 10351,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 6,
@@ -1152,8 +1152,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 12,
         "name": "James Harden",
-        "stat": 8926,
-        "team": "OKC/HOU/LAC",
+        "stat": 8936,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -1202,8 +1202,8 @@ window.NBA_CATEGORIES = [
         "rank": 19,
         "name": "Kyle Lowry",
         "stat": 7110,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 20,
@@ -1243,21 +1243,21 @@ window.NBA_CATEGORIES = [
       {
         "rank": 25,
         "name": "Jrue Holiday",
-        "stat": 6798,
-        "team": "NOP/MIL/BOS",
+        "stat": 6800,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
         "rank": 26,
         "name": "Mike Conley",
-        "stat": 6783,
-        "team": "MEM/UTA/MIN",
+        "stat": 6784,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
         "rank": 27,
         "name": "Stephen Curry",
-        "stat": 6774,
+        "stat": 6782,
         "team": "GSW",
         "era": "2009\u2013Pres"
       },
@@ -1334,7 +1334,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 38,
         "name": "Nikola Jokic",
-        "stat": 6145,
+        "stat": 6162,
         "team": "DEN",
         "era": "2015\u2013Pres"
       },
@@ -1362,7 +1362,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 42,
         "name": "Damian Lillard",
-        "stat": 6102,
+        "stat": 6112,
         "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
@@ -1488,7 +1488,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 60,
         "name": "Draymond Green",
-        "stat": 5373,
+        "stat": 5392,
         "team": "GSW",
         "era": "2012\u2013Pres"
       },
@@ -1501,17 +1501,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 62,
+        "name": "Kevin Durant",
+        "stat": 5318,
+        "team": "OKC/SEA/GSW/HOU",
+        "era": "2007\u2013Pres"
+      },
+      {
+        "rank": 63,
         "name": "Kevin Porter",
         "stat": 5314,
         "team": "NBA",
         "era": "Career"
-      },
-      {
-        "rank": 63,
-        "name": "Kevin Durant",
-        "stat": 5307,
-        "team": "OKC/GSW/PHX",
-        "era": "2007\u2013Pres"
       },
       {
         "rank": 64,
@@ -1544,8 +1544,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 68,
         "name": "DeMar DeRozan",
-        "stat": 5201,
-        "team": "TOR/SAS/CHI",
+        "stat": 5208,
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -1607,8 +1607,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 77,
         "name": "Trae Young",
-        "stat": 4954,
-        "team": "ATL",
+        "stat": 4964,
+        "team": "ATL/WAS",
         "era": "2018\u2013Pres"
       },
       {
@@ -1704,31 +1704,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 91,
+        "name": "Giannis Antetokounmpo",
+        "stat": 4541,
+        "team": "MIL/MIA",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 92,
         "name": "Jamal Crawford",
         "stat": 4541,
         "team": "NYK/LAC",
         "era": "2000\u20132020"
       },
       {
-        "rank": 92,
+        "rank": 93,
         "name": "Hal Greer",
         "stat": 4540,
         "team": "PHI",
         "era": "1958\u20131973"
       },
       {
-        "rank": 93,
+        "rank": 94,
         "name": "Sherman Douglas",
         "stat": 4536,
         "team": "MIL/NJN/LAC",
         "era": "1996\u20132001"
-      },
-      {
-        "rank": 94,
-        "name": "Giannis Antetokounmpo",
-        "stat": 4534,
-        "team": "MIL",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 95,
@@ -1748,7 +1748,7 @@ window.NBA_CATEGORIES = [
         "rank": 97,
         "name": "Dennis Schroder",
         "stat": 4482,
-        "team": "ATL/OKC/LAL",
+        "team": "ATL/OKC/DET/CHA",
         "era": "2013\u2013Pres"
       },
       {
@@ -1774,17 +1774,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 101,
+        "name": "Kyrie Irving",
+        "stat": 4403,
+        "team": "CLE/BOS/DAL/BKN",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 102,
         "name": "Calvin Murphy",
         "stat": 4402,
         "team": "HOU",
         "era": "1970\u20131983"
-      },
-      {
-        "rank": 102,
-        "name": "Kyrie Irving",
-        "stat": 4396,
-        "team": "CLE/BOS/DAL",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 103,
@@ -1817,8 +1817,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 107,
         "name": "Luka Doncic",
-        "stat": 4299,
-        "team": "DAL",
+        "stat": 4309,
+        "team": "DAL/LAL",
         "era": "2018\u2013Pres"
       },
       {
@@ -1837,17 +1837,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 110,
-        "name": "Kirk Hinrich",
-        "stat": 4245,
-        "team": "CHI",
-        "era": "2003\u20132016"
-      },
-      {
-        "rank": 111,
         "name": "Eric Snow",
         "stat": 4245,
         "team": "SEA/PHI/CLE",
         "era": "1996\u20132007"
+      },
+      {
+        "rank": 111,
+        "name": "Kirk Hinrich",
+        "stat": 4245,
+        "team": "CHI",
+        "era": "2003\u20132016"
       },
       {
         "rank": 112,
@@ -1986,22 +1986,22 @@ window.NBA_CATEGORIES = [
         "rank": 131,
         "name": "Jimmy Butler III",
         "stat": 3957,
-        "team": "CHI/MIN/PHI",
+        "team": "CHI/MIN/PHI/MIA",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 132,
+        "name": "Devin Booker",
+        "stat": 3956,
+        "team": "PHX",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 133,
         "name": "Jarrett Jack",
         "stat": 3952,
         "team": "POR/IND/TOR",
         "era": "2005\u20132018"
-      },
-      {
-        "rank": 133,
-        "name": "Devin Booker",
-        "stat": 3944,
-        "team": "PHX",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 134,
@@ -2097,7 +2097,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 147,
         "name": "T.J. McConnell",
-        "stat": 3829,
+        "stat": 3833,
         "team": "PHI/IND",
         "era": "2015\u2013Pres"
       },
@@ -2291,8 +2291,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 23,
         "name": "LeBron James",
-        "stat": 12154,
-        "team": "CLE/MIA/LAL",
+        "stat": 12167,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -2319,8 +2319,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 27,
         "name": "Andre Drummond",
-        "stat": 11575,
-        "team": "DET/CHI",
+        "stat": 11597,
+        "team": "DET/PHI/LAL/NYK",
         "era": "2012\u2013Pres"
       },
       {
@@ -2362,7 +2362,7 @@ window.NBA_CATEGORIES = [
         "rank": 33,
         "name": "DeAndre Jordan",
         "stat": 10874,
-        "team": "LAC",
+        "team": "LAC/NYK/DEN/NOP",
         "era": "2008\u2013Pres"
       },
       {
@@ -2375,14 +2375,14 @@ window.NBA_CATEGORIES = [
       {
         "rank": 35,
         "name": "Nikola Vucevic",
-        "stat": 10728,
-        "team": "ORL/CHI",
+        "stat": 10733,
+        "team": "PHI/ORL/CHI/BOS",
         "era": "2011\u2013Pres"
       },
       {
         "rank": 36,
         "name": "Rudy Gobert",
-        "stat": 10678,
+        "stat": 10693,
         "team": "UTA/MIN",
         "era": "2013\u2013Pres"
       },
@@ -2453,7 +2453,7 @@ window.NBA_CATEGORIES = [
         "rank": 46,
         "name": "Kevin Love",
         "stat": 9712,
-        "team": "MIN/CLE/MIA",
+        "team": "MIN/CLE/MIA/UTA",
         "era": "2008\u2013Pres"
       },
       {
@@ -2515,8 +2515,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 55,
         "name": "Al Horford",
-        "stat": 9192,
-        "team": "ATL/BOS",
+        "stat": 9198,
+        "team": "ATL/BOS/PHI/GSW",
         "era": "2007\u2013Pres"
       },
       {
@@ -2535,17 +2535,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 58,
-        "name": "Jonas Valanciunas",
-        "stat": 9052,
-        "team": "TOR/MEM/NOP",
-        "era": "2012\u2013Pres"
+        "name": "Nikola Jokic",
+        "stat": 9074,
+        "team": "DEN",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 59,
-        "name": "Nikola Jokic",
-        "stat": 9045,
-        "team": "DEN",
-        "era": "2015\u2013Pres"
+        "name": "Jonas Valanciunas",
+        "stat": 9052,
+        "team": "TOR/MEM/SAC/DEN",
+        "era": "2012\u2013Pres"
       },
       {
         "rank": 60,
@@ -2558,14 +2558,14 @@ window.NBA_CATEGORIES = [
         "rank": 61,
         "name": "Russell Westbrook",
         "stat": 9025,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 62,
         "name": "Giannis Antetokounmpo",
-        "stat": 8996,
-        "team": "MIL",
+        "stat": 9021,
+        "team": "MIL/MIA",
         "era": "2013\u2013Pres"
       },
       {
@@ -2599,8 +2599,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 67,
         "name": "Anthony Davis",
-        "stat": 8710,
-        "team": "NOP/LAL",
+        "stat": 8724,
+        "team": "NOP/NOH/DAL/WAS",
         "era": "2012\u2013Pres"
       },
       {
@@ -2648,8 +2648,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 74,
         "name": "Kevin Durant",
-        "stat": 8301,
-        "team": "OKC/GSW/PHX",
+        "stat": 8323,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -2661,17 +2661,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 76,
+        "name": "Karl-Anthony Towns",
+        "stat": 8163,
+        "team": "MIN/NYK",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 77,
         "name": "Antawn Jamison",
         "stat": 8157,
         "team": "GSW/WAS",
         "era": "1998\u20132014"
-      },
-      {
-        "rank": 77,
-        "name": "Karl-Anthony Towns",
-        "stat": 8134,
-        "team": "MIN/NYK",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 78,
@@ -2914,8 +2914,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 112,
         "name": "Domantas Sabonis",
-        "stat": 7227,
-        "team": "IND/SAC",
+        "stat": 7229,
+        "team": "IND/OKC/SAC",
         "era": "2016\u2013Pres"
       },
       {
@@ -2963,15 +2963,15 @@ window.NBA_CATEGORIES = [
       {
         "rank": 119,
         "name": "Julius Randle",
-        "stat": 7081,
-        "team": "LAL/NYK",
+        "stat": 7090,
+        "team": "LAL/NOP/MIN/BKN",
         "era": "2014\u2013Pres"
       },
       {
         "rank": 120,
         "name": "Brook Lopez",
-        "stat": 7051,
-        "team": "BKN/MIL",
+        "stat": 7062,
+        "team": "NJN/BKN/LAL/LAC",
         "era": "2008\u2013Pres"
       },
       {
@@ -3061,8 +3061,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 133,
         "name": "James Harden",
-        "stat": 6857,
-        "team": "OKC/HOU/LAC",
+        "stat": 6862,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -3199,15 +3199,15 @@ window.NBA_CATEGORIES = [
       {
         "rank": 1,
         "name": "Stephen Curry",
-        "stat": 4281,
+        "stat": 4290,
         "team": "GSW",
         "era": "2009\u2013Pres"
       },
       {
         "rank": 2,
         "name": "James Harden",
-        "stat": 3414,
-        "team": "OKC/HOU/LAC",
+        "stat": 3417,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -3220,22 +3220,22 @@ window.NBA_CATEGORIES = [
       {
         "rank": 4,
         "name": "Klay Thompson",
-        "stat": 2932,
-        "team": "GSW/DAL",
+        "stat": 2941,
+        "team": "GSW/DAL/MIA",
         "era": "2011\u2013Pres"
       },
       {
         "rank": 5,
         "name": "Damian Lillard",
-        "stat": 2827,
+        "stat": 2833,
         "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 6,
         "name": "LeBron James",
-        "stat": 2642,
-        "team": "CLE/MIA/LAL",
+        "stat": 2645,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -3248,8 +3248,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 8,
         "name": "Paul George",
-        "stat": 2475,
-        "team": "IND/OKC/LAC",
+        "stat": 2486,
+        "team": "IND/OKC/PHI/BOS",
         "era": "2010\u2013Pres"
       },
       {
@@ -3262,8 +3262,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 10,
         "name": "Kevin Durant",
-        "stat": 2390,
-        "team": "OKC/GSW/PHX",
+        "stat": 2392,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -3291,21 +3291,21 @@ window.NBA_CATEGORIES = [
         "rank": 14,
         "name": "Buddy Hield",
         "stat": 2209,
-        "team": "SAC/IND/GSW",
+        "team": "SAC/GSW/IND/CHI",
         "era": "2016\u2013Pres"
       },
       {
         "rank": 15,
         "name": "Kyle Lowry",
         "stat": 2209,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 16,
         "name": "CJ McCollum",
-        "stat": 2198,
-        "team": "POR/NOP",
+        "stat": 2202,
+        "team": "POR/NOP/ATL",
         "era": "2013\u2013Pres"
       },
       {
@@ -3319,21 +3319,21 @@ window.NBA_CATEGORIES = [
         "rank": 18,
         "name": "Eric Gordon",
         "stat": 2092,
-        "team": "LAC/NOP/HOU",
+        "team": "LAC/NOH/NOP/PHX",
         "era": "2008\u2013Pres"
       },
       {
         "rank": 19,
         "name": "Tim Hardaway Jr.",
         "stat": 2077,
-        "team": "NYK/DAL",
+        "team": "ATL/NYK/DAL/MIA",
         "era": "2013\u2013Pres"
       },
       {
         "rank": 20,
         "name": "Mike Conley",
-        "stat": 1989,
-        "team": "MEM/UTA/MIN",
+        "stat": 1990,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -3374,23 +3374,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 26,
         "name": "Kyrie Irving",
-        "stat": 1897,
-        "team": "CLE/BOS/DAL",
+        "stat": 1906,
+        "team": "CLE/BOS/DAL/BKN",
         "era": "2011\u2013Pres"
       },
       {
         "rank": 27,
-        "name": "Chris Paul",
-        "stat": 1870,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "name": "Donovan Mitchell",
+        "stat": 1872,
+        "team": "UTA/CLE",
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 28,
-        "name": "Donovan Mitchell",
-        "stat": 1866,
-        "team": "UTA/CLE",
-        "era": "2017\u2013Pres"
+        "name": "Chris Paul",
+        "stat": 1870,
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 29,
@@ -3403,8 +3403,8 @@ window.NBA_CATEGORIES = [
         "rank": 30,
         "name": "Nicolas Batum",
         "stat": 1842,
-        "team": "POR/CHA/LAC",
-        "era": "2008\u2013Pres"
+        "team": "POR/CHA/LAC/PHI",
+        "era": "2008\u20132026"
       },
       {
         "rank": 31,
@@ -3436,30 +3436,30 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 35,
+        "name": "Jrue Holiday",
+        "stat": 1734,
+        "team": "PHI/NOP/BOS/POR",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 36,
         "name": "Carmelo Anthony",
         "stat": 1731,
         "team": "DEN/NYK",
         "era": "2003\u20132022"
       },
       {
-        "rank": 36,
-        "name": "Jrue Holiday",
-        "stat": 1731,
-        "team": "NOP/MIL/BOS",
-        "era": "2009\u2013Pres"
-      },
-      {
         "rank": 37,
         "name": "Kevin Love",
         "stat": 1727,
-        "team": "MIN/CLE/MIA",
+        "team": "MIN/CLE/MIA/UTA",
         "era": "2008\u2013Pres"
       },
       {
         "rank": 38,
         "name": "Bradley Beal",
         "stat": 1724,
-        "team": "WAS/PHX",
+        "team": "WAS/PHX/LAC",
         "era": "2012\u2013Pres"
       },
       {
@@ -3471,17 +3471,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 40,
+        "name": "Luka Doncic",
+        "stat": 1687,
+        "team": "DAL/LAL",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 41,
         "name": "Steve Nash",
         "stat": 1685,
         "team": "PHX/DAL",
         "era": "1996\u20132014"
-      },
-      {
-        "rank": 41,
-        "name": "Luka Doncic",
-        "stat": 1684,
-        "team": "DAL",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 42,
@@ -3493,23 +3493,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 43,
         "name": "Zach LaVine",
-        "stat": 1656,
-        "team": "MIN/CHI",
+        "stat": 1663,
+        "team": "MIN/CHI/SAC",
         "era": "2014\u2013Pres"
       },
       {
         "rank": 44,
-        "name": "D'Angelo Russell",
-        "stat": 1609,
-        "team": "BKN/MIN/LAL",
-        "era": "2015\u2013Pres"
+        "name": "Jayson Tatum",
+        "stat": 1617,
+        "team": "BOS",
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 45,
-        "name": "Jayson Tatum",
+        "name": "D'Angelo Russell",
         "stat": 1609,
-        "team": "BOS",
-        "era": "2017\u2013Pres"
+        "team": "LAL/BKN/MIN/WAS",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 46,
@@ -3528,8 +3528,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 48,
         "name": "Kentavious Caldwell-Pope",
-        "stat": 1601,
-        "team": "DET/LAL/DEN",
+        "stat": 1603,
+        "team": "DET/LAL/MEM/PHI",
         "era": "2013\u2013Pres"
       },
       {
@@ -3542,8 +3542,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 50,
         "name": "Harrison Barnes",
-        "stat": 1585,
-        "team": "GSW/DAL/SAC",
+        "stat": 1588,
+        "team": "GSW/DAL/SAC/SAS",
         "era": "2012\u2013Pres"
       },
       {
@@ -3556,7 +3556,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 52,
         "name": "Devin Booker",
-        "stat": 1559,
+        "stat": 1566,
         "team": "PHX",
         "era": "2015\u2013Pres"
       },
@@ -3569,17 +3569,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 54,
-        "name": "Patty Mills",
-        "stat": 1546,
-        "team": "SAS/BKN",
-        "era": "2009\u2013Pres"
-      },
-      {
-        "rank": 55,
         "name": "Eddie Jones",
         "stat": 1546,
         "team": "LAL/MIA",
         "era": "1994\u20132008"
+      },
+      {
+        "rank": 55,
+        "name": "Patty Mills",
+        "stat": 1546,
+        "team": "POR/SAS/BKN",
+        "era": "2009\u20132026"
       },
       {
         "rank": 56,
@@ -3606,8 +3606,8 @@ window.NBA_CATEGORIES = [
         "rank": 59,
         "name": "Bojan Bogdanovic",
         "stat": 1511,
-        "team": "IND/UTA/DET",
-        "era": "2014\u2013Pres"
+        "team": "BKN/IND/WAS/NYK",
+        "era": "2014\u20132026"
       },
       {
         "rank": 60,
@@ -3620,36 +3620,36 @@ window.NBA_CATEGORIES = [
         "rank": 61,
         "name": "Russell Westbrook",
         "stat": 1495,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 62,
-        "name": "Khris Middleton",
-        "stat": 1477,
-        "team": "MIL",
-        "era": "2012\u2013Pres"
-      },
-      {
-        "rank": 63,
         "name": "Jordan Clarkson",
-        "stat": 1477,
-        "team": "LAL/CLE/UTA",
+        "stat": 1478,
+        "team": "LAL/CLE/UTA/NYK",
         "era": "2014\u2013Pres"
       },
       {
+        "rank": 63,
+        "name": "Khris Middleton",
+        "stat": 1477,
+        "team": "MIL/DET/WAS/DAL",
+        "era": "2012\u2013Pres"
+      },
+      {
         "rank": 64,
+        "name": "Duncan Robinson",
+        "stat": 1464,
+        "team": "MIA/DET",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 65,
         "name": "Lou Williams",
         "stat": 1457,
         "team": "PHI/LAC/ATL",
         "era": "2005\u20132022"
-      },
-      {
-        "rank": 65,
-        "name": "Duncan Robinson",
-        "stat": 1457,
-        "team": "MIA",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 66,
@@ -3669,20 +3669,20 @@ window.NBA_CATEGORIES = [
         "rank": 68,
         "name": "Malik Beasley",
         "stat": 1453,
-        "team": "DEN/MIN/MIL",
-        "era": "2016\u2013Pres"
+        "team": "DEN/DET/MIN/MIL",
+        "era": "2016\u20132026"
       },
       {
         "rank": 69,
         "name": "Jamal Murray",
-        "stat": 1420,
+        "stat": 1427,
         "team": "DEN",
         "era": "2016\u2013Pres"
       },
       {
         "rank": 70,
         "name": "Fred VanVleet",
-        "stat": 1404,
+        "stat": 1411,
         "team": "TOR/HOU",
         "era": "2016\u2013Pres"
       },
@@ -3697,7 +3697,7 @@ window.NBA_CATEGORIES = [
         "rank": 72,
         "name": "Tobias Harris",
         "stat": 1391,
-        "team": "LAC/PHI",
+        "team": "MIL/DET/LAC/ORL",
         "era": "2011\u2013Pres"
       },
       {
@@ -3711,7 +3711,7 @@ window.NBA_CATEGORIES = [
         "rank": 74,
         "name": "Kawhi Leonard",
         "stat": 1363,
-        "team": "SAS/LAC",
+        "team": "SAS/TOR/LAC",
         "era": "2011\u2013Pres"
       },
       {
@@ -3732,22 +3732,22 @@ window.NBA_CATEGORIES = [
         "rank": 77,
         "name": "Terry Rozier",
         "stat": 1356,
-        "team": "BOS/CHA/MIA",
+        "team": "BOS/MIA/CHA",
         "era": "2015\u2013Pres"
       },
       {
         "rank": 78,
-        "name": "Baron Davis",
-        "stat": 1332,
-        "team": "CHA/GSW",
-        "era": "1999\u20132012"
-      },
-      {
-        "rank": 79,
         "name": "Anthony Edwards",
         "stat": 1332,
         "team": "MIN",
         "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 79,
+        "name": "Baron Davis",
+        "stat": 1332,
+        "team": "CHA/GSW",
+        "era": "1999\u20132012"
       },
       {
         "rank": 80,
@@ -3773,8 +3773,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 83,
         "name": "Trae Young",
-        "stat": 1322,
-        "team": "ATL",
+        "stat": 1325,
+        "team": "ATL/WAS",
         "era": "2018\u2013Pres"
       },
       {
@@ -3786,44 +3786,44 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 85,
+        "name": "Jaylen Brown",
+        "stat": 1305,
+        "team": "BOS/PHI",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 86,
         "name": "Mike Dunleavy",
         "stat": 1304,
         "team": "GSW/IND/MIL",
         "era": "2002\u20132017"
       },
       {
-        "rank": 86,
-        "name": "Jaylen Brown",
-        "stat": 1302,
-        "team": "BOS",
-        "era": "2016\u2013Pres"
+        "rank": 87,
+        "name": "Andrew Wiggins",
+        "stat": 1300,
+        "team": "MIN/MIA/GSW",
+        "era": "2014\u2013Pres"
       },
       {
-        "rank": 87,
+        "rank": 88,
         "name": "Marcus Morris Sr.",
         "stat": 1300,
         "team": "PHX/DET/BOS",
         "era": "2012\u20132024"
       },
       {
-        "rank": 88,
+        "rank": 89,
         "name": "Terry Porter",
         "stat": 1297,
         "team": "POR/MIN",
         "era": "1985\u20132002"
       },
       {
-        "rank": 89,
-        "name": "Andrew Wiggins",
-        "stat": 1296,
-        "team": "MIN/GSW",
-        "era": "2014\u2013Pres"
-      },
-      {
         "rank": 90,
         "name": "Lauri Markkanen",
         "stat": 1286,
-        "team": "CHI/CLE/UTA",
+        "team": "CHI/UTA/CLE",
         "era": "2017\u2013Pres"
       },
       {
@@ -3836,8 +3836,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 92,
         "name": "Bogdan Bogdanovic",
-        "stat": 1276,
-        "team": "SAC/ATL",
+        "stat": 1278,
+        "team": "SAC/LAC/ATL/HOU",
         "era": "2017\u2013Pres"
       },
       {
@@ -3891,31 +3891,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 100,
+        "name": "Karl-Anthony Towns",
+        "stat": 1249,
+        "team": "MIN/NYK",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 101,
         "name": "Derek Fisher",
         "stat": 1248,
         "team": "LAL/OKC",
         "era": "1996\u20132014"
       },
       {
-        "rank": 101,
+        "rank": 102,
         "name": "Hedo Turkoglu",
         "stat": 1246,
         "team": "SAC/ORL",
         "era": "2000\u20132015"
       },
       {
-        "rank": 102,
+        "rank": 103,
         "name": "Dell Curry",
         "stat": 1245,
         "team": "CHH/MIL/TOR",
         "era": "1996\u20132002"
-      },
-      {
-        "rank": 103,
-        "name": "Karl-Anthony Towns",
-        "stat": 1245,
-        "team": "MIN/NYK",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 104,
@@ -3935,22 +3935,22 @@ window.NBA_CATEGORIES = [
         "rank": 106,
         "name": "Joe Ingles",
         "stat": 1234,
-        "team": "UTA/POR/MIL",
-        "era": "2014\u20132024"
+        "team": "UTA/MIL/ORL/MIN",
+        "era": "2014\u2013Pres"
       },
       {
         "rank": 107,
-        "name": "Norman Powell",
-        "stat": 1232,
-        "team": "TOR/POR/LAC",
-        "era": "2015\u2013Pres"
-      },
-      {
-        "rank": 108,
         "name": "Jae Crowder",
         "stat": 1232,
         "team": "DAL/BOS/UTA",
         "era": "2012\u20132024"
+      },
+      {
+        "rank": 108,
+        "name": "Norman Powell",
+        "stat": 1232,
+        "team": "TOR/LAC/POR/CHI",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 109,
@@ -3998,14 +3998,14 @@ window.NBA_CATEGORIES = [
         "rank": 115,
         "name": "Jeff Green",
         "stat": 1213,
-        "team": "SEA/OKC/BOS",
-        "era": "2007\u20132025"
+        "team": "OKC/BOS/SEA/DEN",
+        "era": "2007\u2013Pres"
       },
       {
         "rank": 116,
         "name": "Brook Lopez",
-        "stat": 1200,
-        "team": "BKN/MIL",
+        "stat": 1202,
+        "team": "NJN/BKN/LAL/LAC",
         "era": "2008\u2013Pres"
       },
       {
@@ -4038,17 +4038,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 121,
+        "name": "Derrick White",
+        "stat": 1171,
+        "team": "SAS/BOS",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 122,
         "name": "Reggie Jackson",
         "stat": 1171,
         "team": "OKC/DET/LAC",
         "era": "2012\u20132024"
-      },
-      {
-        "rank": 122,
-        "name": "Derrick White",
-        "stat": 1169,
-        "team": "SAS/BOS",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 123,
@@ -4068,7 +4068,7 @@ window.NBA_CATEGORIES = [
         "rank": 125,
         "name": "Donte DiVincenzo",
         "stat": 1161,
-        "team": "MIL/SAC/GSW",
+        "team": "MIN/MIL/GSW/SAC",
         "era": "2019\u2013Pres"
       },
       {
@@ -4087,17 +4087,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 128,
+        "name": "Royce O'Neale",
+        "stat": 1152,
+        "team": "UTA/PHX/BKN/CHA",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 129,
         "name": "Goran Dragic",
         "stat": 1150,
         "team": "PHX/MIA",
         "era": "2008\u20132023"
-      },
-      {
-        "rank": 129,
-        "name": "Royce O'Neale",
-        "stat": 1150,
-        "team": "UTA/BKN/PHX",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 130,
@@ -4115,51 +4115,51 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 132,
-        "name": "Dennis Schroder",
-        "stat": 1142,
-        "team": "ATL/OKC/LAL",
-        "era": "2013\u2013Pres"
+        "name": "Kyle Kuzma",
+        "stat": 1146,
+        "team": "LAL/MIL/WAS",
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 133,
-        "name": "Mikal Bridges",
-        "stat": 1141,
-        "team": "PHX/BKN/NYK",
-        "era": "2018\u2013Pres"
+        "name": "Dennis Schroder",
+        "stat": 1142,
+        "team": "ATL/OKC/DET/CHA",
+        "era": "2013\u2013Pres"
       },
       {
         "rank": 134,
+        "name": "Mikal Bridges",
+        "stat": 1142,
+        "team": "PHX/NYK/BKN",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 135,
+        "name": "Gary Trent Jr.",
+        "stat": 1141,
+        "team": "MIL/TOR/POR",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 136,
         "name": "Kevin Martin",
         "stat": 1141,
         "team": "SAC/HOU/OKC",
         "era": "2005\u20132016"
       },
       {
-        "rank": 135,
-        "name": "Gary Trent Jr.",
-        "stat": 1140,
-        "team": "POR/TOR/MIL",
-        "era": "2019\u2013Pres"
-      },
-      {
-        "rank": 136,
-        "name": "Kyle Kuzma",
-        "stat": 1139,
-        "team": "LAL/WAS",
-        "era": "2017\u2013Pres"
-      },
-      {
         "rank": 137,
         "name": "Anfernee Simons",
-        "stat": 1136,
-        "team": "POR",
+        "stat": 1140,
+        "team": "POR/CHI/PHI",
         "era": "2018\u2013Pres"
       },
       {
         "rank": 138,
         "name": "Kevin Huerter",
-        "stat": 1135,
-        "team": "ATL/SAC/CHI",
+        "stat": 1139,
+        "team": "ATL/CHI/SAC/DET",
         "era": "2018\u2013Pres"
       },
       {
@@ -4179,23 +4179,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 141,
         "name": "Jordan Poole",
-        "stat": 1114,
-        "team": "GSW/WAS",
+        "stat": 1115,
+        "team": "WAS/GSW/NOP",
         "era": "2019\u2013Pres"
       },
       {
         "rank": 142,
+        "name": "Marcus Smart",
+        "stat": 1113,
+        "team": "BOS/WAS/MEM/HOU",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 143,
         "name": "Gordon Hayward",
         "stat": 1111,
         "team": "UTA/BOS/CHA",
         "era": "2010\u20132024"
-      },
-      {
-        "rank": 143,
-        "name": "Marcus Smart",
-        "stat": 1111,
-        "team": "BOS/MEM",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 144,
@@ -4215,29 +4215,29 @@ window.NBA_CATEGORIES = [
         "rank": 146,
         "name": "Coby White",
         "stat": 1102,
-        "team": "CHI",
+        "team": "CHI/CHA",
         "era": "2019\u2013Pres"
       },
       {
         "rank": 147,
         "name": "Tyler Herro",
-        "stat": 1098,
-        "team": "MIA",
+        "stat": 1099,
+        "team": "MIA/MIL",
         "era": "2019\u2013Pres"
       },
       {
         "rank": 148,
+        "name": "Jerami Grant",
+        "stat": 1094,
+        "team": "PHI/OKC/POR/MEM",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 149,
         "name": "Mo Williams",
         "stat": 1094,
         "team": "UTA/MIL/CLE",
         "era": "2003\u20132016"
-      },
-      {
-        "rank": 149,
-        "name": "Jerami Grant",
-        "stat": 1091,
-        "team": "OKC/DEN/DET/POR",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 150,
@@ -4353,7 +4353,7 @@ window.NBA_CATEGORIES = [
         "rank": 14,
         "name": "Brook Lopez",
         "stat": 2156,
-        "team": "BKN/MIL",
+        "team": "NJN/BKN/LAL/LAC",
         "era": "2008\u2013Pres"
       },
       {
@@ -4416,7 +4416,7 @@ window.NBA_CATEGORIES = [
         "rank": 23,
         "name": "Anthony Davis",
         "stat": 1857,
-        "team": "NOP/LAL",
+        "team": "NOP/NOH/DAL/WAS",
         "era": "2012\u2013Pres"
       },
       {
@@ -4513,15 +4513,15 @@ window.NBA_CATEGORIES = [
       {
         "rank": 37,
         "name": "DeAndre Jordan",
-        "stat": 1579,
-        "team": "LAC",
+        "stat": 1580,
+        "team": "LAC/NYK/DEN/NOP",
         "era": "2008\u2013Pres"
       },
       {
         "rank": 38,
         "name": "Myles Turner",
-        "stat": 1551,
-        "team": "IND",
+        "stat": 1553,
+        "team": "IND/MIL",
         "era": "2015\u2013Pres"
       },
       {
@@ -4596,16 +4596,16 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 49,
-        "name": "Kevin Durant",
-        "stat": 1358,
-        "team": "OKC/GSW/PHX",
+        "name": "Al Horford",
+        "stat": 1360,
+        "team": "ATL/BOS/PHI/GSW",
         "era": "2007\u2013Pres"
       },
       {
         "rank": 50,
-        "name": "Al Horford",
-        "stat": 1355,
-        "team": "ATL/BOS",
+        "name": "Kevin Durant",
+        "stat": 1359,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -4675,8 +4675,8 @@ window.NBA_CATEGORIES = [
         "rank": 60,
         "name": "JaVale McGee",
         "stat": 1258,
-        "team": "WAS/DEN/GSW",
-        "era": "2008\u2013Pres"
+        "team": "WAS/DEN/DAL/PHX",
+        "era": "2008\u20132026"
       },
       {
         "rank": 61,
@@ -4702,8 +4702,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 64,
         "name": "Andre Drummond",
-        "stat": 1201,
-        "team": "DET/CHI",
+        "stat": 1202,
+        "team": "DET/PHI/LAL/NYK",
         "era": "2012\u2013Pres"
       },
       {
@@ -4731,7 +4731,7 @@ window.NBA_CATEGORIES = [
         "rank": 68,
         "name": "LeBron James",
         "stat": 1192,
-        "team": "CLE/MIA/LAL",
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -4834,31 +4834,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 83,
-        "name": "Bismack Biyombo",
-        "stat": 1102,
-        "team": "CHA/ORL/PHX",
-        "era": "2011\u2013Pres"
-      },
-      {
-        "rank": 84,
         "name": "Antonio McDyess",
         "stat": 1102,
         "team": "DEN/DET",
         "era": "1995\u20132011"
       },
       {
-        "rank": 85,
-        "name": "Buck Williams",
-        "stat": 1100,
-        "team": "NJN/POR",
-        "era": "1981\u20131998"
+        "rank": 84,
+        "name": "Bismack Biyombo",
+        "stat": 1102,
+        "team": "CHA/TOR/ORL/OKC",
+        "era": "2011\u2013Pres"
       },
       {
-        "rank": 86,
+        "rank": 85,
         "name": "Bob Lanier",
         "stat": 1100,
         "team": "DET/MIL",
         "era": "1970\u20131984"
+      },
+      {
+        "rank": 86,
+        "name": "Buck Williams",
+        "stat": 1100,
+        "team": "NJN/POR",
+        "era": "1981\u20131998"
       },
       {
         "rank": 87,
@@ -4870,8 +4870,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 88,
         "name": "Giannis Antetokounmpo",
-        "stat": 1097,
-        "team": "MIL",
+        "stat": 1099,
+        "team": "MIL/MIA",
         "era": "2013\u2013Pres"
       },
       {
@@ -4932,17 +4932,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 97,
-        "name": "Robin Lopez",
-        "stat": 1045,
-        "team": "PHX/POR/MIL",
-        "era": "2008\u20132024"
-      },
-      {
-        "rank": 98,
         "name": "Paul Millsap",
         "stat": 1045,
         "team": "UTA/ATL/DEN",
         "era": "2006\u20132021"
+      },
+      {
+        "rank": 98,
+        "name": "Robin Lopez",
+        "stat": 1045,
+        "team": "PHX/POR/MIL",
+        "era": "2008\u20132024"
       },
       {
         "rank": 99,
@@ -5039,22 +5039,22 @@ window.NBA_CATEGORIES = [
         "rank": 112,
         "name": "Taj Gibson",
         "stat": 965,
-        "team": "CHI/NYK",
-        "era": "2009\u2013Pres"
+        "team": "CHI/MIN/OKC/MEM",
+        "era": "2009\u20132026"
       },
       {
         "rank": 113,
+        "name": "Kristaps Porzingis",
+        "stat": 947,
+        "team": "NYK/BOS/DAL/GSW",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 114,
         "name": "Scottie Pippen",
         "stat": 947,
         "team": "CHI",
         "era": "1987\u20132004"
-      },
-      {
-        "rank": 114,
-        "name": "Kristaps Porzingis",
-        "stat": 947,
-        "team": "NYK/DAL/BOS",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 115,
@@ -5066,7 +5066,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 116,
         "name": "Draymond Green",
-        "stat": 936,
+        "stat": 938,
         "team": "GSW",
         "era": "2012\u2013Pres"
       },
@@ -5137,7 +5137,7 @@ window.NBA_CATEGORIES = [
         "rank": 126,
         "name": "Jonas Valanciunas",
         "stat": 905,
-        "team": "TOR/MEM/NOP",
+        "team": "TOR/MEM/SAC/DEN",
         "era": "2012\u2013Pres"
       },
       {
@@ -5165,7 +5165,7 @@ window.NBA_CATEGORIES = [
         "rank": 130,
         "name": "Nikola Vucevic",
         "stat": 890,
-        "team": "ORL/CHI",
+        "team": "PHI/ORL/CHI/BOS",
         "era": "2011\u2013Pres"
       },
       {
@@ -5191,17 +5191,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 134,
-        "name": "Marcin Gortat",
-        "stat": 885,
-        "team": "ORL/PHX/WAS",
-        "era": "2008\u20132019"
-      },
-      {
-        "rank": 135,
         "name": "Dwyane Wade",
         "stat": 885,
         "team": "MIA",
         "era": "2003\u20132019"
+      },
+      {
+        "rank": 135,
+        "name": "Marcin Gortat",
+        "stat": 885,
+        "team": "ORL/PHX/WAS",
+        "era": "2008\u20132019"
       },
       {
         "rank": 136,
@@ -5249,7 +5249,7 @@ window.NBA_CATEGORIES = [
         "rank": 142,
         "name": "Jaren Jackson Jr.",
         "stat": 851,
-        "team": "MEM",
+        "team": "MEM/UTA",
         "era": "2018\u2013Pres"
       },
       {
@@ -5261,17 +5261,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 144,
-        "name": "Donyell Marshall",
-        "stat": 848,
-        "team": "GSW/UTA/CHI",
-        "era": "1996\u20132007"
-      },
-      {
-        "rank": 145,
         "name": "Dave Corzine",
         "stat": 848,
         "team": "NBA",
         "era": "Career"
+      },
+      {
+        "rank": 145,
+        "name": "Donyell Marshall",
+        "stat": 848,
+        "team": "GSW/UTA/CHI",
+        "era": "1996\u20132007"
       },
       {
         "rank": 146,
@@ -5331,8 +5331,8 @@ window.NBA_CATEGORIES = [
         "rank": 2,
         "name": "Chris Paul",
         "stat": 2728,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 3,
@@ -5358,8 +5358,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 6,
         "name": "LeBron James",
-        "stat": 2429,
-        "team": "CLE/MIA/LAL",
+        "stat": 2430,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -5415,8 +5415,8 @@ window.NBA_CATEGORIES = [
         "rank": 14,
         "name": "Russell Westbrook",
         "stat": 2038,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 15,
@@ -5456,8 +5456,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 20,
         "name": "James Harden",
-        "stat": 1801,
-        "team": "OKC/HOU/LAC",
+        "stat": 1802,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -5520,7 +5520,7 @@ window.NBA_CATEGORIES = [
         "rank": 29,
         "name": "Mike Conley",
         "stat": 1640,
-        "team": "MEM/UTA/MIN",
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -5547,23 +5547,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 33,
         "name": "Paul George",
-        "stat": 1620,
-        "team": "IND/OKC/LAC",
+        "stat": 1622,
+        "team": "IND/OKC/PHI/BOS",
         "era": "2010\u2013Pres"
       },
       {
         "rank": 34,
-        "name": "Eddie Jones",
-        "stat": 1620,
-        "team": "LAL/MIA",
-        "era": "1994\u20132008"
-      },
-      {
-        "rank": 35,
         "name": "Dwyane Wade",
         "stat": 1620,
         "team": "MIA",
         "era": "2003\u20132019"
+      },
+      {
+        "rank": 35,
+        "name": "Eddie Jones",
+        "stat": 1620,
+        "team": "LAL/MIA",
+        "era": "1994\u20132008"
       },
       {
         "rank": 36,
@@ -5652,30 +5652,30 @@ window.NBA_CATEGORIES = [
       {
         "rank": 48,
         "name": "Jrue Holiday",
-        "stat": 1535,
-        "team": "NOP/MIL/BOS",
+        "stat": 1536,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
         "rank": 49,
+        "name": "Baron Davis",
+        "stat": 1530,
+        "team": "CHA/GSW",
+        "era": "1999\u20132012"
+      },
+      {
+        "rank": 50,
         "name": "Chris Mullin",
         "stat": 1530,
         "team": "GSW/IND",
         "era": "1985\u20132001"
       },
       {
-        "rank": 50,
+        "rank": 51,
         "name": "Vince Carter",
         "stat": 1530,
         "team": "TOR/NJN",
         "era": "1998\u20132020"
-      },
-      {
-        "rank": 51,
-        "name": "Baron Davis",
-        "stat": 1530,
-        "team": "CHA/GSW",
-        "era": "1999\u20132012"
       },
       {
         "rank": 52,
@@ -5709,8 +5709,8 @@ window.NBA_CATEGORIES = [
         "rank": 56,
         "name": "Kyle Lowry",
         "stat": 1501,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 57,
@@ -5730,7 +5730,7 @@ window.NBA_CATEGORIES = [
         "rank": 59,
         "name": "Jimmy Butler III",
         "stat": 1455,
-        "team": "CHI/MIN/PHI",
+        "team": "CHI/MIN/PHI/MIA",
         "era": "2012\u2013Pres"
       },
       {
@@ -5793,7 +5793,7 @@ window.NBA_CATEGORIES = [
         "rank": 68,
         "name": "Kawhi Leonard",
         "stat": 1384,
-        "team": "SAS/LAC",
+        "team": "SAS/TOR/LAC",
         "era": "2011\u2013Pres"
       },
       {
@@ -5805,17 +5805,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 70,
-        "name": "Muggsy Bogues",
-        "stat": 1369,
-        "team": "CHA",
-        "era": "1987\u20132001"
-      },
-      {
-        "rank": 71,
         "name": "Ben Wallace",
         "stat": 1369,
         "team": "DET/WAS",
         "era": "1996\u20132012"
+      },
+      {
+        "rank": 71,
+        "name": "Muggsy Bogues",
+        "stat": 1369,
+        "team": "CHA",
+        "era": "1987\u20132001"
       },
       {
         "rank": 72,
@@ -5912,7 +5912,7 @@ window.NBA_CATEGORIES = [
         "rank": 85,
         "name": "DeMar DeRozan",
         "stat": 1256,
-        "team": "TOR/SAS/CHI",
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -5925,7 +5925,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 87,
         "name": "Draymond Green",
-        "stat": 1250,
+        "stat": 1253,
         "team": "GSW",
         "era": "2012\u2013Pres"
       },
@@ -5939,8 +5939,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 89,
         "name": "Kevin Durant",
-        "stat": 1242,
-        "team": "OKC/GSW/PHX",
+        "stat": 1243,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -6071,17 +6071,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 108,
+        "name": "Andre Drummond",
+        "stat": 1174,
+        "team": "DET/PHI/LAL/NYK",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 109,
         "name": "Mike Bibby",
         "stat": 1172,
         "team": "SAC/ATL",
         "era": "1998\u20132012"
-      },
-      {
-        "rank": 109,
-        "name": "Andre Drummond",
-        "stat": 1172,
-        "team": "DET/CHI",
-        "era": "2012\u2013Pres"
       },
       {
         "rank": 110,
@@ -6106,17 +6106,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 113,
-        "name": "Kareem Abdul-Jabbar",
-        "stat": 1160,
-        "team": "MIL/LAL",
-        "era": "1969\u20131989"
-      },
-      {
-        "rank": 114,
         "name": "Don Buse",
         "stat": 1160,
         "team": "NBA",
         "era": "Career"
+      },
+      {
+        "rank": 114,
+        "name": "Kareem Abdul-Jabbar",
+        "stat": 1160,
+        "team": "MIL/LAL",
+        "era": "1969\u20131989"
       },
       {
         "rank": 115,
@@ -6183,17 +6183,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 124,
-        "name": "Tracy McGrady",
-        "stat": 1136,
-        "team": "ORL/HOU",
-        "era": "1997\u20132012"
-      },
-      {
-        "rank": 125,
         "name": "Patrick Ewing",
         "stat": 1136,
         "team": "NYK",
         "era": "1985\u20132002"
+      },
+      {
+        "rank": 125,
+        "name": "Tracy McGrady",
+        "stat": 1136,
+        "team": "ORL/HOU",
+        "era": "1997\u20132012"
       },
       {
         "rank": 126,
@@ -6218,17 +6218,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 129,
-        "name": "Sleepy Floyd",
-        "stat": 1120,
-        "team": "GSW/HOU",
-        "era": "1982\u20131995"
-      },
-      {
-        "rank": 130,
         "name": "Lindsey Hunter",
         "stat": 1120,
         "team": "DET/MIL/LAL",
         "era": "1996\u20132007"
+      },
+      {
+        "rank": 130,
+        "name": "Sleepy Floyd",
+        "stat": 1120,
+        "team": "GSW/HOU",
+        "era": "1982\u20131995"
       },
       {
         "rank": 131,
@@ -6246,17 +6246,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 133,
+        "name": "Kentavious Caldwell-Pope",
+        "stat": 1109,
+        "team": "DET/LAL/MEM/PHI",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 134,
         "name": "Stephen Jackson",
         "stat": 1109,
         "team": "IND/GSW",
         "era": "2000\u20132014"
-      },
-      {
-        "rank": 134,
-        "name": "Kentavious Caldwell-Pope",
-        "stat": 1108,
-        "team": "DET/LAL/DEN",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 135,
@@ -6288,24 +6288,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 139,
-        "name": "Rasheed Wallace",
-        "stat": 1090,
-        "team": "POR/DET",
-        "era": "1995\u20132013"
-      },
-      {
-        "rank": 140,
         "name": "Darrell Walker",
         "stat": 1090,
         "team": "NBA",
         "era": "Career"
       },
       {
-        "rank": 141,
+        "rank": 140,
         "name": "Marcus Smart",
-        "stat": 1089,
-        "team": "BOS/MEM",
+        "stat": 1090,
+        "team": "BOS/WAS/MEM/HOU",
         "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 141,
+        "name": "Rasheed Wallace",
+        "stat": 1090,
+        "team": "POR/DET",
+        "era": "1995\u20132013"
       },
       {
         "rank": 142,
@@ -6316,17 +6316,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 143,
-        "name": "Lester Conner",
-        "stat": 1085,
-        "team": "NBA",
-        "era": "Career"
-      },
-      {
-        "rank": 144,
         "name": "Antoine Walker",
         "stat": 1085,
         "team": "BOS/MIA",
         "era": "1996\u20132008"
+      },
+      {
+        "rank": 144,
+        "name": "Lester Conner",
+        "stat": 1085,
+        "team": "NBA",
+        "era": "Career"
       },
       {
         "rank": 145,
@@ -6351,17 +6351,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 148,
-        "name": "Michael Adams",
-        "stat": 1081,
-        "team": "NBA",
-        "era": "Career"
-      },
-      {
-        "rank": 149,
         "name": "Dwight Howard",
         "stat": 1081,
         "team": "ORL/HOU/LAL",
         "era": "2004\u20132022"
+      },
+      {
+        "rank": 149,
+        "name": "Michael Adams",
+        "stat": 1081,
+        "team": "NBA",
+        "era": "Career"
       },
       {
         "rank": 150,
@@ -6385,8 +6385,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 1,
         "name": "LeBron James",
-        "stat": 16006,
-        "team": "CLE/MIA/LAL",
+        "stat": 16018,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -6434,8 +6434,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 8,
         "name": "Kevin Durant",
-        "stat": 11317,
-        "team": "OKC/GSW/PHX",
+        "stat": 11328,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -6505,8 +6505,8 @@ window.NBA_CATEGORIES = [
         "rank": 18,
         "name": "Russell Westbrook",
         "stat": 9786,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 19,
@@ -6525,8 +6525,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 21,
         "name": "DeMar DeRozan",
-        "stat": 9584,
-        "team": "TOR/SAS/CHI",
+        "stat": 9591,
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -6553,7 +6553,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 25,
         "name": "Stephen Curry",
-        "stat": 9082,
+        "stat": 9101,
         "team": "GSW",
         "era": "2009\u2013Pres"
       },
@@ -6566,17 +6566,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 27,
+        "name": "James Harden",
+        "stat": 8709,
+        "team": "OKC/HOU/LAC/CLE",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 28,
         "name": "Gary Payton",
         "stat": 8708,
         "team": "SEA/LAL",
         "era": "1990\u20132007"
-      },
-      {
-        "rank": 28,
-        "name": "James Harden",
-        "stat": 8704,
-        "team": "OKC/HOU/LAC",
-        "era": "2009\u2013Pres"
       },
       {
         "rank": 29,
@@ -6666,8 +6666,8 @@ window.NBA_CATEGORIES = [
         "rank": 41,
         "name": "Chris Paul",
         "stat": 8165,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 42,
@@ -6678,23 +6678,23 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 43,
-        "name": "Terry Cummings",
-        "stat": 8045,
-        "team": "MIL/SAS",
-        "era": "1982\u20132000"
-      },
-      {
-        "rank": 44,
         "name": "George Gervin",
         "stat": 8045,
         "team": "SAS/CHI",
         "era": "1976\u20131986"
       },
       {
+        "rank": 44,
+        "name": "Terry Cummings",
+        "stat": 8045,
+        "team": "MIL/SAS",
+        "era": "1982\u20132000"
+      },
+      {
         "rank": 45,
         "name": "Giannis Antetokounmpo",
-        "stat": 7991,
-        "team": "MIL",
+        "stat": 8017,
+        "team": "MIL/MIA",
         "era": "2013\u2013Pres"
       },
       {
@@ -6756,8 +6756,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 54,
         "name": "Nikola Vucevic",
-        "stat": 7533,
-        "team": "ORL/CHI",
+        "stat": 7535,
+        "team": "PHI/ORL/CHI/BOS",
         "era": "2011\u2013Pres"
       },
       {
@@ -6818,31 +6818,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 63,
+        "name": "Anthony Davis",
+        "stat": 7358,
+        "team": "NOP/NOH/DAL/WAS",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 64,
         "name": "Bob Pettit",
         "stat": 7349,
         "team": "STL",
         "era": "1954\u20131965"
       },
       {
-        "rank": 64,
-        "name": "Anthony Davis",
-        "stat": 7342,
-        "team": "NOP/LAL",
+        "rank": 65,
+        "name": "Damian Lillard",
+        "stat": 7325,
+        "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
       {
-        "rank": 65,
+        "rank": 66,
         "name": "Dale Ellis",
         "stat": 7323,
         "team": "SEA/MIL",
         "era": "1983\u20132000"
-      },
-      {
-        "rank": 66,
-        "name": "Damian Lillard",
-        "stat": 7313,
-        "team": "POR/MIL",
-        "era": "2012\u2013Pres"
       },
       {
         "rank": 67,
@@ -6937,22 +6937,22 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 80,
+        "name": "Brook Lopez",
+        "stat": 6965,
+        "team": "NJN/BKN/LAL/LAC",
+        "era": "2008\u2013Pres"
+      },
+      {
+        "rank": 81,
         "name": "Dave Bing",
         "stat": 6962,
         "team": "DET/WAS",
         "era": "1966\u20131978"
       },
       {
-        "rank": 81,
-        "name": "Brook Lopez",
-        "stat": 6954,
-        "team": "BKN/MIL",
-        "era": "2008\u2013Pres"
-      },
-      {
         "rank": 82,
         "name": "Nikola Jokic",
-        "stat": 6944,
+        "stat": 6962,
         "team": "DEN",
         "era": "2015\u2013Pres"
       },
@@ -7001,8 +7001,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 89,
         "name": "Kyrie Irving",
-        "stat": 6842,
-        "team": "CLE/BOS/DAL",
+        "stat": 6862,
+        "team": "CLE/BOS/DAL/BKN",
         "era": "2011\u2013Pres"
       },
       {
@@ -7015,8 +7015,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 91,
         "name": "Jrue Holiday",
-        "stat": 6790,
-        "team": "NOP/MIL/BOS",
+        "stat": 6797,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
@@ -7049,17 +7049,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 96,
+        "name": "Paul George",
+        "stat": 6705,
+        "team": "IND/OKC/PHI/BOS",
+        "era": "2010\u2013Pres"
+      },
+      {
+        "rank": 97,
         "name": "Michael Finley",
         "stat": 6696,
         "team": "DAL/SAS",
         "era": "1995\u20132010"
-      },
-      {
-        "rank": 97,
-        "name": "Paul George",
-        "stat": 6680,
-        "team": "IND/OKC/LAC",
-        "era": "2010\u2013Pres"
       },
       {
         "rank": 98,
@@ -7106,23 +7106,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 104,
         "name": "Klay Thompson",
-        "stat": 6484,
-        "team": "GSW/DAL",
+        "stat": 6495,
+        "team": "GSW/DAL/MIA",
         "era": "2011\u2013Pres"
       },
       {
         "rank": 105,
+        "name": "CJ McCollum",
+        "stat": 6456,
+        "team": "POR/NOP/ATL",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 106,
         "name": "Bob Dandridge",
         "stat": 6445,
         "team": "NBA",
         "era": "Career"
-      },
-      {
-        "rank": 106,
-        "name": "CJ McCollum",
-        "stat": 6444,
-        "team": "POR/NOP",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 107,
@@ -7140,31 +7140,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 109,
+        "name": "Devin Booker",
+        "stat": 6381,
+        "team": "PHX",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 110,
         "name": "Mike Mitchell",
         "stat": 6371,
         "team": "NBA",
         "era": "Career"
       },
       {
-        "rank": 110,
+        "rank": 111,
         "name": "Larry Nance",
         "stat": 6370,
         "team": "PHX/CLE",
         "era": "1981\u20131994"
       },
       {
-        "rank": 111,
+        "rank": 112,
         "name": "Bradley Beal",
         "stat": 6364,
-        "team": "WAS/PHX",
+        "team": "WAS/PHX/LAC",
         "era": "2012\u2013Pres"
-      },
-      {
-        "rank": 112,
-        "name": "Devin Booker",
-        "stat": 6355,
-        "team": "PHX",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 113,
@@ -7191,7 +7191,7 @@ window.NBA_CATEGORIES = [
         "rank": 116,
         "name": "Tobias Harris",
         "stat": 6285,
-        "team": "LAC/PHI",
+        "team": "MIL/DET/LAC/ORL",
         "era": "2011\u2013Pres"
       },
       {
@@ -7225,8 +7225,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 121,
         "name": "Al Horford",
-        "stat": 6214,
-        "team": "ATL/BOS",
+        "stat": 6217,
+        "team": "ATL/BOS/PHI/GSW",
         "era": "2007\u2013Pres"
       },
       {
@@ -7323,7 +7323,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 135,
         "name": "Karl-Anthony Towns",
-        "stat": 6036,
+        "stat": 6052,
         "team": "MIN/NYK",
         "era": "2015\u2013Pres"
       },
@@ -7352,7 +7352,7 @@ window.NBA_CATEGORIES = [
         "rank": 139,
         "name": "Kawhi Leonard",
         "stat": 5999,
-        "team": "SAS/LAC",
+        "team": "SAS/TOR/LAC",
         "era": "2011\u2013Pres"
       },
       {
@@ -7414,8 +7414,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 148,
         "name": "Mike Conley",
-        "stat": 5859,
-        "team": "MEM/UTA/MIN",
+        "stat": 5860,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -7454,15 +7454,15 @@ window.NBA_CATEGORIES = [
       {
         "rank": 2,
         "name": "LeBron James",
-        "stat": 8904,
-        "team": "CLE/MIA/LAL",
+        "stat": 8910,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
         "rank": 3,
         "name": "James Harden",
-        "stat": 8667,
-        "team": "OKC/HOU/LAC",
+        "stat": 8672,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -7482,8 +7482,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 6,
         "name": "Kevin Durant",
-        "stat": 7760,
-        "team": "OKC/GSW/PHX",
+        "stat": 7780,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -7517,8 +7517,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 11,
         "name": "DeMar DeRozan",
-        "stat": 6943,
-        "team": "TOR/SAS/CHI",
+        "stat": 6947,
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -7537,17 +7537,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 14,
-        "name": "Kareem Abdul-Jabbar",
-        "stat": 6712,
-        "team": "MIL/LAL",
-        "era": "1969\u20131989"
-      },
-      {
-        "rank": 15,
         "name": "Dolph Schayes",
         "stat": 6712,
         "team": "SYR/PHI",
         "era": "1949\u20131964"
+      },
+      {
+        "rank": 15,
+        "name": "Kareem Abdul-Jabbar",
+        "stat": 6712,
+        "team": "MIL/LAL",
+        "era": "1969\u20131989"
       },
       {
         "rank": 16,
@@ -7588,8 +7588,8 @@ window.NBA_CATEGORIES = [
         "rank": 21,
         "name": "Russell Westbrook",
         "stat": 6109,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 22,
@@ -7685,22 +7685,22 @@ window.NBA_CATEGORIES = [
       {
         "rank": 35,
         "name": "Damian Lillard",
-        "stat": 5308,
+        "stat": 5315,
         "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 36,
         "name": "Giannis Antetokounmpo",
-        "stat": 5233,
-        "team": "MIL",
+        "stat": 5239,
+        "team": "MIL/MIA",
         "era": "2013\u2013Pres"
       },
       {
         "rank": 37,
         "name": "Jimmy Butler III",
         "stat": 5168,
-        "team": "CHI/MIN/PHI",
+        "team": "CHI/MIN/PHI/MIA",
         "era": "2012\u2013Pres"
       },
       {
@@ -7749,8 +7749,8 @@ window.NBA_CATEGORIES = [
         "rank": 44,
         "name": "Chris Paul",
         "stat": 4858,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 45,
@@ -7852,17 +7852,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 59,
+        "name": "Anthony Davis",
+        "stat": 4506,
+        "team": "NOP/NOH/DAL/WAS",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 60,
         "name": "Chauncey Billups",
         "stat": 4496,
         "team": "DET/DEN",
         "era": "1997\u20132014"
-      },
-      {
-        "rank": 60,
-        "name": "Anthony Davis",
-        "stat": 4496,
-        "team": "NOP/LAL",
-        "era": "2012\u2013Pres"
       },
       {
         "rank": 61,
@@ -7901,31 +7901,31 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 66,
-        "name": "John Drew",
-        "stat": 4319,
-        "team": "NBA",
-        "era": "Career"
-      },
-      {
-        "rank": 67,
         "name": "Gail Goodrich",
         "stat": 4319,
         "team": "LAL/PHX",
         "era": "1965\u20131979"
       },
       {
+        "rank": 67,
+        "name": "John Drew",
+        "stat": 4319,
+        "team": "NBA",
+        "era": "Career"
+      },
+      {
         "rank": 68,
+        "name": "Stephen Curry",
+        "stat": 4311,
+        "team": "GSW",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 69,
         "name": "Shawn Kemp",
         "stat": 4304,
         "team": "SEA/CLE/POR",
         "era": "1996\u20132003"
-      },
-      {
-        "rank": 69,
-        "name": "Stephen Curry",
-        "stat": 4292,
-        "team": "GSW",
-        "era": "2009\u2013Pres"
       },
       {
         "rank": 70,
@@ -7971,17 +7971,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 76,
+        "name": "Joel Embiid",
+        "stat": 4108,
+        "team": "PHI",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 77,
         "name": "Robert Parish",
         "stat": 4106,
         "team": "BOS/GSW",
         "era": "1976\u20131997"
-      },
-      {
-        "rank": 77,
-        "name": "Joel Embiid",
-        "stat": 4093,
-        "team": "PHI",
-        "era": "2016\u2013Pres"
       },
       {
         "rank": 78,
@@ -7992,24 +7992,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 79,
+        "name": "Devin Booker",
+        "stat": 4043,
+        "team": "PHX",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 80,
         "name": "Lou Williams",
         "stat": 4042,
         "team": "PHI/LAC/ATL",
         "era": "2005\u20132022"
       },
       {
-        "rank": 80,
+        "rank": 81,
         "name": "Isiah Thomas",
         "stat": 4036,
         "team": "DET",
         "era": "1981\u20131994"
-      },
-      {
-        "rank": 81,
-        "name": "Devin Booker",
-        "stat": 4029,
-        "team": "PHX",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 82,
@@ -8147,16 +8147,16 @@ window.NBA_CATEGORIES = [
       {
         "rank": 101,
         "name": "Paul George",
-        "stat": 3660,
-        "team": "IND/OKC/LAC",
+        "stat": 3662,
+        "team": "IND/OKC/PHI/BOS",
         "era": "2010\u2013Pres"
       },
       {
         "rank": 102,
         "name": "Kyle Lowry",
         "stat": 3656,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 103,
@@ -8169,7 +8169,7 @@ window.NBA_CATEGORIES = [
         "rank": 104,
         "name": "Kevin Love",
         "stat": 3636,
-        "team": "MIN/CLE/MIA",
+        "team": "MIN/CLE/MIA/UTA",
         "era": "2008\u2013Pres"
       },
       {
@@ -8335,66 +8335,66 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 128,
+        "name": "Shai Gilgeous-Alexander",
+        "stat": 3402,
+        "team": "LAC/OKC",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 129,
         "name": "Bill Cartwright",
         "stat": 3401,
         "team": "NBA",
         "era": "Career"
       },
       {
-        "rank": 129,
+        "rank": 130,
         "name": "Tony Parker",
         "stat": 3400,
         "team": "SAS",
         "era": "2001\u20132019"
       },
       {
-        "rank": 130,
+        "rank": 131,
         "name": "Nate Thurmond",
         "stat": 3395,
         "team": "GSW/CLE",
         "era": "1963\u20131977"
       },
       {
-        "rank": 131,
+        "rank": 132,
         "name": "Billy Cunningham",
         "stat": 3394,
         "team": "NBA",
         "era": "Career"
       },
       {
-        "rank": 132,
+        "rank": 133,
         "name": "Dikembe Mutombo",
         "stat": 3391,
         "team": "DEN/ATL/HOU",
         "era": "1991\u20132009"
       },
       {
-        "rank": 133,
+        "rank": 134,
         "name": "Ricky Pierce",
         "stat": 3389,
         "team": "CHH/MIL",
         "era": "1996\u20131998"
       },
       {
-        "rank": 134,
-        "name": "Shai Gilgeous-Alexander",
-        "stat": 3387,
-        "team": "LAC/OKC",
+        "rank": 135,
+        "name": "Luka Doncic",
+        "stat": 3381,
+        "team": "DAL/LAL",
         "era": "2018\u2013Pres"
       },
       {
-        "rank": 135,
+        "rank": 136,
         "name": "Manu Ginobili",
         "stat": 3380,
         "team": "SAS",
         "era": "2002\u20132018"
-      },
-      {
-        "rank": 136,
-        "name": "Luka Doncic",
-        "stat": 3374,
-        "team": "DAL",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 137,
@@ -8406,23 +8406,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 138,
         "name": "Trae Young",
-        "stat": 3355,
-        "team": "ATL",
+        "stat": 3362,
+        "team": "ATL/WAS",
         "era": "2018\u2013Pres"
       },
       {
         "rank": 139,
         "name": "Nikola Jokic",
-        "stat": 3352,
+        "stat": 3358,
         "team": "DEN",
         "era": "2015\u2013Pres"
       },
       {
         "rank": 140,
-        "name": "Terry Cummings",
-        "stat": 3326,
-        "team": "MIL/SAS",
-        "era": "1982\u20132000"
+        "name": "Julius Randle",
+        "stat": 3330,
+        "team": "LAL/NOP/MIN/BKN",
+        "era": "2014\u2013Pres"
       },
       {
         "rank": 141,
@@ -8433,10 +8433,10 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 142,
-        "name": "Julius Randle",
-        "stat": 3325,
-        "team": "LAL/NYK",
-        "era": "2014\u2013Pres"
+        "name": "Terry Cummings",
+        "stat": 3326,
+        "team": "MIL/SAS",
+        "era": "1982\u20132000"
       },
       {
         "rank": 143,
@@ -8509,8 +8509,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 1,
         "name": "LeBron James",
-        "stat": 1630,
-        "team": "CLE/MIA/LAL",
+        "stat": 1632,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
@@ -8608,8 +8608,8 @@ window.NBA_CATEGORIES = [
         "rank": 15,
         "name": "Chris Paul",
         "stat": 1370,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 16,
@@ -8671,8 +8671,8 @@ window.NBA_CATEGORIES = [
         "rank": 24,
         "name": "Russell Westbrook",
         "stat": 1301,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 25,
@@ -8733,8 +8733,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 33,
         "name": "DeMar DeRozan",
-        "stat": 1270,
-        "team": "TOR/SAS/CHI",
+        "stat": 1272,
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -8760,24 +8760,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 37,
-        "name": "Tony Parker",
-        "stat": 1254,
-        "team": "SAS",
-        "era": "2001\u20132019"
-      },
-      {
-        "rank": 38,
         "name": "Paul Silas",
         "stat": 1254,
         "team": "PHX/BOS",
         "era": "1964\u20131980"
       },
       {
+        "rank": 38,
+        "name": "Tony Parker",
+        "stat": 1254,
+        "team": "SAS",
+        "era": "2001\u20132019"
+      },
+      {
         "rank": 39,
         "name": "Jeff Green",
         "stat": 1247,
-        "team": "SEA/OKC/BOS",
-        "era": "2007\u20132025"
+        "team": "OKC/BOS/SEA/DEN",
+        "era": "2007\u2013Pres"
       },
       {
         "rank": 40,
@@ -8795,30 +8795,30 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 42,
+        "name": "James Harden",
+        "stat": 1232,
+        "team": "OKC/HOU/LAC/CLE",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 43,
         "name": "Kyle Korver",
         "stat": 1232,
         "team": "PHI/ATL/CLE",
         "era": "2003\u20132020"
       },
       {
-        "rank": 43,
+        "rank": 44,
         "name": "Andre Iguodala",
         "stat": 1231,
         "team": "PHI/DEN/GSW",
         "era": "2004\u20132022"
       },
       {
-        "rank": 44,
-        "name": "James Harden",
-        "stat": 1230,
-        "team": "OKC/HOU/LAC",
-        "era": "2009\u2013Pres"
-      },
-      {
         "rank": 45,
         "name": "Mike Conley",
-        "stat": 1229,
-        "team": "MEM/UTA/MIN",
+        "stat": 1230,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -8838,8 +8838,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 48,
         "name": "Kevin Durant",
-        "stat": 1210,
-        "team": "OKC/GSW/PHX",
+        "stat": 1212,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -8867,22 +8867,22 @@ window.NBA_CATEGORIES = [
         "rank": 52,
         "name": "Nicolas Batum",
         "stat": 1205,
-        "team": "POR/CHA/LAC",
-        "era": "2008\u2013Pres"
+        "team": "POR/CHA/LAC/PHI",
+        "era": "2008\u20132026"
       },
       {
         "rank": 53,
-        "name": "Eddie Johnson",
-        "stat": 1199,
-        "team": "SAC/PHX/IND",
-        "era": "1981\u20131999"
-      },
-      {
-        "rank": 54,
         "name": "Derek Harper",
         "stat": 1199,
         "team": "DAL/NYK",
         "era": "1983\u20131999"
+      },
+      {
+        "rank": 54,
+        "name": "Eddie Johnson",
+        "stat": 1199,
+        "team": "SAC/PHX/IND",
+        "era": "1981\u20131999"
       },
       {
         "rank": 55,
@@ -8901,23 +8901,23 @@ window.NBA_CATEGORIES = [
       {
         "rank": 57,
         "name": "Al Horford",
-        "stat": 1190,
-        "team": "ATL/BOS",
+        "stat": 1192,
+        "team": "ATL/BOS/PHI/GSW",
         "era": "2007\u2013Pres"
       },
       {
         "rank": 58,
         "name": "Brook Lopez",
-        "stat": 1188,
-        "team": "BKN/MIL",
+        "stat": 1190,
+        "team": "NJN/BKN/LAL/LAC",
         "era": "2008\u2013Pres"
       },
       {
         "rank": 59,
         "name": "Kyle Lowry",
         "stat": 1187,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 60,
@@ -9035,7 +9035,7 @@ window.NBA_CATEGORIES = [
         "rank": 76,
         "name": "DeAndre Jordan",
         "stat": 1125,
-        "team": "LAC",
+        "team": "LAC/NYK/DEN/NOP",
         "era": "2008\u2013Pres"
       },
       {
@@ -9096,24 +9096,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 85,
-        "name": "Tom Chambers",
-        "stat": 1107,
-        "team": "SEA/PHX",
-        "era": "1981\u20131997"
-      },
-      {
-        "rank": 86,
         "name": "Jack Sikma",
         "stat": 1107,
         "team": "SEA/MIL",
         "era": "1977\u20131991"
       },
       {
-        "rank": 87,
+        "rank": 86,
         "name": "Robert Horry",
         "stat": 1107,
         "team": "LAL/SAS",
         "era": "1996\u20132007"
+      },
+      {
+        "rank": 87,
+        "name": "Tom Chambers",
+        "stat": 1107,
+        "team": "SEA/PHX",
+        "era": "1981\u20131997"
       },
       {
         "rank": 88,
@@ -9146,8 +9146,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 92,
         "name": "Jrue Holiday",
-        "stat": 1098,
-        "team": "NOP/MIL/BOS",
+        "stat": 1100,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
@@ -9208,52 +9208,52 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 101,
-        "name": "Dell Curry",
-        "stat": 1083,
-        "team": "CHH/MIL/TOR",
-        "era": "1996\u20132002"
-      },
-      {
-        "rank": 102,
         "name": "Antawn Jamison",
         "stat": 1083,
         "team": "GSW/WAS",
         "era": "1998\u20132014"
       },
       {
+        "rank": 102,
+        "name": "Dell Curry",
+        "stat": 1083,
+        "team": "CHH/MIL/TOR",
+        "era": "1996\u20132002"
+      },
+      {
         "rank": 103,
-        "name": "Lenny Wilkens",
-        "stat": 1077,
-        "team": "STL/SEA",
-        "era": "1960\u20131975"
+        "name": "Harrison Barnes",
+        "stat": 1079,
+        "team": "GSW/DAL/SAC/SAS",
+        "era": "2012\u2013Pres"
       },
       {
         "rank": 104,
+        "name": "Stephen Curry",
+        "stat": 1078,
+        "team": "GSW",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 105,
         "name": "Jeff Hornacek",
         "stat": 1077,
         "team": "PHX/UTA",
         "era": "1986\u20132000"
       },
       {
-        "rank": 105,
-        "name": "Harrison Barnes",
+        "rank": 106,
+        "name": "Lenny Wilkens",
         "stat": 1077,
-        "team": "GSW/DAL/SAC",
-        "era": "2012\u2013Pres"
+        "team": "STL/SEA",
+        "era": "1960\u20131975"
       },
       {
-        "rank": 106,
+        "rank": 107,
         "name": "LaMarcus Aldridge",
         "stat": 1076,
         "team": "POR/SAS",
         "era": "2006\u20132022"
-      },
-      {
-        "rank": 107,
-        "name": "Stephen Curry",
-        "stat": 1076,
-        "team": "GSW",
-        "era": "2009\u2013Pres"
       },
       {
         "rank": 108,
@@ -9264,17 +9264,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 109,
-        "name": "Charles Barkley",
-        "stat": 1073,
-        "team": "PHI/PHX",
-        "era": "1984\u20132000"
-      },
-      {
-        "rank": 110,
         "name": "Byron Scott",
         "stat": 1073,
         "team": "LAL",
         "era": "1996\u20131997"
+      },
+      {
+        "rank": 110,
+        "name": "Charles Barkley",
+        "stat": 1073,
+        "team": "PHI/PHX",
+        "era": "1984\u20132000"
       },
       {
         "rank": 111,
@@ -9320,17 +9320,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 117,
-        "name": "Olden Polynice",
-        "stat": 1058,
-        "team": "SAC/SEA/UTA",
-        "era": "1996\u20132001"
-      },
-      {
-        "rank": 118,
         "name": "Elton Brand",
         "stat": 1058,
         "team": "CHI/LAC/PHI",
         "era": "1999\u20132016"
+      },
+      {
+        "rank": 118,
+        "name": "Olden Polynice",
+        "stat": 1058,
+        "team": "SAC/SEA/UTA",
+        "era": "1996\u20132001"
       },
       {
         "rank": 119,
@@ -9348,17 +9348,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 121,
-        "name": "Dwyane Wade",
-        "stat": 1054,
-        "team": "MIA",
-        "era": "2003\u20132019"
-      },
-      {
-        "rank": 122,
         "name": "Avery Johnson",
         "stat": 1054,
         "team": "SAS",
         "era": "1988\u20132004"
+      },
+      {
+        "rank": 122,
+        "name": "Dwyane Wade",
+        "stat": 1054,
+        "team": "MIA",
+        "era": "2003\u20132019"
       },
       {
         "rank": 123,
@@ -9390,24 +9390,24 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 127,
+        "name": "Nikola Vucevic",
+        "stat": 1046,
+        "team": "PHI/ORL/CHI/BOS",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 128,
         "name": "Elden Campbell",
         "stat": 1045,
         "team": "LAL/CHA",
         "era": "1990\u20132005"
       },
       {
-        "rank": 128,
+        "rank": 129,
         "name": "Wilt Chamberlain",
         "stat": 1045,
         "team": "PHI/LAL",
         "era": "1959\u20131973"
-      },
-      {
-        "rank": 129,
-        "name": "Nikola Vucevic",
-        "stat": 1044,
-        "team": "ORL/CHI",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 130,
@@ -9446,17 +9446,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 135,
+        "name": "Tobias Harris",
+        "stat": 1033,
+        "team": "MIL/DET/LAC/ORL",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 136,
         "name": "Walter Davis",
         "stat": 1033,
         "team": "PHX/DEN",
         "era": "1977\u20131992"
-      },
-      {
-        "rank": 136,
-        "name": "Tobias Harris",
-        "stat": 1033,
-        "team": "LAC/PHI",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 137,
@@ -9488,17 +9488,17 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 141,
-        "name": "Reggie Theus",
-        "stat": 1026,
-        "team": "CHI/SAC",
-        "era": "1978\u20131991"
-      },
-      {
-        "rank": 142,
         "name": "Grant Hill",
         "stat": 1026,
         "team": "DET/ORL/PHX",
         "era": "1994\u20132013"
+      },
+      {
+        "rank": 142,
+        "name": "Reggie Theus",
+        "stat": 1026,
+        "team": "CHI/SAC",
+        "era": "1978\u20131991"
       },
       {
         "rank": 143,
@@ -9525,8 +9525,8 @@ window.NBA_CATEGORIES = [
         "rank": 146,
         "name": "Taj Gibson",
         "stat": 1012,
-        "team": "CHI/NYK",
-        "era": "2009\u2013Pres"
+        "team": "CHI/MIN/OKC/MEM",
+        "era": "2009\u20132026"
       },
       {
         "rank": 147,
@@ -9571,22 +9571,22 @@ window.NBA_CATEGORIES = [
       {
         "rank": 1,
         "name": "LeBron James",
-        "stat": 5673,
-        "team": "CLE/MIA/LAL",
+        "stat": 5677,
+        "team": "CLE/MIA/LAL/PHI",
         "era": "2003\u2013Pres"
       },
       {
         "rank": 2,
         "name": "Russell Westbrook",
         "stat": 5038,
-        "team": "OKC/LAC",
-        "era": "2008\u2013Pres"
+        "team": "OKC/DEN/WAS/LAL",
+        "era": "2008\u20132026"
       },
       {
         "rank": 3,
         "name": "James Harden",
-        "stat": 4532,
-        "team": "OKC/HOU/LAC",
+        "stat": 4538,
+        "team": "OKC/HOU/LAC/CLE",
         "era": "2009\u2013Pres"
       },
       {
@@ -9620,8 +9620,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 8,
         "name": "Kevin Durant",
-        "stat": 3828,
-        "team": "OKC/GSW/PHX",
+        "stat": 3837,
+        "team": "OKC/SEA/GSW/HOU",
         "era": "2007\u2013Pres"
       },
       {
@@ -9704,7 +9704,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 20,
         "name": "Stephen Curry",
-        "stat": 3320,
+        "stat": 3324,
         "team": "GSW",
         "era": "2009\u2013Pres"
       },
@@ -9768,8 +9768,8 @@ window.NBA_CATEGORIES = [
         "rank": 29,
         "name": "Chris Paul",
         "stat": 3109,
-        "team": "NOP/LAC/PHX",
-        "era": "2005\u2013Pres"
+        "team": "NOK/NOH/LAC/OKC",
+        "era": "2005\u20132026"
       },
       {
         "rank": 30,
@@ -9816,8 +9816,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 36,
         "name": "Jrue Holiday",
-        "stat": 2828,
-        "team": "NOP/MIL/BOS",
+        "stat": 2832,
+        "team": "PHI/NOP/BOS/POR",
         "era": "2009\u2013Pres"
       },
       {
@@ -9872,8 +9872,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 44,
         "name": "Giannis Antetokounmpo",
-        "stat": 2732,
-        "team": "MIL",
+        "stat": 2738,
+        "team": "MIL/MIA",
         "era": "2013\u2013Pres"
       },
       {
@@ -9915,8 +9915,8 @@ window.NBA_CATEGORIES = [
         "rank": 50,
         "name": "Kyle Lowry",
         "stat": 2632,
-        "team": "TOR/MIA",
-        "era": "2006\u2013Pres"
+        "team": "HOU/MEM/TOR/MIA",
+        "era": "2006\u20132026"
       },
       {
         "rank": 51,
@@ -9949,7 +9949,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 55,
         "name": "Damian Lillard",
-        "stat": 2559,
+        "stat": 2562,
         "team": "POR/MIL",
         "era": "2012\u2013Pres"
       },
@@ -9991,8 +9991,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 61,
         "name": "Paul George",
-        "stat": 2513,
-        "team": "IND/OKC/LAC",
+        "stat": 2516,
+        "team": "IND/OKC/PHI/BOS",
         "era": "2010\u2013Pres"
       },
       {
@@ -10027,7 +10027,7 @@ window.NBA_CATEGORIES = [
         "rank": 66,
         "name": "DeMar DeRozan",
         "stat": 2484,
-        "team": "TOR/SAS/CHI",
+        "team": "TOR/SAS/SAC/DEN",
         "era": "2009\u2013Pres"
       },
       {
@@ -10089,7 +10089,7 @@ window.NBA_CATEGORIES = [
       {
         "rank": 75,
         "name": "Nikola Jokic",
-        "stat": 2444,
+        "stat": 2448,
         "team": "DEN",
         "era": "2015\u2013Pres"
       },
@@ -10200,73 +10200,73 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 91,
-        "name": "Maurice Cheeks",
-        "stat": 2268,
-        "team": "PHI",
-        "era": "1978\u20131993"
-      },
-      {
-        "rank": 92,
         "name": "Detlef Schrempf",
         "stat": 2268,
         "team": "SEA/POR",
         "era": "1996\u20132000"
       },
       {
+        "rank": 92,
+        "name": "Maurice Cheeks",
+        "stat": 2268,
+        "team": "PHI",
+        "era": "1978\u20131993"
+      },
+      {
         "rank": 93,
+        "name": "Devin Booker",
+        "stat": 2261,
+        "team": "PHX",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 94,
         "name": "Kevin Johnson",
         "stat": 2258,
         "team": "PHX",
         "era": "1987\u20132000"
       },
       {
-        "rank": 94,
+        "rank": 95,
         "name": "Lamar Odom",
         "stat": 2253,
         "team": "LAC/LAL",
         "era": "1999\u20132013"
       },
       {
-        "rank": 95,
-        "name": "Devin Booker",
-        "stat": 2253,
-        "team": "PHX",
-        "era": "2015\u2013Pres"
+        "rank": 96,
+        "name": "Julius Randle",
+        "stat": 2251,
+        "team": "LAL/NOP/MIN/BKN",
+        "era": "2014\u2013Pres"
       },
       {
-        "rank": 96,
+        "rank": 97,
         "name": "Ron Harper",
         "stat": 2251,
         "team": "CHI/LAL",
         "era": "1996\u20132001"
       },
       {
-        "rank": 97,
+        "rank": 98,
         "name": "Sleepy Floyd",
         "stat": 2251,
         "team": "GSW/HOU",
         "era": "1982\u20131995"
       },
       {
-        "rank": 98,
+        "rank": 99,
         "name": "Monta Ellis",
         "stat": 2246,
         "team": "GSW/DAL/IND",
         "era": "2005\u20132017"
       },
       {
-        "rank": 99,
+        "rank": 100,
         "name": "Rudy Gay",
         "stat": 2245,
         "team": "MEM/SAC/SAS",
         "era": "2006\u20132023"
-      },
-      {
-        "rank": 100,
-        "name": "Julius Randle",
-        "stat": 2242,
-        "team": "LAL/NYK",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 101,
@@ -10278,15 +10278,15 @@ window.NBA_CATEGORIES = [
       {
         "rank": 102,
         "name": "Draymond Green",
-        "stat": 2230,
+        "stat": 2236,
         "team": "GSW",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 103,
         "name": "Mike Conley",
-        "stat": 2215,
-        "team": "MEM/UTA/MIN",
+        "stat": 2216,
+        "team": "MEM/MIN/UTA/BOS",
         "era": "2007\u2013Pres"
       },
       {
@@ -10383,8 +10383,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 117,
         "name": "Trae Young",
-        "stat": 2123,
-        "team": "ATL",
+        "stat": 2127,
+        "team": "ATL/WAS",
         "era": "2018\u2013Pres"
       },
       {
@@ -10432,8 +10432,8 @@ window.NBA_CATEGORIES = [
       {
         "rank": 124,
         "name": "Luka Doncic",
-        "stat": 2076,
-        "team": "DAL",
+        "stat": 2082,
+        "team": "DAL/LAL",
         "era": "2018\u2013Pres"
       },
       {
@@ -10482,7 +10482,7 @@ window.NBA_CATEGORIES = [
         "rank": 131,
         "name": "Dennis Schroder",
         "stat": 2039,
-        "team": "ATL/OKC/LAL",
+        "team": "ATL/OKC/DET/CHA",
         "era": "2013\u2013Pres"
       },
       {
@@ -10536,23 +10536,23 @@ window.NBA_CATEGORIES = [
       },
       {
         "rank": 139,
+        "name": "Karl-Anthony Towns",
+        "stat": 1966,
+        "team": "MIN/NYK",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 140,
         "name": "Joe Barry Carroll",
         "stat": 1964,
         "team": "NBA",
         "era": "Career"
       },
       {
-        "rank": 140,
-        "name": "Karl-Anthony Towns",
-        "stat": 1962,
-        "team": "MIN/NYK",
-        "era": "2015\u2013Pres"
-      },
-      {
         "rank": 141,
         "name": "Kyrie Irving",
-        "stat": 1954,
-        "team": "CLE/BOS/DAL",
+        "stat": 1960,
+        "team": "CLE/BOS/DAL/BKN",
         "era": "2011\u2013Pres"
       },
       {
@@ -10573,7 +10573,7 @@ window.NBA_CATEGORIES = [
         "rank": 144,
         "name": "Bradley Beal",
         "stat": 1947,
-        "team": "WAS/PHX",
+        "team": "WAS/PHX/LAC",
         "era": "2012\u2013Pres"
       },
       {

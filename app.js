@@ -202,7 +202,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=19`;
+      s.src = `data/niche/${shardName}.js?v=20`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -596,24 +596,50 @@
   function parseNicheWindowConfig(cat) {
     if (!cat || !cat.id || !window.SEASON_LOGS || !window.SEASON_LOGS[cat.sport]) return null;
     const id = cat.id;
-    if (id.indexOf("_w_") === -1) return null;
+    const isWindow = id.indexOf("_w_") !== -1;
+    const isSeasonCount = id.indexOf("_sc_") !== -1;
+    if (!isWindow && !isSeasonCount) return null;
 
     const sport = cat.sport;
     const metrics = SPORT_METRICS[sport] || [];
+    const mlbMap = {
+      hitting_homeRuns: "hr",
+      hitting_hits: "hits",
+      hitting_rbi: "rbi",
+      hitting_runs: "runs",
+      hitting_stolenBases: "sb",
+      pitching_strikeOuts: "so",
+      pitching_wins: "wins",
+      pitching_saves: "sv"
+    };
+    const findMlbMetric = (rawKey) => {
+      const mk = mlbMap[rawKey];
+      return mk ? metrics.find((x) => x.key === mk) : null;
+    };
+
+    if (isSeasonCount) {
+      const scM = id.match(/^(?:nba|nfl|mlb)_sc_(.+)_(\d+)$/);
+      if (!scM) return null;
+      const scKey = scM[1];
+      const threshold = parseInt(scM[2], 10);
+      const m = sport === "MLB" ? findMlbMetric(scKey) : metrics.find((x) => x.key === scKey);
+      if (!m || !(threshold > 0)) return null;
+      return {
+        sport,
+        metricKey: m.key,
+        timeframe: "since",
+        year: sport === "NFL" ? 2000 : 1996,
+        yearEnd: 2026,
+        team: "ALL",
+        constraint: "none",
+        threshold
+      };
+    }
+
     let m = null;
     if (sport === "MLB") {
-      const mlbMap = {
-        hitting_homeRuns: "hr",
-        hitting_hits: "hits",
-        hitting_rbi: "rbi",
-        hitting_runs: "runs",
-        hitting_stolenBases: "sb",
-        pitching_strikeOuts: "so",
-        pitching_wins: "wins",
-        pitching_saves: "sv"
-      };
       const mlbKey = Object.keys(mlbMap).find((k) => id.includes(`_${k}_`) || id.endsWith(`_${k}`));
-      if (mlbKey) m = metrics.find((x) => x.key === mlbMap[mlbKey]);
+      if (mlbKey) m = findMlbMetric(mlbKey);
     } else {
       m = metrics.find((x) => id.includes(`_w_${x.key}_`));
     }
@@ -621,7 +647,7 @@
 
     let timeframe = "since";
     let year = sport === "NFL" ? 2000 : 1996;
-    let yearEnd = 2025;
+    let yearEnd = 2026;
     const rangeM = id.match(/(\d{4})_(\d{4})/);
     const decM = id.match(/(\d{4})s_decade/);
     const sinceM = id.match(/since_(\d{4})/);
@@ -859,7 +885,7 @@
 
     const tf = tfSel.value;
     const minYr = sport === "NFL" ? 2000 : 1996;
-    const maxYr = 2025;
+    const maxYr = 2026;
     const prevYr = parseInt(yrSel.value, 10);
     const prevEndYr = yrEndSel ? parseInt(yrEndSel.value, 10) : 2019;
 
@@ -867,7 +893,7 @@
       yrField.classList.remove("hidden");
       if (yrEndField) yrEndField.classList.add("hidden");
       if (yrLabel) yrLabel.textContent = "Season";
-      const targetYr = prevYr >= minYr && prevYr <= maxYr ? prevYr : 2024;
+      const targetYr = prevYr >= minYr && prevYr <= maxYr ? prevYr : 2026;
       const opts = [];
       for (let y = maxYr; y >= minYr; y--) {
         const lbl = sport === "NBA" ? `${y}–${String(y + 1).slice(-2)}` : `${y}`;
@@ -910,7 +936,7 @@
     const m = metrics.find((x) => x.key === cfg.metricKey) || metrics[0];
     const tf = cfg.timeframe || "alltime";
     const yrVal = parseInt(cfg.year, 10) || 2020;
-    const yrEndVal = parseInt(cfg.yearEnd, 10) || 2025;
+    const yrEndVal = parseInt(cfg.yearEnd, 10) || 2026;
     const teamFilter = cfg.team || "ALL";
     const constraint = cfg.constraint || "none";
 
@@ -960,7 +986,7 @@
     let candidates = [];
     const minSportYr = sport === "NFL" ? 2000 : 1996;
     let minYr = minSportYr;
-    let maxYr = 2025;
+    let maxYr = 2026;
     let aggMode = "sum";
 
     if (tf === "alltime" && m.baseId) {
@@ -1010,20 +1036,22 @@
         maxYr = yrVal;
       } else if (tf === "since") {
         minYr = yrVal;
-        maxYr = 2025;
+        maxYr = 2026;
       } else if (tf === "range") {
         minYr = Math.min(yrVal, yrEndVal);
         maxYr = Math.max(yrVal, yrEndVal);
       } else if (tf === "peak") {
         minYr = minSportYr;
-        maxYr = 2025;
+        maxYr = 2026;
         aggMode = "peak";
       }
 
+      const threshold = cfg.threshold || 0;
       const agg = new Map();
       Object.keys(sLogs).forEach((yStr) => {
         const y = parseInt(yStr, 10);
         if (y < minYr || y > maxYr) return;
+        const yrTotals = threshold > 0 ? new Map() : null;
         (sLogs[yStr] || []).forEach((r) => {
           const pName = r[0];
           const pTeam = r[1] || sport;
@@ -1049,7 +1077,9 @@
           }
           d.minY = Math.min(d.minY, y);
           d.maxY = Math.max(d.maxY, y);
-          if (aggMode === "peak") {
+          if (threshold > 0) {
+            yrTotals.set(nk, (yrTotals.get(nk) || 0) + val);
+          } else if (aggMode === "peak") {
             if (val > d.stat) {
               d.stat = val;
               d.peakY = y;
@@ -1059,6 +1089,11 @@
             d.stat += val;
           }
         });
+        if (threshold > 0 && yrTotals) {
+          yrTotals.forEach((yrVal, nk) => {
+            if (yrVal >= threshold) agg.get(nk).stat += 1;
+          });
+        }
       });
 
       if (top25ChalkSet.size === 0) {
@@ -1099,7 +1134,7 @@
 
     // Apply Team & Player/Bag Constraints
     const filtered = candidates.filter((c) => {
-      if (!c.hasTeam) return false;
+      if (!c.hasTeam || !(c.stat > 0)) return false;
       if (constraint === "active") return activeSet.has(c.nk);
       if (constraint === "retired") return !activeSet.has(c.nk);
       if (constraint === "antichalk") return !top25ChalkSet.has(c.nk);
@@ -3754,7 +3789,7 @@
       const m = metrics[Math.floor(Math.random() * metrics.length)];
       const tf = timeframes[Math.floor(Math.random() * timeframes.length)];
       let yr = 2016;
-      let yrEnd = 2024;
+      let yrEnd = 2026;
       let con = "none";
 
       if (tf === "since") {
@@ -3762,13 +3797,13 @@
         yr = sinceYears[Math.floor(Math.random() * sinceYears.length)];
         con = Math.random() < 0.35 ? "antichalk" : "none";
       } else if (tf === "season") {
-        yr = Math.floor(Math.random() * (2024 - Math.max(2004, minSportYr) + 1)) + Math.max(2004, minSportYr);
+        yr = Math.floor(Math.random() * (2026 - Math.max(2004, minSportYr) + 1)) + Math.max(2004, minSportYr);
         con = "none";
       } else if (tf === "range") {
         const spans = [
           [2000, 2009],
           [2010, 2019],
-          [2015, 2024],
+          [2015, 2026],
           [2005, 2014]
         ];
         const pair = spans[Math.floor(Math.random() * spans.length)];
@@ -3932,7 +3967,7 @@
       metricKey: statSel ? statSel.value : "pts",
       timeframe: tfSel ? tfSel.value : "alltime",
       year: yrSel ? yrSel.value : 2020,
-      yearEnd: yrEndSel ? yrEndSel.value : 2025,
+      yearEnd: yrEndSel ? yrEndSel.value : 2026,
       team: teamSel ? teamSel.value : "ALL",
       constraint: conSel ? conSel.value : "none"
     });

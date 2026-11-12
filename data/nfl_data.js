@@ -41,14 +41,14 @@ window.NFL_CATEGORIES = [
       {
         "rank": 5,
         "name": "Aaron Rodgers",
-        "stat": 67273,
-        "team": "GB/NYJ",
+        "stat": 68145,
+        "team": "GB/NYJ/PIT",
         "era": "2005\u2013Pres"
       },
       {
         "rank": 6,
         "name": "Matthew Stafford",
-        "stat": 65705,
+        "stat": 66890,
         "team": "DET/LAR",
         "era": "2009\u2013Pres"
       },
@@ -110,38 +110,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 15,
+        "name": "Kirk Cousins",
+        "stat": 47040,
+        "team": "WAS/MIN/ATL/LV",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 16,
         "name": "Fran Tarkenton",
         "stat": 47003,
         "team": "MIN/NYG",
         "era": "1961\u20131978"
       },
       {
-        "rank": 16,
+        "rank": 17,
         "name": "Russell Wilson",
         "stat": 46966,
         "team": "SEA/DEN",
         "era": "2012\u20132025"
       },
       {
-        "rank": 17,
+        "rank": 18,
         "name": "Carson Palmer",
         "stat": 46247,
         "team": "CIN/ARI",
         "era": "2004\u20132017"
       },
       {
-        "rank": 18,
+        "rank": 19,
         "name": "Vinny Testaverde",
         "stat": 46233,
         "team": "TB/NYJ/BAL",
         "era": "1987\u20132007"
-      },
-      {
-        "rank": 19,
-        "name": "Kirk Cousins",
-        "stat": 45726,
-        "team": "WAS/MIN/ATL",
-        "era": "2012\u2013Pres"
       },
       {
         "rank": 20,
@@ -159,24 +159,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 22,
+        "name": "Jared Goff",
+        "stat": 41756,
+        "team": "LAR/DET",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 23,
         "name": "Derek Carr",
         "stat": 41245,
         "team": "OAK/LV/NO",
         "era": "2014\u20132024"
       },
       {
-        "rank": 23,
+        "rank": 24,
         "name": "Kerry Collins",
         "stat": 40922,
         "team": "CAR/NYG/TEN",
         "era": "1995\u20132011"
-      },
-      {
-        "rank": 24,
-        "name": "Jared Goff",
-        "stat": 40836,
-        "team": "LAR/DET",
-        "era": "2016\u2013Pres"
       },
       {
         "rank": 25,
@@ -195,44 +195,44 @@ window.NFL_CATEGORIES = [
       {
         "rank": 27,
         "name": "Andy Dalton",
-        "stat": 39793,
-        "team": "CIN/CAR",
+        "stat": 39792,
+        "team": "CIN/CAR/PHI",
         "era": "2011\u2013Pres"
       },
       {
         "rank": 28,
+        "name": "Dak Prescott",
+        "stat": 38370,
+        "team": "DAL",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 29,
         "name": "Dave Krieg",
         "stat": 38147,
         "team": "SEA/KC",
         "era": "1980\u20131998"
       },
       {
-        "rank": 29,
+        "rank": 30,
+        "name": "Patrick Mahomes",
+        "stat": 37976,
+        "team": "KC",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 31,
         "name": "Boomer Esiason",
         "stat": 37920,
         "team": "CIN/NYJ",
         "era": "1984\u20131997"
       },
       {
-        "rank": 30,
+        "rank": 32,
         "name": "Donovan McNabb",
         "stat": 37276,
         "team": "PHI/WAS",
         "era": "1999\u20132011"
-      },
-      {
-        "rank": 31,
-        "name": "Dak Prescott",
-        "stat": 37054,
-        "team": "DAL",
-        "era": "2016\u2013Pres"
-      },
-      {
-        "rank": 32,
-        "name": "Patrick Mahomes",
-        "stat": 36976,
-        "team": "KC",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 33,
@@ -369,31 +369,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 52,
+        "name": "Josh Allen",
+        "stat": 32129,
+        "team": "BUF",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 53,
         "name": "Mark Brunell",
         "stat": 32072,
         "team": "JAX/WAS",
         "era": "1994\u20132011"
       },
       {
-        "rank": 53,
+        "rank": 54,
         "name": "John Brodie",
         "stat": 31548,
         "team": "SF",
         "era": "1957\u20131973"
       },
       {
-        "rank": 54,
+        "rank": 55,
         "name": "Steve McNair",
         "stat": 31304,
         "team": "TEN/BAL",
         "era": "1995\u20132007"
-      },
-      {
-        "rank": 55,
-        "name": "Josh Allen",
-        "stat": 31141,
-        "team": "BUF",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 56,
@@ -425,24 +425,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 60,
+        "name": "Baker Mayfield",
+        "stat": 29447,
+        "team": "CLE/TB",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 61,
         "name": "Roman Gabriel",
         "stat": 29444,
         "team": "LAR/PHI",
         "era": "1962\u20131977"
       },
       {
-        "rank": 61,
+        "rank": 62,
         "name": "Jake Plummer",
         "stat": 29253,
         "team": "ARI/DEN",
         "era": "1997\u20132006"
-      },
-      {
-        "rank": 62,
-        "name": "Baker Mayfield",
-        "stat": 29140,
-        "team": "CLE/TB",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 63,
@@ -544,45 +544,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 77,
+        "name": "Justin Herbert",
+        "stat": 26411,
+        "team": "LAC",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 78,
         "name": "Jim Harbaugh",
         "stat": 26288,
         "team": "SD",
         "era": "1987\u20132000"
       },
       {
-        "rank": 78,
+        "rank": 79,
         "name": "Jim Plunkett",
         "stat": 25882,
         "team": "NE/OAK",
         "era": "1971\u20131986"
       },
       {
-        "rank": 79,
-        "name": "Justin Herbert",
-        "stat": 25636,
-        "team": "LAC",
-        "era": "2020\u2013Pres"
+        "rank": 80,
+        "name": "Jameis Winston",
+        "stat": 25820,
+        "team": "TB/NO/NYG",
+        "era": "2015\u2013Pres"
       },
       {
-        "rank": 80,
+        "rank": 81,
         "name": "Jeff Garcia",
         "stat": 25537,
         "team": "SF/PHI/TB",
         "era": "1999\u20132009"
       },
       {
-        "rank": 81,
+        "rank": 82,
         "name": "Matt Schaub",
         "stat": 25467,
         "team": "ATL/HOU/OAK/LV",
         "era": "2004\u20132020"
-      },
-      {
-        "rank": 82,
-        "name": "Jameis Winston",
-        "stat": 25271,
-        "team": "TB/NO",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 83,
@@ -628,136 +628,136 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 89,
+        "name": "Geno Smith",
+        "stat": 24246,
+        "team": "NYJ/SEA",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 90,
         "name": "Daunte Culpepper",
         "stat": 24153,
         "team": "MIN/MIA",
         "era": "1999\u20132009"
       },
       {
-        "rank": 90,
+        "rank": 91,
         "name": "Steve Bartkowski",
         "stat": 24124,
         "team": "NFL",
         "era": "1975\u20131986"
       },
       {
-        "rank": 91,
+        "rank": 92,
         "name": "Steve Beuerlein",
         "stat": 24046,
         "team": "CAR/DEN",
         "era": "1988\u20132003"
       },
       {
-        "rank": 92,
+        "rank": 93,
+        "name": "Carson Wentz",
+        "stat": 23983,
+        "team": "PHI/IND/WAS/MIN",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 94,
         "name": "Archie Manning",
         "stat": 23911,
         "team": "NO/HOU",
         "era": "1971\u20131984"
       },
       {
-        "rank": 93,
-        "name": "Carson Wentz",
-        "stat": 23902,
-        "team": "PHI/IND/WAS",
-        "era": "2016\u2013Pres"
-      },
-      {
-        "rank": 94,
+        "rank": 95,
         "name": "Brian Sipe",
         "stat": 23713,
         "team": "CLE",
         "era": "1974\u20131983"
       },
       {
-        "rank": 95,
+        "rank": 96,
         "name": "Andrew Luck",
         "stat": 23671,
         "team": "IND",
         "era": "2012\u20132018"
       },
       {
-        "rank": 96,
+        "rank": 97,
         "name": "Norm Van Brocklin",
         "stat": 23611,
         "team": "NFL",
         "era": "1949\u20131960"
       },
       {
-        "rank": 97,
+        "rank": 98,
         "name": "Otto Graham",
         "stat": 23584,
         "team": "CLE",
         "era": "1946\u20131955"
       },
       {
-        "rank": 98,
+        "rank": 99,
         "name": "Lamar Jackson",
         "stat": 23575,
         "team": "BAL",
         "era": "2018\u2013Pres"
       },
       {
-        "rank": 99,
+        "rank": 100,
         "name": "Lynn Dickey",
         "stat": 23322,
         "team": "NFL",
         "era": "1971\u20131985"
       },
       {
-        "rank": 100,
+        "rank": 101,
         "name": "Bernie Kosar",
         "stat": 23301,
         "team": "NFL",
         "era": "1985\u20131996"
       },
       {
-        "rank": 101,
-        "name": "Geno Smith",
-        "stat": 23070,
-        "team": "NYJ/SEA",
-        "era": "2013\u2013Pres"
+        "rank": 102,
+        "name": "Joe Burrow",
+        "stat": 23196,
+        "team": "CIN",
+        "era": "2020\u2013Pres"
       },
       {
-        "rank": 102,
+        "rank": 103,
         "name": "Marc Bulger",
         "stat": 22814,
         "team": "STL",
         "era": "2002\u20132009"
       },
       {
-        "rank": 103,
+        "rank": 104,
         "name": "Neil Lomax",
         "stat": 22771,
         "team": "ARI",
         "era": "1981\u20131988"
       },
       {
-        "rank": 104,
+        "rank": 105,
         "name": "Roger Staubach",
         "stat": 22700,
         "team": "DAL",
         "era": "1969\u20131979"
       },
       {
-        "rank": 105,
+        "rank": 106,
         "name": "Babe Parilli",
         "stat": 22681,
         "team": "NFL",
         "era": "1952\u20131969"
       },
       {
-        "rank": 106,
+        "rank": 107,
         "name": "Michael Vick",
         "stat": 22464,
         "team": "ATL/PHI",
         "era": "2001\u20132015"
-      },
-      {
-        "rank": 107,
-        "name": "Joe Burrow",
-        "stat": 21981,
-        "team": "CIN",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 108,
@@ -768,73 +768,73 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 109,
+        "name": "Sam Darnold",
+        "stat": 21909,
+        "team": "NYJ/CAR/SF/SEA",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 110,
         "name": "Sammy Baugh",
         "stat": 21886,
         "team": "WAS",
         "era": "1937\u20131952"
       },
       {
-        "rank": 110,
+        "rank": 111,
         "name": "Jeff Blake",
         "stat": 21711,
         "team": "NO/BAL/ARI",
         "era": "1992\u20132005"
       },
       {
-        "rank": 111,
+        "rank": 112,
         "name": "Neil O'Donnell",
         "stat": 21690,
         "team": "TEN",
         "era": "1991\u20132003"
       },
       {
-        "rank": 112,
+        "rank": 113,
         "name": "Bobby Hebert",
         "stat": 21683,
         "team": "NFL",
         "era": "1985\u20131996"
       },
       {
-        "rank": 113,
+        "rank": 114,
+        "name": "Kyler Murray",
+        "stat": 21482,
+        "team": "ARI/MIN",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 115,
         "name": "Gus Frerotte",
         "stat": 21291,
         "team": "DEN/CIN/MIN",
         "era": "1994\u20132008"
       },
       {
-        "rank": 114,
+        "rank": 116,
         "name": "Jack Kemp",
         "stat": 21218,
         "team": "NFL",
         "era": "1957\u20131969"
       },
       {
-        "rank": 115,
+        "rank": 117,
         "name": "Jim Zorn",
         "stat": 21115,
         "team": "NFL",
         "era": "1976\u20131987"
       },
       {
-        "rank": 116,
-        "name": "Sam Darnold",
-        "stat": 20991,
-        "team": "NYJ/CAR/SF",
-        "era": "2018\u2013Pres"
-      },
-      {
-        "rank": 117,
+        "rank": 118,
         "name": "Jake Delhomme",
         "stat": 20975,
         "team": "CAR/CLE",
         "era": "1999\u20132011"
-      },
-      {
-        "rank": 118,
-        "name": "Kyler Murray",
-        "stat": 20893,
-        "team": "ARI",
-        "era": "2019\u2013Pres"
       },
       {
         "rank": 119,
@@ -880,115 +880,115 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 125,
+        "name": "Trevor Lawrence",
+        "stat": 19754,
+        "team": "JAX",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 126,
+        "name": "Deshaun Watson",
+        "stat": 19710,
+        "team": "HOU/CLE",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 127,
         "name": "Charlie Conerly",
         "stat": 19488,
         "team": "NYG",
         "era": "1948\u20131961"
       },
       {
-        "rank": 126,
+        "rank": 128,
         "name": "Sam Bradford",
         "stat": 19449,
         "team": "STL/PHI/MIN",
         "era": "2010\u20132018"
       },
       {
-        "rank": 127,
+        "rank": 129,
         "name": "Brian Griese",
         "stat": 19440,
         "team": "DEN/TB/CHI",
         "era": "1998\u20132008"
       },
       {
-        "rank": 128,
+        "rank": 130,
+        "name": "Daniel Jones",
+        "stat": 19405,
+        "team": "NYG/IND",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 131,
         "name": "Chris Miller",
         "stat": 19320,
         "team": "NFL",
         "era": "1987\u20131999"
       },
       {
-        "rank": 129,
+        "rank": 132,
         "name": "Daryle Lamonica",
         "stat": 19154,
         "team": "BUF/OAK",
         "era": "1963\u20131974"
       },
       {
-        "rank": 130,
+        "rank": 133,
         "name": "Tobin Rote",
         "stat": 18850,
         "team": "NFL",
         "era": "1950\u20131966"
       },
       {
-        "rank": 131,
-        "name": "Deshaun Watson",
-        "stat": 18759,
-        "team": "HOU/CLE",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 132,
-        "name": "Trevor Lawrence",
-        "stat": 18665,
-        "team": "JAX",
-        "era": "2021\u2013Pres"
-      },
-      {
-        "rank": 133,
+        "rank": 134,
         "name": "Jalen Hurts",
-        "stat": 18604,
+        "stat": 18824,
         "team": "PHI",
         "era": "2020\u2013Pres"
       },
       {
-        "rank": 134,
+        "rank": 135,
         "name": "Billy Wade",
         "stat": 18530,
         "team": "NFL",
         "era": "1954\u20131966"
       },
       {
-        "rank": 135,
+        "rank": 136,
         "name": "Dan Pastorini",
         "stat": 18515,
         "team": "NFL",
         "era": "1971\u20131983"
       },
       {
-        "rank": 136,
+        "rank": 137,
         "name": "Mark Rypien",
         "stat": 18473,
         "team": "IND",
         "era": "1988\u20132001"
       },
       {
-        "rank": 137,
-        "name": "Daniel Jones",
-        "stat": 18437,
-        "team": "NYG/IND",
-        "era": "2019\u2013Pres"
-      },
-      {
         "rank": 138,
         "name": "Marcus Mariota",
         "stat": 18219,
-        "team": "TEN/LV/ATL",
+        "team": "TEN/LV/ATL/WAS",
         "era": "2015\u2013Pres"
       },
       {
         "rank": 139,
+        "name": "Tua Tagovailoa",
+        "stat": 18200,
+        "team": "MIA/ATL",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 140,
         "name": "Bert Jones",
         "stat": 18190,
         "team": "BAL",
         "era": "1973\u20131982"
-      },
-      {
-        "rank": 140,
-        "name": "Tua Tagovailoa",
-        "stat": 18166,
-        "team": "MIA",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 141,
@@ -1088,17 +1088,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 3,
+        "name": "Aaron Rodgers",
+        "stat": 540,
+        "team": "GB/NYJ/PIT",
+        "era": "2005\u2013Pres"
+      },
+      {
+        "rank": 4,
         "name": "Peyton Manning",
         "stat": 539,
         "team": "IND/DEN",
         "era": "1998\u20132015"
-      },
-      {
-        "rank": 4,
-        "name": "Aaron Rodgers",
-        "stat": 534,
-        "team": "GB/NYJ",
-        "era": "2005\u2013Pres"
       },
       {
         "rank": 5,
@@ -1110,7 +1110,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 6,
         "name": "Matthew Stafford",
-        "stat": 429,
+        "stat": 439,
         "team": "DET/LAR",
         "era": "2009\u2013Pres"
       },
@@ -1166,8 +1166,8 @@ window.NFL_CATEGORIES = [
       {
         "rank": 14,
         "name": "Kirk Cousins",
-        "stat": 309,
-        "team": "WAS/MIN/ATL",
+        "stat": 318,
+        "team": "WAS/MIN/ATL/LV",
         "era": "2012\u2013Pres"
       },
       {
@@ -1201,7 +1201,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 19,
         "name": "Patrick Mahomes",
-        "stat": 276,
+        "stat": 281,
         "team": "KC",
         "era": "2017\u2013Pres"
       },
@@ -1229,7 +1229,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 23,
         "name": "Jared Goff",
-        "stat": 265,
+        "stat": 271,
         "team": "LAR/DET",
         "era": "2016\u2013Pres"
       },
@@ -1242,45 +1242,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 25,
+        "name": "Dak Prescott",
+        "stat": 259,
+        "team": "DAL",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 26,
         "name": "Derek Carr",
         "stat": 257,
         "team": "OAK/LV/NO",
         "era": "2014\u20132024"
       },
       {
-        "rank": 26,
+        "rank": 27,
         "name": "Sonny Jurgensen",
         "stat": 255,
         "team": "PHI/WAS",
         "era": "1957\u20131974"
       },
       {
-        "rank": 27,
+        "rank": 28,
         "name": "Andy Dalton",
         "stat": 254,
-        "team": "CIN/CAR",
+        "team": "CIN/CAR/PHI",
         "era": "2011\u2013Pres"
       },
       {
-        "rank": 28,
+        "rank": 29,
         "name": "Dan Fouts",
         "stat": 254,
         "team": "SD",
         "era": "1973\u20131987"
       },
       {
-        "rank": 29,
+        "rank": 30,
         "name": "Drew Bledsoe",
         "stat": 251,
         "team": "NE/BUF/DAL",
         "era": "1993\u20132006"
-      },
-      {
-        "rank": 30,
-        "name": "Dak Prescott",
-        "stat": 251,
-        "team": "DAL",
-        "era": "2016\u2013Pres"
       },
       {
         "rank": 31,
@@ -1340,24 +1340,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 39,
+        "name": "Josh Allen",
+        "stat": 232,
+        "team": "BUF",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 40,
         "name": "Steve Young",
         "stat": 232,
         "team": "SF/TB",
         "era": "1985\u20131999"
       },
       {
-        "rank": 40,
+        "rank": 41,
         "name": "Jay Cutler",
         "stat": 227,
         "team": "DEN/CHI",
         "era": "2006\u20132017"
-      },
-      {
-        "rank": 41,
-        "name": "Josh Allen",
-        "stat": 226,
-        "team": "BUF",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 42,
@@ -1382,17 +1382,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 45,
-        "name": "Terry Bradshaw",
-        "stat": 212,
-        "team": "PIT",
-        "era": "1970\u20131983"
-      },
-      {
-        "rank": 46,
         "name": "Matt Hasselbeck",
         "stat": 212,
         "team": "SEA/TEN",
         "era": "1999\u20132015"
+      },
+      {
+        "rank": 46,
+        "name": "Terry Bradshaw",
+        "stat": 212,
+        "team": "PIT",
+        "era": "1970\u20131983"
       },
       {
         "rank": 47,
@@ -1439,23 +1439,23 @@ window.NFL_CATEGORIES = [
       {
         "rank": 53,
         "name": "Baker Mayfield",
-        "stat": 199,
+        "stat": 200,
         "team": "CLE/TB",
         "era": "2018\u2013Pres"
       },
       {
         "rank": 54,
-        "name": "Phil Simms",
-        "stat": 199,
-        "team": "NYG",
-        "era": "1979\u20131993"
-      },
-      {
-        "rank": 55,
         "name": "Alex Smith",
         "stat": 199,
         "team": "SF/KC/WAS",
         "era": "2005\u20132020"
+      },
+      {
+        "rank": 55,
+        "name": "Phil Simms",
+        "stat": 199,
+        "team": "NYG",
+        "era": "1979\u20131993"
       },
       {
         "rank": 56,
@@ -1466,10 +1466,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 57,
-        "name": "Steve DeBerg",
+        "name": "Bobby Layne",
         "stat": 196,
-        "team": "SF/TB/KC",
-        "era": "1978\u20131998"
+        "team": "DET/PIT",
+        "era": "1948\u20131962"
       },
       {
         "rank": 58,
@@ -1480,17 +1480,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 59,
-        "name": "Bobby Layne",
-        "stat": 196,
-        "team": "DET/PIT",
-        "era": "1948\u20131962"
-      },
-      {
-        "rank": 60,
         "name": "Norm Snead",
         "stat": 196,
         "team": "WAS/PHI/NYG",
         "era": "1961\u20131976"
+      },
+      {
+        "rank": 60,
+        "name": "Steve DeBerg",
+        "stat": 196,
+        "team": "SF/TB/KC",
+        "era": "1978\u20131998"
       },
       {
         "rank": 61,
@@ -1550,73 +1550,73 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 69,
+        "name": "Joe Burrow",
+        "stat": 180,
+        "team": "CIN",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 70,
         "name": "Rich Gannon",
         "stat": 180,
         "team": "MIN/KC/OAK",
         "era": "1987\u20132004"
       },
       {
-        "rank": 70,
+        "rank": 71,
         "name": "Ron Jaworski",
         "stat": 179,
         "team": "PHI",
         "era": "1974\u20131989"
       },
       {
-        "rank": 71,
+        "rank": 72,
         "name": "Babe Parilli",
         "stat": 178,
         "team": "NFL",
         "era": "1952\u20131969"
       },
       {
-        "rank": 72,
+        "rank": 73,
         "name": "Otto Graham",
         "stat": 174,
         "team": "CLE",
         "era": "1946\u20131955"
       },
       {
-        "rank": 73,
+        "rank": 74,
         "name": "Steve McNair",
         "stat": 174,
         "team": "TEN/BAL",
         "era": "1995\u20132007"
       },
       {
-        "rank": 74,
+        "rank": 75,
         "name": "Charlie Conerly",
         "stat": 173,
         "team": "NYG",
         "era": "1948\u20131961"
       },
       {
-        "rank": 75,
+        "rank": 76,
         "name": "Joe Namath",
         "stat": 173,
         "team": "NYJ",
         "era": "1965\u20131977"
       },
       {
-        "rank": 76,
+        "rank": 77,
         "name": "Norm Van Brocklin",
         "stat": 173,
         "team": "NFL",
         "era": "1949\u20131960"
       },
       {
-        "rank": 77,
+        "rank": 78,
         "name": "Andrew Luck",
         "stat": 171,
         "team": "IND",
         "era": "2012\u20132018"
-      },
-      {
-        "rank": 78,
-        "name": "Chris Chandler",
-        "stat": 170,
-        "team": "IND/ATL",
-        "era": "1988\u20132004"
       },
       {
         "rank": 79,
@@ -1627,38 +1627,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 80,
+        "name": "Chris Chandler",
+        "stat": 170,
+        "team": "IND/ATL",
+        "era": "1988\u20132004"
+      },
+      {
+        "rank": 81,
         "name": "Jon Kitna",
         "stat": 169,
         "team": "SEA/CIN/DET",
         "era": "1997\u20132011"
       },
       {
-        "rank": 81,
+        "rank": 82,
         "name": "Justin Herbert",
-        "stat": 167,
+        "stat": 169,
         "team": "LAC",
         "era": "2020\u2013Pres"
       },
       {
-        "rank": 82,
+        "rank": 83,
         "name": "Brad Johnson",
         "stat": 166,
         "team": "MIN/WAS/TB",
         "era": "1994\u20132008"
       },
       {
-        "rank": 83,
+        "rank": 84,
         "name": "Troy Aikman",
         "stat": 165,
         "team": "DAL",
         "era": "1989\u20132000"
-      },
-      {
-        "rank": 84,
-        "name": "Joe Burrow",
-        "stat": 164,
-        "team": "CIN",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 85,
@@ -1669,31 +1669,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 86,
+        "name": "Jameis Winston",
+        "stat": 164,
+        "team": "TB/NO/NYG",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 87,
         "name": "Jim Plunkett",
         "stat": 164,
         "team": "NE/OAK",
         "era": "1971\u20131986"
       },
       {
-        "rank": 87,
-        "name": "Trent Green",
-        "stat": 162,
-        "team": "WAS/STL/KC",
-        "era": "1997\u20132008"
-      },
-      {
         "rank": 88,
         "name": "Carson Wentz",
         "stat": 162,
-        "team": "PHI/IND/WAS",
+        "team": "PHI/IND/WAS/MIN",
         "era": "2016\u2013Pres"
       },
       {
         "rank": 89,
-        "name": "Jeff Garcia",
-        "stat": 161,
-        "team": "SF/PHI/TB",
-        "era": "1999\u20132009"
+        "name": "Trent Green",
+        "stat": 162,
+        "team": "WAS/STL/KC",
+        "era": "1997\u20132008"
       },
       {
         "rank": 90,
@@ -1711,24 +1711,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 92,
+        "name": "Jeff Garcia",
+        "stat": 161,
+        "team": "SF/PHI/TB",
+        "era": "1999\u20132009"
+      },
+      {
+        "rank": 93,
         "name": "Joe Theismann",
         "stat": 160,
         "team": "WAS",
         "era": "1974\u20131985"
       },
       {
-        "rank": 93,
+        "rank": 94,
         "name": "Tommy Kramer",
         "stat": 159,
         "team": "MIN",
         "era": "1977\u20131990"
-      },
-      {
-        "rank": 94,
-        "name": "Jameis Winston",
-        "stat": 159,
-        "team": "TB/NO",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 95,
@@ -1746,17 +1746,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 97,
-        "name": "Jeff George",
-        "stat": 154,
-        "team": "IND/ATL/OAK",
-        "era": "1990\u20132001"
-      },
-      {
-        "rank": 98,
         "name": "Brian Sipe",
         "stat": 154,
         "team": "CLE",
         "era": "1974\u20131983"
+      },
+      {
+        "rank": 98,
+        "name": "Jeff George",
+        "stat": 154,
+        "team": "IND/ATL/OAK",
+        "era": "1990\u20132001"
       },
       {
         "rank": 99,
@@ -1767,17 +1767,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 100,
-        "name": "Billy Kilmer",
-        "stat": 152,
-        "team": "NFL",
-        "era": "1961\u20131978"
-      },
-      {
-        "rank": 101,
         "name": "Bart Starr",
         "stat": 152,
         "team": "GB",
         "era": "1956\u20131971"
+      },
+      {
+        "rank": 101,
+        "name": "Billy Kilmer",
+        "stat": 152,
+        "team": "NFL",
+        "era": "1961\u20131978"
       },
       {
         "rank": 102,
@@ -1823,10 +1823,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 108,
-        "name": "Neil Lomax",
+        "name": "Geno Smith",
         "stat": 136,
-        "team": "ARI",
-        "era": "1981\u20131988"
+        "team": "NYJ/SEA",
+        "era": "2013\u2013Pres"
       },
       {
         "rank": 109,
@@ -1837,59 +1837,59 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 110,
+        "name": "Neil Lomax",
+        "stat": 136,
+        "team": "ARI",
+        "era": "1981\u20131988"
+      },
+      {
+        "rank": 111,
         "name": "Bobby Hebert",
         "stat": 135,
         "team": "NFL",
         "era": "1985\u20131996"
       },
       {
-        "rank": 111,
+        "rank": 112,
         "name": "Don Meredith",
         "stat": 135,
         "team": "DAL",
         "era": "1960\u20131968"
       },
       {
-        "rank": 112,
+        "rank": 113,
         "name": "Jeff Blake",
         "stat": 134,
         "team": "NO/BAL/ARI",
         "era": "1992\u20132005"
       },
       {
-        "rank": 113,
+        "rank": 114,
         "name": "Michael Vick",
         "stat": 133,
         "team": "ATL/PHI",
         "era": "2001\u20132015"
       },
       {
-        "rank": 114,
+        "rank": 115,
         "name": "Sam Darnold",
-        "stat": 129,
-        "team": "NYJ/CAR/SF",
+        "stat": 133,
+        "team": "NYJ/CAR/SF/SEA",
         "era": "2018\u2013Pres"
       },
       {
-        "rank": 115,
+        "rank": 116,
+        "name": "Deshaun Watson",
+        "stat": 130,
+        "team": "HOU/CLE",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 117,
         "name": "Jim Harbaugh",
         "stat": 129,
         "team": "SD",
         "era": "1987\u20132000"
-      },
-      {
-        "rank": 116,
-        "name": "Geno Smith",
-        "stat": 129,
-        "team": "NYJ/SEA",
-        "era": "2013\u2013Pres"
-      },
-      {
-        "rank": 117,
-        "name": "Deshaun Watson",
-        "stat": 129,
-        "team": "HOU/CLE",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 118,
@@ -1907,17 +1907,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 120,
+        "name": "Kyler Murray",
+        "stat": 126,
+        "team": "ARI/MIN",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 121,
         "name": "Archie Manning",
         "stat": 125,
         "team": "NO/HOU",
         "era": "1971\u20131984"
-      },
-      {
-        "rank": 121,
-        "name": "Bert Jones",
-        "stat": 124,
-        "team": "BAL",
-        "era": "1973\u20131982"
       },
       {
         "rank": 122,
@@ -1928,10 +1928,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 123,
-        "name": "Richard Todd",
+        "name": "Bert Jones",
         "stat": 124,
-        "team": "NFL",
-        "era": "1976\u20131985"
+        "team": "BAL",
+        "era": "1973\u20131982"
       },
       {
         "rank": 124,
@@ -1942,31 +1942,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 125,
+        "name": "Richard Todd",
+        "stat": 124,
+        "team": "NFL",
+        "era": "1976\u20131985"
+      },
+      {
+        "rank": 126,
         "name": "Aaron Brooks",
         "stat": 123,
         "team": "NO/OAK",
         "era": "2000\u20132006"
       },
       {
-        "rank": 126,
+        "rank": 127,
         "name": "Chris Miller",
         "stat": 123,
         "team": "NFL",
         "era": "1987\u20131999"
       },
       {
-        "rank": 127,
+        "rank": 128,
         "name": "Marc Bulger",
         "stat": 122,
         "team": "STL",
         "era": "2002\u20132009"
-      },
-      {
-        "rank": 128,
-        "name": "Kyler Murray",
-        "stat": 122,
-        "team": "ARI",
-        "era": "2019\u2013Pres"
       },
       {
         "rank": 129,
@@ -1986,7 +1986,7 @@ window.NFL_CATEGORIES = [
         "rank": 131,
         "name": "Tua Tagovailoa",
         "stat": 120,
-        "team": "MIA",
+        "team": "MIA/ATL",
         "era": "2020\u2013Pres"
       },
       {
@@ -1999,58 +1999,58 @@ window.NFL_CATEGORIES = [
       {
         "rank": 133,
         "name": "Jalen Hurts",
-        "stat": 117,
+        "stat": 118,
         "team": "PHI",
         "era": "2020\u2013Pres"
       },
       {
         "rank": 134,
+        "name": "Trevor Lawrence",
+        "stat": 116,
+        "team": "JAX",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 135,
         "name": "Frankie Albert",
         "stat": 115,
         "team": "SF",
         "era": "1946\u20131952"
       },
       {
-        "rank": 135,
+        "rank": 136,
         "name": "Mark Rypien",
         "stat": 115,
         "team": "IND",
         "era": "1988\u20132001"
       },
       {
-        "rank": 136,
+        "rank": 137,
         "name": "Gus Frerotte",
         "stat": 114,
         "team": "DEN/CIN/MIN",
         "era": "1994\u20132008"
       },
       {
-        "rank": 137,
+        "rank": 138,
         "name": "Jack Kemp",
         "stat": 114,
         "team": "NFL",
         "era": "1957\u20131969"
       },
       {
-        "rank": 138,
+        "rank": 139,
         "name": "Jay Schroeder",
         "stat": 114,
         "team": "WAS/OAK",
         "era": "1985\u20131994"
       },
       {
-        "rank": 139,
+        "rank": 140,
         "name": "Trent Dilfer",
         "stat": 113,
         "team": "TB/BAL/SEA",
         "era": "1994\u20132007"
-      },
-      {
-        "rank": 140,
-        "name": "Marcus Mariota",
-        "stat": 111,
-        "team": "TEN/LV/ATL",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 141,
@@ -2061,10 +2061,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 142,
-        "name": "Trevor Lawrence",
-        "stat": 106,
-        "team": "JAX",
-        "era": "2021\u2013Pres"
+        "name": "Marcus Mariota",
+        "stat": 111,
+        "team": "TEN/LV/ATL/WAS",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 143,
@@ -2075,17 +2075,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 144,
-        "name": "Matt Cassel",
-        "stat": 104,
-        "team": "NE/KC/MIN",
-        "era": "2005\u20132018"
-      },
-      {
-        "rank": 145,
         "name": "Eddie LeBaron",
         "stat": 104,
         "team": "NFL",
         "era": "1952\u20131963"
+      },
+      {
+        "rank": 145,
+        "name": "Matt Cassel",
+        "stat": 104,
+        "team": "NE/KC/MIN",
+        "era": "2005\u20132018"
       },
       {
         "rank": 146,
@@ -2096,31 +2096,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 147,
-        "name": "Sam Bradford",
-        "stat": 103,
-        "team": "STL/PHI/MIN",
-        "era": "2010\u20132018"
-      },
-      {
-        "rank": 148,
         "name": "Dan Pastorini",
         "stat": 103,
         "team": "NFL",
         "era": "1971\u20131983"
       },
       {
-        "rank": 149,
-        "name": "Ed Brown",
-        "stat": 102,
-        "team": "NFL",
-        "era": "1954\u20131965"
+        "rank": 148,
+        "name": "Sam Bradford",
+        "stat": 103,
+        "team": "STL/PHI/MIN",
+        "era": "2010\u20132018"
       },
       {
-        "rank": 150,
+        "rank": 149,
         "name": "Chad Pennington",
         "stat": 102,
         "team": "NYJ/MIA",
         "era": "2000\u20132010"
+      },
+      {
+        "rank": 150,
+        "name": "Ed Brown",
+        "stat": 102,
+        "team": "NFL",
+        "era": "1954\u20131965"
       }
     ]
   },
@@ -2178,24 +2178,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 7,
+        "name": "Derrick Henry",
+        "stat": 13707,
+        "team": "TEN/BAL",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 8,
         "name": "LaDainian Tomlinson",
         "stat": 13684,
         "team": "SD/NYJ",
         "era": "2001\u20132011"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "name": "Jerome Bettis",
         "stat": 13662,
         "team": "LAR/PIT",
         "era": "1993\u20132005"
-      },
-      {
-        "rank": 9,
-        "name": "Derrick Henry",
-        "stat": 13597,
-        "team": "TEN/BAL",
-        "era": "2016\u2013Pres"
       },
       {
         "rank": 10,
@@ -2416,24 +2416,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 41,
+        "name": "Saquon Barkley",
+        "stat": 8652,
+        "team": "NYG/PHI",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 42,
         "name": "Terry Allen",
         "stat": 8614,
         "team": "MIN/WAS",
         "era": "1991\u20132001"
       },
       {
-        "rank": 42,
+        "rank": 43,
         "name": "Jim Taylor",
         "stat": 8597,
         "team": "NFL",
         "era": "1958\u20131967"
-      },
-      {
-        "rank": 43,
-        "name": "Saquon Barkley",
-        "stat": 8538,
-        "team": "NYG/PHI",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 44,
@@ -2451,31 +2451,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 46,
+        "name": "Jonathan Taylor",
+        "stat": 8254,
+        "team": "IND",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 47,
         "name": "Herschel Walker",
         "stat": 8225,
         "team": "DAL/MIN/PHI",
         "era": "1986\u20131997"
       },
       {
-        "rank": 47,
+        "rank": 48,
         "name": "Roger Craig",
         "stat": 8189,
         "team": "SF",
         "era": "1983\u20131993"
       },
       {
-        "rank": 48,
+        "rank": 49,
         "name": "Gerald Riggs",
         "stat": 8188,
         "team": "ATL/WAS",
         "era": "1982\u20131991"
-      },
-      {
-        "rank": 49,
-        "name": "Jonathan Taylor",
-        "stat": 8185,
-        "team": "IND",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 50,
@@ -2521,7 +2521,7 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 56,
-        "name": "Aaron Jones",
+        "name": "Aaron Jones Sr.",
         "stat": 8062,
         "team": "GB/MIN",
         "era": "2017\u2013Pres"
@@ -2536,7 +2536,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 58,
         "name": "Christian McCaffrey",
-        "stat": 7978,
+        "stat": 8046,
         "team": "CAR/SF",
         "era": "2017\u2013Pres"
       },
@@ -2557,7 +2557,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 61,
         "name": "Josh Jacobs",
-        "stat": 7839,
+        "stat": 7883,
         "team": "LV/GB",
         "era": "2019\u2013Pres"
       },
@@ -2591,17 +2591,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 66,
+        "name": "Alvin Kamara",
+        "stat": 7407,
+        "team": "NO",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 67,
         "name": "Mike Pruitt",
         "stat": 7378,
         "team": "NFL",
         "era": "1976\u20131986"
-      },
-      {
-        "rank": 67,
-        "name": "Alvin Kamara",
-        "stat": 7375,
-        "team": "NO",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 68,
@@ -2766,37 +2766,37 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 91,
+        "name": "Tony Pollard",
+        "stat": 6377,
+        "team": "DAL/TEN",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 92,
         "name": "Brian Westbrook",
         "stat": 6335,
         "team": "PHI",
         "era": "2002\u20132010"
       },
       {
-        "rank": 92,
+        "rank": 93,
         "name": "Floyd Little",
         "stat": 6323,
         "team": "DEN",
         "era": "1967\u20131975"
       },
       {
-        "rank": 93,
+        "rank": 94,
         "name": "LeGarrette Blount",
         "stat": 6306,
         "team": "TB/NE/PHI",
         "era": "2010\u20132018"
       },
       {
-        "rank": 94,
-        "name": "Tony Pollard",
-        "stat": 6260,
-        "team": "DAL/TEN",
-        "era": "2019\u2013Pres"
-      },
-      {
         "rank": 95,
         "name": "David Montgomery",
         "stat": 6253,
-        "team": "CHI/DET",
+        "team": "CHI/DET/HOU",
         "era": "2019\u2013Pres"
       },
       {
@@ -3102,45 +3102,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 139,
-        "name": "Joe Cribbs",
-        "stat": 5356,
-        "team": "NFL",
-        "era": "1980\u20131988"
-      },
-      {
-        "rank": 140,
         "name": "Doug Martin",
         "stat": 5356,
         "team": "TB/OAK/LV",
         "era": "2012\u20132018"
       },
       {
+        "rank": 140,
+        "name": "Joe Cribbs",
+        "stat": 5356,
+        "team": "NFL",
+        "era": "1980\u20131988"
+      },
+      {
         "rank": 141,
+        "name": "D'Andre Swift",
+        "stat": 5351,
+        "team": "DET/PHI/CHI",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 142,
         "name": "Jamal Anderson",
         "stat": 5336,
         "team": "ATL",
         "era": "1994\u20132001"
       },
       {
-        "rank": 142,
+        "rank": 143,
         "name": "Hugh McElhenny",
         "stat": 5281,
         "team": "NFL",
         "era": "1952\u20131964"
       },
       {
-        "rank": 143,
+        "rank": 144,
         "name": "Ryan Mathews",
         "stat": 5261,
         "team": "SD/PHI",
         "era": "2010\u20132016"
-      },
-      {
-        "rank": 144,
-        "name": "D'Andre Swift",
-        "stat": 5251,
-        "team": "DET/PHI/CHI",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 145,
@@ -3213,7 +3213,7 @@ window.NFL_CATEGORIES = [
       {
         "rank": 3,
         "name": "Derrick Henry",
-        "stat": 128,
+        "stat": 130,
         "team": "TEN/BAL",
         "era": "2016\u2013Pres"
       },
@@ -3254,17 +3254,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 9,
-        "name": "Shaun Alexander",
-        "stat": 100,
-        "team": "SEA",
-        "era": "2000\u20132008"
-      },
-      {
-        "rank": 10,
         "name": "Marshall Faulk",
         "stat": 100,
         "team": "IND/STL",
         "era": "1994\u20132005"
+      },
+      {
+        "rank": 10,
+        "name": "Shaun Alexander",
+        "stat": 100,
+        "team": "SEA",
+        "era": "2000\u20132008"
       },
       {
         "rank": 11,
@@ -3275,45 +3275,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 12,
-        "name": "Jerome Bettis",
-        "stat": 91,
-        "team": "LAR/PIT",
-        "era": "1993\u20132005"
-      },
-      {
-        "rank": 13,
         "name": "Franco Harris",
         "stat": 91,
         "team": "PIT",
         "era": "1972\u20131984"
       },
       {
-        "rank": 14,
-        "name": "Eric Dickerson",
-        "stat": 90,
-        "team": "LAR/IND",
-        "era": "1983\u20131993"
+        "rank": 13,
+        "name": "Jerome Bettis",
+        "stat": 91,
+        "team": "LAR/PIT",
+        "era": "1993\u20132005"
       },
       {
-        "rank": 15,
+        "rank": 14,
         "name": "Curtis Martin",
         "stat": 90,
         "team": "NE/NYJ",
         "era": "1995\u20132005"
       },
       {
+        "rank": 15,
+        "name": "Eric Dickerson",
+        "stat": 90,
+        "team": "LAR/IND",
+        "era": "1983\u20131993"
+      },
+      {
         "rank": 16,
+        "name": "Josh Allen",
+        "stat": 88,
+        "team": "BUF",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 17,
         "name": "Priest Holmes",
         "stat": 86,
         "team": "BAL/KC",
         "era": "1997\u20132007"
-      },
-      {
-        "rank": 17,
-        "name": "Josh Allen",
-        "stat": 85,
-        "team": "BUF",
-        "era": "2018\u2013Pres"
       },
       {
         "rank": 18,
@@ -3338,17 +3338,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 21,
-        "name": "Ottis Anderson",
-        "stat": 81,
-        "team": "STL/NYG",
-        "era": "1979\u20131992"
-      },
-      {
-        "rank": 22,
         "name": "Frank Gore",
         "stat": 81,
         "team": "SF/IND/MIA",
         "era": "2005\u20132020"
+      },
+      {
+        "rank": 22,
+        "name": "Ottis Anderson",
+        "stat": 81,
+        "team": "STL/NYG",
+        "era": "1979\u20131992"
       },
       {
         "rank": 23,
@@ -3366,66 +3366,66 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 25,
+        "name": "Jonathan Taylor",
+        "stat": 77,
+        "team": "IND",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 26,
         "name": "Tony Dorsett",
         "stat": 77,
         "team": "DAL/DEN",
         "era": "1977\u20131988"
       },
       {
-        "rank": 26,
+        "rank": 27,
         "name": "Pete Johnson",
         "stat": 76,
         "team": "NFL",
         "era": "1977\u20131984"
       },
       {
-        "rank": 27,
+        "rank": 28,
         "name": "Cam Newton",
         "stat": 75,
         "team": "CAR/NE",
         "era": "2011\u20132021"
       },
       {
-        "rank": 28,
+        "rank": 29,
         "name": "Clinton Portis",
         "stat": 75,
         "team": "DEN/WAS",
         "era": "2002\u20132010"
       },
       {
-        "rank": 29,
+        "rank": 30,
+        "name": "Josh Jacobs",
+        "stat": 75,
+        "team": "LV/GB",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 31,
         "name": "Earl Campbell",
         "stat": 74,
         "team": "HOU/NO",
         "era": "1978\u20131985"
       },
       {
-        "rank": 30,
+        "rank": 32,
         "name": "Ezekiel Elliott",
         "stat": 74,
         "team": "DAL/NE",
         "era": "2016\u20132024"
       },
       {
-        "rank": 31,
-        "name": "Josh Jacobs",
-        "stat": 74,
-        "team": "LV/GB",
-        "era": "2019\u2013Pres"
-      },
-      {
-        "rank": 32,
+        "rank": 33,
         "name": "Leroy Kelly",
         "stat": 74,
         "team": "CLE",
         "era": "1964\u20131973"
-      },
-      {
-        "rank": 33,
-        "name": "Terry Allen",
-        "stat": 73,
-        "team": "MIN/WAS",
-        "era": "1991\u20132001"
       },
       {
         "rank": 34,
@@ -3436,31 +3436,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 35,
-        "name": "Jonathan Taylor",
+        "name": "Terry Allen",
         "stat": 73,
-        "team": "IND",
-        "era": "2020\u2013Pres"
+        "team": "MIN/WAS",
+        "era": "1991\u20132001"
       },
       {
         "rank": 36,
+        "name": "Christian McCaffrey",
+        "stat": 71,
+        "team": "CAR/SF",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 37,
         "name": "Chuck Muncie",
         "stat": 71,
         "team": "NFL",
         "era": "1976\u20131984"
       },
       {
-        "rank": 37,
+        "rank": 38,
         "name": "Joe Perry",
         "stat": 71,
         "team": "NFL",
         "era": "1948\u20131963"
-      },
-      {
-        "rank": 38,
-        "name": "Steven Jackson",
-        "stat": 69,
-        "team": "STL/ATL",
-        "era": "2004\u20132015"
       },
       {
         "rank": 39,
@@ -3478,10 +3478,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 41,
-        "name": "Maurice Jones-Drew",
-        "stat": 68,
-        "team": "JAX/OAK",
-        "era": "2006\u20132014"
+        "name": "Steven Jackson",
+        "stat": 69,
+        "team": "STL/ATL",
+        "era": "2004\u20132015"
       },
       {
         "rank": 42,
@@ -3492,45 +3492,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 43,
+        "name": "Maurice Jones-Drew",
+        "stat": 68,
+        "team": "JAX/OAK",
+        "era": "2006\u20132014"
+      },
+      {
+        "rank": 44,
         "name": "Thomas Jones",
         "stat": 68,
         "team": "CHI/NYJ",
         "era": "2000\u20132011"
       },
       {
-        "rank": 44,
+        "rank": 45,
         "name": "Todd Gurley",
         "stat": 67,
         "team": "LAR/ATL",
         "era": "2015\u20132020"
       },
       {
-        "rank": 45,
+        "rank": 46,
         "name": "Fred Taylor",
         "stat": 66,
         "team": "JAX/NE",
         "era": "1998\u20132010"
       },
       {
-        "rank": 46,
+        "rank": 47,
         "name": "Michael Turner",
         "stat": 66,
         "team": "SD/ATL",
         "era": "2004\u20132012"
       },
       {
-        "rank": 47,
+        "rank": 48,
         "name": "Ricky Williams",
         "stat": 66,
         "team": "NO/MIA",
         "era": "1999\u20132011"
-      },
-      {
-        "rank": 48,
-        "name": "Stephen Davis",
-        "stat": 65,
-        "team": "WAS/CAR",
-        "era": "1996\u20132006"
       },
       {
         "rank": 49,
@@ -3541,66 +3541,66 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 50,
-        "name": "Christian McCaffrey",
+        "name": "Stephen Davis",
         "stat": 65,
-        "team": "CAR/SF",
-        "era": "2017\u2013Pres"
+        "team": "WAS/CAR",
+        "era": "1996\u20132006"
       },
       {
         "rank": 51,
-        "name": "Willis McGahee",
-        "stat": 65,
-        "team": "BUF/BAL/DEN",
-        "era": "2004\u20132013"
-      },
-      {
-        "rank": 52,
         "name": "Thurman Thomas",
         "stat": 65,
         "team": "BUF/MIA",
         "era": "1988\u20132000"
       },
       {
-        "rank": 53,
-        "name": "Larry Csonka",
-        "stat": 64,
-        "team": "MIA/NYG",
-        "era": "1968\u20131979"
+        "rank": 52,
+        "name": "Willis McGahee",
+        "stat": 65,
+        "team": "BUF/BAL/DEN",
+        "era": "2004\u20132013"
       },
       {
-        "rank": 54,
+        "rank": 53,
         "name": "Jalen Hurts",
         "stat": 64,
         "team": "PHI",
         "era": "2020\u2013Pres"
       },
       {
+        "rank": 54,
+        "name": "Larry Csonka",
+        "stat": 64,
+        "team": "MIA/NYG",
+        "era": "1968\u20131979"
+      },
+      {
         "rank": 55,
+        "name": "Alvin Kamara",
+        "stat": 63,
+        "team": "NO",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 56,
         "name": "Lenny Moore",
         "stat": 63,
         "team": "IND",
         "era": "1956\u20131967"
       },
       {
-        "rank": 56,
-        "name": "Alvin Kamara",
-        "stat": 61,
-        "team": "NO",
-        "era": "2017\u2013Pres"
-      },
-      {
         "rank": 57,
         "name": "David Montgomery",
         "stat": 61,
-        "team": "CHI/DET",
+        "team": "CHI/DET/HOU",
         "era": "2019\u2013Pres"
       },
       {
         "rank": 58,
-        "name": "O.J. Simpson",
+        "name": "DeAngelo Williams",
         "stat": 61,
-        "team": "BUF/SF",
-        "era": "1969\u20131979"
+        "team": "CAR/PIT",
+        "era": "2006\u20132016"
       },
       {
         "rank": 59,
@@ -3611,45 +3611,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 60,
-        "name": "DeAngelo Williams",
+        "name": "O.J. Simpson",
         "stat": 61,
-        "team": "CAR/PIT",
-        "era": "2006\u20132016"
+        "team": "BUF/SF",
+        "era": "1969\u20131979"
       },
       {
         "rank": 61,
-        "name": "James Conner",
-        "stat": 60,
-        "team": "PIT/ARI",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 62,
-        "name": "Terrell Davis",
-        "stat": 60,
-        "team": "DEN",
-        "era": "1995\u20132001"
-      },
-      {
-        "rank": 63,
         "name": "Ahman Green",
         "stat": 60,
         "team": "GB/HOU",
         "era": "1998\u20132009"
       },
       {
-        "rank": 64,
+        "rank": 62,
         "name": "Brandon Jacobs",
         "stat": 60,
         "team": "NYG",
         "era": "2005\u20132013"
       },
       {
-        "rank": 65,
+        "rank": 63,
+        "name": "James Conner",
+        "stat": 60,
+        "team": "PIT/ARI",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 64,
         "name": "Joe Mixon",
         "stat": 60,
         "team": "CIN/HOU",
         "era": "2017\u20132024"
+      },
+      {
+        "rank": 65,
+        "name": "Terrell Davis",
+        "stat": 60,
+        "team": "DEN",
+        "era": "1995\u20132001"
       },
       {
         "rank": 66,
@@ -3660,66 +3660,66 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 67,
-        "name": "Mike Alstott",
-        "stat": 58,
-        "team": "TB",
-        "era": "1996\u20132006"
-      },
-      {
-        "rank": 68,
         "name": "Jamal Lewis",
         "stat": 58,
         "team": "BAL/CLE",
         "era": "2000\u20132009"
       },
       {
+        "rank": 68,
+        "name": "Mike Alstott",
+        "stat": 58,
+        "team": "TB",
+        "era": "1996\u20132006"
+      },
+      {
         "rank": 69,
-        "name": "LeGarrette Blount",
-        "stat": 56,
-        "team": "TB/NE/PHI",
-        "era": "2010\u20132018"
+        "name": "Saquon Barkley",
+        "stat": 58,
+        "team": "NYG/PHI",
+        "era": "2018\u2013Pres"
       },
       {
         "rank": 70,
-        "name": "Earnest Byner",
-        "stat": 56,
-        "team": "CLE/WAS",
-        "era": "1984\u20131997"
-      },
-      {
-        "rank": 71,
-        "name": "Roger Craig",
-        "stat": 56,
-        "team": "SF",
-        "era": "1983\u20131993"
-      },
-      {
-        "rank": 72,
-        "name": "Melvin Gordon",
-        "stat": 56,
-        "team": "SD/LAC/DEN",
-        "era": "2015\u20132023"
-      },
-      {
-        "rank": 73,
         "name": "Curt Warner",
         "stat": 56,
         "team": "NFL",
         "era": "1983\u20131990"
       },
       {
+        "rank": 71,
+        "name": "Earnest Byner",
+        "stat": 56,
+        "team": "CLE/WAS",
+        "era": "1984\u20131997"
+      },
+      {
+        "rank": 72,
+        "name": "LeGarrette Blount",
+        "stat": 56,
+        "team": "TB/NE/PHI",
+        "era": "2010\u20132018"
+      },
+      {
+        "rank": 73,
+        "name": "Melvin Gordon",
+        "stat": 56,
+        "team": "SD/LAC/DEN",
+        "era": "2015\u20132023"
+      },
+      {
         "rank": 74,
-        "name": "Tiki Barber",
-        "stat": 55,
-        "team": "NYG",
-        "era": "1997\u20132006"
+        "name": "Roger Craig",
+        "stat": 56,
+        "team": "SF",
+        "era": "1983\u20131993"
       },
       {
         "rank": 75,
-        "name": "Saquon Barkley",
+        "name": "Chris Johnson",
         "stat": 55,
-        "team": "NYG/PHI",
-        "era": "2018\u2013Pres"
+        "team": "TEN/NYJ/ARI",
+        "era": "2008\u20132017"
       },
       {
         "rank": 76,
@@ -3730,59 +3730,59 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 77,
-        "name": "Chris Johnson",
-        "stat": 55,
-        "team": "TEN/NYJ/ARI",
-        "era": "2008\u20132017"
-      },
-      {
-        "rank": 78,
         "name": "Larry Johnson",
         "stat": 55,
         "team": "KC/CIN",
         "era": "2003\u20132011"
       },
       {
+        "rank": 78,
+        "name": "Tiki Barber",
+        "stat": 55,
+        "team": "NYG",
+        "era": "1997\u20132006"
+      },
+      {
         "rank": 79,
-        "name": "Nick Chubb",
-        "stat": 54,
-        "team": "CLE",
-        "era": "2018\u20132025"
-      },
-      {
-        "rank": 80,
-        "name": "Matt Forte",
-        "stat": 54,
-        "team": "CHI/NYJ",
-        "era": "2008\u20132017"
-      },
-      {
-        "rank": 81,
-        "name": "Arian Foster",
-        "stat": 54,
-        "team": "HOU/MIA",
-        "era": "2009\u20132016"
-      },
-      {
-        "rank": 82,
-        "name": "George Rogers",
-        "stat": 54,
-        "team": "NFL",
-        "era": "1981\u20131987"
-      },
-      {
-        "rank": 83,
         "name": "Antowain Smith",
         "stat": 54,
         "team": "BUF/NE/TEN",
         "era": "1997\u20132005"
       },
       {
-        "rank": 84,
-        "name": "Marion Barber",
-        "stat": 53,
+        "rank": 80,
+        "name": "Arian Foster",
+        "stat": 54,
+        "team": "HOU/MIA",
+        "era": "2009\u20132016"
+      },
+      {
+        "rank": 81,
+        "name": "George Rogers",
+        "stat": 54,
         "team": "NFL",
-        "era": "2005\u20132011"
+        "era": "1981\u20131987"
+      },
+      {
+        "rank": 82,
+        "name": "Matt Forte",
+        "stat": 54,
+        "team": "CHI/NYJ",
+        "era": "2008\u20132017"
+      },
+      {
+        "rank": 83,
+        "name": "Nick Chubb",
+        "stat": 54,
+        "team": "CLE",
+        "era": "2018\u20132025"
+      },
+      {
+        "rank": 84,
+        "name": "Aaron Jones Sr.",
+        "stat": 53,
+        "team": "GB/MIN",
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 85,
@@ -3793,45 +3793,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 86,
-        "name": "Aaron Jones",
+        "name": "Marion Barber",
         "stat": 53,
-        "team": "GB/MIN",
-        "era": "2017\u2013Pres"
+        "team": "NFL",
+        "era": "2005\u20132011"
       },
       {
         "rank": 87,
-        "name": "Emerson Boozer",
-        "stat": 52,
-        "team": "NYJ",
-        "era": "1966\u20131975"
-      },
-      {
-        "rank": 88,
         "name": "Bill Brown",
         "stat": 52,
         "team": "NFL",
         "era": "1961\u20131974"
       },
       {
-        "rank": 89,
+        "rank": 88,
         "name": "Chris Warren",
         "stat": 52,
         "team": "PHI",
         "era": "1990\u20132000"
       },
       {
-        "rank": 90,
-        "name": "Neal Anderson",
-        "stat": 51,
-        "team": "CHI",
-        "era": "1986\u20131993"
+        "rank": 89,
+        "name": "Emerson Boozer",
+        "stat": 52,
+        "team": "NYJ",
+        "era": "1966\u20131975"
       },
       {
-        "rank": 91,
+        "rank": 90,
         "name": "Greg Bell",
         "stat": 51,
         "team": "NFL",
         "era": "1984\u20131990"
+      },
+      {
+        "rank": 91,
+        "name": "Jonathan Stewart",
+        "stat": 51,
+        "team": "CAR",
+        "era": "2008\u20132018"
       },
       {
         "rank": 92,
@@ -3842,24 +3842,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 93,
-        "name": "Jonathan Stewart",
+        "name": "Neal Anderson",
         "stat": 51,
-        "team": "CAR",
-        "era": "2008\u20132018"
+        "team": "CHI",
+        "era": "1986\u20131993"
       },
       {
         "rank": 94,
-        "name": "Paul Hornung",
-        "stat": 50,
-        "team": "GB",
-        "era": "1957\u20131966"
-      },
-      {
-        "rank": 95,
         "name": "Joe Morris",
         "stat": 50,
         "team": "NFL",
         "era": "1982\u20131991"
+      },
+      {
+        "rank": 95,
+        "name": "Paul Hornung",
+        "stat": 50,
+        "team": "GB",
+        "era": "1957\u20131966"
       },
       {
         "rank": 96,
@@ -3870,150 +3870,150 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 97,
-        "name": "James Brooks",
-        "stat": 49,
-        "team": "SD/CIN",
-        "era": "1981\u20131992"
-      },
-      {
-        "rank": 98,
-        "name": "Rick Casares",
-        "stat": 49,
-        "team": "NFL",
-        "era": "1955\u20131966"
-      },
-      {
-        "rank": 99,
-        "name": "Warrick Dunn",
-        "stat": 49,
-        "team": "TB/ATL",
-        "era": "1997\u20132008"
-      },
-      {
-        "rank": 100,
-        "name": "Rodney Hampton",
-        "stat": 49,
-        "team": "NYG",
-        "era": "1990\u20131997"
-      },
-      {
-        "rank": 101,
-        "name": "Rudi Johnson",
-        "stat": 49,
-        "team": "CIN/DET",
-        "era": "2001\u20132008"
-      },
-      {
-        "rank": 102,
-        "name": "Deuce McAllister",
-        "stat": 49,
-        "team": "NO",
-        "era": "2001\u20132008"
-      },
-      {
-        "rank": 103,
         "name": "DeMarco Murray",
         "stat": 49,
         "team": "DAL/TEN",
         "era": "2011\u20132017"
       },
       {
-        "rank": 104,
-        "name": "John Henry Johnson",
-        "stat": 48,
+        "rank": 98,
+        "name": "Deuce McAllister",
+        "stat": 49,
+        "team": "NO",
+        "era": "2001\u20132008"
+      },
+      {
+        "rank": 99,
+        "name": "James Brooks",
+        "stat": 49,
+        "team": "SD/CIN",
+        "era": "1981\u20131992"
+      },
+      {
+        "rank": 100,
+        "name": "Rick Casares",
+        "stat": 49,
         "team": "NFL",
-        "era": "1954\u20131966"
+        "era": "1955\u20131966"
+      },
+      {
+        "rank": 101,
+        "name": "Rodney Hampton",
+        "stat": 49,
+        "team": "NYG",
+        "era": "1990\u20131997"
+      },
+      {
+        "rank": 102,
+        "name": "Rudi Johnson",
+        "stat": 49,
+        "team": "CIN/DET",
+        "era": "2001\u20132008"
+      },
+      {
+        "rank": 103,
+        "name": "Warrick Dunn",
+        "stat": 49,
+        "team": "TB/ATL",
+        "era": "1997\u20132008"
+      },
+      {
+        "rank": 104,
+        "name": "D'Andre Swift",
+        "stat": 48,
+        "team": "DET/PHI/CHI",
+        "era": "2020\u2013Pres"
       },
       {
         "rank": 105,
+        "name": "Jahmyr Gibbs",
+        "stat": 48,
+        "team": "DET",
+        "era": "2023\u2013Pres"
+      },
+      {
+        "rank": 106,
         "name": "James Stewart",
         "stat": 48,
         "team": "DET",
         "era": "1995\u20132002"
       },
       {
-        "rank": 106,
-        "name": "Pete Banaszak",
-        "stat": 47,
-        "team": "LV",
-        "era": "1966\u20131978"
+        "rank": 107,
+        "name": "John Henry Johnson",
+        "stat": 48,
+        "team": "NFL",
+        "era": "1954\u20131966"
       },
       {
-        "rank": 107,
+        "rank": 108,
         "name": "Dalvin Cook",
         "stat": 47,
         "team": "MIN/NYJ",
         "era": "2017\u20132024"
       },
       {
-        "rank": 108,
+        "rank": 109,
+        "name": "Pete Banaszak",
+        "stat": 47,
+        "team": "LV",
+        "era": "1966\u20131978"
+      },
+      {
+        "rank": 110,
         "name": "Abner Haynes",
         "stat": 46,
         "team": "NFL",
         "era": "1960\u20131967"
       },
       {
-        "rank": 109,
+        "rank": 111,
         "name": "Kevin Mack",
         "stat": 46,
         "team": "CLE",
         "era": "1985\u20131993"
       },
       {
-        "rank": 110,
-        "name": "Tom Matte",
-        "stat": 45,
-        "team": "IND",
-        "era": "1961\u20131972"
-      },
-      {
-        "rank": 111,
-        "name": "Natrone Means",
-        "stat": 45,
-        "team": "SD/JAX",
-        "era": "1993\u20132000"
-      },
-      {
         "rank": 112,
-        "name": "Wilbert Montgomery",
-        "stat": 45,
-        "team": "NFL",
-        "era": "1977\u20131985"
-      },
-      {
-        "rank": 113,
         "name": "Jim Nance",
         "stat": 45,
         "team": "NFL",
         "era": "1965\u20131973"
       },
       {
-        "rank": 114,
+        "rank": 113,
         "name": "Ken Willard",
         "stat": 45,
         "team": "NFL",
         "era": "1965\u20131974"
       },
       {
+        "rank": 114,
+        "name": "Natrone Means",
+        "stat": 45,
+        "team": "SD/JAX",
+        "era": "1993\u20132000"
+      },
+      {
         "rank": 115,
+        "name": "Tom Matte",
+        "stat": 45,
+        "team": "IND",
+        "era": "1961\u20131972"
+      },
+      {
+        "rank": 116,
+        "name": "Wilbert Montgomery",
+        "stat": 45,
+        "team": "NFL",
+        "era": "1977\u20131985"
+      },
+      {
+        "rank": 117,
         "name": "Jamaal Charles",
         "stat": 44,
         "team": "KC",
         "era": "2008\u20132018"
-      },
-      {
-        "rank": 116,
-        "name": "T.J. Duckett",
-        "stat": 44,
-        "team": "ATL/WAS/DET",
-        "era": "2002\u20132008"
-      },
-      {
-        "rank": 117,
-        "name": "Otto Graham",
-        "stat": 44,
-        "team": "CLE",
-        "era": "1946\u20131955"
       },
       {
         "rank": 118,
@@ -4024,31 +4024,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 119,
-        "name": "Marion Butts",
-        "stat": 43,
-        "team": "NFL",
-        "era": "1989\u20131995"
+        "name": "Otto Graham",
+        "stat": 44,
+        "team": "CLE",
+        "era": "1946\u20131955"
       },
       {
         "rank": 120,
-        "name": "Sam Cunningham",
-        "stat": 43,
-        "team": "NE",
-        "era": "1973\u20131982"
+        "name": "T.J. Duckett",
+        "stat": 44,
+        "team": "ATL/WAS/DET",
+        "era": "2002\u20132008"
       },
       {
         "rank": 121,
         "name": "Austin Ekeler",
         "stat": 43,
         "team": "LAC/WAS",
-        "era": "2017\u20132025"
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 122,
-        "name": "Jahmyr Gibbs",
+        "name": "Dan Towler",
         "stat": 43,
-        "team": "DET",
-        "era": "2023\u2013Pres"
+        "team": "LAR",
+        "era": "1950\u20131955"
       },
       {
         "rank": 123,
@@ -4059,24 +4059,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 124,
-        "name": "Dan Towler",
+        "name": "Marion Butts",
         "stat": 43,
-        "team": "LAR",
-        "era": "1950\u20131955"
+        "team": "NFL",
+        "era": "1989\u20131995"
       },
       {
         "rank": 125,
+        "name": "Sam Cunningham",
+        "stat": 43,
+        "team": "NE",
+        "era": "1973\u20131982"
+      },
+      {
+        "rank": 126,
         "name": "Steve Young",
         "stat": 43,
         "team": "SF/TB",
         "era": "1985\u20131999"
-      },
-      {
-        "rank": 126,
-        "name": "Le'Veon Bell",
-        "stat": 42,
-        "team": "PIT/NYJ",
-        "era": "2013\u20132021"
       },
       {
         "rank": 127,
@@ -4087,164 +4087,164 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 128,
-        "name": "Calvin Hill",
-        "stat": 42,
-        "team": "NFL",
-        "era": "1969\u20131981"
-      },
-      {
-        "rank": 129,
-        "name": "Don Perkins",
-        "stat": 42,
-        "team": "DAL",
-        "era": "1961\u20131968"
-      },
-      {
-        "rank": 130,
         "name": "Billy Sims",
         "stat": 42,
         "team": "DET",
         "era": "1980\u20131984"
       },
       {
-        "rank": 131,
-        "name": "Donny Anderson",
-        "stat": 41,
+        "rank": 129,
+        "name": "Calvin Hill",
+        "stat": 42,
         "team": "NFL",
-        "era": "1966\u20131974"
+        "era": "1969\u20131981"
+      },
+      {
+        "rank": 130,
+        "name": "Don Perkins",
+        "stat": 42,
+        "team": "DAL",
+        "era": "1961\u20131968"
+      },
+      {
+        "rank": 131,
+        "name": "Kyren Williams",
+        "stat": 42,
+        "team": "LAR",
+        "era": "2022\u2013Pres"
       },
       {
         "rank": 132,
-        "name": "Johnny Hector",
-        "stat": 41,
-        "team": "NYJ",
-        "era": "1983\u20131992"
+        "name": "Le'Veon Bell",
+        "stat": 42,
+        "team": "PIT/NYJ",
+        "era": "2013\u20132021"
       },
       {
         "rank": 133,
-        "name": "D'Andre Swift",
-        "stat": 41,
-        "team": "DET/PHI/CHI",
-        "era": "2020\u2013Pres"
-      },
-      {
-        "rank": 134,
         "name": "Brian Westbrook",
         "stat": 41,
         "team": "PHI",
         "era": "2002\u20132010"
       },
       {
+        "rank": 134,
+        "name": "Donny Anderson",
+        "stat": 41,
+        "team": "NFL",
+        "era": "1966\u20131974"
+      },
+      {
         "rank": 135,
+        "name": "Johnny Hector",
+        "stat": 41,
+        "team": "NYJ",
+        "era": "1983\u20131992"
+      },
+      {
+        "rank": 136,
         "name": "Alan Ameche",
         "stat": 40,
         "team": "IND",
         "era": "1955\u20131960"
       },
       {
-        "rank": 136,
-        "name": "Ted Brown",
-        "stat": 40,
-        "team": "MIN",
-        "era": "1979\u20131986"
-      },
-      {
         "rank": 137,
-        "name": "Ron Johnson",
-        "stat": 40,
-        "team": "NFL",
-        "era": "1969\u20131975"
-      },
-      {
-        "rank": 138,
-        "name": "Jack Kemp",
-        "stat": 40,
-        "team": "NFL",
-        "era": "1957\u20131969"
-      },
-      {
-        "rank": 139,
-        "name": "Ollie Matson",
-        "stat": 40,
-        "team": "NFL",
-        "era": "1952\u20131966"
-      },
-      {
-        "rank": 140,
-        "name": "Don McCauley",
-        "stat": 40,
-        "team": "IND",
-        "era": "1971\u20131981"
-      },
-      {
-        "rank": 141,
         "name": "Christian Okoye",
         "stat": 40,
         "team": "KC",
         "era": "1987\u20131992"
       },
       {
-        "rank": 142,
+        "rank": 138,
+        "name": "Don McCauley",
+        "stat": 40,
+        "team": "IND",
+        "era": "1971\u20131981"
+      },
+      {
+        "rank": 139,
         "name": "J.D. Smith",
         "stat": 40,
         "team": "NFL",
         "era": "1956\u20131966"
       },
       {
+        "rank": 140,
+        "name": "Jack Kemp",
+        "stat": 40,
+        "team": "NFL",
+        "era": "1957\u20131969"
+      },
+      {
+        "rank": 141,
+        "name": "James Cook III",
+        "stat": 40,
+        "team": "BUF",
+        "era": "2022\u2013Pres"
+      },
+      {
+        "rank": 142,
+        "name": "Ollie Matson",
+        "stat": 40,
+        "team": "NFL",
+        "era": "1952\u20131966"
+      },
+      {
         "rank": 143,
+        "name": "Ron Johnson",
+        "stat": 40,
+        "team": "NFL",
+        "era": "1969\u20131975"
+      },
+      {
+        "rank": 144,
+        "name": "Ted Brown",
+        "stat": 40,
+        "team": "MIN",
+        "era": "1979\u20131986"
+      },
+      {
+        "rank": 145,
         "name": "Tyrone Wheatley",
         "stat": 40,
         "team": "OAK/LV",
         "era": "1995\u20132004"
       },
       {
-        "rank": 144,
-        "name": "Joseph Addai",
+        "rank": 146,
+        "name": "Alex Webster",
         "stat": 39,
-        "team": "IND",
-        "era": "2006\u20132011"
+        "team": "NYG",
+        "era": "1955\u20131964"
       },
       {
-        "rank": 145,
+        "rank": 147,
         "name": "Charlie Garner",
         "stat": 39,
         "team": "PHI/SF/OAK",
         "era": "1994\u20132004"
       },
       {
-        "rank": 146,
+        "rank": 148,
         "name": "Dalton Hilliard",
         "stat": 39,
         "team": "NO",
         "era": "1986\u20131993"
       },
       {
-        "rank": 147,
+        "rank": 149,
         "name": "David Johnson",
         "stat": 39,
         "team": "ARI/HOU",
         "era": "2015\u20132022"
       },
       {
-        "rank": 148,
+        "rank": 150,
         "name": "Gale Sayers",
         "stat": 39,
         "team": "CHI",
         "era": "1965\u20131971"
-      },
-      {
-        "rank": 149,
-        "name": "Y.A. Tittle",
-        "stat": 39,
-        "team": "SF/NYG",
-        "era": "1948\u20131964"
-      },
-      {
-        "rank": 150,
-        "name": "Alex Webster",
-        "stat": 39,
-        "team": "NYG",
-        "era": "1955\u20131964"
       }
     ]
   },
@@ -4372,31 +4372,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 17,
+        "name": "Travis Kelce",
+        "stat": 13484,
+        "team": "KC",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 18,
+        "name": "Mike Evans",
+        "stat": 13472,
+        "team": "TB/SF",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 19,
         "name": "Torry Holt",
         "stat": 13382,
         "team": "STL/JAX",
         "era": "1999\u20132009"
       },
       {
-        "rank": 18,
-        "name": "Mike Evans",
-        "stat": 13378,
-        "team": "TB",
-        "era": "2014\u2013Pres"
-      },
-      {
-        "rank": 19,
+        "rank": 20,
         "name": "DeAndre Hopkins",
         "stat": 13295,
         "team": "HOU/ARI/KC",
         "era": "2013\u20132025"
-      },
-      {
-        "rank": 20,
-        "name": "Travis Kelce",
-        "stat": 13248,
-        "team": "KC",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 21,
@@ -4407,17 +4407,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 22,
+        "name": "Davante Adams",
+        "stat": 13113,
+        "team": "GB/LV/NYJ/LAR",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 23,
         "name": "Steve Largent",
         "stat": 13089,
         "team": "SEA",
         "era": "1976\u20131989"
-      },
-      {
-        "rank": 23,
-        "name": "Davante Adams",
-        "stat": 13074,
-        "team": "GB/LV/NYJ",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 24,
@@ -4442,31 +4442,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 27,
+        "name": "Keenan Allen",
+        "stat": 12402,
+        "team": "SD/LAC/CHI/IND",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 28,
         "name": "Brandon Marshall",
         "stat": 12351,
         "team": "DEN/MIA/CHI/NYJ",
         "era": "2006\u20132018"
       },
       {
-        "rank": 28,
+        "rank": 29,
         "name": "Antonio Brown",
         "stat": 12291,
         "team": "PIT/TB",
         "era": "2010\u20132021"
       },
       {
-        "rank": 29,
+        "rank": 30,
         "name": "Jimmy Smith",
         "stat": 12287,
         "team": "JAX",
         "era": "1992\u20132005"
-      },
-      {
-        "rank": 30,
-        "name": "Keenan Allen",
-        "stat": 12196,
-        "team": "SD/LAC/CHI",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 31,
@@ -4513,8 +4513,8 @@ window.NFL_CATEGORIES = [
       {
         "rank": 37,
         "name": "Stefon Diggs",
-        "stat": 11674,
-        "team": "MIN/BUF/HOU",
+        "stat": 11807,
+        "team": "MIN/BUF/HOU/WAS",
         "era": "2015\u2013Pres"
       },
       {
@@ -4673,17 +4673,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 60,
+        "name": "Brandin Cooks",
+        "stat": 9869,
+        "team": "NO/NE/LAR/SF",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 61,
         "name": "Drew Hill",
         "stat": 9831,
         "team": "NFL",
         "era": "1979\u20131993"
-      },
-      {
-        "rank": 61,
-        "name": "Brandin Cooks",
-        "stat": 9818,
-        "team": "NO/NE/LAR/HOU/DAL",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 62,
@@ -4827,45 +4827,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 82,
+        "name": "Justin Jefferson",
+        "stat": 8873,
+        "team": "MIN/CLE",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 83,
         "name": "Mark Duper",
         "stat": 8869,
         "team": "MIA",
         "era": "1982\u20131992"
       },
       {
-        "rank": 83,
+        "rank": 84,
         "name": "Terry Glenn",
         "stat": 8823,
         "team": "NE/GB/DAL",
         "era": "1996\u20132007"
       },
       {
-        "rank": 84,
+        "rank": 85,
         "name": "Terance Mathis",
         "stat": 8809,
         "team": "ATL",
         "era": "1990\u20132002"
       },
       {
-        "rank": 85,
+        "rank": 86,
         "name": "Mark Carrier",
         "stat": 8763,
         "team": "NFL",
         "era": "1987\u20131998"
       },
       {
-        "rank": 86,
+        "rank": 87,
         "name": "Joe Horn",
         "stat": 8744,
         "team": "NO",
         "era": "1996\u20132007"
-      },
-      {
-        "rank": 87,
-        "name": "Justin Jefferson",
-        "stat": 8738,
-        "team": "MIN",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 88,
@@ -4911,234 +4911,234 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 94,
+        "name": "Cooper Kupp",
+        "stat": 8607,
+        "team": "LAR/SEA",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 95,
         "name": "Jordy Nelson",
         "stat": 8587,
         "team": "GB/OAK",
         "era": "2008\u20132018"
       },
       {
-        "rank": 95,
+        "rank": 96,
         "name": "Paul Warfield",
         "stat": 8565,
         "team": "CLE/MIA",
         "era": "1964\u20131977"
       },
       {
-        "rank": 96,
+        "rank": 97,
         "name": "Jimmy Graham",
         "stat": 8545,
         "team": "NO/SEA/GB",
         "era": "2010\u20132023"
       },
       {
-        "rank": 97,
+        "rank": 98,
         "name": "Plaxico Burress",
         "stat": 8499,
         "team": "PIT/NYG",
         "era": "2000\u20132012"
       },
       {
-        "rank": 98,
-        "name": "Cooper Kupp",
+        "rank": 99,
+        "name": "DJ Moore",
         "stat": 8498,
-        "team": "LAR",
-        "era": "2017\u2013Pres"
+        "team": "BUF",
+        "era": "2018\u2013Pres"
       },
       {
-        "rank": 99,
+        "rank": 100,
         "name": "Adam Thielen",
         "stat": 8497,
         "team": "MIN/CAR",
         "era": "2014\u20132025"
       },
       {
-        "rank": 100,
+        "rank": 101,
+        "name": "George Kittle",
+        "stat": 8491,
+        "team": "SF",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 102,
         "name": "Billy Howton",
         "stat": 8459,
         "team": "NFL",
         "era": "1952\u20131963"
       },
       {
-        "rank": 101,
+        "rank": 103,
         "name": "Tommy McDonald",
         "stat": 8410,
         "team": "NFL",
         "era": "1957\u20131968"
       },
       {
-        "rank": 102,
-        "name": "DJ Moore",
-        "stat": 8391,
-        "team": "NFL",
-        "era": "2018\u2013Pres"
-      },
-      {
-        "rank": 103,
+        "rank": 104,
         "name": "Eddie Kennison",
         "stat": 8345,
         "team": "CHI/KC",
         "era": "1996\u20132008"
       },
       {
-        "rank": 104,
+        "rank": 105,
+        "name": "CeeDee Lamb",
+        "stat": 8320,
+        "team": "DAL",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 106,
         "name": "Wesley Walker",
         "stat": 8306,
         "team": "NYJ",
         "era": "1977\u20131989"
       },
       {
-        "rank": 105,
+        "rank": 107,
         "name": "Greg Jennings",
         "stat": 8291,
         "team": "GB/MIN",
         "era": "2006\u20132015"
       },
       {
-        "rank": 106,
+        "rank": 108,
         "name": "Golden Tate",
         "stat": 8278,
         "team": "SEA/DET/NYG",
         "era": "2010\u20132020"
       },
       {
-        "rank": 107,
+        "rank": 109,
         "name": "Carroll Dale",
         "stat": 8277,
         "team": "NFL",
         "era": "1960\u20131973"
       },
       {
-        "rank": 108,
-        "name": "George Kittle",
-        "stat": 8276,
-        "team": "SF",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 109,
+        "rank": 110,
         "name": "Robert Woods",
         "stat": 8233,
         "team": "BUF/LAR/HOU",
         "era": "2013\u20132024"
       },
       {
-        "rank": 110,
+        "rank": 111,
         "name": "Curtis Conway",
         "stat": 8230,
         "team": "SD/NYJ/SF",
         "era": "1993\u20132004"
       },
       {
-        "rank": 111,
+        "rank": 112,
         "name": "Ernest Givins",
         "stat": 8215,
         "team": "NFL",
         "era": "1986\u20131995"
       },
       {
-        "rank": 112,
+        "rank": 113,
         "name": "Jeff Graham",
         "stat": 8172,
         "team": "SD",
         "era": "1991\u20132001"
       },
       {
-        "rank": 113,
+        "rank": 114,
         "name": "Eric Martin",
         "stat": 8161,
         "team": "NFL",
         "era": "1985\u20131994"
       },
       {
-        "rank": 114,
+        "rank": 115,
         "name": "Sterling Sharpe",
         "stat": 8134,
         "team": "GB",
         "era": "1988\u20131994"
       },
       {
-        "rank": 115,
+        "rank": 116,
+        "name": "A.J. Brown",
+        "stat": 8130,
+        "team": "TEN/PHI/NE",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 117,
         "name": "Webster Slaughter",
         "stat": 8111,
         "team": "NFL",
         "era": "1986\u20131998"
       },
       {
-        "rank": 116,
+        "rank": 118,
         "name": "Haven Moses",
         "stat": 8091,
         "team": "NFL",
         "era": "1968\u20131981"
       },
       {
-        "rank": 117,
+        "rank": 119,
         "name": "Mike Wallace",
         "stat": 8072,
         "team": "PIT/MIA/MIN",
         "era": "2009\u20132018"
       },
       {
-        "rank": 118,
-        "name": "A.J. Brown",
-        "stat": 8055,
-        "team": "TEN/PHI",
-        "era": "2019\u2013Pres"
-      },
-      {
-        "rank": 119,
+        "rank": 120,
         "name": "Art Powell",
         "stat": 8046,
         "team": "NFL",
         "era": "1959\u20131968"
       },
       {
-        "rank": 120,
+        "rank": 121,
         "name": "Bill Brooks",
         "stat": 8001,
         "team": "NFL",
         "era": "1986\u20131996"
       },
       {
-        "rank": 121,
+        "rank": 122,
         "name": "Don Hutson",
         "stat": 7991,
         "team": "GB",
         "era": "1935\u20131945"
       },
       {
-        "rank": 122,
+        "rank": 123,
         "name": "Tony Hill",
         "stat": 7988,
         "team": "DAL",
         "era": "1977\u20131986"
       },
       {
-        "rank": 123,
+        "rank": 124,
         "name": "Odell Beckham Jr.",
         "stat": 7987,
         "team": "NYG/CLE/LAR/BAL",
         "era": "2014\u2013Pres"
       },
       {
-        "rank": 124,
+        "rank": 125,
         "name": "Ozzie Newsome",
         "stat": 7980,
         "team": "CLE",
         "era": "1978\u20131990"
       },
       {
-        "rank": 125,
+        "rank": 126,
         "name": "Bobby Mitchell",
         "stat": 7954,
         "team": "NFL",
         "era": "1958\u20131968"
-      },
-      {
-        "rank": 126,
-        "name": "CeeDee Lamb",
-        "stat": 7923,
-        "team": "DAL",
-        "era": "2020\u2013Pres"
       },
       {
         "rank": 127,
@@ -5156,31 +5156,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 129,
+        "name": "Chris Godwin Jr.",
+        "stat": 7885,
+        "team": "TB",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 130,
         "name": "Jarvis Landry",
         "stat": 7870,
         "team": "MIA/CLE/NO",
         "era": "2014\u20132022"
       },
       {
-        "rank": 130,
+        "rank": 131,
         "name": "Pierre Garcon",
         "stat": 7854,
         "team": "IND/WAS/SF",
         "era": "2008\u20132018"
       },
       {
-        "rank": 131,
+        "rank": 132,
         "name": "Drew Pearson",
         "stat": 7822,
         "team": "DAL",
         "era": "1973\u20131983"
-      },
-      {
-        "rank": 132,
-        "name": "Chris Godwin",
-        "stat": 7805,
-        "team": "TB",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 133,
@@ -5226,87 +5226,87 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 139,
+        "name": "DK Metcalf",
+        "stat": 7552,
+        "team": "PIT",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 140,
         "name": "Nat Moore",
         "stat": 7546,
         "team": "MIA",
         "era": "1974\u20131986"
       },
       {
-        "rank": 140,
+        "rank": 141,
         "name": "Roy Jefferson",
         "stat": 7539,
         "team": "NFL",
         "era": "1965\u20131976"
       },
       {
-        "rank": 141,
+        "rank": 142,
         "name": "Gary Garrison",
         "stat": 7538,
         "team": "NFL",
         "era": "1966\u20131977"
       },
       {
-        "rank": 142,
+        "rank": 143,
         "name": "Dez Bryant",
         "stat": 7506,
         "team": "DAL/BAL",
         "era": "2010\u20132020"
       },
       {
-        "rank": 143,
+        "rank": 144,
         "name": "Michael Crabtree",
         "stat": 7499,
         "team": "SF/OAK/LV/BAL",
         "era": "2009\u20132019"
       },
       {
-        "rank": 144,
+        "rank": 145,
+        "name": "Ja'Marr Chase",
+        "stat": 7484,
+        "team": "CIN",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 146,
         "name": "Ed McCaffrey",
         "stat": 7422,
         "team": "DEN",
         "era": "1991\u20132003"
       },
       {
-        "rank": 145,
+        "rank": 147,
         "name": "Marvin Jones",
         "stat": 7421,
         "team": "NFL",
         "era": "2012\u20132023"
       },
       {
-        "rank": 146,
+        "rank": 148,
         "name": "Bob Hayes",
         "stat": 7414,
         "team": "NFL",
         "era": "1965\u20131975"
       },
       {
-        "rank": 147,
+        "rank": 149,
         "name": "Pete Retzlaff",
         "stat": 7412,
         "team": "PHI",
         "era": "1956\u20131966"
       },
       {
-        "rank": 148,
-        "name": "DK Metcalf",
-        "stat": 7399,
-        "team": "NFL",
-        "era": "2019\u2013Pres"
-      },
-      {
-        "rank": 149,
+        "rank": 150,
         "name": "Wayne Chrebet",
         "stat": 7365,
         "team": "NYJ",
         "era": "1995\u20132005"
-      },
-      {
-        "rank": 150,
-        "name": "Otis Taylor",
-        "stat": 7306,
-        "team": "KC",
-        "era": "1965\u20131975"
       }
     ]
   },
@@ -5359,7 +5359,7 @@ window.NFL_CATEGORIES = [
         "rank": 6,
         "name": "Davante Adams",
         "stat": 121,
-        "team": "GB/LV/NYJ",
+        "team": "GB/LV/NYJ/LAR",
         "era": "2014\u2013Pres"
       },
       {
@@ -5380,7 +5380,7 @@ window.NFL_CATEGORIES = [
         "rank": 9,
         "name": "Mike Evans",
         "stat": 111,
-        "team": "TB",
+        "team": "TB/SF",
         "era": "2014\u2013Pres"
       },
       {
@@ -5392,17 +5392,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 11,
-        "name": "Tim Brown",
-        "stat": 100,
-        "team": "LVR",
-        "era": "1988\u20132004"
-      },
-      {
-        "rank": 12,
         "name": "Steve Largent",
         "stat": 100,
         "team": "SEA",
         "era": "1976\u20131989"
+      },
+      {
+        "rank": 12,
+        "name": "Tim Brown",
+        "stat": 100,
+        "team": "LVR",
+        "era": "1988\u20132004"
       },
       {
         "rank": 13,
@@ -5448,24 +5448,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 19,
-        "name": "Lance Alworth",
-        "stat": 85,
-        "team": "SD/DAL",
-        "era": "1962\u20131972"
-      },
-      {
-        "rank": 20,
         "name": "DeAndre Hopkins",
         "stat": 85,
         "team": "HOU/ARI/KC",
         "era": "2013\u20132025"
       },
       {
-        "rank": 21,
+        "rank": 20,
         "name": "Hines Ward",
         "stat": 85,
         "team": "PIT",
         "era": "1998\u20132011"
+      },
+      {
+        "rank": 21,
+        "name": "Lance Alworth",
+        "stat": 85,
+        "team": "SD/DAL",
+        "era": "1962\u20131972"
       },
       {
         "rank": 22,
@@ -5476,10 +5476,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 23,
-        "name": "Mark Clayton",
+        "name": "Andre Rison",
         "stat": 84,
-        "team": "BAL",
-        "era": "1983\u20131993"
+        "team": "ATL/KC",
+        "era": "1989\u20132000"
       },
       {
         "rank": 24,
@@ -5490,10 +5490,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 25,
-        "name": "Travis Kelce",
+        "name": "Mark Clayton",
         "stat": 84,
-        "team": "KC",
-        "era": "2013\u2013Pres"
+        "team": "BAL",
+        "era": "1983\u20131993"
       },
       {
         "rank": 26,
@@ -5504,10 +5504,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 27,
-        "name": "Andre Rison",
+        "name": "Travis Kelce",
         "stat": 84,
-        "team": "ATL/KC",
-        "era": "1989\u20132000"
+        "team": "KC",
+        "era": "2013\u2013Pres"
       },
       {
         "rank": 28,
@@ -5518,10 +5518,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 29,
-        "name": "Tyreek Hill",
+        "name": "Brandon Marshall",
         "stat": 83,
-        "team": "KC/MIA",
-        "era": "2016\u20132025"
+        "team": "DEN/MIA/CHI/NYJ",
+        "era": "2006\u20132018"
       },
       {
         "rank": 30,
@@ -5532,10 +5532,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 31,
-        "name": "Brandon Marshall",
+        "name": "Tyreek Hill",
         "stat": 83,
-        "team": "DEN/MIA/CHI/NYJ",
-        "era": "2006\u20132018"
+        "team": "KC/MIA",
+        "era": "2016\u20132025"
       },
       {
         "rank": 32,
@@ -5567,23 +5567,23 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 36,
-        "name": "Harold Carmichael",
-        "stat": 79,
-        "team": "NFL",
-        "era": "1971\u20131984"
-      },
-      {
-        "rank": 37,
         "name": "Charley Taylor",
         "stat": 79,
         "team": "WAS",
         "era": "1964\u20131977"
       },
       {
+        "rank": 37,
+        "name": "Harold Carmichael",
+        "stat": 79,
+        "team": "NFL",
+        "era": "1971\u20131984"
+      },
+      {
         "rank": 38,
         "name": "Stefon Diggs",
-        "stat": 77,
-        "team": "MIN/BUF/HOU",
+        "stat": 79,
+        "team": "MIN/BUF/HOU/WAS",
         "era": "2015\u2013Pres"
       },
       {
@@ -5623,10 +5623,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 44,
-        "name": "Torry Holt",
+        "name": "Jason Witten",
         "stat": 74,
-        "team": "STL/JAX",
-        "era": "1999\u20132009"
+        "team": "DAL/LV",
+        "era": "2003\u20132020"
       },
       {
         "rank": 45,
@@ -5637,45 +5637,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 46,
-        "name": "Jason Witten",
+        "name": "Torry Holt",
         "stat": 74,
-        "team": "DAL/LV",
-        "era": "2003\u20132020"
+        "team": "STL/JAX",
+        "era": "1999\u20132009"
       },
       {
         "rank": 47,
-        "name": "Marques Colston",
-        "stat": 72,
-        "team": "NO",
-        "era": "2006\u20132015"
-      },
-      {
-        "rank": 48,
-        "name": "Stanley Morgan",
-        "stat": 72,
-        "team": "NE",
-        "era": "1977\u20131990"
-      },
-      {
-        "rank": 49,
         "name": "Jordy Nelson",
         "stat": 72,
         "team": "GB/OAK",
         "era": "2008\u20132018"
       },
       {
-        "rank": 50,
-        "name": "Keenan Allen",
-        "stat": 71,
-        "team": "SD/LAC/CHI",
-        "era": "2013\u2013Pres"
+        "rank": 48,
+        "name": "Marques Colston",
+        "stat": 72,
+        "team": "NO",
+        "era": "2006\u20132015"
       },
       {
-        "rank": 51,
+        "rank": 49,
+        "name": "Stanley Morgan",
+        "stat": 72,
+        "team": "NE",
+        "era": "1977\u20131990"
+      },
+      {
+        "rank": 50,
         "name": "Bob Hayes",
         "stat": 71,
         "team": "NFL",
         "era": "1965\u20131975"
+      },
+      {
+        "rank": 51,
+        "name": "Keenan Allen",
+        "stat": 71,
+        "team": "SD/LAC/CHI/IND",
+        "era": "2013\u2013Pres"
       },
       {
         "rank": 52,
@@ -5686,38 +5686,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 53,
-        "name": "Gary Collins",
-        "stat": 70,
-        "team": "CLE",
-        "era": "1962\u20131971"
-      },
-      {
-        "rank": 54,
         "name": "A.J. Green",
         "stat": 70,
         "team": "CIN/ARI",
         "era": "2011\u20132022"
       },
       {
-        "rank": 55,
+        "rank": 54,
         "name": "Andre Johnson",
         "stat": 70,
         "team": "HOU/IND",
         "era": "2003\u20132016"
       },
       {
-        "rank": 56,
-        "name": "Raymond Berry",
-        "stat": 68,
-        "team": "IND",
-        "era": "1955\u20131967"
+        "rank": 55,
+        "name": "Gary Collins",
+        "stat": 70,
+        "team": "CLE",
+        "era": "1962\u20131971"
       },
       {
-        "rank": 57,
+        "rank": 56,
         "name": "Art Monk",
         "stat": 68,
         "team": "WAS",
         "era": "1980\u20131995"
+      },
+      {
+        "rank": 57,
+        "name": "Raymond Berry",
+        "stat": 68,
+        "team": "IND",
+        "era": "1955\u20131967"
       },
       {
         "rank": 58,
@@ -5728,17 +5728,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 59,
-        "name": "Cliff Branch",
-        "stat": 67,
-        "team": "LV",
-        "era": "1972\u20131985"
-      },
-      {
-        "rank": 60,
         "name": "Chad Johnson",
         "stat": 67,
         "team": "CIN/NE",
         "era": "2001\u20132011"
+      },
+      {
+        "rank": 60,
+        "name": "Cliff Branch",
+        "stat": 67,
+        "team": "LV",
+        "era": "1972\u20131985"
       },
       {
         "rank": 61,
@@ -5749,73 +5749,73 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 62,
-        "name": "Roy Green",
-        "stat": 66,
-        "team": "NFL",
-        "era": "1979\u20131992"
-      },
-      {
-        "rank": 63,
-        "name": "Julio Jones",
-        "stat": 66,
-        "team": "ATL/TEN/TB",
-        "era": "2011\u20132023"
-      },
-      {
-        "rank": 64,
         "name": "Derrick Mason",
         "stat": 66,
         "team": "TEN/BAL",
         "era": "1997\u20132011"
       },
       {
-        "rank": 65,
-        "name": "Santana Moss",
-        "stat": 66,
-        "team": "NYJ/WAS",
-        "era": "2001\u20132014"
-      },
-      {
-        "rank": 66,
+        "rank": 63,
         "name": "Jimmy Orr",
         "stat": 66,
         "team": "NFL",
         "era": "1958\u20131970"
       },
       {
+        "rank": 64,
+        "name": "Julio Jones",
+        "stat": 66,
+        "team": "ATL/TEN/TB",
+        "era": "2011\u20132023"
+      },
+      {
+        "rank": 65,
+        "name": "Roy Green",
+        "stat": 66,
+        "team": "NFL",
+        "era": "1979\u20131992"
+      },
+      {
+        "rank": 66,
+        "name": "Santana Moss",
+        "stat": 66,
+        "team": "NYJ/WAS",
+        "era": "2001\u20132014"
+      },
+      {
         "rank": 67,
-        "name": "Gary Clark",
+        "name": "Bobby Mitchell",
         "stat": 65,
-        "team": "WAS/ARI",
-        "era": "1985\u20131995"
+        "team": "NFL",
+        "era": "1958\u20131968"
       },
       {
         "rank": 68,
-        "name": "Henry Ellard",
-        "stat": 65,
-        "team": "LAR/WAS",
-        "era": "1983\u20131998"
-      },
-      {
-        "rank": 69,
-        "name": "Michael Irvin",
-        "stat": 65,
-        "team": "DAL",
-        "era": "1988\u20131999"
-      },
-      {
-        "rank": 70,
         "name": "Charlie Joiner",
         "stat": 65,
         "team": "HOU/CIN/SD",
         "era": "1969\u20131986"
       },
       {
-        "rank": 71,
-        "name": "Bobby Mitchell",
+        "rank": 69,
+        "name": "Gary Clark",
         "stat": 65,
-        "team": "NFL",
-        "era": "1958\u20131968"
+        "team": "WAS/ARI",
+        "era": "1985\u20131995"
+      },
+      {
+        "rank": 70,
+        "name": "Henry Ellard",
+        "stat": 65,
+        "team": "LAR/WAS",
+        "era": "1983\u20131998"
+      },
+      {
+        "rank": 71,
+        "name": "Michael Irvin",
+        "stat": 65,
+        "team": "DAL",
+        "era": "1988\u20131999"
       },
       {
         "rank": 72,
@@ -5833,10 +5833,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 74,
-        "name": "Plaxico Burress",
+        "name": "Adam Thielen",
         "stat": 64,
-        "team": "PIT/NYG",
-        "era": "2000\u20132012"
+        "team": "MIN/CAR",
+        "era": "2014\u20132025"
       },
       {
         "rank": 75,
@@ -5861,66 +5861,66 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 78,
-        "name": "Adam Thielen",
+        "name": "Plaxico Burress",
         "stat": 64,
-        "team": "MIN/CAR",
-        "era": "2014\u20132025"
+        "team": "PIT/NYG",
+        "era": "2000\u20132012"
       },
       {
         "rank": 79,
-        "name": "Vernon Davis",
-        "stat": 63,
-        "team": "SF/WAS",
-        "era": "2006\u20132019"
-      },
-      {
-        "rank": 80,
-        "name": "Terance Mathis",
-        "stat": 63,
-        "team": "ATL",
-        "era": "1990\u20132002"
-      },
-      {
-        "rank": 81,
-        "name": "Keenan McCardell",
-        "stat": 63,
-        "team": "JAX/TB",
-        "era": "1992\u20132007"
-      },
-      {
-        "rank": 82,
         "name": "Anthony Miller",
         "stat": 63,
         "team": "CHI",
         "era": "1988\u20131997"
       },
       {
-        "rank": 83,
+        "rank": 80,
         "name": "Carl Pickens",
         "stat": 63,
         "team": "NFL",
         "era": "1992\u20132000"
       },
       {
-        "rank": 84,
-        "name": "John Stallworth",
-        "stat": 63,
-        "team": "PIT",
-        "era": "1974\u20131987"
-      },
-      {
-        "rank": 85,
+        "rank": 81,
         "name": "Demaryius Thomas",
         "stat": 63,
         "team": "DEN",
         "era": "2010\u20132019"
       },
       {
-        "rank": 86,
+        "rank": 82,
+        "name": "John Stallworth",
+        "stat": 63,
+        "team": "PIT",
+        "era": "1974\u20131987"
+      },
+      {
+        "rank": 83,
+        "name": "Keenan McCardell",
+        "stat": 63,
+        "team": "JAX/TB",
+        "era": "1992\u20132007"
+      },
+      {
+        "rank": 84,
         "name": "Roddy White",
         "stat": 63,
         "team": "ATL",
         "era": "2005\u20132015"
+      },
+      {
+        "rank": 85,
+        "name": "Terance Mathis",
+        "stat": 63,
+        "team": "ATL",
+        "era": "1990\u20132002"
+      },
+      {
+        "rank": 86,
+        "name": "Vernon Davis",
+        "stat": 63,
+        "team": "SF/WAS",
+        "era": "2006\u20132019"
       },
       {
         "rank": 87,
@@ -5931,122 +5931,122 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 88,
-        "name": "Tyler Lockett",
-        "stat": 62,
-        "team": "SEA",
-        "era": "2015\u20132025"
-      },
-      {
-        "rank": 89,
         "name": "Herman Moore",
         "stat": 62,
         "team": "DET",
         "era": "1991\u20132002"
       },
       {
-        "rank": 90,
+        "rank": 89,
         "name": "Muhsin Muhammad",
         "stat": 62,
         "team": "CAR/CHI",
         "era": "1996\u20132009"
       },
       {
-        "rank": 91,
+        "rank": 90,
         "name": "Shannon Sharpe",
         "stat": 62,
         "team": "DEN/BAL",
         "era": "1990\u20132003"
       },
       {
+        "rank": 91,
+        "name": "Tyler Lockett",
+        "stat": 62,
+        "team": "SEA",
+        "era": "2015\u20132025"
+      },
+      {
         "rank": 92,
-        "name": "Brandin Cooks",
-        "stat": 61,
-        "team": "NO/NE/LAR/HOU/DAL",
-        "era": "2014\u2013Pres"
-      },
-      {
-        "rank": 93,
-        "name": "Donald Driver",
-        "stat": 61,
-        "team": "GB",
-        "era": "1999\u20132012"
-      },
-      {
-        "rank": 94,
         "name": "Antonio Freeman",
         "stat": 61,
         "team": "GB/PHI",
         "era": "1995\u20132003"
       },
       {
-        "rank": 95,
+        "rank": 93,
         "name": "Billy Howton",
         "stat": 61,
         "team": "NFL",
         "era": "1952\u20131963"
       },
       {
-        "rank": 96,
-        "name": "Pete Pihos",
+        "rank": 94,
+        "name": "Brandin Cooks",
         "stat": 61,
-        "team": "PHI",
-        "era": "1947\u20131955"
+        "team": "NO/NE/LAR/SF",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 95,
+        "name": "Cooper Kupp",
+        "stat": 61,
+        "team": "LAR/SEA",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 96,
+        "name": "Donald Driver",
+        "stat": 61,
+        "team": "GB",
+        "era": "1999\u20132012"
       },
       {
         "rank": 97,
+        "name": "Ja'Marr Chase",
+        "stat": 61,
+        "team": "CIN",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 98,
         "name": "Mike Quick",
         "stat": 61,
         "team": "PHI",
         "era": "1982\u20131990"
       },
       {
-        "rank": 98,
+        "rank": 99,
+        "name": "Pete Pihos",
+        "stat": 61,
+        "team": "PHI",
+        "era": "1947\u20131955"
+      },
+      {
+        "rank": 100,
         "name": "Drew Hill",
         "stat": 60,
         "team": "NFL",
         "era": "1979\u20131993"
       },
       {
-        "rank": 99,
+        "rank": 101,
         "name": "Elroy Hirsch",
         "stat": 60,
         "team": "NFL",
         "era": "1946\u20131957"
       },
       {
-        "rank": 100,
-        "name": "Cooper Kupp",
-        "stat": 60,
-        "team": "LAR",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 101,
-        "name": "Greg Olsen",
-        "stat": 60,
-        "team": "CHI/CAR",
-        "era": "2007\u20132020"
-      },
-      {
         "rank": 102,
-        "name": "Jerry Smith",
-        "stat": 60,
-        "team": "WAS",
-        "era": "1965\u20131977"
-      },
-      {
-        "rank": 103,
         "name": "Gene Washington",
         "stat": 60,
         "team": "NFL",
         "era": "1969\u20131979"
       },
       {
+        "rank": 103,
+        "name": "Greg Olsen",
+        "stat": 60,
+        "team": "CHI/CAR",
+        "era": "2007\u20132020"
+      },
+      {
         "rank": 104,
-        "name": "Odell Beckham Jr.",
-        "stat": 59,
-        "team": "NYG/CLE/LAR/BAL",
-        "era": "2014\u2013Pres"
+        "name": "Jerry Smith",
+        "stat": 60,
+        "team": "WAS",
+        "era": "1965\u20131977"
       },
       {
         "rank": 105,
@@ -6057,73 +6057,73 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 106,
+        "name": "Odell Beckham Jr.",
+        "stat": 59,
+        "team": "NYG/CLE/LAR/BAL",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 107,
         "name": "Chris Chambers",
         "stat": 58,
         "team": "MIA/SD/KC",
         "era": "2001\u20132010"
       },
       {
-        "rank": 107,
-        "name": "Ja'Marr Chase",
-        "stat": 58,
-        "team": "CIN",
-        "era": "2021\u2013Pres"
-      },
-      {
         "rank": 108,
-        "name": "Gary Garrison",
-        "stat": 58,
-        "team": "NFL",
-        "era": "1966\u20131977"
-      },
-      {
-        "rank": 109,
-        "name": "Joe Horn",
-        "stat": 58,
-        "team": "NO",
-        "era": "1996\u20132007"
-      },
-      {
-        "rank": 110,
         "name": "DeSean Jackson",
         "stat": 58,
         "team": "PHI/WAS/TB",
         "era": "2008\u20132022"
       },
       {
-        "rank": 111,
-        "name": "Marvin Jones",
+        "rank": 109,
+        "name": "Gary Garrison",
         "stat": 58,
         "team": "NFL",
-        "era": "2012\u20132023"
+        "era": "1966\u20131977"
       },
       {
-        "rank": 112,
+        "rank": 110,
         "name": "Hugh Taylor",
         "stat": 58,
         "team": "WAS",
         "era": "1947\u20131954"
       },
       {
+        "rank": 111,
+        "name": "Joe Horn",
+        "stat": 58,
+        "team": "NO",
+        "era": "1996\u20132007"
+      },
+      {
+        "rank": 112,
+        "name": "Marvin Jones",
+        "stat": 58,
+        "team": "NFL",
+        "era": "2012\u20132023"
+      },
+      {
         "rank": 113,
+        "name": "George Kittle",
+        "stat": 57,
+        "team": "SF",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 114,
         "name": "Mark Andrews",
         "stat": 57,
         "team": "BAL",
         "era": "2018\u2013Pres"
       },
       {
-        "rank": 114,
-        "name": "Zach Ertz",
-        "stat": 57,
-        "team": "PHI/ARI/WAS",
-        "era": "2013\u2013Pres"
-      },
-      {
         "rank": 115,
-        "name": "Vincent Jackson",
+        "name": "Mike Wallace",
         "stat": 57,
-        "team": "SD/TB",
-        "era": "2005\u20132016"
+        "team": "PIT/MIA/MIN",
+        "era": "2009\u20132018"
       },
       {
         "rank": 116,
@@ -6134,31 +6134,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 117,
-        "name": "Mike Wallace",
+        "name": "Vincent Jackson",
         "stat": 57,
-        "team": "PIT/MIA/MIN",
-        "era": "2009\u20132018"
+        "team": "SD/TB",
+        "era": "2005\u20132016"
       },
       {
         "rank": 118,
-        "name": "A.J. Brown",
-        "stat": 56,
-        "team": "TEN/PHI",
-        "era": "2019\u2013Pres"
+        "name": "Zach Ertz",
+        "stat": 57,
+        "team": "PHI/ARI/WAS",
+        "era": "2013\u2013Pres"
       },
       {
         "rank": 119,
-        "name": "Wes Chandler",
+        "name": "A.J. Brown",
         "stat": 56,
-        "team": "NFL",
-        "era": "1978\u20131988"
+        "team": "TEN/PHI/NE",
+        "era": "2019\u2013Pres"
       },
       {
         "rank": 120,
-        "name": "George Kittle",
+        "name": "Haven Moses",
         "stat": 56,
-        "team": "SF",
-        "era": "2017\u2013Pres"
+        "team": "NFL",
+        "era": "1968\u20131981"
       },
       {
         "rank": 121,
@@ -6169,45 +6169,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 122,
-        "name": "Haven Moses",
+        "name": "Wes Chandler",
         "stat": 56,
         "team": "NFL",
-        "era": "1968\u20131981"
+        "era": "1978\u20131988"
       },
       {
         "rank": 123,
-        "name": "Chris Burford",
-        "stat": 55,
-        "team": "KC",
-        "era": "1960\u20131967"
-      },
-      {
-        "rank": 124,
         "name": "Anthony Carter",
         "stat": 55,
         "team": "NFL",
         "era": "1985\u20131995"
       },
       {
+        "rank": 124,
+        "name": "Chris Burford",
+        "stat": 55,
+        "team": "KC",
+        "era": "1960\u20131967"
+      },
+      {
         "rank": 125,
+        "name": "DK Metcalf",
+        "stat": 55,
+        "team": "PIT",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 126,
         "name": "Ed McCaffrey",
         "stat": 55,
         "team": "DEN",
         "era": "1991\u20132003"
       },
       {
-        "rank": 126,
-        "name": "DK Metcalf",
-        "stat": 55,
-        "team": "NFL",
-        "era": "2019\u2013Pres"
-      },
-      {
         "rank": 127,
-        "name": "Randall Cobb",
+        "name": "Amani Toomer",
         "stat": 54,
-        "team": "GB/DAL/HOU",
-        "era": "2011\u20132023"
+        "team": "NYG",
+        "era": "1996\u20132008"
       },
       {
         "rank": 128,
@@ -6218,17 +6218,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 129,
+        "name": "Randall Cobb",
+        "stat": 54,
+        "team": "GB/DAL/HOU",
+        "era": "2011\u20132023"
+      },
+      {
+        "rank": 130,
         "name": "Ricky Proehl",
         "stat": 54,
         "team": "STL/LAR/CAR",
         "era": "1990\u20132006"
-      },
-      {
-        "rank": 130,
-        "name": "Amani Toomer",
-        "stat": 54,
-        "team": "NYG",
-        "era": "1996\u20132008"
       },
       {
         "rank": 131,
@@ -6246,17 +6246,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 133,
-        "name": "Isaac Curtis",
-        "stat": 53,
-        "team": "CIN",
-        "era": "1973\u20131984"
-      },
-      {
-        "rank": 134,
         "name": "Eric Decker",
         "stat": 53,
         "team": "DEN/NYJ/TEN",
         "era": "2010\u20132017"
+      },
+      {
+        "rank": 134,
+        "name": "Isaac Curtis",
+        "stat": 53,
+        "team": "CIN",
+        "era": "1973\u20131984"
       },
       {
         "rank": 135,
@@ -6267,10 +6267,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 136,
-        "name": "Dave Casper",
+        "name": "Carroll Dale",
         "stat": 52,
         "team": "NFL",
-        "era": "1974\u20131984"
+        "era": "1960\u20131973"
       },
       {
         "rank": 137,
@@ -6281,10 +6281,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 138,
-        "name": "Carroll Dale",
+        "name": "Dave Casper",
         "stat": 52,
         "team": "NFL",
-        "era": "1960\u20131973"
+        "era": "1974\u20131984"
       },
       {
         "rank": 139,
@@ -6302,52 +6302,52 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 141,
-        "name": "Tony Hill",
-        "stat": 51,
-        "team": "DAL",
-        "era": "1977\u20131986"
-      },
-      {
-        "rank": 142,
         "name": "Darrell Jackson",
         "stat": 51,
         "team": "SEA/SF",
         "era": "2000\u20132008"
       },
       {
-        "rank": 143,
-        "name": "James Jones",
-        "stat": 51,
-        "team": "GB/OAK/LV",
-        "era": "2007\u20132015"
-      },
-      {
-        "rank": 144,
-        "name": "Emmanuel Sanders",
-        "stat": 51,
-        "team": "PIT/DEN/SF/BUF",
-        "era": "2010\u20132021"
-      },
-      {
-        "rank": 145,
+        "rank": 142,
         "name": "Del Shofner",
         "stat": 51,
         "team": "NFL",
         "era": "1957\u20131967"
       },
       {
-        "rank": 146,
+        "rank": 143,
+        "name": "Emmanuel Sanders",
+        "stat": 51,
+        "team": "PIT/DEN/SF/BUF",
+        "era": "2010\u20132021"
+      },
+      {
+        "rank": 144,
+        "name": "James Jones",
+        "stat": 51,
+        "team": "GB/OAK/LV",
+        "era": "2007\u20132015"
+      },
+      {
+        "rank": 145,
         "name": "Lynn Swann",
         "stat": 51,
         "team": "PIT",
         "era": "1974\u20131982"
       },
       {
+        "rank": 146,
+        "name": "Tee Higgins",
+        "stat": 51,
+        "team": "CIN",
+        "era": "2020\u2013Pres"
+      },
+      {
         "rank": 147,
-        "name": "Frank Clarke",
-        "stat": 50,
-        "team": "NFL",
-        "era": "1957\u20131967"
+        "name": "Tony Hill",
+        "stat": 51,
+        "team": "DAL",
+        "era": "1977\u20131986"
       },
       {
         "rank": 148,
@@ -6358,17 +6358,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 149,
+        "name": "Frank Clarke",
+        "stat": 50,
+        "team": "NFL",
+        "era": "1957\u20131967"
+      },
+      {
+        "rank": 150,
         "name": "Haywood Jeffires",
         "stat": 50,
         "team": "NFL",
         "era": "1987\u20131996"
-      },
-      {
-        "rank": 150,
-        "name": "Ken Kavanaugh",
-        "stat": 50,
-        "team": "CHI",
-        "era": "1940\u20131950"
       }
     ]
   },
@@ -6412,59 +6412,59 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 5,
+        "name": "Travis Kelce",
+        "stat": 1113,
+        "team": "KC",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 6,
         "name": "Marvin Harrison",
         "stat": 1102,
         "team": "IND",
         "era": "1996\u20132008"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "name": "Cris Carter",
         "stat": 1101,
         "team": "MIN/PHI",
         "era": "1987\u20132002"
       },
       {
-        "rank": 7,
+        "rank": 8,
+        "name": "Keenan Allen",
+        "stat": 1095,
+        "team": "SD/LAC/CHI/IND",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 9,
         "name": "Tim Brown",
         "stat": 1094,
         "team": "LVR",
         "era": "1988\u20132004"
       },
       {
-        "rank": 8,
-        "name": "Travis Kelce",
-        "stat": 1092,
-        "team": "KC",
-        "era": "2013\u2013Pres"
-      },
-      {
-        "rank": 9,
+        "rank": 10,
         "name": "Terrell Owens",
         "stat": 1078,
         "team": "SF/PHI/DAL",
         "era": "1996\u20132010"
       },
       {
-        "rank": 10,
+        "rank": 11,
         "name": "Anquan Boldin",
         "stat": 1076,
         "team": "ARI/BAL/SF",
         "era": "2003\u20132016"
       },
       {
-        "rank": 11,
+        "rank": 12,
         "name": "Reggie Wayne",
         "stat": 1070,
         "team": "IND",
         "era": "2001\u20132014"
-      },
-      {
-        "rank": 12,
-        "name": "Keenan Allen",
-        "stat": 1062,
-        "team": "SD/LAC/CHI",
-        "era": "2013\u2013Pres"
       },
       {
         "rank": 13,
@@ -6475,17 +6475,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 14,
+        "name": "Davante Adams",
+        "stat": 1047,
+        "team": "GB/LV/NYJ/LAR",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 15,
         "name": "Steve Smith Sr.",
         "stat": 1031,
         "team": "CAR/BAL",
         "era": "2001\u20132016"
-      },
-      {
-        "rank": 15,
-        "name": "Davante Adams",
-        "stat": 1028,
-        "team": "GB/LV/NYJ",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 16,
@@ -6517,24 +6517,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 20,
+        "name": "Stefon Diggs",
+        "stat": 972,
+        "team": "MIN/BUF/HOU/WAS",
+        "era": "2015\u2013Pres"
+      },
+      {
+        "rank": 21,
         "name": "Brandon Marshall",
         "stat": 970,
         "team": "DEN/MIA/CHI/NYJ",
         "era": "2006\u20132018"
       },
       {
-        "rank": 21,
+        "rank": 22,
         "name": "Antonio Gates",
         "stat": 955,
         "team": "SD/LAC",
         "era": "2003\u20132018"
-      },
-      {
-        "rank": 22,
-        "name": "Stefon Diggs",
-        "stat": 951,
-        "team": "MIN/BUF/HOU",
-        "era": "2015\u2013Pres"
       },
       {
         "rank": 23,
@@ -6587,17 +6587,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 30,
+        "name": "Mike Evans",
+        "stat": 893,
+        "team": "TB/SF",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 31,
         "name": "Keenan McCardell",
         "stat": 883,
         "team": "JAX/TB",
         "era": "1992\u20132007"
-      },
-      {
-        "rank": 31,
-        "name": "Mike Evans",
-        "stat": 875,
-        "team": "TB",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 32,
@@ -6629,31 +6629,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 36,
+        "name": "Zach Ertz",
+        "stat": 828,
+        "team": "PHI/ARI/WAS",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 37,
         "name": "Larry Centers",
         "stat": 827,
         "team": "WAS/BUF",
         "era": "1990\u20132003"
       },
       {
-        "rank": 37,
-        "name": "Zach Ertz",
-        "stat": 825,
-        "team": "PHI/ARI/WAS",
-        "era": "2013\u20132025"
-      },
-      {
         "rank": 38,
-        "name": "Tyreek Hill",
-        "stat": 819,
-        "team": "KC/MIA",
-        "era": "2016\u20132025"
-      },
-      {
-        "rank": 39,
         "name": "Steve Largent",
         "stat": 819,
         "team": "SEA",
         "era": "1976\u20131989"
+      },
+      {
+        "rank": 39,
+        "name": "Tyreek Hill",
+        "stat": 819,
+        "team": "KC/MIA",
+        "era": "2016\u20132025"
       },
       {
         "rank": 40,
@@ -6699,45 +6699,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 46,
-        "name": "James Lofton",
-        "stat": 764,
-        "team": "GB/BUF",
-        "era": "1978\u20131993"
-      },
-      {
-        "rank": 47,
         "name": "Eric Moulds",
         "stat": 764,
         "team": "BUF/HOU/TEN",
         "era": "1996\u20132007"
       },
       {
-        "rank": 48,
-        "name": "Michael Irvin",
-        "stat": 750,
-        "team": "DAL",
-        "era": "1988\u20131999"
+        "rank": 47,
+        "name": "James Lofton",
+        "stat": 764,
+        "team": "GB/BUF",
+        "era": "1978\u20131993"
       },
       {
-        "rank": 49,
+        "rank": 48,
         "name": "Charlie Joiner",
         "stat": 750,
         "team": "HOU/CIN/SD",
         "era": "1969\u20131986"
       },
       {
-        "rank": 50,
-        "name": "Donald Driver",
-        "stat": 743,
-        "team": "GB",
-        "era": "1999\u20132012"
+        "rank": 49,
+        "name": "Michael Irvin",
+        "stat": 750,
+        "team": "DAL",
+        "era": "1988\u20131999"
       },
       {
-        "rank": 51,
+        "rank": 50,
         "name": "Andre Rison",
         "stat": 743,
         "team": "ATL/KC",
         "era": "1989\u20132000"
+      },
+      {
+        "rank": 51,
+        "name": "Donald Driver",
+        "stat": 743,
+        "team": "GB",
+        "era": "1999\u20132012"
       },
       {
         "rank": 52,
@@ -6749,9 +6749,9 @@ window.NFL_CATEGORIES = [
       {
         "rank": 53,
         "name": "Brandin Cooks",
-        "stat": 734,
-        "team": "NO/NE/LAR/HOU/DAL",
-        "era": "2014\u20132025"
+        "stat": 739,
+        "team": "NO/NE/LAR/SF",
+        "era": "2014\u2013Pres"
       },
       {
         "rank": 54,
@@ -6797,73 +6797,73 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 60,
-        "name": "Marques Colston",
-        "stat": 711,
-        "team": "NO",
-        "era": "2006\u20132015"
-      },
-      {
-        "rank": 61,
         "name": "Amari Cooper",
         "stat": 711,
         "team": "OAK/DAL/CLE/BUF",
         "era": "2015\u20132024"
       },
       {
-        "rank": 62,
-        "name": "Emmanuel Sanders",
-        "stat": 704,
-        "team": "PIT/DEN/SF/BUF",
-        "era": "2010\u20132021"
+        "rank": 61,
+        "name": "Marques Colston",
+        "stat": 711,
+        "team": "NO",
+        "era": "2006\u20132015"
       },
       {
-        "rank": 63,
+        "rank": 62,
         "name": "Adam Thielen",
         "stat": 704,
         "team": "MIN/CAR",
         "era": "2014\u20132025"
       },
       {
+        "rank": 63,
+        "name": "Emmanuel Sanders",
+        "stat": 704,
+        "team": "PIT/DEN/SF/BUF",
+        "era": "2010\u20132021"
+      },
+      {
         "rank": 64,
+        "name": "Cooper Kupp",
+        "stat": 703,
+        "team": "LAR/SEA",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 65,
         "name": "Joey Galloway",
         "stat": 701,
         "team": "SEA/DAL/TB",
         "era": "1995\u20132010"
       },
       {
-        "rank": 65,
+        "rank": 66,
         "name": "Gary Clark",
         "stat": 699,
         "team": "WAS/ARI",
         "era": "1985\u20131995"
       },
       {
-        "rank": 66,
+        "rank": 67,
         "name": "Golden Tate",
         "stat": 695,
         "team": "SEA/DET/NYG",
         "era": "2010\u20132020"
       },
       {
-        "rank": 67,
+        "rank": 68,
         "name": "Tyler Lockett",
         "stat": 693,
         "team": "SEA",
         "era": "2015\u20132025"
       },
       {
-        "rank": 68,
+        "rank": 69,
         "name": "Terance Mathis",
         "stat": 689,
         "team": "ATL",
         "era": "1990\u20132002"
-      },
-      {
-        "rank": 69,
-        "name": "Cooper Kupp",
-        "stat": 685,
-        "team": "LAR",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 70,
@@ -6902,374 +6902,374 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 75,
+        "name": "Christian McCaffrey",
+        "stat": 662,
+        "team": "CAR/SF",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 76,
         "name": "Ozzie Newsome",
         "stat": 662,
         "team": "CLE",
         "era": "1978\u20131990"
       },
       {
-        "rank": 76,
+        "rank": 77,
         "name": "Bobby Engram",
         "stat": 650,
         "team": "SEA",
         "era": "1996\u20132009"
       },
       {
-        "rank": 77,
+        "rank": 78,
         "name": "Charley Taylor",
         "stat": 649,
         "team": "WAS",
         "era": "1964\u20131977"
       },
       {
-        "rank": 78,
+        "rank": 79,
+        "name": "CeeDee Lamb",
+        "stat": 641,
+        "team": "DAL",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 80,
+        "name": "Chris Godwin Jr.",
+        "stat": 641,
+        "team": "TB",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 81,
         "name": "DeSean Jackson",
         "stat": 641,
         "team": "PHI/WAS/TB",
         "era": "2008\u20132022"
       },
       {
-        "rank": 79,
+        "rank": 82,
         "name": "T.Y. Hilton",
         "stat": 638,
         "team": "IND/DAL",
         "era": "2012\u20132022"
       },
       {
-        "rank": 80,
+        "rank": 83,
         "name": "Michael Crabtree",
         "stat": 637,
         "team": "SF/OAK/LV/BAL",
         "era": "2009\u20132019"
       },
       {
-        "rank": 81,
-        "name": "Christian McCaffrey",
-        "stat": 635,
-        "team": "CAR/SF",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 82,
+        "rank": 84,
         "name": "Drew Hill",
         "stat": 634,
         "team": "NFL",
         "era": "1979\u20131993"
       },
       {
-        "rank": 83,
+        "rank": 85,
         "name": "Don Maynard",
         "stat": 633,
         "team": "NYJ",
         "era": "1958\u20131973"
       },
       {
-        "rank": 84,
+        "rank": 86,
+        "name": "George Kittle",
+        "stat": 633,
+        "team": "SF",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 87,
+        "name": "Alvin Kamara",
+        "stat": 631,
+        "team": "NO",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 88,
         "name": "Raymond Berry",
         "stat": 631,
         "team": "IND",
         "era": "1955\u20131967"
       },
       {
-        "rank": 85,
+        "rank": 89,
         "name": "Randall Cobb",
         "stat": 630,
         "team": "GB/DAL/HOU",
         "era": "2011\u20132023"
       },
       {
-        "rank": 86,
+        "rank": 90,
         "name": "Pierre Garcon",
         "stat": 628,
         "team": "IND/WAS/SF",
         "era": "2008\u20132018"
       },
       {
-        "rank": 87,
+        "rank": 91,
         "name": "Rob Moore",
         "stat": 628,
         "team": "NFL",
         "era": "1990\u20131999"
       },
       {
-        "rank": 88,
+        "rank": 92,
+        "name": "DJ Moore",
+        "stat": 627,
+        "team": "BUF",
+        "era": "2018\u2013Pres"
+      },
+      {
+        "rank": 93,
         "name": "T.J. Houshmandzadeh",
         "stat": 627,
         "team": "CIN/SEA/BAL",
         "era": "2001\u20132011"
       },
       {
-        "rank": 89,
+        "rank": 94,
         "name": "Johnnie Morton",
         "stat": 624,
         "team": "DET/KC",
         "era": "1994\u20132005"
       },
       {
-        "rank": 90,
+        "rank": 95,
         "name": "LaDainian Tomlinson",
         "stat": 624,
         "team": "SD/NYJ",
         "era": "2001\u20132011"
       },
       {
-        "rank": 91,
+        "rank": 96,
         "name": "Rob Gronkowski",
         "stat": 621,
         "team": "NE/TB",
         "era": "2010\u20132021"
       },
       {
-        "rank": 92,
+        "rank": 97,
         "name": "Julian Edelman",
         "stat": 620,
         "team": "NE",
         "era": "2009\u20132020"
       },
       {
-        "rank": 93,
-        "name": "Chris Godwin",
-        "stat": 619,
-        "team": "TB",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 94,
+        "rank": 98,
         "name": "Danny Amendola",
         "stat": 617,
         "team": "STL/LAR/NE/MIA",
         "era": "2009\u20132021"
       },
       {
-        "rank": 95,
-        "name": "DJ Moore",
-        "stat": 613,
-        "team": "NFL",
-        "era": "2018\u2013Pres"
-      },
-      {
-        "rank": 96,
+        "rank": 99,
         "name": "Jordy Nelson",
         "stat": 613,
         "team": "GB/OAK",
         "era": "2008\u20132018"
       },
       {
-        "rank": 97,
-        "name": "Alvin Kamara",
-        "stat": 611,
-        "team": "NO",
-        "era": "2017\u2013Pres"
+        "rank": 100,
+        "name": "Justin Jefferson",
+        "stat": 610,
+        "team": "MIN/CLE",
+        "era": "2020\u2013Pres"
       },
       {
-        "rank": 98,
+        "rank": 101,
         "name": "Keith Byars",
         "stat": 610,
         "team": "NFL",
         "era": "1986\u20131998"
       },
       {
-        "rank": 99,
+        "rank": 102,
+        "name": "Amon-Ra St. Brown",
+        "stat": 608,
+        "team": "DET",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 103,
         "name": "Joe Horn",
         "stat": 603,
         "team": "NO",
         "era": "1996\u20132007"
       },
       {
-        "rank": 100,
-        "name": "George Kittle",
-        "stat": 601,
-        "team": "SF",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 101,
+        "rank": 104,
         "name": "Anthony Miller",
         "stat": 595,
         "team": "CHI",
         "era": "1988\u20131997"
       },
       {
-        "rank": 102,
+        "rank": 105,
         "name": "Sterling Sharpe",
         "stat": 595,
         "team": "GB",
         "era": "1988\u20131994"
       },
       {
-        "rank": 103,
+        "rank": 106,
         "name": "Curtis Conway",
         "stat": 594,
         "team": "SD/NYJ/SF",
         "era": "1993\u20132004"
       },
       {
-        "rank": 104,
+        "rank": 107,
         "name": "Terry Glenn",
         "stat": 593,
         "team": "NE/GB/DAL",
         "era": "1996\u20132007"
       },
       {
-        "rank": 105,
+        "rank": 108,
         "name": "Tony Martin",
         "stat": 593,
         "team": "MIA/ATL",
         "era": "1990\u20132001"
       },
       {
-        "rank": 106,
+        "rank": 109,
         "name": "Heath Miller",
         "stat": 592,
         "team": "PIT",
         "era": "2005\u20132015"
       },
       {
-        "rank": 107,
+        "rank": 110,
         "name": "Harold Carmichael",
         "stat": 590,
         "team": "NFL",
         "era": "1971\u20131984"
       },
       {
-        "rank": 108,
-        "name": "Justin Jefferson",
-        "stat": 590,
-        "team": "MIN",
-        "era": "2020\u2013Pres"
-      },
-      {
-        "rank": 109,
+        "rank": 111,
         "name": "Fred Biletnikoff",
         "stat": 589,
         "team": "OAK",
         "era": "1965\u20131978"
       },
       {
-        "rank": 110,
+        "rank": 112,
         "name": "Marcus Allen",
         "stat": 587,
         "team": "LVR/KC",
         "era": "1982\u20131997"
       },
       {
-        "rank": 111,
+        "rank": 113,
         "name": "Tiki Barber",
         "stat": 586,
         "team": "NYG",
         "era": "1997\u20132006"
       },
       {
-        "rank": 112,
-        "name": "CeeDee Lamb",
-        "stat": 584,
-        "team": "DAL",
-        "era": "2020\u2013Pres"
-      },
-      {
-        "rank": 113,
+        "rank": 114,
         "name": "Bill Brooks",
         "stat": 583,
         "team": "NFL",
         "era": "1986\u20131996"
       },
       {
-        "rank": 114,
+        "rank": 115,
         "name": "Vernon Davis",
         "stat": 583,
         "team": "SF/WAS",
         "era": "2006\u20132019"
       },
       {
-        "rank": 115,
+        "rank": 116,
         "name": "Mark Clayton",
         "stat": 582,
         "team": "BAL",
         "era": "1983\u20131993"
       },
       {
-        "rank": 116,
+        "rank": 117,
         "name": "Ronnie Harmon",
         "stat": 582,
         "team": "NFL",
         "era": "1986\u20131997"
       },
       {
-        "rank": 117,
+        "rank": 118,
         "name": "Brian Blades",
         "stat": 581,
         "team": "SEA",
         "era": "1988\u20131998"
       },
       {
-        "rank": 118,
+        "rank": 119,
         "name": "Wayne Chrebet",
         "stat": 580,
         "team": "NYJ",
         "era": "1995\u20132005"
       },
       {
-        "rank": 119,
+        "rank": 120,
         "name": "Harold Jackson",
         "stat": 579,
         "team": "PHI/LAR/NE",
         "era": "1968\u20131983"
       },
       {
-        "rank": 120,
+        "rank": 121,
         "name": "Odell Beckham Jr.",
         "stat": 575,
         "team": "NYG/CLE/LAR/BAL",
         "era": "2014\u2013Pres"
       },
       {
-        "rank": 121,
+        "rank": 122,
+        "name": "Ja'Marr Chase",
+        "stat": 573,
+        "team": "CIN",
+        "era": "2021\u2013Pres"
+      },
+      {
+        "rank": 123,
         "name": "Ernest Givins",
         "stat": 571,
         "team": "NFL",
         "era": "1986\u20131995"
       },
       {
-        "rank": 122,
+        "rank": 124,
         "name": "Greg Jennings",
         "stat": 571,
         "team": "GB/MIN",
         "era": "2006\u20132015"
       },
       {
-        "rank": 123,
+        "rank": 125,
         "name": "Mark Carrier",
         "stat": 569,
         "team": "NFL",
         "era": "1987\u20131998"
       },
       {
-        "rank": 124,
+        "rank": 126,
         "name": "Lionel Taylor",
         "stat": 567,
         "team": "NFL",
         "era": "1959\u20131968"
       },
       {
-        "rank": 125,
+        "rank": 127,
         "name": "Roger Craig",
         "stat": 566,
         "team": "SF",
         "era": "1983\u20131993"
-      },
-      {
-        "rank": 126,
-        "name": "Amon-Ra St. Brown",
-        "stat": 566,
-        "team": "DET",
-        "era": "2021\u2013Pres"
-      },
-      {
-        "rank": 127,
-        "name": "Ed McCaffrey",
-        "stat": 565,
-        "team": "DEN",
-        "era": "1991\u20132003"
       },
       {
         "rank": 128,
@@ -7280,157 +7280,157 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 129,
+        "name": "Ed McCaffrey",
+        "stat": 565,
+        "team": "DEN",
+        "era": "1991\u20132003"
+      },
+      {
+        "rank": 130,
         "name": "Michael Thomas",
         "stat": 565,
         "team": "NO",
         "era": "2016\u20132023"
       },
       {
-        "rank": 130,
+        "rank": 131,
+        "name": "Evan Engram",
+        "stat": 563,
+        "team": "NYG/JAX/DEN",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 132,
         "name": "Webster Slaughter",
         "stat": 563,
         "team": "NFL",
         "era": "1986\u20131998"
       },
       {
-        "rank": 131,
-        "name": "Wes Chandler",
-        "stat": 559,
-        "team": "NFL",
-        "era": "1978\u20131988"
-      },
-      {
-        "rank": 132,
+        "rank": 133,
         "name": "Roy Green",
         "stat": 559,
         "team": "NFL",
         "era": "1979\u20131992"
       },
       {
-        "rank": 133,
-        "name": "Troy Brown",
-        "stat": 557,
-        "team": "NE",
-        "era": "1993\u20132007"
+        "rank": 134,
+        "name": "Wes Chandler",
+        "stat": 559,
+        "team": "NFL",
+        "era": "1978\u20131988"
       },
       {
-        "rank": 134,
+        "rank": 135,
         "name": "Stanley Morgan",
         "stat": 557,
         "team": "NE",
         "era": "1977\u20131990"
       },
       {
-        "rank": 135,
+        "rank": 136,
+        "name": "Troy Brown",
+        "stat": 557,
+        "team": "NE",
+        "era": "1993\u20132007"
+      },
+      {
+        "rank": 137,
         "name": "Cole Beasley",
         "stat": 556,
         "team": "DAL/BUF",
         "era": "2012\u20132022"
       },
       {
-        "rank": 136,
+        "rank": 138,
         "name": "Matt Forte",
         "stat": 554,
         "team": "CHI/NYJ",
         "era": "2008\u20132017"
       },
       {
-        "rank": 137,
-        "name": "Plaxico Burress",
-        "stat": 553,
-        "team": "PIT/NYG",
-        "era": "2000\u20132012"
-      },
-      {
-        "rank": 138,
-        "name": "Jared Cook",
-        "stat": 553,
-        "team": "TEN/STL/LAR/OAK/LV",
-        "era": "2009\u20132021"
-      },
-      {
         "rank": 139,
-        "name": "Eric Martin",
-        "stat": 553,
-        "team": "NFL",
-        "era": "1985\u20131994"
-      },
-      {
-        "rank": 140,
         "name": "Darren Sproles",
         "stat": 553,
         "team": "SD/NO/PHI",
         "era": "2005\u20132019"
       },
       {
+        "rank": 140,
+        "name": "Eric Martin",
+        "stat": 553,
+        "team": "NFL",
+        "era": "1985\u20131994"
+      },
+      {
         "rank": 141,
+        "name": "Jared Cook",
+        "stat": 553,
+        "team": "TEN/STL/LAR/OAK/LV",
+        "era": "2009\u20132021"
+      },
+      {
+        "rank": 142,
+        "name": "Plaxico Burress",
+        "stat": 553,
+        "team": "PIT/NYG",
+        "era": "2000\u20132012"
+      },
+      {
+        "rank": 143,
         "name": "Tyler Boyd",
         "stat": 552,
         "team": "CIN",
         "era": "2016\u20132024"
       },
       {
-        "rank": 142,
-        "name": "Evan Engram",
-        "stat": 551,
-        "team": "NYG/JAX/DEN",
-        "era": "2017\u2013Pres"
-      },
-      {
-        "rank": 143,
+        "rank": 144,
         "name": "Eddie Kennison",
         "stat": 548,
         "team": "CHI/KC",
         "era": "1996\u20132008"
       },
       {
-        "rank": 144,
-        "name": "Marvin Jones",
-        "stat": 547,
-        "team": "NFL",
-        "era": "2012\u20132023"
-      },
-      {
         "rank": 145,
-        "name": "Jeremy Shockey",
-        "stat": 547,
-        "team": "NYG/NO/CAR",
-        "era": "2002\u20132011"
-      },
-      {
-        "rank": 146,
         "name": "Ben Watson",
         "stat": 547,
         "team": "NE/CLE/NO",
         "era": "2004\u20132019"
       },
       {
+        "rank": 146,
+        "name": "Jeremy Shockey",
+        "stat": 547,
+        "team": "NYG/NO/CAR",
+        "era": "2002\u20132011"
+      },
+      {
         "rank": 147,
+        "name": "Marvin Jones",
+        "stat": 547,
+        "team": "NFL",
+        "era": "2012\u20132023"
+      },
+      {
+        "rank": 148,
         "name": "Ike Hilliard",
         "stat": 546,
         "team": "NYG/TB",
         "era": "1997\u20132008"
       },
       {
-        "rank": 148,
+        "rank": 149,
         "name": "John Williams",
         "stat": 546,
         "team": "NFL",
         "era": "1986\u20131995"
       },
       {
-        "rank": 149,
+        "rank": 150,
         "name": "J.T. Smith",
         "stat": 544,
         "team": "NFL",
         "era": "1978\u20131990"
-      },
-      {
-        "rank": 150,
-        "name": "Lance Alworth",
-        "stat": 542,
-        "team": "SD/DAL",
-        "era": "1962\u20131972"
       }
     ]
   },
@@ -7495,17 +7495,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 8,
+        "name": "Von Miller",
+        "stat": 139.5,
+        "team": "DEN/LAR/BUF/DAL",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 9,
         "name": "Terrell Suggs",
         "stat": 139,
         "team": "BAL/ARI",
         "era": "2003\u20132019"
-      },
-      {
-        "rank": 9,
-        "name": "Von Miller",
-        "stat": 138.5,
-        "team": "DEN/LAR/BUF",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 10,
@@ -7516,17 +7516,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 11,
-        "name": "Richard Dent",
-        "stat": 137.5,
-        "team": "CHI/SF",
-        "era": "1983\u20131997"
-      },
-      {
-        "rank": 12,
         "name": "John Randle",
         "stat": 137.5,
         "team": "MIN/SEA",
         "era": "1990\u20132003"
+      },
+      {
+        "rank": 12,
+        "name": "Richard Dent",
+        "stat": 137.5,
+        "team": "CHI/SF",
+        "era": "1983\u20131997"
       },
       {
         "rank": 13,
@@ -7544,17 +7544,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 15,
-        "name": "Leslie O'Neal",
-        "stat": 132.5,
-        "team": "SD/STL/KC",
-        "era": "1986\u20131999"
-      },
-      {
-        "rank": 16,
         "name": "Lawrence Taylor",
         "stat": 132.5,
         "team": "NYG",
         "era": "1981\u20131993"
+      },
+      {
+        "rank": 16,
+        "name": "Leslie O'Neal",
+        "stat": 132.5,
+        "team": "SD/STL/KC",
+        "era": "1986\u20131999"
       },
       {
         "rank": 17,
@@ -7565,31 +7565,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 18,
+        "name": "Myles Garrett",
+        "stat": 128.5,
+        "team": "CLE/LAR",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 19,
         "name": "Rickey Jackson",
         "stat": 128,
         "team": "NO/SF",
         "era": "1981\u20131995"
       },
       {
-        "rank": 19,
+        "rank": 20,
         "name": "Derrick Thomas",
         "stat": 126.5,
         "team": "KC",
         "era": "1989\u20131999"
       },
       {
-        "rank": 20,
+        "rank": 21,
         "name": "Dwight Freeney",
         "stat": 125.5,
         "team": "IND/ARI",
         "era": "2002\u20132017"
-      },
-      {
-        "rank": 21,
-        "name": "Myles Garrett",
-        "stat": 125.5,
-        "team": "CLE",
-        "era": "2017\u2013Pres"
       },
       {
         "rank": 22,
@@ -7600,38 +7600,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 23,
+        "name": "T.J. Watt",
+        "stat": 122.5,
+        "team": "PIT",
+        "era": "2017\u2013Pres"
+      },
+      {
+        "rank": 24,
         "name": "Simeon Rice",
         "stat": 122,
         "team": "ARI/TB",
         "era": "1996\u20132007"
       },
       {
-        "rank": 24,
+        "rank": 25,
         "name": "Clyde Simmons",
         "stat": 121.5,
         "team": "PHI/ARI",
         "era": "1986\u20132000"
       },
       {
-        "rank": 25,
-        "name": "T.J. Watt",
-        "stat": 119.5,
-        "team": "PIT",
-        "era": "2017\u2013Pres"
-      },
-      {
         "rank": 26,
-        "name": "Calais Campbell",
-        "stat": 117,
-        "team": "ARI/JAX/BAL/MIA",
-        "era": "2008\u2013Pres"
+        "name": "Danielle Hunter",
+        "stat": 118.5,
+        "team": "MIN/HOU",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 27,
-        "name": "Danielle Hunter",
-        "stat": 116.5,
-        "team": "MIN/HOU",
-        "era": "2015\u2013Pres"
+        "name": "Calais Campbell",
+        "stat": 118.0,
+        "team": "ARI/JAX/BAL/MIA",
+        "era": "2008\u2013Pres"
       },
       {
         "rank": 28,
@@ -7656,17 +7656,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 31,
-        "name": "Justin Houston",
-        "stat": 112,
-        "team": "KC/IND/BAL",
-        "era": "2011\u20132023"
-      },
-      {
-        "rank": 32,
         "name": "Chandler Jones",
         "stat": 112,
         "team": "NE/ARI/LV",
         "era": "2012\u20132022"
+      },
+      {
+        "rank": 32,
+        "name": "Justin Houston",
+        "stat": 112,
+        "team": "KC/IND/BAL",
+        "era": "2011\u20132023"
       },
       {
         "rank": 33,
@@ -7728,15 +7728,15 @@ window.NFL_CATEGORIES = [
         "rank": 41,
         "name": "Robert Quinn",
         "stat": 102,
-        "team": "STL/LAR/LAR/MIA",
+        "team": "STL/LAR/MIA",
         "era": "2011\u20132022"
       },
       {
         "rank": 42,
-        "name": "William Fuller",
+        "name": "Cameron Wake",
         "stat": 100.5,
-        "team": "NFL",
-        "era": "1986\u20131998"
+        "team": "MIA/TEN",
+        "era": "2009\u20132019"
       },
       {
         "rank": 43,
@@ -7747,24 +7747,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 44,
-        "name": "Cameron Wake",
+        "name": "William Fuller",
         "stat": 100.5,
-        "team": "MIA/TEN",
-        "era": "2009\u20132019"
+        "team": "NFL",
+        "era": "1986\u20131998"
       },
       {
         "rank": 45,
-        "name": "Carlos Dunlap",
-        "stat": 100,
-        "team": "CIN/SEA/KC",
-        "era": "2010\u20132022"
-      },
-      {
-        "rank": 46,
         "name": "Andre Tippett",
         "stat": 100,
         "team": "NE",
         "era": "1982\u20131993"
+      },
+      {
+        "rank": 46,
+        "name": "Carlos Dunlap",
+        "stat": 100,
+        "team": "CIN/SEA/KC",
+        "era": "2010\u20132022"
       },
       {
         "rank": 47,
@@ -7775,10 +7775,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 48,
-        "name": "Simon Fletcher",
+        "name": "Dexter Manley",
         "stat": 97.5,
-        "team": "DEN",
-        "era": "1985\u20131995"
+        "team": "NFL",
+        "era": "1981\u20131991"
       },
       {
         "rank": 49,
@@ -7789,17 +7789,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 50,
-        "name": "Dexter Manley",
-        "stat": 97.5,
-        "team": "NFL",
-        "era": "1981\u20131991"
-      },
-      {
-        "rank": 51,
         "name": "Mario Williams",
         "stat": 97.5,
         "team": "HOU/BUF",
         "era": "2006\u20132016"
+      },
+      {
+        "rank": 51,
+        "name": "Simon Fletcher",
+        "stat": 97.5,
+        "team": "DEN",
+        "era": "1985\u20131995"
       },
       {
         "rank": 52,
@@ -7810,17 +7810,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 53,
-        "name": "Ryan Kerrigan",
-        "stat": 95.5,
-        "team": "WAS/PHI",
-        "era": "2011\u20132021"
-      },
-      {
-        "rank": 54,
         "name": "Robert Porcher",
         "stat": 95.5,
         "team": "DET",
         "era": "1992\u20132003"
+      },
+      {
+        "rank": 54,
+        "name": "Ryan Kerrigan",
+        "stat": 95.5,
+        "team": "WAS/PHI",
+        "era": "2011\u20132021"
       },
       {
         "rank": 55,
@@ -7831,24 +7831,24 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 56,
+        "name": "Cameron Heyward",
+        "stat": 94.5,
+        "team": "PIT",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 57,
         "name": "Jason Pierre-Paul",
         "stat": 94.5,
         "team": "NYG/TB",
         "era": "2010\u20132025"
       },
       {
-        "rank": 57,
+        "rank": 58,
         "name": "Henry Thomas",
         "stat": 93.5,
         "team": "NE",
         "era": "1987\u20132000"
-      },
-      {
-        "rank": 58,
-        "name": "Cameron Heyward",
-        "stat": 92,
-        "team": "PIT",
-        "era": "2011\u2013Pres"
       },
       {
         "rank": 59,
@@ -7873,10 +7873,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 62,
-        "name": "Tamba Hali",
-        "stat": 89.5,
+        "name": "Chris Jones",
+        "stat": 90.0,
         "team": "KC",
-        "era": "2006\u20132017"
+        "era": "2016\u2013Pres"
       },
       {
         "rank": 63,
@@ -7887,17 +7887,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 64,
+        "name": "Tamba Hali",
+        "stat": 89.5,
+        "team": "KC",
+        "era": "2006\u20132017"
+      },
+      {
+        "rank": 65,
         "name": "Ken Harvey",
         "stat": 89,
         "team": "NFL",
         "era": "1988\u20131998"
-      },
-      {
-        "rank": 65,
-        "name": "Chris Jones",
-        "stat": 87.5,
-        "team": "KC",
-        "era": "2016\u2013Pres"
       },
       {
         "rank": 66,
@@ -7978,31 +7978,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 77,
-        "name": "Patrick Kerney",
-        "stat": 82.5,
-        "team": "ATL/SEA",
-        "era": "1999\u20132009"
+        "name": "Trey Hendrickson",
+        "stat": 83.0,
+        "team": "NO/CIN/BAL",
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 78,
-        "name": "Wayne Martin",
-        "stat": 82.5,
-        "team": "NO",
-        "era": "1989\u20131999"
-      },
-      {
-        "rank": 79,
         "name": "Lee Williams",
         "stat": 82.5,
         "team": "NFL",
         "era": "1984\u20131993"
       },
       {
+        "rank": 79,
+        "name": "Patrick Kerney",
+        "stat": 82.5,
+        "team": "ATL/SEA",
+        "era": "1999\u20132009"
+      },
+      {
         "rank": 80,
-        "name": "Trey Hendrickson",
-        "stat": 82,
-        "team": "NO/CIN",
-        "era": "2017\u2013Pres"
+        "name": "Wayne Martin",
+        "stat": 82.5,
+        "team": "NO",
+        "era": "1989\u20131999"
       },
       {
         "rank": 81,
@@ -8083,45 +8083,45 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 92,
+        "name": "DeForest Buckner",
+        "stat": 75.5,
+        "team": "SF/IND",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 93,
         "name": "Geno Atkins",
         "stat": 75.5,
         "team": "CIN",
         "era": "2010\u20132020"
       },
       {
-        "rank": 93,
+        "rank": 94,
         "name": "Bryce Paup",
         "stat": 75,
         "team": "GB/BUF",
         "era": "1990\u20132000"
       },
       {
-        "rank": 94,
-        "name": "DeForest Buckner",
-        "stat": 74.5,
-        "team": "SF/IND",
-        "era": "2016\u2013Pres"
+        "rank": 95,
+        "name": "Za'Darius Smith",
+        "stat": 75.0,
+        "team": "BAL/GB/MIN/ATL",
+        "era": "2015\u2013Pres"
       },
       {
-        "rank": 95,
+        "rank": 96,
         "name": "Kabeer Gbaja-Biamila",
         "stat": 74.5,
         "team": "GB",
         "era": "2000\u20132008"
       },
       {
-        "rank": 96,
+        "rank": 97,
         "name": "Cliff Avril",
         "stat": 74,
         "team": "DET/SEA",
         "era": "2008\u20132017"
-      },
-      {
-        "rank": 97,
-        "name": "Mark Gastineau",
-        "stat": 74,
-        "team": "NYJ",
-        "era": "1979\u20131988"
       },
       {
         "rank": 98,
@@ -8132,59 +8132,59 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 99,
-        "name": "Shaun Ellis",
-        "stat": 73.5,
+        "name": "Mark Gastineau",
+        "stat": 74,
         "team": "NYJ",
-        "era": "2000\u20132011"
+        "era": "1979\u20131988"
       },
       {
         "rank": 100,
+        "name": "Maxx Crosby",
+        "stat": 73.5,
+        "team": "LV",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 101,
         "name": "Michael Sinclair",
         "stat": 73.5,
         "team": "SEA",
         "era": "1992\u20132002"
       },
       {
-        "rank": 101,
+        "rank": 102,
+        "name": "Shaun Ellis",
+        "stat": 73.5,
+        "team": "NYJ",
+        "era": "2000\u20132011"
+      },
+      {
+        "rank": 103,
         "name": "Rob Burnett",
         "stat": 73,
         "team": "BAL/MIA",
         "era": "1990\u20132003"
       },
       {
-        "rank": 102,
-        "name": "Za'Darius Smith",
-        "stat": 73,
-        "team": "BAL/GB/MIN/CLE",
-        "era": "2015\u2013Pres"
-      },
-      {
-        "rank": 103,
+        "rank": 104,
         "name": "Lance Johnstone",
         "stat": 72,
         "team": "MIN",
         "era": "1996\u20132006"
       },
       {
-        "rank": 104,
+        "rank": 105,
         "name": "Matthew Judon",
         "stat": 72,
-        "team": "NFL",
+        "team": "SF",
         "era": "2016\u2013Pres"
       },
       {
-        "rank": 105,
+        "rank": 106,
         "name": "Cornelius Bennett",
         "stat": 71.5,
         "team": "NFL",
         "era": "1987\u20132000"
-      },
-      {
-        "rank": 106,
-        "name": "Maxx Crosby",
-        "stat": 71.5,
-        "team": "LV",
-        "era": "2019\u2013Pres"
       },
       {
         "rank": 107,
@@ -8223,10 +8223,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 112,
-        "name": "Peter Boulware",
+        "name": "Chris Long",
         "stat": 70,
-        "team": "BAL",
-        "era": "1997\u20132005"
+        "team": "STL/LAR/NE/PHI",
+        "era": "2008\u20132018"
       },
       {
         "rank": 113,
@@ -8237,10 +8237,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 114,
-        "name": "Leonard Floyd",
-        "stat": 70,
-        "team": "CHI/LAR/BUF",
-        "era": "2016\u20132025"
+        "name": "Jadeveon Clowney",
+        "stat": 70.0,
+        "team": "HOU/CLE/BAL/CAR",
+        "era": "2014\u2013Pres"
       },
       {
         "rank": 115,
@@ -8251,17 +8251,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 116,
-        "name": "Chris Long",
+        "name": "Leonard Floyd",
         "stat": 70,
-        "team": "STL/LAR/NE/PHI",
-        "era": "2008\u20132018"
+        "team": "CHI/LAR/BUF",
+        "era": "2016\u20132025"
       },
       {
         "rank": 117,
-        "name": "Michael Bennett",
-        "stat": 69.5,
-        "team": "TB/SEA",
-        "era": "2009\u20132019"
+        "name": "Peter Boulware",
+        "stat": 70,
+        "team": "BAL",
+        "era": "1997\u20132005"
       },
       {
         "rank": 118,
@@ -8272,38 +8272,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 119,
+        "name": "Michael Bennett",
+        "stat": 69.5,
+        "team": "TB/SEA",
+        "era": "2009\u20132019"
+      },
+      {
+        "rank": 120,
         "name": "Chris Clemons",
         "stat": 69,
         "team": "OAK/LV/PHI/SEA",
         "era": "2004\u20132015"
       },
       {
-        "rank": 120,
+        "rank": 121,
+        "name": "DeMarcus Lawrence",
+        "stat": 68.5,
+        "team": "DAL/SEA",
+        "era": "2014\u2013Pres"
+      },
+      {
+        "rank": 122,
         "name": "Mario Addison",
         "stat": 68,
         "team": "CAR/BUF",
         "era": "2011\u20132022"
       },
       {
-        "rank": 121,
-        "name": "Jadeveon Clowney",
-        "stat": 68,
-        "team": "HOU/CLE/BAL/CAR",
-        "era": "2014\u2013Pres"
-      },
-      {
-        "rank": 122,
+        "rank": 123,
         "name": "Charles Johnson",
         "stat": 67.5,
         "team": "CAR",
         "era": "2007\u20132017"
-      },
-      {
-        "rank": 123,
-        "name": "DeMarcus Lawrence",
-        "stat": 67.5,
-        "team": "DAL/SEA",
-        "era": "2014\u2013Pres"
       },
       {
         "rank": 124,
@@ -8321,17 +8321,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 126,
-        "name": "Darren Howard",
-        "stat": 67,
-        "team": "NO/PHI",
-        "era": "2000\u20132009"
-      },
-      {
-        "rank": 127,
         "name": "Adewale Ogunleye",
         "stat": 67,
         "team": "MIA/CHI",
         "era": "2001\u20132010"
+      },
+      {
+        "rank": 127,
+        "name": "Darren Howard",
+        "stat": 67,
+        "team": "NO/PHI",
+        "era": "2000\u20132009"
       },
       {
         "rank": 128,
@@ -8349,17 +8349,17 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 130,
-        "name": "Denico Autry",
-        "stat": 65.5,
-        "team": "OAK/LV/IND/TEN",
-        "era": "2014\u20132025"
-      },
-      {
-        "rank": 131,
         "name": "Al Baker",
         "stat": 65.5,
         "team": "NFL",
         "era": "1978\u20131990"
+      },
+      {
+        "rank": 131,
+        "name": "Denico Autry",
+        "stat": 65.5,
+        "team": "OAK/LV/IND/TEN",
+        "era": "2014\u20132025"
       },
       {
         "rank": 132,
@@ -8391,10 +8391,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 136,
-        "name": "Tony Bennett",
+        "name": "Leonard Williams",
         "stat": 64.5,
-        "team": "NFL",
-        "era": "1990\u20131997"
+        "team": "NYJ/NYG/SEA",
+        "era": "2015\u2013Pres"
       },
       {
         "rank": 137,
@@ -8405,10 +8405,10 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 138,
-        "name": "Leonard Williams",
+        "name": "Tony Bennett",
         "stat": 64.5,
-        "team": "NYJ/NYG/SEA",
-        "era": "2015\u2013Pres"
+        "team": "NFL",
+        "era": "1990\u20131997"
       },
       {
         "rank": 139,
@@ -8419,38 +8419,38 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 140,
-        "name": "Jeff Bryant",
-        "stat": 63,
-        "team": "SEA",
-        "era": "1982\u20131993"
-      },
-      {
-        "rank": 141,
         "name": "James Hall",
         "stat": 63,
         "team": "DET/STL/LAR",
         "era": "2000\u20132011"
       },
       {
+        "rank": 141,
+        "name": "Jeff Bryant",
+        "stat": 63,
+        "team": "SEA",
+        "era": "1982\u20131993"
+      },
+      {
         "rank": 142,
+        "name": "Josh Hines-Allen",
+        "stat": 63.0,
+        "team": "JAX",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 143,
         "name": "Keith Hamilton",
         "stat": 63,
         "team": "NYG",
         "era": "1992\u20132003"
       },
       {
-        "rank": 143,
+        "rank": 144,
         "name": "Kevin Williams",
         "stat": 63,
         "team": "MIN",
         "era": "2003\u20132015"
-      },
-      {
-        "rank": 144,
-        "name": "Josh Hines-Allen",
-        "stat": 62.5,
-        "team": "JAX",
-        "era": "2019\u2013Pres"
       },
       {
         "rank": 145,
@@ -8468,31 +8468,31 @@ window.NFL_CATEGORIES = [
       },
       {
         "rank": 147,
-        "name": "Phillip Daniels",
-        "stat": 62,
-        "team": "CHI/WAS",
-        "era": "1996\u20132010"
-      },
-      {
-        "rank": 148,
         "name": "Jumpy Geathers",
         "stat": 62,
         "team": "NFL",
         "era": "1984\u20131996"
       },
       {
-        "rank": 149,
-        "name": "Phil Hansen",
-        "stat": 61.5,
-        "team": "BUF",
-        "era": "1991\u20132001"
+        "rank": 148,
+        "name": "Phillip Daniels",
+        "stat": 62,
+        "team": "CHI/WAS",
+        "era": "1996\u20132010"
       },
       {
-        "rank": 150,
+        "rank": 149,
         "name": "Haason Reddick",
         "stat": 61.5,
         "team": "ARI/CAR/PHI",
         "era": "2017\u20132025"
+      },
+      {
+        "rank": 150,
+        "name": "Phil Hansen",
+        "stat": 61.5,
+        "team": "BUF",
+        "era": "1991\u20132001"
       }
     ]
   }

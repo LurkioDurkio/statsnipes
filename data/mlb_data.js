@@ -50,7 +50,7 @@ window.MLB_CATEGORIES = [
         "name": "Willie Mays",
         "stat": 660,
         "team": "NYG/SF",
-        "era": "1951\u20131973"
+        "era": "1948\u20131973"
       },
       {
         "rank": 7,
@@ -152,31 +152,31 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 21,
-        "name": "Frank Thomas",
-        "stat": 521,
-        "team": "CHW",
-        "era": "1990\u20132008"
-      },
-      {
-        "rank": 22,
         "name": "Ted Williams",
         "stat": 521,
         "team": "BOS",
         "era": "1939\u20131960"
       },
       {
-        "rank": 23,
-        "name": "Ernie Banks",
-        "stat": 512,
-        "team": "CHC",
-        "era": "1953\u20131971"
+        "rank": 22,
+        "name": "Frank Thomas",
+        "stat": 521,
+        "team": "CHW",
+        "era": "1990\u20132008"
       },
       {
-        "rank": 24,
+        "rank": 23,
         "name": "Eddie Mathews",
         "stat": 512,
         "team": "MIL/ATL",
         "era": "1952\u20131968"
+      },
+      {
+        "rank": 24,
+        "name": "Ernie Banks",
+        "stat": 512,
+        "team": "CHC",
+        "era": "1953\u20131971"
       },
       {
         "rank": 25,
@@ -229,17 +229,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 32,
-        "name": "Stan Musial",
-        "stat": 475,
-        "team": "STL",
-        "era": "1941\u20131963"
-      },
-      {
-        "rank": 33,
         "name": "Willie Stargell",
         "stat": 475,
         "team": "PIT",
         "era": "1962\u20131982"
+      },
+      {
+        "rank": 33,
+        "name": "Stan Musial",
+        "stat": 475,
+        "team": "STL",
+        "era": "1941\u20131963"
       },
       {
         "rank": 34,
@@ -271,17 +271,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 38,
-        "name": "Jose Canseco",
-        "stat": 462,
-        "team": "OAK/TEX/TB",
-        "era": "1985\u20132001"
-      },
-      {
-        "rank": 39,
         "name": "Adam Dunn",
         "stat": 462,
         "team": "CIN/WAS/CHW",
         "era": "2001\u20132014"
+      },
+      {
+        "rank": 39,
+        "name": "Jose Canseco",
+        "stat": 462,
+        "team": "OAK/TEX/TB",
+        "era": "1985\u20132001"
       },
       {
         "rank": 40,
@@ -376,17 +376,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 53,
-        "name": "Mike Trout",
-        "stat": 426,
-        "team": "LAA",
-        "era": "2011\u2013Pres"
-      },
-      {
-        "rank": 54,
         "name": "Billy Williams",
         "stat": 426,
         "team": "CHC/OAK",
         "era": "1959\u20131976"
+      },
+      {
+        "rank": 54,
+        "name": "Mike Trout",
+        "stat": 426,
+        "team": "LAA",
+        "era": "2011\u2013Pres"
       },
       {
         "rank": 55,
@@ -474,17 +474,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 67,
-        "name": "Paul Goldschmidt",
-        "stat": 390,
-        "team": "ARI/STL",
-        "era": "2011\u2013Pres"
-      },
-      {
-        "rank": 68,
         "name": "Graig Nettles",
         "stat": 390,
         "team": "CLE/NYY/SD",
         "era": "1967\u20131988"
+      },
+      {
+        "rank": 68,
+        "name": "Paul Goldschmidt",
+        "stat": 390,
+        "team": "ARI/STL/NYY",
+        "era": "2011\u2013Pres"
       },
       {
         "rank": 69,
@@ -530,24 +530,24 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 75,
-        "name": "Nolan Arenado",
-        "stat": 383,
-        "team": "COL/STL",
-        "era": "2013\u2013Pres"
-      },
-      {
-        "rank": 76,
-        "name": "Freddie Freeman",
-        "stat": 383,
-        "team": "ATL/LAD",
-        "era": "2010\u2013Pres"
-      },
-      {
-        "rank": 77,
         "name": "Larry Walker",
         "stat": 383,
         "team": "MON/COL/STL",
         "era": "1989\u20132005"
+      },
+      {
+        "rank": 76,
+        "name": "Nolan Arenado",
+        "stat": 383,
+        "team": "COL/STL/ARI",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 77,
+        "name": "Freddie Freeman",
+        "stat": 383,
+        "team": "ATL/LAD",
+        "era": "2010\u2013Pres"
       },
       {
         "rank": 78,
@@ -600,17 +600,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 85,
-        "name": "Norm Cash",
-        "stat": 377,
-        "team": "DET",
-        "era": "1958\u20131974"
-      },
-      {
-        "rank": 86,
         "name": "Jeff Kent",
         "stat": 377,
         "team": "SF/HOU/LAD",
         "era": "1992\u20132008"
+      },
+      {
+        "rank": 86,
+        "name": "Norm Cash",
+        "stat": 377,
+        "team": "DET",
+        "era": "1958\u20131974"
       },
       {
         "rank": 87,
@@ -677,17 +677,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 96,
-        "name": "Yogi Berra",
-        "stat": 358,
-        "team": "NYY",
-        "era": "1946\u20131965"
-      },
-      {
-        "rank": 97,
         "name": "Carlos Lee",
         "stat": 358,
         "team": "CHW/MIL/HOU",
         "era": "1999\u20132012"
+      },
+      {
+        "rank": 97,
+        "name": "Yogi Berra",
+        "stat": 358,
+        "team": "NYY",
+        "era": "1946\u20131965"
       },
       {
         "rank": 98,
@@ -705,17 +705,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 100,
-        "name": "Luis Gonzalez",
-        "stat": 354,
-        "team": "HOU/ARI",
-        "era": "1990\u20132008"
-      },
-      {
-        "rank": 101,
         "name": "Lee May",
         "stat": 354,
         "team": "CIN/HOU/BAL",
         "era": "1965\u20131982"
+      },
+      {
+        "rank": 101,
+        "name": "Luis Gonzalez",
+        "stat": 354,
+        "team": "HOU/ARI",
+        "era": "1990\u20132008"
       },
       {
         "rank": 102,
@@ -726,17 +726,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 103,
-        "name": "Ryan Braun",
-        "stat": 352,
-        "team": "MIL",
-        "era": "2007\u20132020"
-      },
-      {
-        "rank": 104,
         "name": "Ellis Burks",
         "stat": 352,
         "team": "BOS/COL/CLE",
         "era": "1987\u20132004"
+      },
+      {
+        "rank": 104,
+        "name": "Ryan Braun",
+        "stat": 352,
+        "team": "MIL",
+        "era": "2007\u20132020"
       },
       {
         "rank": 105,
@@ -750,7 +750,7 @@ window.MLB_CATEGORIES = [
         "name": "Eugenio Suarez",
         "stat": 351,
         "team": "CIN",
-        "era": "2016\u2013Pres"
+        "era": "2014\u2013Pres"
       },
       {
         "rank": 107,
@@ -782,45 +782,45 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 111,
-        "name": "Evan Longoria",
-        "stat": 342,
-        "team": "TB",
-        "era": "2008\u20132020"
-      },
-      {
-        "rank": 112,
         "name": "Ron Santo",
         "stat": 342,
         "team": "CHC",
-        "era": "Career"
+        "era": "1960\u20131974"
+      },
+      {
+        "rank": 112,
+        "name": "Evan Longoria",
+        "stat": 342,
+        "team": "TB/SF/AZ",
+        "era": "2008\u20132023"
       },
       {
         "rank": 113,
         "name": "Jack Clark",
         "stat": 340,
         "team": "SF",
-        "era": "Career"
+        "era": "1975\u20131992"
       },
       {
         "rank": 114,
-        "name": "Tino Martinez",
-        "stat": 339,
-        "team": "SEA/NYY",
-        "era": "1990\u20132005"
-      },
-      {
-        "rank": 115,
         "name": "Dave Parker",
         "stat": 339,
         "team": "PIT/CIN",
         "era": "1973\u20131991"
       },
       {
-        "rank": 116,
+        "rank": 115,
         "name": "Boog Powell",
         "stat": 339,
         "team": "BAL",
         "era": "1961\u20131977"
+      },
+      {
+        "rank": 116,
+        "name": "Tino Martinez",
+        "stat": 339,
+        "team": "SEA/NYY",
+        "era": "1990\u20132005"
       },
       {
         "rank": 117,
@@ -834,7 +834,7 @@ window.MLB_CATEGORIES = [
         "name": "Joe Adcock",
         "stat": 336,
         "team": "ATL",
-        "era": "Career"
+        "era": "1950\u20131966"
       },
       {
         "rank": 119,
@@ -845,59 +845,59 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 120,
-        "name": "Carlos Santana",
-        "stat": 335,
-        "team": "ARI",
-        "era": "2011\u2013Pres"
-      },
-      {
-        "rank": 121,
         "name": "Darryl Strawberry",
         "stat": 335,
         "team": "NYM/LAD/NYY",
         "era": "1983\u20131999"
       },
       {
+        "rank": 121,
+        "name": "Carlos Santana",
+        "stat": 335,
+        "team": "ARI",
+        "era": "2010\u2013Pres"
+      },
+      {
         "rank": 122,
         "name": "Andrew McCutchen",
         "stat": 333,
-        "team": "PIT/PHI",
+        "team": "PIT/PHI/TEX",
         "era": "2009\u2013Pres"
       },
       {
         "rank": 123,
         "name": "Moises Alou",
         "stat": 332,
-        "team": "HOU",
-        "era": "1996\u20132006"
+        "team": "PIT/WAS/NYM",
+        "era": "1990\u20132008"
       },
       {
         "rank": 124,
         "name": "Bobby Bonds",
         "stat": 332,
         "team": "SF",
-        "era": "Career"
+        "era": "1968\u20131981"
       },
       {
         "rank": 125,
-        "name": "Hank Greenberg",
-        "stat": 331,
-        "team": "DET",
-        "era": "Career"
-      },
-      {
-        "rank": 126,
         "name": "Derrek Lee",
         "stat": 331,
         "team": "MIA",
-        "era": "1998\u20132011"
+        "era": "1997\u20132011"
+      },
+      {
+        "rank": 126,
+        "name": "Hank Greenberg",
+        "stat": 331,
+        "team": "DET",
+        "era": "1930\u20131947"
       },
       {
         "rank": 127,
         "name": "J.D. Martinez",
         "stat": 331,
         "team": "DET",
-        "era": "2014\u2013Pres"
+        "era": "2011\u20132024"
       },
       {
         "rank": 128,
@@ -908,108 +908,108 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 129,
-        "name": "Shawn Green",
-        "stat": 328,
-        "team": "LAD",
-        "era": "1996\u20132007"
-      },
-      {
-        "rank": 130,
         "name": "Mo Vaughn",
         "stat": 328,
         "team": "BOS/ANA/NYM",
         "era": "1991\u20132003"
       },
       {
+        "rank": 130,
+        "name": "Shawn Green",
+        "stat": 328,
+        "team": "TOR/LAD/NYM",
+        "era": "1993\u20132007"
+      },
+      {
         "rank": 131,
         "name": "Jermaine Dye",
         "stat": 325,
         "team": "KC",
-        "era": "1999\u20132009"
+        "era": "1996\u20132009"
       },
       {
         "rank": 132,
-        "name": "Willie Horton",
+        "name": "Justin Upton",
         "stat": 325,
-        "team": "SEA",
-        "era": "Career"
+        "team": "AZ/ATL/SEA",
+        "era": "2007\u20132022"
       },
       {
         "rank": 133,
-        "name": "Justin Upton",
+        "name": "Willie Horton",
         "stat": 325,
-        "team": "ARI",
-        "era": "2008\u20132020"
+        "team": "SEA",
+        "era": "1963\u20131980"
       },
       {
         "rank": 134,
-        "name": "Gary Carter",
+        "name": "Salvador Perez",
         "stat": 324,
-        "team": "MTL",
-        "era": "Career"
+        "team": "KC",
+        "era": "2011\u2013Pres"
       },
       {
         "rank": 135,
         "name": "Lance Parrish",
         "stat": 324,
         "team": "DET",
-        "era": "Career"
+        "era": "1977\u20131995"
       },
       {
         "rank": 136,
-        "name": "Salvador Perez",
+        "name": "Gary Carter",
         "stat": 324,
-        "team": "KC",
-        "era": "2013\u2013Pres"
+        "team": "MTL",
+        "era": "1974\u20131992"
       },
       {
         "rank": 137,
         "name": "Ron Gant",
         "stat": 321,
-        "team": "ATL",
-        "era": "1996\u20132000"
+        "team": "ATL/CIN/SD",
+        "era": "1987\u20132003"
       },
       {
         "rank": 138,
         "name": "Vinny Castilla",
         "stat": 320,
-        "team": "COL",
-        "era": "1996\u20132005"
+        "team": "ATL/COL/SD",
+        "era": "1991\u20132006"
       },
       {
         "rank": 139,
         "name": "Troy Glaus",
         "stat": 320,
         "team": "LAA",
-        "era": "1999\u20132010"
+        "era": "1998\u20132010"
       },
       {
         "rank": 140,
-        "name": "Jay Bruce",
-        "stat": 319,
-        "team": "CIN",
-        "era": "2008\u20132017"
-      },
-      {
-        "rank": 141,
         "name": "Cecil Fielder",
         "stat": 319,
         "team": "TOR/DET/NYY",
         "era": "1985\u20131998"
       },
       {
-        "rank": 142,
+        "rank": 141,
         "name": "Prince Fielder",
         "stat": 319,
         "team": "MIL/DET/TEX",
         "era": "2005\u20132016"
       },
       {
+        "rank": 142,
+        "name": "Jay Bruce",
+        "stat": 319,
+        "team": "CIN/NYM/NYY",
+        "era": "2008\u20132021"
+      },
+      {
         "rank": 143,
         "name": "Roy Sievers",
         "stat": 318,
         "team": "MIN",
-        "era": "Career"
+        "era": "1949\u20131965"
       },
       {
         "rank": 144,
@@ -1022,36 +1022,36 @@ window.MLB_CATEGORIES = [
         "rank": 145,
         "name": "Adrian Gonzalez",
         "stat": 317,
-        "team": "SD",
-        "era": "2006\u20132016"
+        "team": "TEX/SD/NYM",
+        "era": "2004\u20132018"
       },
       {
         "rank": 146,
-        "name": "Ron Cey",
+        "name": "Scott Rolen",
         "stat": 316,
-        "team": "CHC",
-        "era": "Career"
+        "team": "PHI/STL/CIN",
+        "era": "1996\u20132012"
       },
       {
         "rank": 147,
         "name": "Matt Holliday",
         "stat": 316,
-        "team": "STL",
-        "era": "2004\u20132016"
+        "team": "COL/ATH/NYY",
+        "era": "2004\u20132018"
       },
       {
         "rank": 148,
-        "name": "Scott Rolen",
+        "name": "Ron Cey",
         "stat": 316,
-        "team": "PHI",
-        "era": "1997\u20132010"
+        "team": "CHC",
+        "era": "1971\u20131987"
       },
       {
         "rank": 149,
         "name": "Jeromy Burnitz",
         "stat": 315,
-        "team": "MIL",
-        "era": "1997\u20132005"
+        "team": "NYM/CLE/PIT",
+        "era": "1993\u20132006"
       },
       {
         "rank": 150,
@@ -1102,9 +1102,9 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 5,
-        "name": "Tris Speaker",
+        "name": "Tristram Speaker",
         "stat": 3515,
-        "team": "BOS/CLE",
+        "team": "BOS/CLE/ATH",
         "era": "1907\u20131928"
       },
       {
@@ -1154,7 +1154,7 @@ window.MLB_CATEGORIES = [
         "name": "Willie Mays",
         "stat": 3293,
         "team": "NYG/SF",
-        "era": "1951\u20131973"
+        "era": "1948\u20131973"
       },
       {
         "rank": 13,
@@ -1280,14 +1280,14 @@ window.MLB_CATEGORIES = [
         "name": "Cap Anson",
         "stat": 3011,
         "team": "CHC",
-        "era": "1871\u20131897"
+        "era": "1876\u20131897"
       },
       {
         "rank": 31,
         "name": "Wade Boggs",
         "stat": 3010,
-        "team": "BOS",
-        "era": "1996\u20131998"
+        "team": "BOS/NYY/TB",
+        "era": "1982\u20131999"
       },
       {
         "rank": 32,
@@ -1340,17 +1340,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 39,
-        "name": "Jake Beckley",
-        "stat": 2930,
-        "team": "PIT/CIN",
-        "era": "1888\u20131907"
-      },
-      {
-        "rank": 40,
         "name": "Rogers Hornsby",
         "stat": 2930,
         "team": "STL/CHC",
         "era": "1915\u20131937"
+      },
+      {
+        "rank": 40,
+        "name": "Jake Beckley",
+        "stat": 2930,
+        "team": "PIT/CIN",
+        "era": "1888\u20131907"
       },
       {
         "rank": 41,
@@ -1592,17 +1592,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 75,
-        "name": "George Davis",
-        "stat": 2660,
-        "team": "NYG/CHW",
-        "era": "1890\u20131909"
-      },
-      {
-        "rank": 76,
         "name": "Harry Heilmann",
         "stat": 2660,
         "team": "DET",
         "era": "1914\u20131932"
+      },
+      {
+        "rank": 76,
+        "name": "George Davis",
+        "stat": 2660,
+        "team": "NYG/CHW",
+        "era": "1890\u20131909"
       },
       {
         "rank": 77,
@@ -1665,7 +1665,7 @@ window.MLB_CATEGORIES = [
         "name": "Ed Delahanty",
         "stat": 2596,
         "team": "PHI",
-        "era": "Career"
+        "era": "1888\u20131903"
       },
       {
         "rank": 86,
@@ -1784,14 +1784,14 @@ window.MLB_CATEGORIES = [
         "name": "Jimmy Ryan",
         "stat": 2512,
         "team": "CHC",
-        "era": "Career"
+        "era": "1885\u20131903"
       },
       {
         "rank": 103,
         "name": "Mickey Vernon",
         "stat": 2495,
         "team": "WAS/MIN",
-        "era": "Career"
+        "era": "1939\u20131960"
       },
       {
         "rank": 104,
@@ -1802,24 +1802,24 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 105,
-        "name": "David Ortiz",
-        "stat": 2472,
-        "team": "MIN/BOS",
-        "era": "1997\u20132016"
-      },
-      {
-        "rank": 106,
         "name": "Ted Simmons",
         "stat": 2472,
         "team": "STL/MIL",
         "era": "1968\u20131988"
       },
       {
+        "rank": 106,
+        "name": "David Ortiz",
+        "stat": 2472,
+        "team": "MIN/BOS",
+        "era": "1997\u20132016"
+      },
+      {
         "rank": 107,
         "name": "Joe Medwick",
         "stat": 2471,
         "team": "STL",
-        "era": "Career"
+        "era": "1932\u20131948"
       },
       {
         "rank": 108,
@@ -1839,15 +1839,15 @@ window.MLB_CATEGORIES = [
         "rank": 110,
         "name": "Roger Connor",
         "stat": 2467,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF/PHI/STL",
+        "era": "1880\u20131897"
       },
       {
         "rank": 111,
         "name": "Harry Hooper",
         "stat": 2466,
         "team": "BOS",
-        "era": "Career"
+        "era": "1909\u20131925"
       },
       {
         "rank": 112,
@@ -1868,7 +1868,7 @@ window.MLB_CATEGORIES = [
         "name": "Lloyd Waner",
         "stat": 2459,
         "team": "PIT",
-        "era": "Career"
+        "era": "1927\u20131945"
       },
       {
         "rank": 115,
@@ -1903,7 +1903,7 @@ window.MLB_CATEGORIES = [
         "name": "Red Schoendienst",
         "stat": 2449,
         "team": "STL",
-        "era": "Career"
+        "era": "1945\u20131963"
       },
       {
         "rank": 120,
@@ -1916,8 +1916,8 @@ window.MLB_CATEGORIES = [
         "rank": 121,
         "name": "Mark Grace",
         "stat": 2445,
-        "team": "CHC",
-        "era": "1996\u20132001"
+        "team": "CHC/AZ",
+        "era": "1988\u20132003"
       },
       {
         "rank": 122,
@@ -1931,7 +1931,7 @@ window.MLB_CATEGORIES = [
         "name": "Pie Traynor",
         "stat": 2416,
         "team": "PIT",
-        "era": "Career"
+        "era": "1920\u20131937"
       },
       {
         "rank": 124,
@@ -1951,22 +1951,22 @@ window.MLB_CATEGORIES = [
         "rank": 126,
         "name": "Miguel Tejada",
         "stat": 2407,
-        "team": "BAL",
-        "era": "1999\u20132010"
+        "team": "ATH/BAL/KC",
+        "era": "1997\u20132013"
       },
       {
         "rank": 127,
         "name": "Stuffy McInnis",
         "stat": 2405,
         "team": "BOS",
-        "era": "Career"
+        "era": "1909\u20131927"
       },
       {
         "rank": 128,
         "name": "Nick Markakis",
         "stat": 2388,
         "team": "ATL",
-        "era": "2006\u20132019"
+        "era": "2006\u20132020"
       },
       {
         "rank": 129,
@@ -1980,7 +1980,7 @@ window.MLB_CATEGORIES = [
         "name": "Enos Slaughter",
         "stat": 2383,
         "team": "STL",
-        "era": "Career"
+        "era": "1938\u20131959"
       },
       {
         "rank": 131,
@@ -1994,28 +1994,28 @@ window.MLB_CATEGORIES = [
         "name": "Edd Roush",
         "stat": 2376,
         "team": "CIN",
-        "era": "Career"
+        "era": "1913\u20131931"
       },
       {
         "rank": 133,
+        "name": "Michael Young",
+        "stat": 2375,
+        "team": "TEX",
+        "era": "2000\u20132013"
+      },
+      {
+        "rank": 134,
         "name": "Brett Butler",
         "stat": 2375,
         "team": "ATL/SF/LAD",
         "era": "1981\u20131997"
       },
       {
-        "rank": 134,
-        "name": "Michael Young",
-        "stat": 2375,
-        "team": "TEX",
-        "era": "2002\u20132013"
-      },
-      {
         "rank": 135,
         "name": "Lou Whitaker",
         "stat": 2369,
         "team": "DET",
-        "era": "Career"
+        "era": "1977\u20131995"
       },
       {
         "rank": 136,
@@ -2036,7 +2036,7 @@ window.MLB_CATEGORIES = [
         "name": "Joe Judge",
         "stat": 2352,
         "team": "WAS/MIN",
-        "era": "Career"
+        "era": "1915\u20131934"
       },
       {
         "rank": 139,
@@ -2050,28 +2050,28 @@ window.MLB_CATEGORIES = [
         "name": "Billy Herman",
         "stat": 2345,
         "team": "CHC",
-        "era": "Career"
+        "era": "1931\u20131947"
       },
       {
         "rank": 141,
         "name": "Joe Torre",
         "stat": 2342,
         "team": "STL",
-        "era": "Career"
+        "era": "1960\u20131977"
       },
       {
         "rank": 142,
-        "name": "Paul Konerko",
-        "stat": 2340,
-        "team": "CHW",
-        "era": "1997\u20132014"
-      },
-      {
-        "rank": 143,
         "name": "Barry Larkin",
         "stat": 2340,
         "team": "CIN",
         "era": "1986\u20132004"
+      },
+      {
+        "rank": 143,
+        "name": "Paul Konerko",
+        "stat": 2340,
+        "team": "CHW",
+        "era": "1997\u20132014"
       },
       {
         "rank": 144,
@@ -2098,29 +2098,29 @@ window.MLB_CATEGORIES = [
         "rank": 147,
         "name": "Edgar Renteria",
         "stat": 2327,
-        "team": "STL",
-        "era": "1996\u20132008"
+        "team": "MIA/STL/CIN",
+        "era": "1996\u20132011"
       },
       {
         "rank": 148,
-        "name": "Dave Concepcion",
+        "name": "B.J. Surhoff",
         "stat": 2326,
-        "team": "CIN",
-        "era": "Career"
+        "team": "MIL/BAL/ATL",
+        "era": "1987\u20132005"
       },
       {
         "rank": 149,
         "name": "Jake Daubert",
         "stat": 2326,
         "team": "CIN",
-        "era": "Career"
+        "era": "1910\u20131924"
       },
       {
         "rank": 150,
-        "name": "B.J. Surhoff",
+        "name": "Dave Concepcion",
         "stat": 2326,
-        "team": "BAL",
-        "era": "1996\u20132001"
+        "team": "CIN",
+        "era": "1970\u20131988"
       }
     ]
   },
@@ -2209,7 +2209,7 @@ window.MLB_CATEGORIES = [
         "name": "Willie Mays",
         "stat": 1909,
         "team": "NYG/SF",
-        "era": "1951\u20131973"
+        "era": "1948\u20131973"
       },
       {
         "rank": 12,
@@ -2223,7 +2223,7 @@ window.MLB_CATEGORIES = [
         "name": "Cap Anson",
         "stat": 1879,
         "team": "CHC",
-        "era": "1871\u20131897"
+        "era": "1876\u20131897"
       },
       {
         "rank": 14,
@@ -2486,17 +2486,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 51,
+        "name": "Tristram Speaker",
+        "stat": 1529,
+        "team": "BOS/CLE/ATH",
+        "era": "1907\u20131928"
+      },
+      {
+        "rank": 52,
         "name": "Jeff Bagwell",
         "stat": 1529,
         "team": "HOU",
         "era": "1991\u20132005"
-      },
-      {
-        "rank": 52,
-        "name": "Tris Speaker",
-        "stat": 1529,
-        "team": "BOS/CLE",
-        "era": "1907\u20131928"
       },
       {
         "rank": 53,
@@ -2559,7 +2559,7 @@ window.MLB_CATEGORIES = [
         "name": "Ed Delahanty",
         "stat": 1464,
         "team": "PHI",
-        "era": "Career"
+        "era": "1888\u20131903"
       },
       {
         "rank": 62,
@@ -2629,14 +2629,14 @@ window.MLB_CATEGORIES = [
         "name": "Joe Cronin",
         "stat": 1424,
         "team": "WAS/MIN",
-        "era": "Career"
+        "era": "1926\u20131945"
       },
       {
         "rank": 72,
         "name": "Jim Bottomley",
         "stat": 1422,
         "team": "STL",
-        "era": "Career"
+        "era": "1922\u20131937"
       },
       {
         "rank": 73,
@@ -2720,7 +2720,7 @@ window.MLB_CATEGORIES = [
         "name": "Joe Medwick",
         "stat": 1383,
         "team": "STL",
-        "era": "Career"
+        "era": "1932\u20131948"
       },
       {
         "rank": 85,
@@ -2825,7 +2825,7 @@ window.MLB_CATEGORIES = [
         "name": "Ron Santo",
         "stat": 1331,
         "team": "CHC",
-        "era": "Career"
+        "era": "1960\u20131974"
       },
       {
         "rank": 100,
@@ -2833,6 +2833,356 @@ window.MLB_CATEGORIES = [
         "stat": 1330,
         "team": "BOS/CHW",
         "era": "1969\u20131993"
+      },
+      {
+        "rank": 101,
+        "name": "Al Oliver",
+        "stat": 1326,
+        "team": "PIT/TEX/TOR",
+        "era": "1968\u20131985"
+      },
+      {
+        "rank": 102,
+        "name": "Nelson Cruz",
+        "stat": 1325,
+        "team": "MIL/TEX/SD",
+        "era": "2005\u20132023"
+      },
+      {
+        "rank": 103,
+        "name": "Roger Connor",
+        "stat": 1322,
+        "team": "SF/PHI/STL",
+        "era": "1880\u20131897"
+      },
+      {
+        "rank": 104,
+        "name": "Ruben Sierra",
+        "stat": 1322,
+        "team": "TEX/ATH/MIN",
+        "era": "1986\u20132006"
+      },
+      {
+        "rank": 105,
+        "name": "Pete Rose",
+        "stat": 1314,
+        "team": "CIN/PHI/WAS",
+        "era": "1963\u20131986"
+      },
+      {
+        "rank": 106,
+        "name": "Graig Nettles",
+        "stat": 1314,
+        "team": "MIN/CLE/WAS",
+        "era": "1967\u20131988"
+      },
+      {
+        "rank": 107,
+        "name": "Larry Walker",
+        "stat": 1311,
+        "team": "WAS/COL/STL",
+        "era": "1989\u20132005"
+      },
+      {
+        "rank": 108,
+        "name": "Derek Jeter",
+        "stat": 1311,
+        "team": "NYY",
+        "era": "1995\u20132014"
+      },
+      {
+        "rank": 109,
+        "name": "Mickey Vernon",
+        "stat": 1311,
+        "team": "MIN/CLE/PIT",
+        "era": "1939\u20131960"
+      },
+      {
+        "rank": 110,
+        "name": "Paul Waner",
+        "stat": 1309,
+        "team": "PIT/LAD/NYY",
+        "era": "1926\u20131945"
+      },
+      {
+        "rank": 111,
+        "name": "Steve Garvey",
+        "stat": 1308,
+        "team": "LAD/SD",
+        "era": "1969\u20131987"
+      },
+      {
+        "rank": 112,
+        "name": "Paul Molitor",
+        "stat": 1307,
+        "team": "MIL/TOR/MIN",
+        "era": "1978\u20131998"
+      },
+      {
+        "rank": 113,
+        "name": "Robinson Cano",
+        "stat": 1306,
+        "team": "NYY/SEA/ATL",
+        "era": "2005\u20132022"
+      },
+      {
+        "rank": 114,
+        "name": "Roberto Clemente",
+        "stat": 1305,
+        "team": "PIT",
+        "era": "1955\u20131972"
+      },
+      {
+        "rank": 115,
+        "name": "Enos Slaughter",
+        "stat": 1304,
+        "team": "STL/NYY/ATL",
+        "era": "1938\u20131959"
+      },
+      {
+        "rank": 116,
+        "name": "Miguel Tejada",
+        "stat": 1302,
+        "team": "ATH/BAL/KC",
+        "era": "1997\u20132013"
+      },
+      {
+        "rank": 117,
+        "name": "Hugh Duffy",
+        "stat": 1302,
+        "team": "CHC/ATL/PHI",
+        "era": "1888\u20131906"
+      },
+      {
+        "rank": 118,
+        "name": "Eddie Collins",
+        "stat": 1300,
+        "team": "ATH/CHW",
+        "era": "1906\u20131930"
+      },
+      {
+        "rank": 119,
+        "name": "Sam Thompson",
+        "stat": 1299,
+        "team": "PHI/DET",
+        "era": "1885\u20131906"
+      },
+      {
+        "rank": 120,
+        "name": "Mark Teixeira",
+        "stat": 1298,
+        "team": "TEX/ATL/NYY",
+        "era": "2003\u20132016"
+      },
+      {
+        "rank": 121,
+        "name": "Dan Brouthers",
+        "stat": 1296,
+        "team": "ATL/LAD/SF",
+        "era": "1879\u20131904"
+      },
+      {
+        "rank": 122,
+        "name": "Andruw Jones",
+        "stat": 1289,
+        "team": "ATL/LAD/NYY",
+        "era": "1996\u20132012"
+      },
+      {
+        "rank": 123,
+        "name": "Scott Rolen",
+        "stat": 1287,
+        "team": "PHI/STL/CIN",
+        "era": "1996\u20132012"
+      },
+      {
+        "rank": 124,
+        "name": "Moises Alou",
+        "stat": 1287,
+        "team": "PIT/WAS/NYM",
+        "era": "1990\u20132008"
+      },
+      {
+        "rank": 125,
+        "name": "Del Ennis",
+        "stat": 1284,
+        "team": "PHI/STL/CHW",
+        "era": "1946\u20131959"
+      },
+      {
+        "rank": 126,
+        "name": "Paul Goldschmidt",
+        "stat": 1284,
+        "team": "AZ/STL/NYY",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 127,
+        "name": "Bob Johnson",
+        "stat": 1283,
+        "team": "ATH/MIN/BOS",
+        "era": "1933\u20131945"
+      },
+      {
+        "rank": 128,
+        "name": "Don Baylor",
+        "stat": 1276,
+        "team": "BAL/ATH/MIN",
+        "era": "1970\u20131988"
+      },
+      {
+        "rank": 129,
+        "name": "Hank Greenberg",
+        "stat": 1276,
+        "team": "DET/PIT",
+        "era": "1930\u20131947"
+      },
+      {
+        "rank": 130,
+        "name": "Gil Hodges",
+        "stat": 1274,
+        "team": "LAD/NYM",
+        "era": "1943\u20131963"
+      },
+      {
+        "rank": 131,
+        "name": "Pie Traynor",
+        "stat": 1273,
+        "team": "PIT",
+        "era": "1920\u20131937"
+      },
+      {
+        "rank": 132,
+        "name": "Tino Martinez",
+        "stat": 1271,
+        "team": "SEA/NYY/TB",
+        "era": "1990\u20132005"
+      },
+      {
+        "rank": 133,
+        "name": "Nolan Arenado",
+        "stat": 1270,
+        "team": "COL/STL/AZ/ARI",
+        "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 134,
+        "name": "Paul O'Neill",
+        "stat": 1269,
+        "team": "CIN/NYY",
+        "era": "1985\u20132001"
+      },
+      {
+        "rank": 135,
+        "name": "Dale Murphy",
+        "stat": 1266,
+        "team": "ATL/PHI/COL",
+        "era": "1976\u20131993"
+      },
+      {
+        "rank": 136,
+        "name": "Edgar Martinez",
+        "stat": 1261,
+        "team": "SEA",
+        "era": "1987\u20132004"
+      },
+      {
+        "rank": 137,
+        "name": "Edwin Encarnacion",
+        "stat": 1261,
+        "team": "CIN/TOR/CHW",
+        "era": "2005\u20132020"
+      },
+      {
+        "rank": 138,
+        "name": "Bernie Williams",
+        "stat": 1257,
+        "team": "NYY",
+        "era": "1991\u20132006"
+      },
+      {
+        "rank": 139,
+        "name": "Zack Wheat",
+        "stat": 1248,
+        "team": "LAD/ATH",
+        "era": "1909\u20131927"
+      },
+      {
+        "rank": 140,
+        "name": "Bobby Doerr",
+        "stat": 1247,
+        "team": "BOS",
+        "era": "1937\u20131951"
+      },
+      {
+        "rank": 141,
+        "name": "Lee May",
+        "stat": 1244,
+        "team": "CIN/HOU/KC",
+        "era": "1965\u20131982"
+      },
+      {
+        "rank": 142,
+        "name": "Frankie Frisch",
+        "stat": 1244,
+        "team": "SF/STL",
+        "era": "1919\u20131937"
+      },
+      {
+        "rank": 143,
+        "name": "George Foster",
+        "stat": 1239,
+        "team": "SF/CIN/CHW",
+        "era": "1969\u20131986"
+      },
+      {
+        "rank": 144,
+        "name": "Albert Belle",
+        "stat": 1239,
+        "team": "CLE/CHW/BAL",
+        "era": "1989\u20132000"
+      },
+      {
+        "rank": 145,
+        "name": "Magglio Ordonez",
+        "stat": 1236,
+        "team": "CHW/DET",
+        "era": "1997\u20132011"
+      },
+      {
+        "rank": 146,
+        "name": "Manny Machado",
+        "stat": 1235,
+        "team": "BAL/LAD/SD",
+        "era": "2012\u2013Pres"
+      },
+      {
+        "rank": 147,
+        "name": "Lance Berkman",
+        "stat": 1234,
+        "team": "HOU/NYY/TEX",
+        "era": "1999\u20132013"
+      },
+      {
+        "rank": 148,
+        "name": "Bill Dahlen",
+        "stat": 1233,
+        "team": "CHC/LAD/ATL",
+        "era": "1891\u20131911"
+      },
+      {
+        "rank": 149,
+        "name": "John Olerud",
+        "stat": 1230,
+        "team": "TOR/NYM/BOS",
+        "era": "1989\u20132005"
+      },
+      {
+        "rank": 150,
+        "name": "Gary Carter",
+        "stat": 1225,
+        "team": "MTL/NYM/LAD",
+        "era": "1974\u20131992"
       }
     ]
   },
@@ -2869,17 +3219,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 4,
-        "name": "Hank Aaron",
-        "stat": 2174,
-        "team": "MIL/ATL",
-        "era": "1954\u20131976"
-      },
-      {
-        "rank": 5,
         "name": "Babe Ruth",
         "stat": 2174,
         "team": "BOS/NYY",
         "era": "1914\u20131935"
+      },
+      {
+        "rank": 5,
+        "name": "Hank Aaron",
+        "stat": 2174,
+        "team": "MIL/ATL",
+        "era": "1954\u20131976"
       },
       {
         "rank": 6,
@@ -2893,7 +3243,7 @@ window.MLB_CATEGORIES = [
         "name": "Willie Mays",
         "stat": 2068,
         "team": "NYG/SF",
-        "era": "1951\u20131973"
+        "era": "1948\u20131973"
       },
       {
         "rank": 8,
@@ -2932,9 +3282,9 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 13,
-        "name": "Tris Speaker",
+        "name": "Tristram Speaker",
         "stat": 1881,
-        "team": "BOS/CLE",
+        "team": "BOS/CLE/ATH",
         "era": "1907\u20131928"
       },
       {
@@ -3016,17 +3366,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 25,
-        "name": "Cap Anson",
-        "stat": 1719,
-        "team": "CHC",
-        "era": "1871\u20131897"
-      },
-      {
-        "rank": 26,
         "name": "Willie Keeler",
         "stat": 1719,
         "team": "BAL/NYY",
         "era": "1892\u20131910"
+      },
+      {
+        "rank": 26,
+        "name": "Cap Anson",
+        "stat": 1719,
+        "team": "CHC",
+        "era": "1876\u20131897"
       },
       {
         "rank": 27,
@@ -3096,7 +3446,7 @@ window.MLB_CATEGORIES = [
         "name": "Jimmy Ryan",
         "stat": 1642,
         "team": "CHC",
-        "era": "Career"
+        "era": "1885\u20131903"
       },
       {
         "rank": 37,
@@ -3121,17 +3471,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 40,
-        "name": "Eddie Murray",
-        "stat": 1627,
-        "team": "BAL/LAD",
-        "era": "1977\u20131997"
-      },
-      {
-        "rank": 41,
         "name": "Paul Waner",
         "stat": 1627,
         "team": "PIT",
         "era": "1926\u20131945"
+      },
+      {
+        "rank": 41,
+        "name": "Eddie Murray",
+        "stat": 1627,
+        "team": "BAL/LAD",
+        "era": "1977\u20131997"
       },
       {
         "rank": 42,
@@ -3144,22 +3494,22 @@ window.MLB_CATEGORIES = [
         "rank": 43,
         "name": "Roger Connor",
         "stat": 1620,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF/PHI/STL",
+        "era": "1880\u20131897"
       },
       {
         "rank": 44,
-        "name": "Fred Clarke",
-        "stat": 1619,
-        "team": "LOU/PIT",
-        "era": "1894\u20131915"
-      },
-      {
-        "rank": 45,
         "name": "Chipper Jones",
         "stat": 1619,
         "team": "ATL",
         "era": "1993\u20132012"
+      },
+      {
+        "rank": 45,
+        "name": "Fred Clarke",
+        "stat": 1619,
+        "team": "LOU/PIT",
+        "era": "1894\u20131915"
       },
       {
         "rank": 46,
@@ -3180,7 +3530,7 @@ window.MLB_CATEGORIES = [
         "name": "Ed Delahanty",
         "stat": 1599,
         "team": "PHI",
-        "era": "Career"
+        "era": "1888\u20131903"
       },
       {
         "rank": 49,
@@ -3292,7 +3642,7 @@ window.MLB_CATEGORIES = [
         "name": "Dan Brouthers",
         "stat": 1523,
         "team": "BKN",
-        "era": "Career"
+        "era": "1879\u20131904"
       },
       {
         "rank": 65,
@@ -3312,8 +3662,8 @@ window.MLB_CATEGORIES = [
         "rank": 67,
         "name": "Wade Boggs",
         "stat": 1513,
-        "team": "BOS",
-        "era": "1996\u20131998"
+        "team": "BOS/NYY/TB",
+        "era": "1982\u20131999"
       },
       {
         "rank": 68,
@@ -3368,8 +3718,8 @@ window.MLB_CATEGORIES = [
         "rank": 75,
         "name": "Harry Stovey",
         "stat": 1492,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/BAL/LAD",
+        "era": "1880\u20131893"
       },
       {
         "rank": 76,
@@ -3408,24 +3758,24 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 81,
-        "name": "Bobby Abreu",
-        "stat": 1453,
-        "team": "PHI/NYY",
-        "era": "1996\u20132014"
-      },
-      {
-        "rank": 82,
         "name": "Freddie Freeman",
         "stat": 1453,
         "team": "ATL/LAD",
         "era": "2010\u2013Pres"
       },
       {
+        "rank": 82,
+        "name": "Bobby Abreu",
+        "stat": 1453,
+        "team": "PHI/NYY",
+        "era": "1996\u20132014"
+      },
+      {
         "rank": 83,
         "name": "Jim O'Rourke",
         "stat": 1446,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1876\u20131904"
       },
       {
         "rank": 84,
@@ -3446,7 +3796,7 @@ window.MLB_CATEGORIES = [
         "name": "Harry Hooper",
         "stat": 1429,
         "team": "BOS",
-        "era": "Career"
+        "era": "1909\u20131925"
       },
       {
         "rank": 87,
@@ -3464,17 +3814,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 89,
-        "name": "Joe Kelley",
-        "stat": 1421,
-        "team": "BKN",
-        "era": "Career"
-      },
-      {
-        "rank": 90,
         "name": "Jimmy Rollins",
         "stat": 1421,
         "team": "PHI",
         "era": "2000\u20132016"
+      },
+      {
+        "rank": 90,
+        "name": "Joe Kelley",
+        "stat": 1421,
+        "team": "BKN",
+        "era": "1891\u20131908"
       },
       {
         "rank": 91,
@@ -3515,15 +3865,15 @@ window.MLB_CATEGORIES = [
         "rank": 96,
         "name": "John Ward",
         "stat": 1408,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF/LAD",
+        "era": "1878\u20131894"
       },
       {
         "rank": 97,
         "name": "Mike Griffin",
         "stat": 1405,
-        "team": "MLB",
-        "era": "Career"
+        "team": "BAL/LAD",
+        "era": "1887\u20131898"
       },
       {
         "rank": 98,
@@ -3545,6 +3895,356 @@ window.MLB_CATEGORIES = [
         "stat": 1390,
         "team": "NYY",
         "era": "1936\u20131951"
+      },
+      {
+        "rank": 101,
+        "name": "Lou Whitaker",
+        "stat": 1386,
+        "team": "DET",
+        "era": "1977\u20131995"
+      },
+      {
+        "rank": 102,
+        "name": "Tony Gwynn",
+        "stat": 1383,
+        "team": "SD",
+        "era": "1982\u20132001"
+      },
+      {
+        "rank": 103,
+        "name": "Andre Dawson",
+        "stat": 1373,
+        "team": "MTL/CHC/MIA",
+        "era": "1976\u20131996"
+      },
+      {
+        "rank": 104,
+        "name": "Bernie Williams",
+        "stat": 1366,
+        "team": "NYY",
+        "era": "1991\u20132006"
+      },
+      {
+        "rank": 105,
+        "name": "Vada Pinson",
+        "stat": 1365,
+        "team": "CIN/STL/KC",
+        "era": "1958\u20131975"
+      },
+      {
+        "rank": 106,
+        "name": "Brett Butler",
+        "stat": 1359,
+        "team": "ATL/CLE/NYM",
+        "era": "1981\u20131997"
+      },
+      {
+        "rank": 107,
+        "name": "Doc Cramer",
+        "stat": 1357,
+        "team": "BOS/ATH/DET",
+        "era": "1929\u20131948"
+      },
+      {
+        "rank": 108,
+        "name": "King Kelly",
+        "stat": 1357,
+        "team": "CIN/CHC/SF",
+        "era": "1878\u20131893"
+      },
+      {
+        "rank": 109,
+        "name": "Larry Walker",
+        "stat": 1355,
+        "team": "WAS/COL/STL",
+        "era": "1989\u20132005"
+      },
+      {
+        "rank": 110,
+        "name": "Tommy Leach",
+        "stat": 1355,
+        "team": "PIT/CHC/CIN",
+        "era": "1898\u20131918"
+      },
+      {
+        "rank": 111,
+        "name": "Ivan Rodriguez",
+        "stat": 1354,
+        "team": "TEX/MIA/WAS",
+        "era": "1991\u20132011"
+      },
+      {
+        "rank": 112,
+        "name": "Fred McGriff",
+        "stat": 1349,
+        "team": "TOR/SD/LAD",
+        "era": "1986\u20132004"
+      },
+      {
+        "rank": 113,
+        "name": "Darrell Evans",
+        "stat": 1344,
+        "team": "ATL/SF/DET",
+        "era": "1969\u20131989"
+      },
+      {
+        "rank": 114,
+        "name": "Pee Wee Reese",
+        "stat": 1338,
+        "team": "LAD",
+        "era": "1940\u20131958"
+      },
+      {
+        "rank": 115,
+        "name": "Luis Aparicio",
+        "stat": 1335,
+        "team": "CHW/BAL/BOS",
+        "era": "1956\u20131973"
+      },
+      {
+        "rank": 116,
+        "name": "Lave Cross",
+        "stat": 1333,
+        "team": "PHI/STL/MIN",
+        "era": "1887\u20131907"
+      },
+      {
+        "rank": 117,
+        "name": "Barry Larkin",
+        "stat": 1329,
+        "team": "CIN",
+        "era": "1986\u20132004"
+      },
+      {
+        "rank": 118,
+        "name": "Vladimir Guerrero",
+        "stat": 1328,
+        "team": "WAS/LAA/BAL",
+        "era": "1996\u20132011"
+      },
+      {
+        "rank": 119,
+        "name": "George Gore",
+        "stat": 1327,
+        "team": "CHC/SF/STL",
+        "era": "1879\u20131892"
+      },
+      {
+        "rank": 120,
+        "name": "Paul Goldschmidt",
+        "stat": 1324,
+        "team": "AZ/STL/NYY",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 121,
+        "name": "Richie Ashburn",
+        "stat": 1322,
+        "team": "PHI/CHC/NYM",
+        "era": "1948\u20131962"
+      },
+      {
+        "rank": 122,
+        "name": "Jeff Kent",
+        "stat": 1320,
+        "team": "TOR/NYM/LAD",
+        "era": "1992\u20132008"
+      },
+      {
+        "rank": 123,
+        "name": "Luke Appling",
+        "stat": 1319,
+        "team": "CHW",
+        "era": "1930\u20131950"
+      },
+      {
+        "rank": 124,
+        "name": "Patsy Donovan",
+        "stat": 1318,
+        "team": "ATL/LAD/MIN",
+        "era": "1890\u20131907"
+      },
+      {
+        "rank": 125,
+        "name": "Ryne Sandberg",
+        "stat": 1318,
+        "team": "PHI/CHC",
+        "era": "1981\u20131997"
+      },
+      {
+        "rank": 126,
+        "name": "Mike Tiernan",
+        "stat": 1313,
+        "team": "SF",
+        "era": "1887\u20131899"
+      },
+      {
+        "rank": 127,
+        "name": "Jose Altuve",
+        "stat": 1306,
+        "team": "HOU",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 128,
+        "name": "Kiki Cuyler",
+        "stat": 1305,
+        "team": "PIT/CHC/LAD",
+        "era": "1921\u20131938"
+      },
+      {
+        "rank": 129,
+        "name": "Ernie Banks",
+        "stat": 1305,
+        "team": "CHC",
+        "era": "1953\u20131971"
+      },
+      {
+        "rank": 130,
+        "name": "Tony Phillips",
+        "stat": 1300,
+        "team": "ATH/DET/NYM",
+        "era": "1982\u20131999"
+      },
+      {
+        "rank": 131,
+        "name": "Harold Baines",
+        "stat": 1299,
+        "team": "CHW/TEX/CLE",
+        "era": "1980\u20132001"
+      },
+      {
+        "rank": 132,
+        "name": "Andrew McCutchen",
+        "stat": 1298,
+        "team": "PIT/SF/TEX",
+        "era": "2009\u2013Pres"
+      },
+      {
+        "rank": 133,
+        "name": "Torii Hunter",
+        "stat": 1296,
+        "team": "MIN/LAA/DET",
+        "era": "1997\u20132015"
+      },
+      {
+        "rank": 134,
+        "name": "Jimmy Sheckard",
+        "stat": 1296,
+        "team": "LAD/BAL/CIN",
+        "era": "1897\u20131913"
+      },
+      {
+        "rank": 135,
+        "name": "Harry Heilmann",
+        "stat": 1291,
+        "team": "DET/CIN",
+        "era": "1914\u20131932"
+      },
+      {
+        "rank": 136,
+        "name": "Zack Wheat",
+        "stat": 1289,
+        "team": "LAD/ATH",
+        "era": "1909\u20131927"
+      },
+      {
+        "rank": 137,
+        "name": "Heinie Manush",
+        "stat": 1288,
+        "team": "DET/BAL/PIT",
+        "era": "1923\u20131939"
+      },
+      {
+        "rank": 138,
+        "name": "Julio Franco",
+        "stat": 1285,
+        "team": "PHI/CLE/NYM",
+        "era": "1982\u20132007"
+      },
+      {
+        "rank": 139,
+        "name": "Harmon Killebrew",
+        "stat": 1283,
+        "team": "MIN/KC",
+        "era": "1954\u20131975"
+      },
+      {
+        "rank": 140,
+        "name": "Donie Bush",
+        "stat": 1282,
+        "team": "DET/MIN",
+        "era": "1908\u20131923"
+      },
+      {
+        "rank": 141,
+        "name": "Mike Trout",
+        "stat": 1282,
+        "team": "LAA",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 142,
+        "name": "George Sisler",
+        "stat": 1282,
+        "team": "BAL/ATL/MIN",
+        "era": "1915\u20131930"
+      },
+      {
+        "rank": 143,
+        "name": "Nellie Fox",
+        "stat": 1279,
+        "team": "ATH/CHW/HOU",
+        "era": "1947\u20131965"
+      },
+      {
+        "rank": 144,
+        "name": "Fred Tenney",
+        "stat": 1278,
+        "team": "ATL/SF",
+        "era": "1894\u20131911"
+      },
+      {
+        "rank": 145,
+        "name": "Carlton Fisk",
+        "stat": 1276,
+        "team": "BOS/CHW",
+        "era": "1969\u20131993"
+      },
+      {
+        "rank": 146,
+        "name": "Dave Parker",
+        "stat": 1272,
+        "team": "PIT/CIN/TOR",
+        "era": "1973\u20131991"
+      },
+      {
+        "rank": 147,
+        "name": "Tony Perez",
+        "stat": 1272,
+        "team": "CIN/WAS/PHI",
+        "era": "1964\u20131986"
+      },
+      {
+        "rank": 148,
+        "name": "Robinson Cano",
+        "stat": 1262,
+        "team": "NYY/SEA/ATL",
+        "era": "2005\u20132022"
+      },
+      {
+        "rank": 149,
+        "name": "Duke Snider",
+        "stat": 1259,
+        "team": "LAD/NYM/SF",
+        "era": "1947\u20131964"
+      },
+      {
+        "rank": 150,
+        "name": "Bobby Bonds",
+        "stat": 1258,
+        "team": "SF/NYY/CHC",
+        "era": "1968\u20131981"
       }
     ]
   },
@@ -3612,14 +4312,14 @@ window.MLB_CATEGORIES = [
         "name": "Justin Verlander",
         "stat": 3560,
         "team": "DET/HOU/NYM",
-        "era": "2005\u2013Pres"
+        "era": "2005\u20132026"
       },
       {
         "rank": 9,
         "name": "Max Scherzer",
         "stat": 3557,
         "team": "DET/WAS/NYM/TEX",
-        "era": "2008\u2013Pres"
+        "era": "2008\u20132026"
       },
       {
         "rank": 10,
@@ -3654,7 +4354,7 @@ window.MLB_CATEGORIES = [
         "name": "Fergie Jenkins",
         "stat": 3192,
         "team": "CHC",
-        "era": "Career"
+        "era": "1965\u20131983"
       },
       {
         "rank": 15,
@@ -3696,7 +4396,7 @@ window.MLB_CATEGORIES = [
         "name": "Clayton Kershaw",
         "stat": 3052,
         "team": "LAD",
-        "era": "2008\u2013Pres"
+        "era": "2008\u20132025"
       },
       {
         "rank": 21,
@@ -3829,7 +4529,7 @@ window.MLB_CATEGORIES = [
         "name": "A.J. Burnett",
         "stat": 2513,
         "team": "TOR",
-        "era": "2001\u20132015"
+        "era": "1999\u20132015"
       },
       {
         "rank": 40,
@@ -3891,8 +4591,8 @@ window.MLB_CATEGORIES = [
         "rank": 48,
         "name": "Jamie Moyer",
         "stat": 2441,
-        "team": "CHC",
-        "era": "1996\u20132009"
+        "team": "CHC/STL/BOS",
+        "era": "1986\u20132012"
       },
       {
         "rank": 49,
@@ -3969,7 +4669,7 @@ window.MLB_CATEGORIES = [
         "name": "John Lackey",
         "stat": 2294,
         "team": "BOS",
-        "era": "2003\u20132017"
+        "era": "2002\u20132017"
       },
       {
         "rank": 60,
@@ -4031,8 +4731,8 @@ window.MLB_CATEGORIES = [
         "rank": 68,
         "name": "David Wells",
         "stat": 2201,
-        "team": "TOR",
-        "era": "1996\u20132007"
+        "team": "CIN/NYY/BAL",
+        "era": "1987\u20132007"
       },
       {
         "rank": 69,
@@ -4046,7 +4746,7 @@ window.MLB_CATEGORIES = [
         "name": "Charlie Morton",
         "stat": 2196,
         "team": "PIT/HOU/TB/ATL",
-        "era": "2008\u2013Pres"
+        "era": "2008\u20132025"
       },
       {
         "rank": 71,
@@ -4066,22 +4766,22 @@ window.MLB_CATEGORIES = [
         "rank": 73,
         "name": "Tim Wakefield",
         "stat": 2156,
-        "team": "BOS",
-        "era": "1996\u20132011"
+        "team": "PIT/BOS",
+        "era": "1992\u20132011"
       },
       {
         "rank": 74,
         "name": "Dennis Martinez",
         "stat": 2149,
         "team": "ATL",
-        "era": "Career"
+        "era": "1976\u20131998"
       },
       {
         "rank": 75,
         "name": "Kevin Gausman",
         "stat": 2138,
         "team": "BAL/SF/TOR",
-        "era": "2013\u2013Pres"
+        "era": "2013\u20132026"
       },
       {
         "rank": 76,
@@ -4120,23 +4820,23 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 81,
-        "name": "Yu Darvish",
-        "stat": 2075,
-        "team": "TEX/CHC/SD",
-        "era": "2012\u2013Pres"
-      },
-      {
-        "rank": 82,
         "name": "Ryan Dempster",
         "stat": 2075,
         "team": "FLA/CHC/BOS",
         "era": "1998\u20132013"
       },
       {
+        "rank": 82,
+        "name": "Yu Darvish",
+        "stat": 2075,
+        "team": "TEX/CHC/SD",
+        "era": "2012\u2013Pres"
+      },
+      {
         "rank": 83,
         "name": "Sonny Gray",
         "stat": 2074,
-        "team": "OAK/CIN/MIN/STL",
+        "team": "OAK/CIN/MIN/BOS",
         "era": "2013\u2013Pres"
       },
       {
@@ -4179,7 +4879,7 @@ window.MLB_CATEGORIES = [
         "name": "Lance Lynn",
         "stat": 2015,
         "team": "STL/CHW/LAD",
-        "era": "2011\u2013Pres"
+        "era": "2011\u20132024"
       },
       {
         "rank": 90,
@@ -4197,17 +4897,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 92,
-        "name": "Dan Haren",
-        "stat": 2013,
-        "team": "OAK/ARI/LAA",
-        "era": "2003\u20132015"
-      },
-      {
-        "rank": 93,
         "name": "Zack Wheeler",
         "stat": 2013,
         "team": "NYM/PHI",
         "era": "2013\u2013Pres"
+      },
+      {
+        "rank": 93,
+        "name": "Dan Haren",
+        "stat": 2013,
+        "team": "OAK/ARI/LAA",
+        "era": "2003\u20132015"
       },
       {
         "rank": 94,
@@ -4220,22 +4920,22 @@ window.MLB_CATEGORIES = [
         "rank": 95,
         "name": "Andy Benes",
         "stat": 2000,
-        "team": "STL",
-        "era": "1996\u20132000"
+        "team": "SD/SEA/AZ",
+        "era": "1989\u20132002"
       },
       {
         "rank": 96,
         "name": "Billy Pierce",
         "stat": 1999,
         "team": "CHW",
-        "era": "Career"
+        "era": "1945\u20131964"
       },
       {
         "rank": 97,
         "name": "Kevin Appier",
         "stat": 1994,
-        "team": "KC",
-        "era": "1996\u20132002"
+        "team": "KC/ATH/LAA",
+        "era": "1989\u20132004"
       },
       {
         "rank": 98,
@@ -4249,49 +4949,49 @@ window.MLB_CATEGORIES = [
         "name": "Red Ruffing",
         "stat": 1987,
         "team": "BOS",
-        "era": "Career"
+        "era": "1924\u20131947"
       },
       {
         "rank": 100,
         "name": "John Clarkson",
         "stat": 1978,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/ATL",
+        "era": "1882\u20131894"
       },
       {
         "rank": 101,
         "name": "Ervin Santana",
         "stat": 1978,
-        "team": "KC",
-        "era": "2005\u20132017"
+        "team": "LAA/KC/CHW",
+        "era": "2005\u20132021"
       },
       {
         "rank": 102,
         "name": "Livan Hernandez",
         "stat": 1976,
         "team": "WAS",
-        "era": "1998\u20132011"
+        "era": "1996\u20132012"
       },
       {
         "rank": 103,
         "name": "Al Leiter",
         "stat": 1974,
-        "team": "TOR",
-        "era": "1996\u20132005"
+        "team": "MIA/NYM/TOR",
+        "era": "1987\u20132005"
       },
       {
         "rank": 104,
         "name": "Bob Welch",
         "stat": 1969,
         "team": "LAD",
-        "era": "Career"
+        "era": "1978\u20131994"
       },
       {
         "rank": 105,
         "name": "Kenny Rogers",
         "stat": 1968,
-        "team": "TEX",
-        "era": "1996\u20132008"
+        "team": "TEX/NYY/DET",
+        "era": "1989\u20132008"
       },
       {
         "rank": 106,
@@ -4304,99 +5004,99 @@ window.MLB_CATEGORIES = [
         "rank": 107,
         "name": "Bobby Witt",
         "stat": 1955,
-        "team": "TEX",
-        "era": "1996\u20131999"
+        "team": "TEX/ATH/CLE",
+        "era": "1986\u20132001"
       },
       {
         "rank": 108,
         "name": "Amos Rusie",
         "stat": 1950,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1889\u20131901"
       },
       {
         "rank": 109,
         "name": "Danny Darwin",
         "stat": 1942,
-        "team": "HOU",
-        "era": "1996\u20131997"
+        "team": "HOU/PIT/TOR",
+        "era": "1978\u20131998"
       },
       {
         "rank": 110,
         "name": "Tom Gordon",
         "stat": 1928,
-        "team": "NYY",
-        "era": "1996\u20132007"
+        "team": "KC/BOS/AZ",
+        "era": "1988\u20132009"
       },
       {
         "rank": 111,
         "name": "Patrick Corbin",
         "stat": 1923,
-        "team": "ARI/WAS",
+        "team": "ARI/WAS/TOR",
         "era": "2012\u2013Pres"
       },
       {
         "rank": 112,
         "name": "Hideo Nomo",
         "stat": 1918,
-        "team": "LAD",
-        "era": "1996\u20132003"
+        "team": "LAD/NYM/KC",
+        "era": "1995\u20132008"
       },
       {
         "rank": 113,
         "name": "Jerry Reuss",
         "stat": 1907,
         "team": "HOU",
-        "era": "Career"
+        "era": "1969\u20131990"
       },
       {
         "rank": 114,
         "name": "Josh Beckett",
         "stat": 1901,
         "team": "BOS",
-        "era": "2002\u20132014"
+        "era": "2001\u20132014"
       },
       {
         "rank": 115,
         "name": "Barry Zito",
         "stat": 1885,
-        "team": "OAK",
-        "era": "2000\u20132013"
+        "team": "ATH/SF",
+        "era": "2000\u20132015"
       },
       {
         "rank": 116,
         "name": "Robbie Ray",
         "stat": 1874,
         "team": "ARI",
-        "era": "2015\u2013Pres"
+        "era": "2014\u20132026"
       },
       {
         "rank": 117,
         "name": "Kid Nichols",
         "stat": 1873,
         "team": "BOS",
-        "era": "Career"
+        "era": "1890\u20131906"
       },
       {
         "rank": 118,
         "name": "Mark Buehrle",
         "stat": 1870,
         "team": "CHW",
-        "era": "2001\u20132015"
+        "era": "2000\u20132015"
       },
       {
         "rank": 119,
         "name": "Gio Gonzalez",
         "stat": 1860,
-        "team": "OAK",
-        "era": "2009\u20132018"
+        "team": "ATH/WAS/CHW",
+        "era": "2008\u20132020"
       },
       {
         "rank": 120,
         "name": "Johnny Cueto",
         "stat": 1857,
-        "team": "LAA",
-        "era": "2008\u20132022"
+        "team": "CIN/SF/LAA",
+        "era": "2008\u20132024"
       },
       {
         "rank": 121,
@@ -4409,36 +5109,36 @@ window.MLB_CATEGORIES = [
         "rank": 122,
         "name": "Mickey Welch",
         "stat": 1850,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF",
+        "era": "1880\u20131892"
       },
       {
         "rank": 123,
         "name": "Frank Viola",
         "stat": 1844,
         "team": "MIN",
-        "era": "Career"
+        "era": "1982\u20131996"
       },
       {
         "rank": 124,
         "name": "Aaron Harang",
         "stat": 1842,
         "team": "CIN",
-        "era": "2004\u20132015"
+        "era": "2002\u20132015"
       },
       {
         "rank": 125,
         "name": "Jose Quintana",
         "stat": 1841,
         "team": "COL",
-        "era": "2013\u2013Pres"
+        "era": "2012\u2013Pres"
       },
       {
         "rank": 126,
         "name": "Old Hoss Radbourn",
         "stat": 1830,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/CIN",
+        "era": "1880\u20131891"
       },
       {
         "rank": 127,
@@ -4452,49 +5152,49 @@ window.MLB_CATEGORIES = [
         "name": "Francisco Liriano",
         "stat": 1815,
         "team": "PIT",
-        "era": "2006\u20132018"
+        "era": "2005\u20132019"
       },
       {
         "rank": 129,
         "name": "Randy Wolf",
         "stat": 1814,
-        "team": "MIL",
-        "era": "1999\u20132012"
+        "team": "PHI/LAD/DET",
+        "era": "1999\u20132015"
       },
       {
         "rank": 130,
         "name": "Tony Mullane",
         "stat": 1803,
-        "team": "MLB",
-        "era": "Career"
+        "team": "STL/CIN/BAL",
+        "era": "1881\u20131894"
       },
       {
         "rank": 131,
         "name": "Pud Galvin",
         "stat": 1799,
-        "team": "MLB",
-        "era": "Career"
+        "team": "PIT/STL",
+        "era": "1879\u20131892"
       },
       {
         "rank": 132,
         "name": "Hal Newhouser",
         "stat": 1796,
         "team": "DET",
-        "era": "Career"
+        "era": "1939\u20131955"
       },
       {
         "rank": 133,
         "name": "Ron Guidry",
         "stat": 1778,
         "team": "NYY",
-        "era": "Career"
+        "era": "1975\u20131988"
       },
       {
         "rank": 134,
         "name": "Ian Kennedy",
         "stat": 1775,
         "team": "KC",
-        "era": "2010\u20132022"
+        "era": "2007\u20132023"
       },
       {
         "rank": 135,
@@ -4507,92 +5207,92 @@ window.MLB_CATEGORIES = [
         "rank": 136,
         "name": "John Burkett",
         "stat": 1766,
-        "team": "SF",
-        "era": "1996\u20132003"
+        "team": "SF/MIA/BOS",
+        "era": "1987\u20132003"
       },
       {
         "rank": 137,
         "name": "Rudy May",
         "stat": 1760,
         "team": "LAA",
-        "era": "Career"
+        "era": "1965\u20131983"
       },
       {
         "rank": 138,
         "name": "Jason Schmidt",
         "stat": 1758,
-        "team": "PIT",
-        "era": "1997\u20132006"
+        "team": "ATL/PIT/LAD",
+        "era": "1995\u20132009"
       },
       {
         "rank": 139,
         "name": "Joe Niekro",
         "stat": 1747,
         "team": "HOU",
-        "era": "Career"
+        "era": "1967\u20131988"
       },
       {
         "rank": 140,
         "name": "Sid Fernandez",
         "stat": 1743,
-        "team": "NYM",
-        "era": "1996\u20131996"
+        "team": "LAD/NYM/BAL",
+        "era": "1983\u20131997"
       },
       {
         "rank": 141,
         "name": "Dave Stewart",
         "stat": 1741,
         "team": "LAD",
-        "era": "Career"
+        "era": "1978\u20131995"
       },
       {
         "rank": 142,
+        "name": "Ed Walsh",
+        "stat": 1736,
+        "team": "CHW",
+        "era": "1904\u20131917"
+      },
+      {
+        "rank": 143,
         "name": "Tim Lincecum",
         "stat": 1736,
         "team": "SF",
         "era": "2007\u20132016"
       },
       {
-        "rank": 143,
-        "name": "Ed Walsh",
-        "stat": 1736,
-        "team": "CHW",
-        "era": "Career"
-      },
-      {
         "rank": 144,
         "name": "Tom Candiotti",
         "stat": 1735,
-        "team": "LAD",
-        "era": "1996\u20131998"
+        "team": "MIL/CLE/ATH",
+        "era": "1983\u20131999"
       },
       {
         "rank": 145,
         "name": "Bob Friend",
         "stat": 1734,
         "team": "STL",
-        "era": "1950\u20131965"
+        "era": "1951\u20131966"
       },
       {
         "rank": 146,
         "name": "Joe Coleman",
         "stat": 1728,
         "team": "OAK",
-        "era": "Career"
+        "era": "1965\u20131979"
       },
       {
         "rank": 147,
         "name": "Milt Pappas",
         "stat": 1728,
         "team": "BAL",
-        "era": "Career"
+        "era": "1957\u20131973"
       },
       {
         "rank": 148,
         "name": "Kevin Gross",
         "stat": 1727,
-        "team": "LAD",
-        "era": "1996\u20131996"
+        "team": "PHI/MTL/LAA",
+        "era": "1983\u20131997"
       },
       {
         "rank": 149,
@@ -4606,7 +5306,7 @@ window.MLB_CATEGORIES = [
         "name": "Floyd Bannister",
         "stat": 1723,
         "team": "TEX",
-        "era": "Career"
+        "era": "1977\u20131992"
       }
     ]
   },
@@ -4820,8 +5520,8 @@ window.MLB_CATEGORIES = [
         "rank": 29,
         "name": "John Ward",
         "stat": 540,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF/LAD",
+        "era": "1878\u20131894"
       },
       {
         "rank": 30,
@@ -4860,17 +5560,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 35,
-        "name": "Harry Stovey",
-        "stat": 509,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 36,
         "name": "Ichiro Suzuki",
         "stat": 509,
         "team": "SEA/NYY/MIA",
         "era": "2001\u20132019"
+      },
+      {
+        "rank": 36,
+        "name": "Harry Stovey",
+        "stat": 509,
+        "team": "ATL/BAL/LAD",
+        "era": "1880\u20131893"
       },
       {
         "rank": 37,
@@ -4895,24 +5595,24 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 40,
+        "name": "Clyde Milan",
+        "stat": 495,
+        "team": "WAS/MIN",
+        "era": "1907\u20131922"
+      },
+      {
+        "rank": 41,
         "name": "Willie Keeler",
         "stat": 495,
         "team": "BAL/NYY",
         "era": "1892\u20131910"
       },
       {
-        "rank": 41,
-        "name": "Clyde Milan",
-        "stat": 495,
-        "team": "WAS/MIN",
-        "era": "Career"
-      },
-      {
         "rank": 42,
         "name": "Omar Moreno",
         "stat": 487,
         "team": "PIT",
-        "era": "Career"
+        "era": "1975\u20131986"
       },
       {
         "rank": 43,
@@ -4932,8 +5632,8 @@ window.MLB_CATEGORIES = [
         "rank": 45,
         "name": "Mike Griffin",
         "stat": 473,
-        "team": "MLB",
-        "era": "Career"
+        "team": "BAL/LAD",
+        "era": "1887\u20131898"
       },
       {
         "rank": 46,
@@ -4946,22 +5646,22 @@ window.MLB_CATEGORIES = [
         "rank": 47,
         "name": "Tommy McCarthy",
         "stat": 468,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/PHI/LAD",
+        "era": "1884\u20131896"
       },
       {
         "rank": 48,
-        "name": "Jimmy Sheckard",
+        "name": "Eric Young",
         "stat": 465,
-        "team": "CHC",
-        "era": "Career"
+        "team": "LAD/COL/SD",
+        "era": "1992\u20132006"
       },
       {
         "rank": 49,
-        "name": "Eric Young",
+        "name": "Jimmy Sheckard",
         "stat": 465,
         "team": "CHC",
-        "era": "1996\u20132003"
+        "era": "1897\u20131913"
       },
       {
         "rank": 50,
@@ -4975,62 +5675,62 @@ window.MLB_CATEGORIES = [
         "name": "Bobby Bonds",
         "stat": 461,
         "team": "SF",
-        "era": "Career"
+        "era": "1968\u20131981"
       },
       {
         "rank": 52,
-        "name": "Ed Delahanty",
-        "stat": 455,
-        "team": "PHI",
-        "era": "Career"
-      },
-      {
-        "rank": 53,
         "name": "Ron LeFlore",
         "stat": 455,
         "team": "DET",
-        "era": "Career"
+        "era": "1974\u20131982"
+      },
+      {
+        "rank": 53,
+        "name": "Ed Delahanty",
+        "stat": 455,
+        "team": "PHI",
+        "era": "1888\u20131903"
       },
       {
         "rank": 54,
         "name": "Curt Welch",
         "stat": 453,
-        "team": "MLB",
-        "era": "Career"
+        "team": "STL/BAL/CIN",
+        "era": "1884\u20131893"
       },
       {
         "rank": 55,
         "name": "Steve Sax",
         "stat": 444,
         "team": "LAD",
-        "era": "Career"
+        "era": "1981\u20131994"
       },
       {
         "rank": 56,
         "name": "Joe Kelley",
         "stat": 443,
         "team": "BKN",
-        "era": "Career"
+        "era": "1891\u20131908"
       },
       {
         "rank": 57,
         "name": "Sherry Magee",
         "stat": 441,
         "team": "BOS",
-        "era": "Career"
+        "era": "1904\u20131919"
       },
       {
         "rank": 58,
         "name": "John McGraw",
         "stat": 436,
-        "team": "MLB",
-        "era": "Career"
+        "team": "BAL/STL/SF",
+        "era": "1891\u20131906"
       },
       {
         "rank": 59,
-        "name": "Tris Speaker",
+        "name": "Tristram Speaker",
         "stat": 432,
-        "team": "BOS/CLE",
+        "team": "BOS/CLE/ATH",
         "era": "1907\u20131928"
       },
       {
@@ -5045,35 +5745,35 @@ window.MLB_CATEGORIES = [
         "name": "Bob Bescher",
         "stat": 428,
         "team": "CIN",
-        "era": "Career"
+        "era": "1908\u20131918"
       },
       {
         "rank": 62,
         "name": "Mike Tiernan",
         "stat": 428,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF",
+        "era": "1887\u20131899"
       },
       {
         "rank": 63,
-        "name": "Charlie Comiskey",
-        "stat": 419,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 64,
         "name": "Frankie Frisch",
         "stat": 419,
         "team": "NYG/STL",
         "era": "1919\u20131937"
       },
       {
+        "rank": 64,
+        "name": "Charlie Comiskey",
+        "stat": 419,
+        "team": "STL/CIN",
+        "era": "1882\u20131894"
+      },
+      {
         "rank": 65,
         "name": "Jimmy Ryan",
         "stat": 418,
         "team": "CHC",
-        "era": "Career"
+        "era": "1885\u20131903"
       },
       {
         "rank": 66,
@@ -5101,7 +5801,7 @@ window.MLB_CATEGORIES = [
         "name": "Tommy Harper",
         "stat": 408,
         "team": "CIN",
-        "era": "Career"
+        "era": "1962\u20131976"
       },
       {
         "rank": 70,
@@ -5112,24 +5812,24 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 71,
-        "name": "Donie Bush",
-        "stat": 404,
-        "team": "DET",
-        "era": "Career"
-      },
-      {
-        "rank": 72,
         "name": "Omar Vizquel",
         "stat": 404,
         "team": "SEA/CLE/SF",
         "era": "1989\u20132012"
       },
       {
+        "rank": 72,
+        "name": "Donie Bush",
+        "stat": 404,
+        "team": "DET",
+        "era": "1908\u20131923"
+      },
+      {
         "rank": 73,
         "name": "Frank Chance",
         "stat": 401,
         "team": "CHC",
-        "era": "Career"
+        "era": "1898\u20131914"
       },
       {
         "rank": 74,
@@ -5142,8 +5842,8 @@ window.MLB_CATEGORIES = [
         "rank": 75,
         "name": "Bill Lange",
         "stat": 399,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC",
+        "era": "1893\u20131899"
       },
       {
         "rank": 76,
@@ -5154,31 +5854,31 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 77,
-        "name": "Sam Mertes",
-        "stat": 396,
-        "team": "NYG/SF",
-        "era": "Career"
-      },
-      {
-        "rank": 78,
         "name": "Juan Samuel",
         "stat": 396,
         "team": "PHI",
-        "era": "Career"
+        "era": "1983\u20131998"
+      },
+      {
+        "rank": 78,
+        "name": "Sam Mertes",
+        "stat": 396,
+        "team": "NYG/SF",
+        "era": "1896\u20131906"
       },
       {
         "rank": 79,
         "name": "Dave Collins",
         "stat": 395,
         "team": "CIN",
-        "era": "Career"
+        "era": "1975\u20131990"
       },
       {
         "rank": 80,
         "name": "Bill North",
         "stat": 395,
         "team": "OAK",
-        "era": "Career"
+        "era": "1971\u20131981"
       },
       {
         "rank": 81,
@@ -5192,49 +5892,49 @@ window.MLB_CATEGORIES = [
         "name": "Tommy Corcoran",
         "stat": 387,
         "team": "CIN",
-        "era": "Career"
+        "era": "1890\u20131907"
       },
       {
         "rank": 83,
         "name": "Tom Daly",
         "stat": 385,
         "team": "BKN",
-        "era": "Career"
+        "era": "1887\u20131903"
       },
       {
         "rank": 84,
         "name": "Freddie Patek",
         "stat": 385,
         "team": "KC",
-        "era": "Career"
+        "era": "1968\u20131981"
       },
       {
         "rank": 85,
         "name": "George Burns",
         "stat": 383,
         "team": "CIN",
-        "era": "Career"
+        "era": "1911\u20131925"
       },
       {
         "rank": 86,
         "name": "Hugh Nicol",
         "stat": 383,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/STL/CIN",
+        "era": "1881\u20131890"
       },
       {
         "rank": 87,
         "name": "Fred Pfeffer",
         "stat": 382,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/SF",
+        "era": "1882\u20131897"
       },
       {
         "rank": 88,
         "name": "Walt Wilmot",
         "stat": 381,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/SF",
+        "era": "1888\u20131898"
       },
       {
         "rank": 89,
@@ -5255,7 +5955,7 @@ window.MLB_CATEGORIES = [
         "name": "Harry Hooper",
         "stat": 375,
         "team": "BOS",
-        "era": "Career"
+        "era": "1909\u20131925"
       },
       {
         "rank": 92,
@@ -5268,8 +5968,8 @@ window.MLB_CATEGORIES = [
         "rank": 93,
         "name": "Jack Glasscock",
         "stat": 372,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF/STL/PIT",
+        "era": "1879\u20131895"
       },
       {
         "rank": 94,
@@ -5289,64 +5989,64 @@ window.MLB_CATEGORIES = [
         "rank": 96,
         "name": "Tom Goodwin",
         "stat": 369,
-        "team": "TEX",
-        "era": "1996\u20132000"
+        "team": "LAD/KC/CHC",
+        "era": "1991\u20132004"
       },
       {
         "rank": 97,
         "name": "King Kelly",
         "stat": 368,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CIN/CHC/SF",
+        "era": "1878\u20131893"
       },
       {
         "rank": 98,
+        "name": "Tommy Dowd",
+        "stat": 366,
+        "team": "STL/PHI/BOS",
+        "era": "1891\u20131901"
+      },
+      {
+        "rank": 99,
         "name": "Sam Crawford",
         "stat": 366,
         "team": "CIN/DET",
         "era": "1899\u20131917"
       },
       {
-        "rank": 99,
-        "name": "Tommy Dowd",
-        "stat": 366,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
         "rank": 100,
-        "name": "Hal Chase",
-        "stat": 363,
-        "team": "CIN",
-        "era": "Career"
-      },
-      {
-        "rank": 101,
-        "name": "Starling Marte",
-        "stat": 363,
-        "team": "PIT/MIA/NYM",
-        "era": "2012\u2013Pres"
-      },
-      {
-        "rank": 102,
         "name": "Tony Womack",
         "stat": 363,
         "team": "PIT/ARI/STL",
         "era": "1993\u20132006"
       },
       {
+        "rank": 101,
+        "name": "Hal Chase",
+        "stat": 363,
+        "team": "CIN",
+        "era": "1905\u20131919"
+      },
+      {
+        "rank": 102,
+        "name": "Starling Marte",
+        "stat": 363,
+        "team": "PIT/MIA/NYM/KC",
+        "era": "2012\u2013Pres"
+      },
+      {
         "rank": 103,
         "name": "Tommy Leach",
         "stat": 361,
         "team": "CHC",
-        "era": "Career"
+        "era": "1898\u20131918"
       },
       {
         "rank": 104,
         "name": "Fielder Jones",
         "stat": 359,
         "team": "CHW",
-        "era": "Career"
+        "era": "1896\u20131915"
       },
       {
         "rank": 105,
@@ -5357,17 +6057,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 106,
-        "name": "Buck Ewing",
-        "stat": 354,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 107,
         "name": "Gary Pettis",
         "stat": 354,
         "team": "LAA",
-        "era": "Career"
+        "era": "1982\u20131992"
+      },
+      {
+        "rank": 107,
+        "name": "Buck Ewing",
+        "stat": 354,
+        "team": "SF/CIN",
+        "era": "1880\u20131897"
       },
       {
         "rank": 108,
@@ -5381,14 +6081,14 @@ window.MLB_CATEGORIES = [
         "name": "Willie McGee",
         "stat": 352,
         "team": "STL",
-        "era": "Career"
+        "era": "1982\u20131999"
       },
       {
         "rank": 110,
         "name": "Tommy Tucker",
         "stat": 352,
-        "team": "MLB",
-        "era": "Career"
+        "team": "BAL/ATL/STL",
+        "era": "1887\u20131899"
       },
       {
         "rank": 111,
@@ -5399,17 +6099,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 112,
-        "name": "George Case",
+        "name": "Eric Davis",
         "stat": 349,
-        "team": "WAS/MIN",
-        "era": "Career"
+        "team": "CIN/LAD/SF",
+        "era": "1984\u20132001"
       },
       {
         "rank": 113,
-        "name": "Eric Davis",
+        "name": "George Case",
         "stat": 349,
-        "team": "CIN",
-        "era": "1996\u20131998"
+        "team": "WAS/MIN",
+        "era": "1937\u20131947"
       },
       {
         "rank": 114,
@@ -5422,8 +6122,8 @@ window.MLB_CATEGORIES = [
         "rank": 115,
         "name": "Paul Radford",
         "stat": 346,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/LAD",
+        "era": "1883\u20131894"
       },
       {
         "rank": 116,
@@ -5441,150 +6141,150 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 118,
-        "name": "Julio Cruz",
-        "stat": 343,
-        "team": "SEA",
-        "era": "Career"
-      },
-      {
-        "rank": 119,
         "name": "Jacoby Ellsbury",
         "stat": 343,
         "team": "BOS/NYY",
         "era": "2007\u20132017"
       },
       {
-        "rank": 120,
-        "name": "Michael Bourn",
-        "stat": 341,
-        "team": "HOU/ATL/CLE",
-        "era": "2006\u20132016"
+        "rank": 119,
+        "name": "Julio Cruz",
+        "stat": 343,
+        "team": "SEA",
+        "era": "1977\u20131986"
       },
       {
-        "rank": 121,
+        "rank": 120,
         "name": "Chone Figgins",
         "stat": 341,
         "team": "LAA/SEA",
         "era": "2002\u20132014"
       },
       {
-        "rank": 122,
-        "name": "Hughie Jennings",
-        "stat": 341,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 123,
+        "rank": 121,
         "name": "Amos Otis",
         "stat": 341,
         "team": "KC",
-        "era": "Career"
+        "era": "1967\u20131984"
+      },
+      {
+        "rank": 122,
+        "name": "Hughie Jennings",
+        "stat": 341,
+        "team": "BAL/LAD/DET",
+        "era": "1891\u20131918"
+      },
+      {
+        "rank": 123,
+        "name": "Michael Bourn",
+        "stat": 341,
+        "team": "HOU/ATL/CLE",
+        "era": "2006\u20132016"
       },
       {
         "rank": 124,
         "name": "Willie Mays",
         "stat": 339,
         "team": "NYG/SF",
-        "era": "1951\u20131973"
+        "era": "1948\u20131973"
       },
       {
         "rank": 125,
-        "name": "John Anderson",
-        "stat": 336,
-        "team": "WAS/MIN",
-        "era": "Career"
-      },
-      {
-        "rank": 126,
-        "name": "Dee Strange-Gordon",
-        "stat": 336,
-        "team": "LAD/MIA/SEA",
-        "era": "2011\u20132022"
-      },
-      {
-        "rank": 127,
         "name": "Joe Tinker",
         "stat": 336,
         "team": "CHC",
-        "era": "Career"
+        "era": "1902\u20131916"
       },
       {
-        "rank": 128,
+        "rank": 126,
+        "name": "John Anderson",
+        "stat": 336,
+        "team": "WAS/MIN",
+        "era": "1894\u20131908"
+      },
+      {
+        "rank": 127,
         "name": "Trea Turner",
         "stat": 336,
         "team": "WAS/LAD/PHI",
         "era": "2015\u2013Pres"
       },
       {
+        "rank": 128,
+        "name": "Dee Strange-Gordon",
+        "stat": 336,
+        "team": "LAD/MIA/SEA",
+        "era": "2011\u20132022"
+      },
+      {
         "rank": 129,
         "name": "Hub Collins",
         "stat": 335,
-        "team": "MLB",
-        "era": "Career"
+        "team": "LAD",
+        "era": "1886\u20131892"
       },
       {
         "rank": 130,
         "name": "Kip Selbach",
         "stat": 334,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1894\u20131906"
       },
       {
         "rank": 131,
+        "name": "Elmer Flick",
+        "stat": 330,
+        "team": "CLE",
+        "era": "1898\u20131910"
+      },
+      {
+        "rank": 132,
         "name": "Jose Altuve",
         "stat": 330,
         "team": "HOU",
         "era": "2011\u2013Pres"
       },
       {
-        "rank": 132,
-        "name": "Elmer Flick",
-        "stat": 330,
-        "team": "CLE",
-        "era": "Career"
-      },
-      {
         "rank": 133,
-        "name": "Jose Cardenal",
+        "name": "Ned Hanlon",
         "stat": 329,
-        "team": "CLE",
-        "era": "Career"
+        "team": "PIT/BAL",
+        "era": "1880\u20131892"
       },
       {
         "rank": 134,
-        "name": "Ned Hanlon",
-        "stat": 329,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 135,
         "name": "Alex Rodriguez",
         "stat": 329,
         "team": "SEA/TEX/NYY",
         "era": "1994\u20132016"
       },
       {
-        "rank": 136,
-        "name": "Monte Cross",
-        "stat": 328,
-        "team": "PHI",
-        "era": "Career"
+        "rank": 135,
+        "name": "Jose Cardenal",
+        "stat": 329,
+        "team": "CLE",
+        "era": "1963\u20131980"
       },
       {
-        "rank": 137,
+        "rank": 136,
         "name": "Kiki Cuyler",
         "stat": 328,
         "team": "PIT",
-        "era": "Career"
+        "era": "1921\u20131938"
+      },
+      {
+        "rank": 137,
+        "name": "Monte Cross",
+        "stat": 328,
+        "team": "PHI",
+        "era": "1892\u20131907"
       },
       {
         "rank": 138,
         "name": "Kid Gleason",
         "stat": 328,
         "team": "PHI",
-        "era": "Career"
+        "era": "1888\u20131912"
       },
       {
         "rank": 139,
@@ -5612,28 +6312,28 @@ window.MLB_CATEGORIES = [
         "name": "Johnny Evers",
         "stat": 324,
         "team": "CHC",
-        "era": "Career"
+        "era": "1902\u20131929"
       },
       {
         "rank": 143,
-        "name": "Miller Huggins",
-        "stat": 324,
-        "team": "CIN",
-        "era": "Career"
-      },
-      {
-        "rank": 144,
         "name": "Jose Ramirez",
         "stat": 324,
         "team": "CLE",
         "era": "2013\u2013Pres"
       },
       {
+        "rank": 144,
+        "name": "Miller Huggins",
+        "stat": 324,
+        "team": "CIN",
+        "era": "1904\u20131916"
+      },
+      {
         "rank": 145,
         "name": "Ed McKean",
         "stat": 323,
-        "team": "MLB",
-        "era": "Career"
+        "team": "STL",
+        "era": "1887\u20131899"
       },
       {
         "rank": 146,
@@ -5644,31 +6344,31 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 147,
-        "name": "Dave Concepcion",
-        "stat": 321,
-        "team": "CIN",
-        "era": "Career"
-      },
-      {
-        "rank": 148,
-        "name": "Red Murray",
-        "stat": 321,
-        "team": "STL",
-        "era": "Career"
-      },
-      {
-        "rank": 149,
         "name": "Darby O'Brien",
         "stat": 321,
         "team": "MLB",
         "era": "Career"
       },
       {
-        "rank": 150,
+        "rank": 148,
         "name": "Luis Polonia",
         "stat": 321,
-        "team": "LAA",
-        "era": "1999\u20131999"
+        "team": "ATH/NYY/DET",
+        "era": "1987\u20132000"
+      },
+      {
+        "rank": 149,
+        "name": "Dave Concepcion",
+        "stat": 321,
+        "team": "CIN",
+        "era": "1970\u20131988"
+      },
+      {
+        "rank": 150,
+        "name": "Red Murray",
+        "stat": 321,
+        "team": "STL",
+        "era": "1906\u20131917"
       }
     ]
   },
@@ -5698,17 +6398,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 3,
-        "name": "Grover Alexander",
-        "stat": 373,
-        "team": "PHI/CHC/STL",
-        "era": "1911\u20131930"
-      },
-      {
-        "rank": 4,
         "name": "Christy Mathewson",
         "stat": 373,
         "team": "NYG",
         "era": "1900\u20131916"
+      },
+      {
+        "rank": 4,
+        "name": "Grover Alexander",
+        "stat": 373,
+        "team": "PHI/CHC/STL",
+        "era": "1911\u20131930"
       },
       {
         "rank": 5,
@@ -5721,15 +6421,15 @@ window.MLB_CATEGORIES = [
         "rank": 6,
         "name": "Pud Galvin",
         "stat": 361,
-        "team": "MLB",
-        "era": "Career"
+        "team": "PIT/STL",
+        "era": "1879\u20131892"
       },
       {
         "rank": 7,
         "name": "Kid Nichols",
         "stat": 361,
         "team": "BOS",
-        "era": "Career"
+        "era": "1890\u20131906"
       },
       {
         "rank": 8,
@@ -5763,8 +6463,8 @@ window.MLB_CATEGORIES = [
         "rank": 12,
         "name": "John Clarkson",
         "stat": 328,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/ATL",
+        "era": "1882\u20131894"
       },
       {
         "rank": 13,
@@ -5812,15 +6512,15 @@ window.MLB_CATEGORIES = [
         "rank": 19,
         "name": "Old Hoss Radbourn",
         "stat": 309,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/CIN",
+        "era": "1880\u20131891"
       },
       {
         "rank": 20,
         "name": "Mickey Welch",
         "stat": 307,
-        "team": "MLB",
-        "era": "Career"
+        "team": "SF",
+        "era": "1880\u20131892"
       },
       {
         "rank": 21,
@@ -5873,17 +6573,17 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 28,
-        "name": "Fergie Jenkins",
+        "name": "Tony Mullane",
         "stat": 284,
-        "team": "CHC",
-        "era": "Career"
+        "team": "STL/CIN/BAL",
+        "era": "1881\u20131894"
       },
       {
         "rank": 29,
-        "name": "Tony Mullane",
+        "name": "Fergie Jenkins",
         "stat": 284,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC",
+        "era": "1965\u20131983"
       },
       {
         "rank": 30,
@@ -5897,28 +6597,28 @@ window.MLB_CATEGORIES = [
         "name": "Red Ruffing",
         "stat": 273,
         "team": "BOS",
-        "era": "Career"
+        "era": "1924\u20131947"
       },
       {
         "rank": 32,
-        "name": "Burleigh Grimes",
-        "stat": 270,
-        "team": "PIT",
-        "era": "Career"
-      },
-      {
-        "rank": 33,
         "name": "Mike Mussina",
         "stat": 270,
         "team": "BAL/NYY",
         "era": "1991\u20132008"
       },
       {
+        "rank": 33,
+        "name": "Burleigh Grimes",
+        "stat": 270,
+        "team": "PIT",
+        "era": "1916\u20131934"
+      },
+      {
         "rank": 34,
         "name": "Jamie Moyer",
         "stat": 269,
-        "team": "CHC",
-        "era": "1996\u20132009"
+        "team": "CHC/STL/BOS",
+        "era": "1986\u20132012"
       },
       {
         "rank": 35,
@@ -5929,45 +6629,45 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 36,
-        "name": "Bob Feller",
+        "name": "Justin Verlander",
         "stat": 266,
-        "team": "CLE",
-        "era": "1936\u20131956"
+        "team": "DET/HOU/NYM",
+        "era": "2005\u20132026"
       },
       {
         "rank": 37,
         "name": "Eppa Rixey",
         "stat": 266,
         "team": "CIN",
-        "era": "Career"
+        "era": "1912\u20131933"
       },
       {
         "rank": 38,
-        "name": "Justin Verlander",
+        "name": "Bob Feller",
         "stat": 266,
-        "team": "DET/HOU/NYM",
-        "era": "2005\u2013Pres"
+        "team": "CLE",
+        "era": "1936\u20131956"
       },
       {
         "rank": 39,
         "name": "Jim McCormick",
         "stat": 265,
-        "team": "MLB",
-        "era": "Career"
+        "team": "CHC/PIT",
+        "era": "1878\u20131887"
       },
       {
         "rank": 40,
         "name": "Gus Weyhing",
         "stat": 264,
         "team": "PHI",
-        "era": "Career"
+        "era": "1887\u20131901"
       },
       {
         "rank": 41,
         "name": "Ted Lyons",
         "stat": 260,
         "team": "CHW",
-        "era": "Career"
+        "era": "1923\u20131946"
       },
       {
         "rank": 42,
@@ -5981,7 +6681,7 @@ window.MLB_CATEGORIES = [
         "name": "Red Faber",
         "stat": 254,
         "team": "CHW",
-        "era": "Career"
+        "era": "1914\u20131933"
       },
       {
         "rank": 44,
@@ -5995,7 +6695,7 @@ window.MLB_CATEGORIES = [
         "name": "Carl Hubbell",
         "stat": 253,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1928\u20131943"
       },
       {
         "rank": 46,
@@ -6015,8 +6715,8 @@ window.MLB_CATEGORIES = [
         "rank": 48,
         "name": "Vic Willis",
         "stat": 249,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/PIT/STL",
+        "era": "1898\u20131910"
       },
       {
         "rank": 49,
@@ -6030,35 +6730,35 @@ window.MLB_CATEGORIES = [
         "name": "Jack Quinn",
         "stat": 247,
         "team": "BOS",
-        "era": "Career"
+        "era": "1909\u20131933"
       },
       {
         "rank": 51,
-        "name": "Joe McGinnity",
-        "stat": 246,
-        "team": "NYG/SF",
-        "era": "Career"
-      },
-      {
-        "rank": 52,
         "name": "Amos Rusie",
         "stat": 246,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1889\u20131901"
+      },
+      {
+        "rank": 52,
+        "name": "Joe McGinnity",
+        "stat": 246,
+        "team": "NYG/SF",
+        "era": "1899\u20131908"
       },
       {
         "rank": 53,
-        "name": "Dennis Martinez",
-        "stat": 245,
-        "team": "ATL",
-        "era": "Career"
-      },
-      {
-        "rank": 54,
         "name": "Jack Powell",
         "stat": 245,
         "team": "STL",
-        "era": "Career"
+        "era": "1897\u20131912"
+      },
+      {
+        "rank": 54,
+        "name": "Dennis Martinez",
+        "stat": 245,
+        "team": "ATL",
+        "era": "1976\u20131998"
       },
       {
         "rank": 55,
@@ -6072,7 +6772,7 @@ window.MLB_CATEGORIES = [
         "name": "Herb Pennock",
         "stat": 241,
         "team": "NYY",
-        "era": "Career"
+        "era": "1912\u20131934"
       },
       {
         "rank": 57,
@@ -6086,28 +6786,28 @@ window.MLB_CATEGORIES = [
         "name": "Mordecai Brown",
         "stat": 239,
         "team": "CHC",
-        "era": "Career"
+        "era": "1903\u20131916"
       },
       {
         "rank": 59,
         "name": "David Wells",
         "stat": 239,
-        "team": "TOR",
-        "era": "1996\u20132007"
+        "team": "CIN/NYY/BAL",
+        "era": "1987\u20132007"
       },
       {
         "rank": 60,
         "name": "Clark Griffith",
         "stat": 237,
         "team": "CHC",
-        "era": "Career"
+        "era": "1891\u20131914"
       },
       {
         "rank": 61,
         "name": "Waite Hoyt",
         "stat": 237,
         "team": "PIT",
-        "era": "Career"
+        "era": "1918\u20131938"
       },
       {
         "rank": 62,
@@ -6120,36 +6820,36 @@ window.MLB_CATEGORIES = [
         "rank": 63,
         "name": "Charlie Buffinton",
         "stat": 233,
-        "team": "MLB",
-        "era": "Career"
+        "team": "ATL/PHI/BAL",
+        "era": "1882\u20131892"
       },
       {
         "rank": 64,
-        "name": "Sad Sam Jones",
+        "name": "Will White",
         "stat": 229,
-        "team": "CLE",
-        "era": "Career"
+        "team": "ATL/CIN",
+        "era": "1877\u20131886"
       },
       {
         "rank": 65,
+        "name": "Sad Sam Jones",
+        "stat": 229,
+        "team": "CLE",
+        "era": "1914\u20131935"
+      },
+      {
+        "rank": 66,
         "name": "Luis Tiant",
         "stat": 229,
         "team": "CLE/BOS",
         "era": "1964\u20131982"
       },
       {
-        "rank": 66,
-        "name": "Will White",
-        "stat": 229,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
         "rank": 67,
         "name": "George Mullin",
         "stat": 228,
         "team": "DET",
-        "era": "Career"
+        "era": "1902\u20131915"
       },
       {
         "rank": 68,
@@ -6163,7 +6863,7 @@ window.MLB_CATEGORIES = [
         "name": "Max Scherzer",
         "stat": 225,
         "team": "DET/WAS/NYM/TEX",
-        "era": "2008\u2013Pres"
+        "era": "2008\u20132026"
       },
       {
         "rank": 70,
@@ -6181,31 +6881,31 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 72,
-        "name": "Hooks Dauss",
-        "stat": 223,
-        "team": "DET",
-        "era": "Career"
-      },
-      {
-        "rank": 73,
         "name": "Paul Derringer",
         "stat": 223,
         "team": "CIN",
-        "era": "Career"
+        "era": "1931\u20131945"
+      },
+      {
+        "rank": 73,
+        "name": "Hooks Dauss",
+        "stat": 223,
+        "team": "DET",
+        "era": "1912\u20131926"
       },
       {
         "rank": 74,
-        "name": "Mel Harder",
-        "stat": 223,
-        "team": "CLE",
-        "era": "Career"
-      },
-      {
-        "rank": 75,
         "name": "Clayton Kershaw",
         "stat": 223,
         "team": "LAD",
-        "era": "2008\u2013Pres"
+        "era": "2008\u20132025"
+      },
+      {
+        "rank": 75,
+        "name": "Mel Harder",
+        "stat": 223,
+        "team": "CLE",
+        "era": "1928\u20131947"
       },
       {
         "rank": 76,
@@ -6226,49 +6926,49 @@ window.MLB_CATEGORIES = [
         "name": "Joe Niekro",
         "stat": 221,
         "team": "HOU",
-        "era": "Career"
+        "era": "1967\u20131988"
       },
       {
         "rank": 79,
         "name": "Jerry Reuss",
         "stat": 220,
         "team": "HOU",
-        "era": "Career"
+        "era": "1969\u20131990"
       },
       {
         "rank": 80,
+        "name": "Kenny Rogers",
+        "stat": 219,
+        "team": "TEX/NYY/DET",
+        "era": "1989\u20132008"
+      },
+      {
+        "rank": 81,
         "name": "Pedro Martinez",
         "stat": 219,
         "team": "MON/BOS/NYM",
         "era": "1992\u20132009"
       },
       {
-        "rank": 81,
-        "name": "Kenny Rogers",
-        "stat": 219,
-        "team": "TEX",
-        "era": "1996\u20132008"
-      },
-      {
         "rank": 82,
-        "name": "Bob Caruthers",
-        "stat": 218,
-        "team": "MLB",
-        "era": "Career"
-      },
-      {
-        "rank": 83,
         "name": "Earl Whitehill",
         "stat": 218,
         "team": "DET",
-        "era": "Career"
+        "era": "1923\u20131939"
+      },
+      {
+        "rank": 83,
+        "name": "Bob Caruthers",
+        "stat": 218,
+        "team": "STL/LAD/CIN",
+        "era": "1884\u20131893"
       },
       {
         "rank": 84,
         "name": "Freddie Fitzsimmons",
         "stat": 217,
         "team": "NYG/SF",
-        "era": "Career"
+        "era": "1925\u20131943"
       },
       {
         "rank": 85,
@@ -6279,10 +6979,10 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 86,
-        "name": "Wilbur Cooper",
+        "name": "Curt Schilling",
         "stat": 216,
-        "team": "PIT",
-        "era": "Career"
+        "team": "PHI/ARI/BOS",
+        "era": "1988\u20132007"
       },
       {
         "rank": 87,
@@ -6293,31 +6993,31 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 88,
-        "name": "Curt Schilling",
+        "name": "Wilbur Cooper",
         "stat": 216,
-        "team": "PHI/ARI/BOS",
-        "era": "1988\u20132007"
+        "team": "PIT",
+        "era": "1912\u20131926"
       },
       {
         "rank": 89,
-        "name": "Stan Coveleski",
-        "stat": 215,
-        "team": "CLE",
-        "era": "Career"
-      },
-      {
-        "rank": 90,
         "name": "Jim Perry",
         "stat": 215,
         "team": "MIN",
-        "era": "Career"
+        "era": "1959\u20131975"
+      },
+      {
+        "rank": 90,
+        "name": "Stan Coveleski",
+        "stat": 215,
+        "team": "CLE",
+        "era": "1912\u20131928"
       },
       {
         "rank": 91,
         "name": "Mark Buehrle",
         "stat": 214,
         "team": "CHW",
-        "era": "2001\u20132015"
+        "era": "2000\u20132015"
       },
       {
         "rank": 92,
@@ -6338,7 +7038,7 @@ window.MLB_CATEGORIES = [
         "name": "Chief Bender",
         "stat": 212,
         "team": "PHA/OAK",
-        "era": "Career"
+        "era": "1903\u20131925"
       },
       {
         "rank": 95,
@@ -6349,59 +7049,388 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 96,
-        "name": "Bobo Newsom",
+        "name": "Bob Welch",
         "stat": 211,
-        "team": "SLB/DET",
-        "era": "1929\u20131953"
+        "team": "LAD",
+        "era": "1978\u20131994"
       },
       {
         "rank": 97,
         "name": "Billy Pierce",
         "stat": 211,
         "team": "CHW",
-        "era": "Career"
+        "era": "1945\u20131964"
       },
       {
         "rank": 98,
-        "name": "Bob Welch",
+        "name": "Bobo Newsom",
         "stat": 211,
-        "team": "LAD",
-        "era": "Career"
+        "team": "SLB/DET",
+        "era": "1929\u20131953"
       },
       {
         "rank": 99,
         "name": "Jesse Haines",
         "stat": 210,
         "team": "STL",
-        "era": "Career"
+        "era": "1918\u20131937"
       },
       {
         "rank": 100,
-        "name": "Vida Blue",
-        "stat": 209,
-        "team": "OAK/SF",
-        "era": "1969\u20131986"
-      },
-      {
-        "rank": 101,
         "name": "Eddie Cicotte",
         "stat": 209,
         "team": "CHW",
-        "era": "Career"
+        "era": "1905\u20131920"
       },
       {
-        "rank": 102,
+        "rank": 101,
         "name": "Don Drysdale",
         "stat": 209,
         "team": "BKN/LAD",
         "era": "1956\u20131969"
       },
       {
+        "rank": 102,
+        "name": "Vida Blue",
+        "stat": 209,
+        "team": "OAK/SF",
+        "era": "1969\u20131986"
+      },
+      {
         "rank": 103,
         "name": "Milt Pappas",
         "stat": 209,
         "team": "BAL",
-        "era": "Career"
+        "era": "1957\u20131973"
+      },
+      {
+        "rank": 104,
+        "name": "Carl Mays",
+        "stat": 208,
+        "team": "BOS/NYY/SF",
+        "era": "1915\u20131929"
+      },
+      {
+        "rank": 105,
+        "name": "Hal Newhouser",
+        "stat": 207,
+        "team": "DET/CLE",
+        "era": "1939\u20131955"
+      },
+      {
+        "rank": 106,
+        "name": "Bob Lemon",
+        "stat": 207,
+        "team": "CLE",
+        "era": "1941\u20131958"
+      },
+      {
+        "rank": 107,
+        "name": "Orel Hershiser",
+        "stat": 204,
+        "team": "LAD/CLE/NYM",
+        "era": "1983\u20132000"
+      },
+      {
+        "rank": 108,
+        "name": "Al Orth",
+        "stat": 204,
+        "team": "PHI/MIN/NYY",
+        "era": "1895\u20131909"
+      },
+      {
+        "rank": 109,
+        "name": "Silver King",
+        "stat": 203,
+        "team": "STL/PIT/CIN",
+        "era": "1886\u20131897"
+      },
+      {
+        "rank": 110,
+        "name": "Lew Burdette",
+        "stat": 203,
+        "team": "NYY/ATL/LAA",
+        "era": "1950\u20131967"
+      },
+      {
+        "rank": 111,
+        "name": "Roy Halladay",
+        "stat": 203,
+        "team": "TOR/PHI",
+        "era": "1998\u20132013"
+      },
+      {
+        "rank": 112,
+        "name": "Jack Stivetts",
+        "stat": 203,
+        "team": "STL/ATL",
+        "era": "1889\u20131899"
+      },
+      {
+        "rank": 113,
+        "name": "Rube Marquard",
+        "stat": 201,
+        "team": "SF/LAD/ATL",
+        "era": "1908\u20131925"
+      },
+      {
+        "rank": 114,
+        "name": "Charlie Root",
+        "stat": 201,
+        "team": "BAL/CHC",
+        "era": "1923\u20131941"
+      },
+      {
+        "rank": 115,
+        "name": "Chuck Finley",
+        "stat": 200,
+        "team": "LAA/CLE/STL",
+        "era": "1986\u20132002"
+      },
+      {
+        "rank": 116,
+        "name": "Jon Lester",
+        "stat": 200,
+        "team": "BOS/ATH/STL",
+        "era": "2006\u20132021"
+      },
+      {
+        "rank": 117,
+        "name": "Adam Wainwright",
+        "stat": 200,
+        "team": "STL",
+        "era": "2005\u20132023"
+      },
+      {
+        "rank": 118,
+        "name": "George Uhle",
+        "stat": 200,
+        "team": "CLE/DET/NYY",
+        "era": "1919\u20131936"
+      },
+      {
+        "rank": 119,
+        "name": "Tim Wakefield",
+        "stat": 200,
+        "team": "PIT/BOS",
+        "era": "1992\u20132011"
+      },
+      {
+        "rank": 120,
+        "name": "Jack Chesbro",
+        "stat": 198,
+        "team": "PIT/NYY/BOS",
+        "era": "1899\u20131909"
+      },
+      {
+        "rank": 121,
+        "name": "Bucky Walters",
+        "stat": 198,
+        "team": "ATL/BOS/CIN",
+        "era": "1931\u20131950"
+      },
+      {
+        "rank": 122,
+        "name": "Bob Friend",
+        "stat": 197,
+        "team": "PIT/NYY/NYM",
+        "era": "1951\u20131966"
+      },
+      {
+        "rank": 123,
+        "name": "Larry French",
+        "stat": 197,
+        "team": "PIT/CHC/LAD",
+        "era": "1929\u20131942"
+      },
+      {
+        "rank": 124,
+        "name": "Dazzy Vance",
+        "stat": 197,
+        "team": "PIT/NYY/CIN",
+        "era": "1915\u20131935"
+      },
+      {
+        "rank": 125,
+        "name": "Jesse Tannehill",
+        "stat": 197,
+        "team": "CIN/PIT/MIN",
+        "era": "1894\u20131911"
+      },
+      {
+        "rank": 126,
+        "name": "Dennis Eckersley",
+        "stat": 197,
+        "team": "CLE/BOS/STL",
+        "era": "1975\u20131998"
+      },
+      {
+        "rank": 127,
+        "name": "Adonis Terry",
+        "stat": 197,
+        "team": "LAD/BAL/CHC",
+        "era": "1884\u20131897"
+      },
+      {
+        "rank": 128,
+        "name": "Bullet Joe Bush",
+        "stat": 196,
+        "team": "ATH/BOS/SF",
+        "era": "1912\u20131928"
+      },
+      {
+        "rank": 129,
+        "name": "Claude Osteen",
+        "stat": 196,
+        "team": "CIN/TEX/CHW",
+        "era": "1957\u20131975"
+      },
+      {
+        "rank": 130,
+        "name": "Bob Shawkey",
+        "stat": 195,
+        "team": "ATH/NYY",
+        "era": "1913\u20131927"
+      },
+      {
+        "rank": 131,
+        "name": "Ed Walsh",
+        "stat": 195,
+        "team": "CHW/ATL",
+        "era": "1904\u20131917"
+      },
+      {
+        "rank": 132,
+        "name": "Larry Jackson",
+        "stat": 194,
+        "team": "STL/CHC/PHI",
+        "era": "1955\u20131968"
+      },
+      {
+        "rank": 133,
+        "name": "Dwight Gooden",
+        "stat": 194,
+        "team": "NYM/NYY/TB",
+        "era": "1984\u20132000"
+      },
+      {
+        "rank": 134,
+        "name": "Dolf Luque",
+        "stat": 194,
+        "team": "ATL/CIN/SF",
+        "era": "1914\u20131935"
+      },
+      {
+        "rank": 135,
+        "name": "Babe Adams",
+        "stat": 194,
+        "team": "STL/PIT",
+        "era": "1906\u20131926"
+      },
+      {
+        "rank": 136,
+        "name": "David Cone",
+        "stat": 194,
+        "team": "KC/NYM/BOS",
+        "era": "1986\u20132003"
+      },
+      {
+        "rank": 137,
+        "name": "Doyle Alexander",
+        "stat": 194,
+        "team": "LAD/BAL/DET",
+        "era": "1971\u20131989"
+      },
+      {
+        "rank": 138,
+        "name": "Tommy Bridges",
+        "stat": 194,
+        "team": "DET",
+        "era": "1930\u20131946"
+      },
+      {
+        "rank": 139,
+        "name": "Sam Leever",
+        "stat": 194,
+        "team": "PIT",
+        "era": "1898\u20131910"
+      },
+      {
+        "rank": 140,
+        "name": "Rube Waddell",
+        "stat": 193,
+        "team": "PIT/CHC/BAL",
+        "era": "1897\u20131910"
+      },
+      {
+        "rank": 141,
+        "name": "Wes Ferrell",
+        "stat": 193,
+        "team": "CLE/BOS/ATL",
+        "era": "1927\u20131941"
+      },
+      {
+        "rank": 142,
+        "name": "Tommy Bond",
+        "stat": 193,
+        "team": "ATL",
+        "era": "1876\u20131884"
+      },
+      {
+        "rank": 143,
+        "name": "Curt Simmons",
+        "stat": 193,
+        "team": "PHI/STL/LAA",
+        "era": "1947\u20131967"
+      },
+      {
+        "rank": 144,
+        "name": "Lon Warneke",
+        "stat": 192,
+        "team": "CHC/STL",
+        "era": "1930\u20131945"
+      },
+      {
+        "rank": 145,
+        "name": "Dutch Leonard",
+        "stat": 191,
+        "team": "LAD/MIN/CHC",
+        "era": "1933\u20131953"
+      },
+      {
+        "rank": 146,
+        "name": "Jim Whitney",
+        "stat": 191,
+        "team": "ATL",
+        "era": "1881\u20131890"
+      },
+      {
+        "rank": 147,
+        "name": "Deacon Phillippe",
+        "stat": 189,
+        "team": "PIT",
+        "era": "1899\u20131911"
+      },
+      {
+        "rank": 148,
+        "name": "Doc White",
+        "stat": 189,
+        "team": "PHI/CHW",
+        "era": "1901\u20131913"
+      },
+      {
+        "rank": 149,
+        "name": "Lefty Gomez",
+        "stat": 189,
+        "team": "NYY/MIN",
+        "era": "1930\u20131943"
+      },
+      {
+        "rank": 150,
+        "name": "Rick Wise",
+        "stat": 188,
+        "team": "PHI/STL/CLE",
+        "era": "1964\u20131982"
       }
     ]
   },
@@ -6420,63 +7449,63 @@ window.MLB_CATEGORIES = [
         "name": "Mariano Rivera",
         "stat": 652,
         "team": "NYY",
-        "era": "1996\u20132013"
+        "era": "1995\u20132013"
       },
       {
         "rank": 2,
         "name": "Trevor Hoffman",
         "stat": 601,
-        "team": "SD/MIL",
-        "era": "1996\u20132010"
+        "team": "MIA/SD/MIL",
+        "era": "1993\u20132010"
       },
       {
         "rank": 3,
         "name": "Kenley Jansen",
         "stat": 498,
-        "team": "LAD/ATL/BOS",
+        "team": "LAD/ATL/BOS/DET",
         "era": "2010\u2013Pres"
       },
       {
         "rank": 4,
         "name": "Lee Smith",
         "stat": 478,
-        "team": "MTL",
-        "era": "1997\u20131997"
+        "team": "CHC/BOS/MTL",
+        "era": "1980\u20131997"
       },
       {
         "rank": 5,
         "name": "Craig Kimbrel",
         "stat": 441,
         "team": "ATL/SD/BOS",
-        "era": "2011\u2013Pres"
+        "era": "2010\u20132026"
       },
       {
         "rank": 6,
         "name": "Francisco Rodriguez",
         "stat": 437,
         "team": "LAA/NYM/MIL",
-        "era": "2003\u20132017"
+        "era": "2002\u20132017"
       },
       {
         "rank": 7,
         "name": "John Franco",
         "stat": 424,
-        "team": "NYM",
-        "era": "1996\u20132000"
+        "team": "CIN/NYM/HOU",
+        "era": "1984\u20132005"
       },
       {
         "rank": 8,
         "name": "Billy Wagner",
         "stat": 422,
-        "team": "HOU/PHI/NYM",
-        "era": "1996\u20132010"
+        "team": "HOU/PHI/BOS",
+        "era": "1995\u20132010"
       },
       {
         "rank": 9,
         "name": "Aroldis Chapman",
         "stat": 402,
-        "team": "CIN/CHC/NYY",
-        "era": "2012\u2013Pres"
+        "team": "CIN/CHC/NYY/BOS",
+        "era": "2010\u2013Pres"
       },
       {
         "rank": 10,
@@ -6489,239 +7518,239 @@ window.MLB_CATEGORIES = [
         "rank": 11,
         "name": "Joe Nathan",
         "stat": 377,
-        "team": "SF/MIN/TEX",
-        "era": "2003\u20132014"
+        "team": "SF/MIN/CHC",
+        "era": "1999\u20132016"
       },
       {
         "rank": 12,
         "name": "Jonathan Papelbon",
         "stat": 368,
         "team": "BOS/PHI/WAS",
-        "era": "2006\u20132016"
+        "era": "2005\u20132016"
       },
       {
         "rank": 13,
         "name": "Jeff Reardon",
         "stat": 367,
         "team": "MTL",
-        "era": "Career"
+        "era": "1979\u20131994"
       },
       {
         "rank": 14,
         "name": "Troy Percival",
         "stat": 358,
         "team": "LAA/DET/TB",
-        "era": "1996\u20132009"
+        "era": "1995\u20132009"
       },
       {
         "rank": 15,
         "name": "Randy Myers",
         "stat": 347,
-        "team": "BAL/SD",
-        "era": "1996\u20131998"
+        "team": "NYM/CIN/TOR",
+        "era": "1985\u20131998"
       },
       {
         "rank": 16,
         "name": "Rollie Fingers",
         "stat": 341,
         "team": "SD",
-        "era": "Career"
+        "era": "1968\u20131985"
       },
       {
         "rank": 17,
         "name": "John Wetteland",
         "stat": 330,
-        "team": "NYY/TEX",
-        "era": "1996\u20132000"
+        "team": "LAD/MTL/TEX",
+        "era": "1989\u20132000"
       },
       {
         "rank": 18,
         "name": "Francisco Cordero",
         "stat": 329,
         "team": "TEX/MIL/CIN",
-        "era": "2002\u20132011"
+        "era": "1999\u20132012"
       },
       {
         "rank": 19,
         "name": "Fernando Rodney",
         "stat": 327,
         "team": "DET/LAA/TB",
-        "era": "2005\u20132018"
+        "era": "2002\u20132019"
       },
       {
         "rank": 20,
         "name": "Roberto Hernandez",
         "stat": 326,
-        "team": "CHW/SF/TB",
-        "era": "1996\u20132014"
+        "team": "CHW/SF/LAD",
+        "era": "1991\u20132007"
       },
       {
         "rank": 21,
         "name": "Huston Street",
         "stat": 324,
         "team": "OAK/COL/SD",
-        "era": "2005\u20132016"
+        "era": "2005\u20132017"
       },
       {
         "rank": 22,
         "name": "Jose Mesa",
         "stat": 321,
-        "team": "CLE/SEA/PHI",
-        "era": "1996\u20132005"
+        "team": "BAL/CLE/DET",
+        "era": "1987\u20132007"
       },
       {
         "rank": 23,
         "name": "Todd Jones",
         "stat": 319,
-        "team": "HOU/DET/MIN",
-        "era": "1996\u20132008"
+        "team": "HOU/DET/MIA",
+        "era": "1993\u20132008"
       },
       {
         "rank": 24,
         "name": "Rick Aguilera",
         "stat": 318,
-        "team": "MIN/CHC",
-        "era": "1996\u20132000"
+        "team": "NYM/MIN/CHC",
+        "era": "1985\u20132000"
       },
       {
         "rank": 25,
         "name": "Robb Nen",
         "stat": 314,
-        "team": "MIA/SF",
-        "era": "1996\u20132002"
+        "team": "TEX/MIA/SF",
+        "era": "1993\u20132002"
       },
       {
         "rank": 26,
         "name": "Tom Henke",
         "stat": 311,
         "team": "TOR",
-        "era": "Career"
+        "era": "1982\u20131995"
       },
       {
         "rank": 27,
         "name": "Rich Gossage",
         "stat": 310,
         "team": "PIT",
-        "era": "Career"
+        "era": "1972\u20131994"
       },
       {
         "rank": 28,
         "name": "Jeff Montgomery",
         "stat": 304,
-        "team": "KC",
-        "era": "1996\u20131999"
+        "team": "CIN/KC",
+        "era": "1987\u20131999"
       },
       {
         "rank": 29,
         "name": "Doug Jones",
         "stat": 303,
-        "team": "MIL/CLE/OAK",
-        "era": "1997\u20131999"
+        "team": "MIL/CLE/ATH",
+        "era": "1982\u20132000"
       },
       {
         "rank": 30,
-        "name": "Jason Isringhausen",
-        "stat": 300,
-        "team": "NYM/OAK/STL",
-        "era": "1996\u20132011"
-      },
-      {
-        "rank": 31,
         "name": "Bruce Sutter",
         "stat": 300,
         "team": "STL",
-        "era": "Career"
+        "era": "1976\u20131988"
+      },
+      {
+        "rank": 31,
+        "name": "Jason Isringhausen",
+        "stat": 300,
+        "team": "NYM/ATH/LAA",
+        "era": "1995\u20132012"
       },
       {
         "rank": 32,
         "name": "Armando Benitez",
         "stat": 289,
-        "team": "BAL/NYM/SEA",
-        "era": "1996\u20132007"
+        "team": "BAL/NYM/TOR",
+        "era": "1994\u20132008"
       },
       {
         "rank": 33,
         "name": "Jose Valverde",
         "stat": 288,
         "team": "ARI/HOU/DET",
-        "era": "2003\u20132013"
+        "era": "2003\u20132014"
       },
       {
         "rank": 34,
         "name": "Raisel Iglesias",
         "stat": 287,
         "team": "CIN/LAA/ATL",
-        "era": "2015\u2013Pres"
+        "era": "2015\u20132026"
       },
       {
         "rank": 35,
         "name": "Rod Beck",
         "stat": 286,
-        "team": "SF/CHC/BOS",
-        "era": "1996\u20132003"
+        "team": "SF/CHC/SD",
+        "era": "1991\u20132004"
       },
       {
         "rank": 36,
         "name": "Bob Wickman",
         "stat": 267,
-        "team": "MIL/CLE/ATL",
-        "era": "1997\u20132007"
+        "team": "MIL/CLE/NYY",
+        "era": "1992\u20132007"
       },
       {
         "rank": 37,
         "name": "Mark Melancon",
         "stat": 262,
         "team": "HOU/PIT/WAS",
-        "era": "2011\u20132022"
+        "era": "2009\u20132022"
       },
       {
         "rank": 38,
         "name": "Edwin Diaz",
         "stat": 260,
-        "team": "SEA/NYM",
+        "team": "SEA/NYM/LAD",
         "era": "2016\u2013Pres"
       },
       {
         "rank": 39,
         "name": "Todd Worrell",
         "stat": 256,
-        "team": "LAD",
-        "era": "1996\u20131997"
+        "team": "STL/LAD",
+        "era": "1985\u20131997"
       },
       {
         "rank": 40,
         "name": "Josh Hader",
         "stat": 253,
         "team": "MIL/SD/HOU",
-        "era": "2018\u2013Pres"
+        "era": "2017\u2013Pres"
       },
       {
         "rank": 41,
         "name": "Dave Righetti",
         "stat": 252,
         "team": "NYY",
-        "era": "Career"
+        "era": "1979\u20131995"
       },
       {
         "rank": 42,
         "name": "Dan Quisenberry",
         "stat": 244,
         "team": "KC",
-        "era": "Career"
+        "era": "1979\u20131990"
       },
       {
         "rank": 43,
         "name": "Sparky Lyle",
         "stat": 238,
         "team": "NYY",
-        "era": "Career"
+        "era": "1967\u20131982"
       },
       {
         "rank": 44,
         "name": "Ugueth Urbina",
         "stat": 237,
-        "team": "MTL/BOS/MIA",
-        "era": "1996\u20132005"
+        "team": "WAS/BOS/PHI",
+        "era": "1995\u20132005"
       },
       {
         "rank": 45,
@@ -6735,238 +7764,238 @@ window.MLB_CATEGORIES = [
         "name": "Hoyt Wilhelm",
         "stat": 227,
         "team": "CHW",
-        "era": "Career"
+        "era": "1952\u20131972"
       },
       {
         "rank": 47,
         "name": "Brad Lidge",
         "stat": 225,
-        "team": "HOU/PHI",
-        "era": "2003\u20132010"
+        "team": "HOU/PHI/WAS",
+        "era": "2002\u20132012"
       },
       {
         "rank": 48,
         "name": "Greg Holland",
         "stat": 220,
         "team": "KC/COL/ARI",
-        "era": "2011\u20132021"
+        "era": "2010\u20132022"
       },
       {
         "rank": 49,
         "name": "Gene Garber",
         "stat": 218,
         "team": "PHI",
-        "era": "Career"
+        "era": "1969\u20131988"
       },
       {
         "rank": 50,
         "name": "Gregg Olson",
         "stat": 217,
-        "team": "HOU/ARI",
-        "era": "1996\u20131999"
+        "team": "BAL/ATL/MIN",
+        "era": "1988\u20132001"
       },
       {
         "rank": 51,
         "name": "Dave Smith",
         "stat": 216,
         "team": "HOU",
-        "era": "Career"
+        "era": "1980\u20131992"
       },
       {
         "rank": 52,
         "name": "Rafael Soriano",
         "stat": 207,
         "team": "ATL/TB/NYY",
-        "era": "2007\u20132014"
+        "era": "2002\u20132015"
       },
       {
         "rank": 53,
         "name": "Brian Fuentes",
         "stat": 204,
         "team": "COL/LAA/MIN",
-        "era": "2003\u20132012"
+        "era": "2001\u20132012"
       },
       {
         "rank": 54,
         "name": "Jeff Shaw",
         "stat": 203,
-        "team": "CIN/LAD",
-        "era": "1996\u20132001"
+        "team": "CLE/MTL/LAD",
+        "era": "1990\u20132001"
       },
       {
         "rank": 55,
         "name": "Bobby Thigpen",
         "stat": 201,
         "team": "CHW",
-        "era": "Career"
+        "era": "1986\u20131994"
       },
       {
         "rank": 56,
         "name": "Roy Face",
         "stat": 193,
         "team": "PIT",
-        "era": "Career"
+        "era": "1953\u20131969"
       },
       {
         "rank": 57,
         "name": "Mike Henneman",
         "stat": 193,
-        "team": "TEX",
-        "era": "1996\u20131996"
+        "team": "DET/HOU/TEX",
+        "era": "1987\u20131996"
       },
       {
         "rank": 58,
         "name": "Mitch Williams",
         "stat": 192,
         "team": "TEX",
-        "era": "Career"
+        "era": "1986\u20131997"
       },
       {
         "rank": 59,
         "name": "Keith Foulke",
         "stat": 191,
-        "team": "CHW/OAK/BOS",
-        "era": "1997\u20132005"
+        "team": "SF/CHW/BOS",
+        "era": "1997\u20132008"
       },
       {
         "rank": 60,
         "name": "J.J. Putz",
         "stat": 189,
         "team": "SEA/CHW/ARI",
-        "era": "2004\u20132013"
+        "era": "2003\u20132014"
       },
       {
         "rank": 61,
         "name": "Mike Marshall",
         "stat": 188,
         "team": "LAD",
-        "era": "Career"
+        "era": "1967\u20131981"
       },
       {
         "rank": 62,
         "name": "Eric Gagne",
         "stat": 187,
         "team": "LAD/BOS/MIL",
-        "era": "2000\u20132008"
+        "era": "1999\u20132008"
       },
       {
         "rank": 63,
         "name": "Eddie Guardado",
         "stat": 187,
-        "team": "MIN/SEA/CIN",
-        "era": "1996\u20132008"
+        "team": "MIN/SEA/TEX",
+        "era": "1993\u20132009"
       },
       {
         "rank": 64,
         "name": "Jeff Russell",
         "stat": 186,
         "team": "TEX",
-        "era": "Career"
+        "era": "1983\u20131996"
       },
       {
         "rank": 65,
         "name": "Steve Bedrosian",
         "stat": 184,
         "team": "ATL",
-        "era": "Career"
+        "era": "1981\u20131995"
       },
       {
         "rank": 66,
         "name": "Kent Tekulve",
         "stat": 184,
         "team": "PIT",
-        "era": "Career"
+        "era": "1974\u20131989"
       },
       {
         "rank": 67,
         "name": "Emmanuel Clase",
         "stat": 182,
         "team": "CLE",
-        "era": "2021\u2013Pres"
+        "era": "2019\u2013Pres"
       },
       {
         "rank": 68,
         "name": "Danny Graves",
         "stat": 182,
         "team": "CIN/NYM",
-        "era": "1998\u20132005"
+        "era": "1996\u20132006"
       },
       {
         "rank": 69,
         "name": "Tug McGraw",
         "stat": 180,
         "team": "PHI",
-        "era": "Career"
+        "era": "1965\u20131984"
       },
       {
         "rank": 70,
-        "name": "Ron Perranoski",
-        "stat": 179,
-        "team": "MIN",
-        "era": "Career"
-      },
-      {
-        "rank": 71,
         "name": "David Robertson",
         "stat": 179,
         "team": "NYY/CHW/PHI",
-        "era": "2011\u2013Pres"
+        "era": "2008\u20132025"
+      },
+      {
+        "rank": 71,
+        "name": "Ron Perranoski",
+        "stat": 179,
+        "team": "MIN",
+        "era": "1961\u20131973"
       },
       {
         "rank": 72,
         "name": "Jim Johnson",
         "stat": 178,
         "team": "BAL/LAD/ATL",
-        "era": "2009\u20132017"
+        "era": "2006\u20132018"
       },
       {
         "rank": 73,
         "name": "Kevin Gregg",
         "stat": 177,
-        "team": "LAA/MIA/CHC",
-        "era": "2004\u20132013"
+        "team": "LAA/MIA/CIN",
+        "era": "2003\u20132015"
       },
       {
         "rank": 74,
         "name": "Bryan Harvey",
         "stat": 177,
         "team": "LAA",
-        "era": "Career"
+        "era": "1987\u20131995"
       },
       {
         "rank": 75,
         "name": "Bobby Jenks",
         "stat": 173,
         "team": "CHW",
-        "era": "2005\u20132010"
+        "era": "2005\u20132011"
       },
       {
         "rank": 76,
         "name": "Jeff Brantley",
         "stat": 172,
-        "team": "CIN/STL/PHI",
-        "era": "1996\u20132000"
+        "team": "SF/CIN/TEX",
+        "era": "1988\u20132001"
       },
       {
         "rank": 77,
         "name": "Lindy McDaniel",
         "stat": 172,
         "team": "CHC",
-        "era": "Career"
+        "era": "1955\u20131975"
       },
       {
         "rank": 78,
         "name": "Brian Wilson",
         "stat": 172,
-        "team": "SF",
-        "era": "2007\u20132011"
+        "team": "SF/LAD",
+        "era": "2006\u20132014"
       },
       {
         "rank": 79,
         "name": "Heath Bell",
         "stat": 168,
         "team": "SD/MIA/ARI",
-        "era": "2007\u20132013"
+        "era": "2004\u20132014"
       },
       {
         "rank": 80,
@@ -6977,143 +8006,493 @@ window.MLB_CATEGORIES = [
       },
       {
         "rank": 81,
-        "name": "Alex Colome",
+        "name": "Roger McDowell",
         "stat": 159,
-        "team": "TB/SEA/CHW",
-        "era": "2015\u20132021"
+        "team": "NYM/PHI/BAL",
+        "era": "1985\u20131996"
       },
       {
         "rank": 82,
-        "name": "Roger McDowell",
+        "name": "Alex Colome",
         "stat": 159,
-        "team": "BAL",
-        "era": "1996\u20131996"
+        "team": "TB/SEA/COL",
+        "era": "2013\u20132023"
       },
       {
         "rank": 83,
-        "name": "Tom Gordon",
+        "name": "Dan Plesac",
         "stat": 158,
-        "team": "NYY",
-        "era": "1996\u20132007"
+        "team": "MIL/CHC/PHI",
+        "era": "1986\u20132003"
       },
       {
         "rank": 84,
-        "name": "Dan Plesac",
+        "name": "Tom Gordon",
         "stat": 158,
-        "team": "PIT/TOR",
-        "era": "1996\u20131998"
+        "team": "KC/BOS/AZ",
+        "era": "1988\u20132009"
       },
       {
         "rank": 85,
         "name": "Jay Howell",
         "stat": 155,
         "team": "OAK",
-        "era": "Career"
+        "era": "1980\u20131994"
       },
       {
         "rank": 86,
         "name": "Roberto Osuna",
         "stat": 155,
         "team": "TOR/HOU",
-        "era": "2015\u20132019"
+        "era": "2015\u20132020"
       },
       {
         "rank": 87,
-        "name": "Zack Britton",
-        "stat": 154,
-        "team": "BAL/NYY",
-        "era": "2011\u20132020"
-      },
-      {
-        "rank": 88,
-        "name": "Stu Miller",
-        "stat": 154,
-        "team": "BAL",
-        "era": "Career"
-      },
-      {
-        "rank": 89,
         "name": "John Smoltz",
         "stat": 154,
         "team": "ATL",
         "era": "1988\u20132009"
       },
       {
-        "rank": 90,
-        "name": "Cody Allen",
-        "stat": 153,
-        "team": "CLE/LAA",
-        "era": "2013\u20132019"
+        "rank": 88,
+        "name": "Zack Britton",
+        "stat": 154,
+        "team": "BAL/NYY",
+        "era": "2011\u20132022"
       },
       {
-        "rank": 91,
+        "rank": 89,
+        "name": "Stu Miller",
+        "stat": 154,
+        "team": "BAL",
+        "era": "1952\u20131968"
+      },
+      {
+        "rank": 90,
         "name": "Don McMahon",
         "stat": 153,
         "team": "CLE",
-        "era": "Career"
+        "era": "1957\u20131974"
+      },
+      {
+        "rank": 91,
+        "name": "Cody Allen",
+        "stat": 153,
+        "team": "CLE/LAA",
+        "era": "2012\u20132019"
       },
       {
         "rank": 92,
         "name": "Greg Minton",
         "stat": 150,
         "team": "SF",
-        "era": "Career"
+        "era": "1975\u20131990"
       },
       {
         "rank": 93,
         "name": "Ted Abernathy",
         "stat": 148,
         "team": "CHC",
-        "era": "Career"
+        "era": "1955\u20131972"
       },
       {
         "rank": 94,
         "name": "Willie Hernandez",
         "stat": 147,
         "team": "DET",
-        "era": "Career"
+        "era": "1977\u20131989"
       },
       {
         "rank": 95,
         "name": "David Bednar",
         "stat": 146,
         "team": "PIT/NYY",
-        "era": "2022\u2013Pres"
+        "era": "2019\u2013Pres"
       },
       {
         "rank": 96,
         "name": "Dave Giusti",
         "stat": 145,
         "team": "PIT",
-        "era": "Career"
+        "era": "1962\u20131977"
       },
       {
         "rank": 97,
-        "name": "John Axford",
-        "stat": 144,
-        "team": "MIL/PIT/COL",
-        "era": "2010\u20132016"
-      },
-      {
-        "rank": 98,
         "name": "Santiago Casilla",
         "stat": 144,
         "team": "SF/OAK",
-        "era": "2011\u20132017"
+        "era": "2004\u20132018"
+      },
+      {
+        "rank": 98,
+        "name": "Jesse Orosco",
+        "stat": 144,
+        "team": "NYM/LAD/MIN",
+        "era": "1979\u20132003"
       },
       {
         "rank": 99,
-        "name": "Jesse Orosco",
+        "name": "John Axford",
         "stat": 144,
-        "team": "BAL",
-        "era": "1998\u20131998"
+        "team": "MIL/STL/LAD",
+        "era": "2009\u20132021"
       },
       {
         "rank": 100,
         "name": "Mike Williams",
         "stat": 144,
-        "team": "PHI/PIT/HOU",
-        "era": "1996\u20132003"
+        "team": "PHI/KC/HOU",
+        "era": "1992\u20132003"
+      },
+      {
+        "rank": 101,
+        "name": "Darold Knowles",
+        "stat": 143,
+        "team": "BAL/PHI/STL",
+        "era": "1965\u20131980"
+      },
+      {
+        "rank": 102,
+        "name": "Clay Carroll",
+        "stat": 143,
+        "team": "ATL/CIN/CHW",
+        "era": "1964\u20131978"
+      },
+      {
+        "rank": 103,
+        "name": "Mike Jackson",
+        "stat": 142,
+        "team": "PHI/SEA/CHW",
+        "era": "1986\u20132004"
+      },
+      {
+        "rank": 104,
+        "name": "Wade Davis",
+        "stat": 141,
+        "team": "TB/KC/COL",
+        "era": "2009\u20132021"
+      },
+      {
+        "rank": 105,
+        "name": "Mike Timlin",
+        "stat": 141,
+        "team": "TOR/SEA/BOS",
+        "era": "1991\u20132008"
+      },
+      {
+        "rank": 106,
+        "name": "Matt Capps",
+        "stat": 138,
+        "team": "PIT/WAS/MIN",
+        "era": "2005\u20132012"
+      },
+      {
+        "rank": 107,
+        "name": "Sergio Romo",
+        "stat": 137,
+        "team": "SF/LAD/TOR",
+        "era": "2008\u20132022"
+      },
+      {
+        "rank": 108,
+        "name": "Gary Lavelle",
+        "stat": 136,
+        "team": "SF/TOR/ATH",
+        "era": "1974\u20131987"
+      },
+      {
+        "rank": 109,
+        "name": "Steve Cishek",
+        "stat": 133,
+        "team": "MIA/STL/WAS",
+        "era": "2010\u20132022"
+      },
+      {
+        "rank": 110,
+        "name": "Chris Perez",
+        "stat": 133,
+        "team": "STL/CLE/LAD",
+        "era": "2008\u20132014"
+      },
+      {
+        "rank": 111,
+        "name": "Steve Farr",
+        "stat": 132,
+        "team": "NYY/CLE/BOS",
+        "era": "1984\u20131994"
+      },
+      {
+        "rank": 112,
+        "name": "Brad Hand",
+        "stat": 132,
+        "team": "MIA/SD/ATL",
+        "era": "2011\u20132023"
+      },
+      {
+        "rank": 113,
+        "name": "Trevor Rosenthal",
+        "stat": 132,
+        "team": "STL/WAS/DET",
+        "era": "2012\u20132020"
+      },
+      {
+        "rank": 114,
+        "name": "Jim Brewer",
+        "stat": 132,
+        "team": "CHC/LAD/LAA",
+        "era": "1960\u20131976"
+      },
+      {
+        "rank": 115,
+        "name": "Bob Stanley",
+        "stat": 132,
+        "team": "BOS",
+        "era": "1977\u20131989"
+      },
+      {
+        "rank": 116,
+        "name": "Joe Borowski",
+        "stat": 131,
+        "team": "ATL/NYY/TB",
+        "era": "1995\u20132008"
+      },
+      {
+        "rank": 117,
+        "name": "Ron Davis",
+        "stat": 130,
+        "team": "NYY/MIN/SF",
+        "era": "1978\u20131988"
+      },
+      {
+        "rank": 118,
+        "name": "Antonio Alfonseca",
+        "stat": 129,
+        "team": "MIA/CHC/PHI",
+        "era": "1997\u20132007"
+      },
+      {
+        "rank": 119,
+        "name": "Kazuhiro Sasaki",
+        "stat": 129,
+        "team": "SEA",
+        "era": "2000\u20132003"
+      },
+      {
+        "rank": 120,
+        "name": "Jordan Romano",
+        "stat": 128,
+        "team": "TOR/PHI/COL",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 121,
+        "name": "Chad Cordero",
+        "stat": 128,
+        "team": "WAS/SEA",
+        "era": "2003\u20132010"
+      },
+      {
+        "rank": 122,
+        "name": "Jeurys Familia",
+        "stat": 127,
+        "team": "NYM/ATH/BOS",
+        "era": "2012\u20132023"
+      },
+      {
+        "rank": 123,
+        "name": "LaTroy Hawkins",
+        "stat": 127,
+        "team": "MIN/CHC/TOR",
+        "era": "1995\u20132015"
+      },
+      {
+        "rank": 124,
+        "name": "Terry Forster",
+        "stat": 127,
+        "team": "CHW/PIT/LAA",
+        "era": "1971\u20131986"
+      },
+      {
+        "rank": 125,
+        "name": "Bill Campbell",
+        "stat": 126,
+        "team": "MIN/BOS/MTL",
+        "era": "1973\u20131987"
+      },
+      {
+        "rank": 126,
+        "name": "Mel Rojas",
+        "stat": 126,
+        "team": "MTL/CHC/DET",
+        "era": "1990\u20131999"
+      },
+      {
+        "rank": 127,
+        "name": "Dave LaRoche",
+        "stat": 126,
+        "team": "LAA/MIN/NYY",
+        "era": "1970\u20131983"
+      },
+      {
+        "rank": 128,
+        "name": "John Hiller",
+        "stat": 125,
+        "team": "DET",
+        "era": "1965\u20131980"
+      },
+      {
+        "rank": 129,
+        "name": "Addison Reed",
+        "stat": 125,
+        "team": "CHW/AZ/MIN",
+        "era": "2011\u20132018"
+      },
+      {
+        "rank": 130,
+        "name": "Carlos Estevez",
+        "stat": 124,
+        "team": "COL/KC/PHI",
+        "era": "2016\u2013Pres"
+      },
+      {
+        "rank": 131,
+        "name": "Jack Aker",
+        "stat": 123,
+        "team": "ATH/MIL/NYM",
+        "era": "1964\u20131974"
+      },
+      {
+        "rank": 132,
+        "name": "Jhoan Duran",
+        "stat": 123,
+        "team": "MIN/PHI",
+        "era": "2022\u2013Pres"
+      },
+      {
+        "rank": 133,
+        "name": "Dick Radatz",
+        "stat": 122,
+        "team": "BOS/CLE/WAS",
+        "era": "1962\u20131969"
+      },
+      {
+        "rank": 134,
+        "name": "Duane Ward",
+        "stat": 121,
+        "team": "ATL/TOR",
+        "era": "1986\u20131995"
+      },
+      {
+        "rank": 135,
+        "name": "Glen Perkins",
+        "stat": 120,
+        "team": "MIN",
+        "era": "2006\u20132017"
+      },
+      {
+        "rank": 136,
+        "name": "Mark Wohlers",
+        "stat": 119,
+        "team": "ATL/CIN/CLE",
+        "era": "1991\u20132002"
+      },
+      {
+        "rank": 137,
+        "name": "Jonathan Broxton",
+        "stat": 118,
+        "team": "LAD/KC/STL",
+        "era": "2005\u20132017"
+      },
+      {
+        "rank": 138,
+        "name": "B.J. Ryan",
+        "stat": 117,
+        "team": "CIN/BAL/TOR",
+        "era": "1999\u20132009"
+      },
+      {
+        "rank": 139,
+        "name": "Carlos Marmol",
+        "stat": 117,
+        "team": "CHC/LAD/MIA",
+        "era": "2006\u20132014"
+      },
+      {
+        "rank": 140,
+        "name": "Ryan Pressly",
+        "stat": 117,
+        "team": "MIN/HOU/CHC",
+        "era": "2013\u20132025"
+      },
+      {
+        "rank": 141,
+        "name": "Liam Hendriks",
+        "stat": 116,
+        "team": "MIN/TOR/BOS",
+        "era": "2011\u2013Pres"
+      },
+      {
+        "rank": 142,
+        "name": "Ricky Bottalico",
+        "stat": 116,
+        "team": "PHI/STL/MIL",
+        "era": "1994\u20132005"
+      },
+      {
+        "rank": 143,
+        "name": "Tippy Martinez",
+        "stat": 115,
+        "team": "BAL/NYY/MIN",
+        "era": "1974\u20131988"
+      },
+      {
+        "rank": 144,
+        "name": "Ken Giles",
+        "stat": 115,
+        "team": "PHI/HOU/SEA",
+        "era": "2014\u20132022"
+      },
+      {
+        "rank": 145,
+        "name": "Danys Baez",
+        "stat": 114,
+        "team": "CLE/TB/PHI",
+        "era": "2001\u20132011"
+      },
+      {
+        "rank": 146,
+        "name": "Kyle Finnegan",
+        "stat": 114,
+        "team": "WAS/DET",
+        "era": "2020\u2013Pres"
+      },
+      {
+        "rank": 147,
+        "name": "Will Smith",
+        "stat": 114,
+        "team": "MIL/SF/HOU",
+        "era": "2012\u20132024"
+      },
+      {
+        "rank": 148,
+        "name": "Ryan Helsley",
+        "stat": 113,
+        "team": "STL/NYM/BAL",
+        "era": "2019\u2013Pres"
+      },
+      {
+        "rank": 149,
+        "name": "Sean Doolittle",
+        "stat": 112,
+        "team": "ATH/WAS/SEA",
+        "era": "2012\u20132022"
+      },
+      {
+        "rank": 150,
+        "name": "Frank Linzy",
+        "stat": 111,
+        "team": "SF/STL/PHI",
+        "era": "1963\u20131974"
       }
     ]
   }
