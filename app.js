@@ -55,9 +55,19 @@
       "cameron thomas": "cam thomas",
       "cam johnson": "cameron johnson",
       "alexandre sarr": "alex sarr",
-      "carlton carrington": "bub carrington"
+      "carlton carrington": "bub carrington",
+      "gregory jackson": "gg jackson",
+      "gregory jackson ii": "gg jackson",
+      "airious bailey": "ace bailey",
+      "scottie pippen jr": "scotty pippen jr",
+      "mo wagner": "moritz wagner",
+      "aleksandar vezenkov": "sasha vezenkov",
+      "sviatoslav mykhailiuk": "svi mykhailiuk",
+      "kenyon martin jr": "kj martin"
     },
     NFL: {
+      "mike vick": "michael vick",
+      "benjamin watson": "ben watson",
       "gabriel davis": "gabe davis",
       "robby anderson": "robbie chosen",
       "robbie anderson": "robbie chosen",
@@ -66,11 +76,35 @@
       "will fuller": "william fuller v",
       "matt stafford": "matthew stafford",
       "mitch trubisky": "mitchell trubisky",
-      "chad ochocinco": "chad johnson"
+      "chad ochocinco": "chad johnson",
+      "joshua cribbs": "josh cribbs",
+      "steve johnson": "stevie johnson",
+      "joshua palmer": "josh palmer",
+      "kenneth gainwell": "kenny gainwell",
+      "jeffery wilson": "jeff wilson jr",
+      "christopher herndon": "chris herndon",
+      "scotty miller": "scott miller",
+      "zonovan knight": "bam knight",
+      "boobie dixon": "anthony dixon",
+      "daniel herron": "dan herron",
+      "thaddeus lewis": "thad lewis",
+      "timothy wright": "tim wright",
+      "joe morgan": "joseph morgan",
+      "louis aguiar": "louie aguiar",
+      "nathaniel dell": "tank dell",
+      "chauncey gardner johnson": "cj gardner johnson",
+      "tariq woolen": "riq woolen",
+      "nyheim miller hines": "nyheim hines",
+      "dee eskridge": "dwayne eskridge",
+      "foyesade oluokun": "foye oluokun",
+      "christopher brooks": "chris brooks"
     },
     MLB: {
       "kike hernandez": "enrique hernandez",
-      "dee gordon": "dee strange gordon"
+      "dee gordon": "dee strange gordon",
+      "pudge rodriguez": "ivan rodriguez",
+      "a rod": "alex rodriguez",
+      "melvin upton jr": "bj upton"
     }
   };
 
@@ -202,7 +236,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=21`;
+      s.src = `data/niche/${shardName}.js?v=22`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -1246,6 +1280,8 @@
     state.sport = cat.sport;
     document.body.setAttribute("data-sport", state.sport);
 
+    state._firstGuessSent = false;
+    state._matchStartedSent = !skipAnalytics;
     if (!skipAnalytics) {
       trackEvent("puzzle_start", {
         sport: state.sport,
@@ -1480,12 +1516,13 @@
             : sh.rank >= 75
             ? "filled-deep"
             : "filled-hit";
+          const rankTag = `${sh.rank}${sh.isCutoffTie ? "T" : ""}`;
           const badgeEmoji = sh.hit
             ? sh.rank >= 90
-              ? `🔥 #${sh.rank}`
+              ? `🔥 #${rankTag}`
               : sh.rank >= 75
-              ? `💎 #${sh.rank}`
-              : `✅ #${sh.rank}`
+              ? `💎 #${rankTag}`
+              : `✅ #${rankTag}`
             : sh.rank
             ? `💔 #${sh.rank}`
             : sh.excludedByConstraint
@@ -2082,6 +2119,28 @@
     pushUndoSnapshot(rawName.trim());
 
     state.guessedNames.add(canonicalKey);
+    markRulesModalSeen();
+
+    if (!state._matchStartedSent) {
+      state._matchStartedSent = true;
+      trackEvent("puzzle_start", {
+        sport: state.sport,
+        mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode,
+        is_daily: Boolean(state.isDaily),
+        player_count: state.playerCount,
+        category_id: cat.id,
+        via: "first_guess"
+      });
+    }
+    if (!state._firstGuessSent) {
+      state._firstGuessSent = true;
+      trackEvent("first_guess", {
+        sport: state.sport,
+        mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode,
+        is_daily: Boolean(state.isDaily),
+        category_id: cat.id
+      });
+    }
 
     // Clear input
     const input = document.getElementById("playerSearchInput");
@@ -2097,26 +2156,87 @@
     }
   }
 
+  function resolveTop100CutoffHit(cat, displayName, matchedCatPlayer, cutoff) {
+    if (matchedCatPlayer && matchedCatPlayer.rank <= cutoff) {
+      return {
+        playerObj: matchedCatPlayer,
+        rank: matchedCatPlayer.rank,
+        pts: matchedCatPlayer.rank,
+        isCutoffTie: false,
+        listedRank: matchedCatPlayer.rank
+      };
+    }
+    const cutPlayer = cat && cat.players && cat.players.length >= cutoff ? cat.players[cutoff - 1] : null;
+    if (!cutPlayer) return null;
+
+    const isAsc = cat.sortDir === "asc";
+    let candStat = null;
+    let candKnown = false;
+    let candListedRank = null;
+    let candName = displayName;
+    let candTeam = cat.sport;
+    let candEra = "Career";
+
+    if (matchedCatPlayer) {
+      candStat = matchedCatPlayer.stat;
+      candKnown = true;
+      candListedRank = matchedCatPlayer.rank;
+      candName = matchedCatPlayer.name;
+      candTeam = matchedCatPlayer.team || cat.sport;
+      candEra = matchedCatPlayer.era || "Career";
+    } else {
+      const info = getPlayerRankAndStat(displayName, cat);
+      if (info && info.statKnown && !info.excludedByConstraint && (info.rank || info.stat > 0)) {
+        candStat = info.stat;
+        candKnown = true;
+        candListedRank = info.rank || null;
+        if (info.team) candTeam = info.team;
+      }
+    }
+
+    if (!candKnown || typeof candStat !== "number") return null;
+    const qualifies = isAsc ? candStat <= cutPlayer.stat : candStat >= cutPlayer.stat;
+    if (!qualifies || (cutPlayer.stat === 0 && !candListedRank)) return null;
+
+    const tiePlayerObj = matchedCatPlayer
+      ? { ...matchedCatPlayer, rank: cutoff }
+      : { rank: cutoff, name: candName, stat: candStat, team: candTeam, era: candEra };
+
+    return {
+      playerObj: tiePlayerObj,
+      rank: cutoff,
+      pts: cutoff,
+      isCutoffTie: true,
+      listedRank: candListedRank || cutoff
+    };
+  }
+
+  function revealTop100HitOnBoard(rank, playerObj, pickedBy, isCutoffTie) {
+    if (!isCutoffTie || !state.revealedRanks.has(rank)) {
+      state.revealedRanks.set(rank, { playerObj, pickedBy });
+    }
+  }
+
   function evaluateTop100Pick(activePlayer, displayName, matchedCatPlayer, cat) {
     const redMin = Math.max(1, state.cutoff - 10);
+    const cutoffHit = resolveTop100CutoffHit(cat, displayName, matchedCatPlayer, state.cutoff);
 
     // Special evaluation for Daily 5-Shot Sniper Mode (5 Shots total, max 490 pts)
     if (state.isDaily && state.dailySubmode === "sniper") {
       if (!activePlayer.sniperShots) activePlayer.sniperShots = [];
       const shotNum = activePlayer.sniperShots.length + 1;
 
-      if (matchedCatPlayer && matchedCatPlayer.rank <= state.cutoff) {
-        const rank = matchedCatPlayer.rank;
-        const pts = rank;
+      if (cutoffHit) {
+        const hitObj = cutoffHit.playerObj;
+        const rank = cutoffHit.rank;
+        const pts = cutoffHit.pts;
+        const badgeLabel = cutoffHit.isCutoffTie ? `#${rank}T` : `#${rank}`;
         activePlayer.score += pts;
-        activePlayer.picks.push(matchedCatPlayer);
+        activePlayer.picks.push(hitObj);
         if (!activePlayer.bestPull || rank > activePlayer.bestPull.rank) {
-          activePlayer.bestPull = matchedCatPlayer;
+          activePlayer.bestPull = hitObj;
         }
-        state.revealedRanks.set(rank, {
-          playerObj: matchedCatPlayer,
-          pickedBy: activePlayer.id
-        });
+        revealTop100HitOnBoard(rank, hitObj, activePlayer.id, cutoffHit.isCutoffTie);
         const tier = getTierInfo(rank, state.cutoff);
         if (tier.cls === "tier-legendary") {
           sfx.playPinpointLegend();
@@ -2128,9 +2248,11 @@
 
         activePlayer.sniperShots.push({
           shotNum,
-          name: matchedCatPlayer.name,
+          name: hitObj.name,
           rank,
-          stat: matchedCatPlayer.stat,
+          isCutoffTie: cutoffHit.isCutoffTie,
+          listedRank: cutoffHit.listedRank,
+          stat: hitObj.stat,
           statKnown: true,
           pts,
           hit: true,
@@ -2139,19 +2261,21 @@
 
         showFeedbackBanner({
           tierClass: tier.cls,
-          rankBadge: `#${rank}`,
-          title: `SHOT ${shotNum}/${state.dailyMaxShots}: ${tier.label} — ${matchedCatPlayer.name}`,
-          subtitle: `Ranked #${rank} (${matchedCatPlayer.team}) • Earned +${pts} PTS`,
-          pointsText: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit}`,
+          rankBadge: badgeLabel,
+          title: `SHOT ${shotNum}/${state.dailyMaxShots}: ${tier.label} — ${hitObj.name}`,
+          subtitle: cutoffHit.isCutoffTie
+            ? `Tied for #${rank} (${hitObj.team}) • Earned +${pts} PTS`
+            : `Ranked #${rank} (${hitObj.team}) • Earned +${pts} PTS`,
+          pointsText: `${formatNumber(hitObj.stat)} ${cat.unit}`,
           pointsSubText: `+${pts} PTS`
         });
 
         state.pickHistory.unshift({
-          playerName: matchedCatPlayer.name,
+          playerName: hitObj.name,
           pickerName: `Shot #${shotNum}`,
-          subtitle: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit} • ${tier.short}`,
-          pointsLabel: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit} (+${pts})`,
-          rankLabel: `Rank #${rank}`,
+          subtitle: `${formatNumber(hitObj.stat)} ${cat.unit} • ${tier.short}`,
+          pointsLabel: `${formatNumber(hitObj.stat)} ${cat.unit} (+${pts})`,
+          rankLabel: cutoffHit.isCutoffTie ? `Tied #${rank}` : `Rank #${rank}`,
           tierClass: tier.cls
         });
       } else {
@@ -2250,56 +2374,52 @@
     if (activePlayer.eliminated && state.redemptionEnabled) {
       activePlayer.finalRedemptionAvailable = false;
 
-      if (matchedCatPlayer && matchedCatPlayer.rank >= redMin && matchedCatPlayer.rank <= state.cutoff) {
-        // REDEMPTION SUCCESS! #90-#100 HIT! +1 LIFE & +RANK POINTS!
-        const rank = matchedCatPlayer.rank;
-        const pts = rank;
+      if (cutoffHit && cutoffHit.rank >= redMin && cutoffHit.rank <= state.cutoff) {
+        // REDEMPTION SUCCESS! #90-#100 HIT (including #100 cutoff ties)! +1 LIFE & +RANK POINTS!
+        const hitObj = cutoffHit.playerObj;
+        const rank = cutoffHit.rank;
+        const pts = cutoffHit.pts;
+        const badgeLabel = cutoffHit.isCutoffTie ? `#${rank}T` : `#${rank}`;
         activePlayer.lives = 1;
         activePlayer.eliminated = false;
         activePlayer.score += pts;
-        activePlayer.picks.push(matchedCatPlayer);
+        activePlayer.picks.push(hitObj);
 
         if (!activePlayer.bestPull || rank > activePlayer.bestPull.rank) {
-          activePlayer.bestPull = matchedCatPlayer;
+          activePlayer.bestPull = hitObj;
         }
 
-        state.revealedRanks.set(rank, {
-          playerObj: matchedCatPlayer,
-          pickedBy: activePlayer.id
-        });
+        revealTop100HitOnBoard(rank, hitObj, activePlayer.id, cutoffHit.isCutoffTie);
 
         sfx.playPinpointLegend();
 
         showFeedbackBanner({
           tierClass: "tier-legendary",
-          rankBadge: `#${rank}`,
+          rankBadge: badgeLabel,
           title: `🐦‍🔥 REDEMPTION REVIVAL! ${activePlayer.name} is BACK with 1 ❤️!`,
-          subtitle: `Sniped #${rank} ${matchedCatPlayer.name} (${formatNumber(matchedCatPlayer.stat)} ${cat.unit}) — Earned +${pts} PTS & +1 LIFE!`,
+          subtitle: `Sniped ${badgeLabel} ${hitObj.name} (${formatNumber(hitObj.stat)} ${cat.unit}) — Earned +${pts} PTS & +1 LIFE!`,
           pointsText: `+${pts} PTS & +1 ❤️`
         });
 
         state.pickHistory.unshift({
-          playerName: matchedCatPlayer.name,
+          playerName: hitObj.name,
           pickerName: activePlayer.name,
-          subtitle: `🐦‍🔥 REVIVED! (${formatNumber(matchedCatPlayer.stat)} ${cat.unit})`,
+          subtitle: `🐦‍🔥 REVIVED! (${formatNumber(hitObj.stat)} ${cat.unit})`,
           pointsLabel: `+${pts} PTS & +1 ❤️`,
-          rankLabel: `Rank #${rank}`,
+          rankLabel: cutoffHit.isCutoffTie ? `Tied #${rank}` : `Rank #${rank}`,
           tierClass: "tier-legendary"
         });
       } else {
         // REDEMPTION MISSED (Either #1-#89 or #101+/Unranked)
         sfx.playStrike();
-        if (matchedCatPlayer && matchedCatPlayer.rank <= state.cutoff) {
+        if (cutoffHit && cutoffHit.rank <= state.cutoff) {
           // Reveal on board so the name is used up, but 0 pts and no revival
-          state.revealedRanks.set(matchedCatPlayer.rank, {
-            playerObj: matchedCatPlayer,
-            pickedBy: activePlayer.id
-          });
+          revealTop100HitOnBoard(cutoffHit.rank, cutoffHit.playerObj, activePlayer.id, cutoffHit.isCutoffTie);
         }
 
         const missInfo = getPlayerRankAndStat(displayName, cat);
         const canShowRank =
-          (matchedCatPlayer && matchedCatPlayer.rank <= state.cutoff) || state.showMissRank;
+          (cutoffHit && cutoffHit.rank <= state.cutoff) || state.showMissRank;
         const actualRankInfo =
           canShowRank && missInfo.rank
             ? `Ranked #${missInfo.rank} (${formatNumber(missInfo.stat)} ${cat.unit})`
@@ -2329,21 +2449,20 @@
       return;
     }
 
-    if (matchedCatPlayer && matchedCatPlayer.rank <= state.cutoff) {
-      // VALID TOP 100 HIT!
-      const rank = matchedCatPlayer.rank;
-      const pts = rank; // Pinpoint rule: Rank = Points!
+    if (cutoffHit) {
+      // VALID TOP 100 HIT (including exact #100 cutoff ties)!
+      const hitObj = cutoffHit.playerObj;
+      const rank = cutoffHit.rank;
+      const pts = cutoffHit.pts; // Pinpoint rule: Rank = Points!
+      const badgeLabel = cutoffHit.isCutoffTie ? `#${rank}T` : `#${rank}`;
       activePlayer.score += pts;
-      activePlayer.picks.push(matchedCatPlayer);
+      activePlayer.picks.push(hitObj);
 
       if (!activePlayer.bestPull || rank > activePlayer.bestPull.rank) {
-        activePlayer.bestPull = matchedCatPlayer;
+        activePlayer.bestPull = hitObj;
       }
 
-      state.revealedRanks.set(rank, {
-        playerObj: matchedCatPlayer,
-        pickedBy: activePlayer.id
-      });
+      revealTop100HitOnBoard(rank, hitObj, activePlayer.id, cutoffHit.isCutoffTie);
 
       const tier = getTierInfo(rank, state.cutoff);
       if (tier.cls === "tier-legendary") {
@@ -2356,18 +2475,18 @@
 
       showFeedbackBanner({
         tierClass: tier.cls,
-        rankBadge: `#${rank}`,
-        title: `${tier.label} — ${matchedCatPlayer.name}`,
-        subtitle: `Ranked #${rank} with ${formatNumber(matchedCatPlayer.stat)} ${cat.unit} (${matchedCatPlayer.team})`,
+        rankBadge: badgeLabel,
+        title: `${tier.label} — ${hitObj.name}`,
+        subtitle: `${cutoffHit.isCutoffTie ? `Tied for #${rank}` : `Ranked #${rank}`} with ${formatNumber(hitObj.stat)} ${cat.unit} (${hitObj.team})`,
         pointsText: `+${pts} PTS`
       });
 
       state.pickHistory.unshift({
-        playerName: matchedCatPlayer.name,
+        playerName: hitObj.name,
         pickerName: activePlayer.name,
-        subtitle: `${formatNumber(matchedCatPlayer.stat)} ${cat.unit} • ${tier.short}`,
+        subtitle: `${formatNumber(hitObj.stat)} ${cat.unit} • ${tier.short}`,
         pointsLabel: `+${pts} PTS`,
-        rankLabel: `Rank #${rank}`,
+        rankLabel: cutoffHit.isCutoffTie ? `Tied #${rank}` : `Rank #${rank}`,
         tierClass: tier.cls
       });
     } else {
@@ -2633,6 +2752,7 @@
 
     document.getElementById("playerSearchInput").disabled = true;
     document.getElementById("submitGuessBtn").disabled = true;
+    syncFirstVisitTipBanner();
     renderHeaderState();
     renderCategoryBanner();
     renderScoreboard();
@@ -3505,12 +3625,17 @@
     container.querySelectorAll(".daily-card-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const sub = btn.getAttribute("data-dailysubmode");
+        trackEvent("mode_switch", {
+          sport: state.sport,
+          mode: `daily_${sub}`,
+          trigger: "daily_submode"
+        });
         launchDailyChallenge(state.sport, sub, false, activeDate);
       });
     });
   }
 
-  function launchDailyChallenge(sport, submode = state.dailySubmode || "sniper", isPractice = false, dateStr = "") {
+  function launchDailyChallenge(sport, submode = state.dailySubmode || "sniper", isPractice = false, dateStr = "", opts = {}) {
     const activeDate = dateStr || state.dailyDateStr || getTodayString();
     state.dailyDateStr = activeDate;
     state.isDaily = true;
@@ -3534,7 +3659,7 @@
       }
       ensureDailyShardLoaded(cat.shard).then(() => {
         if (reqId !== dailyLaunchSeq || !state.isDaily) return;
-        launchDailyChallenge(sport, submode, isPractice, activeDate);
+        launchDailyChallenge(sport, submode, isPractice, activeDate, opts);
       });
       return;
     }
@@ -3562,7 +3687,7 @@
     document.getElementById("customSetupPanel").classList.add("hidden");
 
     const saved = !isPractice ? getDailyCompletion(sport, submode, activeDate) : null;
-    startMatch(Boolean(saved));
+    startMatch(Boolean(saved) || Boolean(opts && opts.silentBoot));
 
     // If the user already completed this exact Daily Puzzle and isn't clicking Practice Replay, show their official completed state!
     if (saved && state.players[0]) {
@@ -4042,6 +4167,23 @@
     }
   }
 
+  function syncFirstVisitTipBanner() {
+    const banner = document.getElementById("firstVisitTipBanner");
+    if (!banner) return;
+    banner.classList.toggle("hidden", hasSeenRulesModal());
+  }
+
+  function dismissFirstVisitTip(trackDismiss = true) {
+    markRulesModalSeen();
+    syncFirstVisitTipBanner();
+    if (trackDismiss) {
+      trackEvent("first_tip_dismiss", {
+        sport: state.sport,
+        mode: state.isDaily ? `daily_${state.dailySubmode}` : state.mode
+      });
+    }
+  }
+
   function setRulesModalTab(tabName = "daily") {
     const activeTab = tabName === "couch" ? "couch" : "daily";
     const dailyBtn = document.getElementById("rulesTabDailyBtn");
@@ -4054,15 +4196,21 @@
     if (couchPane) couchPane.classList.toggle("hidden", activeTab !== "couch");
   }
 
-  function openRulesModal(tabName) {
+  function openRulesModal(tabName, source = "rules_btn") {
     const chosen = tabName || (state.isDaily ? "daily" : "couch");
     setRulesModalTab(chosen);
+    markRulesModalSeen();
+    syncFirstVisitTipBanner();
     const modal = document.getElementById("rulesModal");
     if (modal) modal.classList.remove("hidden");
+    trackEvent("rules_open", { tab: chosen, source, sport: state.sport });
   }
 
   function closeRulesModal(markSeen = true) {
-    if (markSeen) markRulesModalSeen();
+    if (markSeen) {
+      markRulesModalSeen();
+      syncFirstVisitTipBanner();
+    }
     const modal = document.getElementById("rulesModal");
     if (modal) modal.classList.add("hidden");
   }
@@ -4081,6 +4229,11 @@
           state.categoryId = firstCat.id;
           state.targetGoal = firstCat.defaultTarget;
         }
+        trackEvent("mode_switch", {
+          sport: sp,
+          mode: state.isDaily ? `daily_${state.dailySubmode || "sniper"}` : state.mode,
+          trigger: "sport_pill"
+        });
         if (state.isDaily) {
           launchDailyChallenge(sp);
         } else {
@@ -4132,6 +4285,7 @@
       state.mode = "top100";
       state.maxLives = parseInt(document.getElementById("setupLivesSelect").value, 10) || 3;
       document.getElementById("customSetupPanel").classList.add("hidden");
+      trackEvent("mode_switch", { sport: state.sport, mode: "top100", trigger: "mode_tab" });
       applyExplorerSelection();
     });
 
@@ -4140,11 +4294,17 @@
       state.dailyPracticeReplay = false;
       state.mode = "target";
       document.getElementById("customSetupPanel").classList.add("hidden");
+      trackEvent("mode_switch", { sport: state.sport, mode: "target", trigger: "mode_tab" });
       applyExplorerSelection();
     });
 
     document.getElementById("tabDaily").addEventListener("click", () => {
       state.dailyDateStr = state.dailyDateStr || getTodayString();
+      trackEvent("mode_switch", {
+        sport: state.sport,
+        mode: `daily_${state.dailySubmode || "sniper"}`,
+        trigger: "mode_tab"
+      });
       launchDailyChallenge(state.sport, state.dailySubmode || "sniper", false, state.dailyDateStr);
     });
 
@@ -4201,6 +4361,7 @@
     document.getElementById("tabCustom").addEventListener("click", () => {
       const panel = document.getElementById("customSetupPanel");
       panel.classList.toggle("hidden");
+      trackEvent("mode_switch", { sport: state.sport, mode: "custom_setup", trigger: "mode_tab" });
       document.querySelectorAll("#setupSportSelect .seg-btn").forEach((b) => {
         b.classList.toggle("active", b.dataset.val === state.sport);
       });
@@ -4219,10 +4380,22 @@
       e.currentTarget.textContent = sfx.enabled ? "🔊" : "🔇";
     });
 
-    // Rules Modal
+    // Rules Modal & First-Visit Tip Banner
     document.getElementById("howToPlayBtn").addEventListener("click", () => {
-      openRulesModal();
+      openRulesModal(null, "header_btn");
     });
+    const firstVisitRulesBtn = document.getElementById("firstVisitTipRulesBtn");
+    if (firstVisitRulesBtn) {
+      firstVisitRulesBtn.addEventListener("click", () => {
+        openRulesModal("daily", "tip_banner");
+      });
+    }
+    const dismissTipBtn = document.getElementById("dismissFirstVisitTipBtn");
+    if (dismissTipBtn) {
+      dismissTipBtn.addEventListener("click", () => {
+        dismissFirstVisitTip(true);
+      });
+    }
     document.getElementById("closeRulesBtn").addEventListener("click", () => {
       closeRulesModal(true);
     });
@@ -4557,9 +4730,7 @@
   populateSetupCategoryDropdown("NBA");
   bindEvents();
   if (!applyUrlChallengeParams()) {
-    launchDailyChallenge(state.sport || "NBA", "sniper", false, getTodayString());
+    launchDailyChallenge(state.sport || "NBA", "sniper", false, getTodayString(), { silentBoot: true });
   }
-  if (!hasSeenRulesModal()) {
-    openRulesModal(state.isDaily ? "daily" : "couch");
-  }
+  syncFirstVisitTipBanner();
 })();

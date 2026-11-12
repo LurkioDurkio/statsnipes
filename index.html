@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StatSnipes — Daily NBA, NFL &amp; MLB Stat Trivia</title>
-  <meta name="description" content="Hunt #90–#100 on 1,159+ daily NBA, NFL &amp; MLB stat lists without going over #100 — plus endless Pass &amp; Play and Target Stat modes." />
+  <meta name="description" content="Hunt #90–#100 on 1,163+ daily NBA, NFL &amp; MLB stat lists without going over #100 — plus endless Pass &amp; Play and Target Stat modes." />
   <meta name="theme-color" content="#090d16" />
   <link rel="canonical" href="https://statsnipes.com/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=28" />
+  <link rel="stylesheet" href="styles.css?v=29" />
 </head>
 <body data-sport="NBA">
   <!-- Background Ambient Glows -->
@@ -109,15 +109,15 @@
       </button>
       <button class="mode-tab" data-mode="top100" id="tabTop100">
         <span class="mode-icon">🔥</span>
-        <span>Endless Top 100</span>
+        <span>Endless<span class="tab-hide-xs"> Top</span> 100</span>
       </button>
       <button class="mode-tab" data-mode="target" id="tabTarget">
         <span class="mode-icon">⚡</span>
-        <span>Target Score</span>
+        <span>Target<span class="tab-hide-xs"> Score</span></span>
       </button>
       <button class="mode-tab" data-mode="custom" id="tabCustom">
         <span class="mode-icon">🛠️</span>
-        <span>Setup &amp; Couch</span>
+        <span>Setup<span class="tab-hide-xs"> &amp; Couch</span></span>
       </button>
     </nav>
 
@@ -503,6 +503,18 @@
         <!-- Populated dynamically by app.js -->
       </section>
 
+      <!-- Non-Blocking First-Visit Quick Tip Banner -->
+      <section class="first-visit-tip hidden" id="firstVisitTipBanner" aria-label="Quick How to Play Tip">
+        <div class="first-visit-tip-text">
+          <span class="fvt-badge">HOW TO PLAY</span>
+          <span>Hunt ranks <strong>#90–#100</strong> for max points (<strong>#100 = 100 pts</strong>). Anyone ranked <strong>#101+</strong> scores <strong>0 pts</strong>!</span>
+        </div>
+        <div class="first-visit-tip-actions">
+          <button type="button" class="fvt-btn rules" id="firstVisitTipRulesBtn">❓ Full Rules</button>
+          <button type="button" class="fvt-btn dismiss" id="dismissFirstVisitTipBtn" aria-label="Dismiss tip">✕ Got it</button>
+        </div>
+      </section>
+
       <!-- Search & Action Command Center -->
       <section class="command-center" id="commandCenterSection">
         <div class="turn-indicator-bar">
@@ -744,12 +756,12 @@
   </div>
 
   <!-- Scripts -->
-  <script src="data/nba_data.js?v=20"></script>
-  <script src="data/nfl_data.js?v=20"></script>
-  <script src="data/mlb_data.js?v=20"></script>
-  <script src="data/extra_players.js?v=20"></script>
-  <script src="data/seasons_data.js?v=20"></script>
-  <script src="data/niche/manifest.js?v=21"></script>
-  <script src="app.js?v=29"></script>
+  <script src="data/nba_data.js?v=21"></script>
+  <script src="data/nfl_data.js?v=21"></script>
+  <script src="data/mlb_data.js?v=21"></script>
+  <script src="data/extra_players.js?v=21"></script>
+  <script src="data/seasons_data.js?v=21"></script>
+  <script src="data/niche/manifest.js?v=22"></script>
+  <script src="app.js?v=30"></script>
 </body>
 </html>

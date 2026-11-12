@@ -608,10 +608,6 @@ body.is-daily-mode .top-header .sport-switcher {
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
-  font-weight: 800;
-  font-size: 1.55rem;
-  color: var(--sport-secondary);
-}
 
 .sniper-slots-grid {
   display: grid;
@@ -1318,6 +1314,81 @@ body.is-daily-mode .top-header .sport-switcher {
   max-width: 170px;
 }
 
+/* Non-Blocking First-Visit Quick Tip Banner */
+.first-visit-tip {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  border-radius: 12px;
+  padding: 0.58rem 0.9rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.first-visit-tip.hidden {
+  display: none;
+}
+
+.first-visit-tip-text {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.fvt-badge {
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.16rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #6ee7b7;
+  white-space: nowrap;
+}
+
+.first-visit-tip-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.fvt-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 7px;
+  padding: 0.28rem 0.62rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s ease, border-color 0.15s ease;
+}
+
+.fvt-btn.rules {
+  background: var(--bg-panel-elevated);
+  border: 1px solid var(--border-highlight);
+  color: var(--text-main);
+}
+
+.fvt-btn.dismiss {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #a7f3d0;
+}
+
+.fvt-btn:hover {
+  filter: brightness(1.12);
+}
+
 /* Command Center & Search */
 .command-center {
   background: var(--bg-panel);
@@ -1330,6 +1401,21 @@ body.is-daily-mode .top-header .sport-switcher {
 
 .command-center.is-complete-compact .turn-indicator-bar {
   margin-bottom: 0;
+}
+
+.command-center.is-complete-compact .turn-dot {
+  display: none;
+}
+
+.command-center.is-complete-compact #currentTurnPrompt {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.command-center.is-complete-compact .prompt-inline-actions {
+  margin-left: 0;
 }
 
 .command-center.is-complete-compact .feedback-banner:not(.hidden) {
@@ -3016,6 +3102,45 @@ body.is-daily-mode .top-header .sport-switcher {
 }
 
 @media (max-width: 540px) {
+  .tab-hide-xs {
+    display: none;
+  }
+
+  .mode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.18rem;
+    padding: 0.2rem;
+    overflow: visible;
+  }
+
+  .mode-tab {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0.34rem 0.38rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .first-visit-tip {
+    padding: 0.5rem 0.72rem;
+    gap: 0.45rem;
+  }
+
+  .first-visit-tip-text {
+    font-size: 0.76rem;
+  }
+
+  .first-visit-tip-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .command-center.is-complete-compact .turn-indicator-bar {
+    gap: 0.4rem;
+  }
+
   .top100-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.42rem;
