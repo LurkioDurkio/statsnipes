@@ -202,7 +202,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=20`;
+      s.src = `data/niche/${shardName}.js?v=21`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
