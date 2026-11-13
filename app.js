@@ -236,7 +236,7 @@
     if (nicheShardPromises[shardName]) return nicheShardPromises[shardName];
     nicheShardPromises[shardName] = new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = `data/niche/${shardName}.js?v=22`;
+      s.src = `data/niche/${shardName}.js?v=42`;
       s.async = true;
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -1410,6 +1410,19 @@
       const keepSubInDaily = !state.isDaily || /\bmin(?:imum)?\b/i.test(cat.subtitle || "");
       subEl.classList.toggle("hidden", !keepSubInDaily);
     }
+    const objEl = document.getElementById("dailyObjectiveText");
+    if (objEl) {
+      if (state.isDaily) {
+        objEl.classList.remove("hidden");
+        if (state.dailySubmode === "sniper") {
+          objEl.innerHTML = `Name 5 players on the Top 100 list. <strong>Deeper ranks = more points</strong> (<span class="obj-highlight">#100 = 100 pts</span>, <span class="obj-highlight">#1 = 1 pt</span>). Outside Top 100 = 0 pts.`;
+        } else {
+          objEl.innerHTML = `Draft 5 players whose combined career stats get closest to <span class="obj-highlight">${formatNumber(state.targetGoal)} ${cat.unit}</span> without going over (Bust).`;
+        }
+      } else {
+        objEl.classList.add("hidden");
+      }
+    }
 
     const expBar = document.getElementById("constraintExplorerBar");
     if (expBar) {
@@ -1487,12 +1500,12 @@
   }
 
   function getSniperGrade(score) {
-    if (score >= 435) return { grade: "S+", label: "GOAT DEEP BAG 🐐" };
-    if (score >= 380) return { grade: "S", label: "SNIPE MASTER 🔥" };
-    if (score >= 320) return { grade: "A", label: "ELITE SNIPER 💎" };
-    if (score >= 250) return { grade: "B", label: "SOLID BAG ✅" };
-    if (score >= 160) return { grade: "C", label: "SAFE CHALK 🛡️" };
-    return { grade: "D", label: "ROOKIE BAG 📋" };
+    if (score >= 450) return { grade: "S+", label: "Legendary" };
+    if (score >= 400) return { grade: "S", label: "Master" };
+    if (score >= 300) return { grade: "A", label: "Elite" };
+    if (score >= 200) return { grade: "B", label: "Sharp" };
+    if (score >= 100) return { grade: "C", label: "Solid" };
+    return { grade: "D", label: "Rookie" };
   }
 
   function renderScoreboard() {
@@ -1522,19 +1535,17 @@
             ? "filled-legend"
             : sh.rank >= 75
             ? "filled-deep"
-            : "filled-hit";
+            : sh.rank >= 50
+            ? "filled-solid"
+            : "filled-safe";
           const rankTag = `${sh.rank}${sh.isCutoffTie ? "T" : ""}`;
-          const badgeEmoji = sh.hit
-            ? sh.rank >= 90
-              ? `🔥 #${rankTag}`
-              : sh.rank >= 75
-              ? `💎 #${rankTag}`
-              : `✅ #${rankTag}`
+          const badgeText = sh.hit
+            ? `#${rankTag}`
             : sh.rank
-            ? `💔 #${sh.rank}`
+            ? `Miss (#${sh.rank})`
             : sh.excludedByConstraint
-            ? `🚫 OUT`
-            : `💔 MISS`;
+            ? `Out`
+            : `Miss`;
           const hasStat = typeof sh.stat === "number" && (sh.statKnown === true || sh.hit || sh.rank || sh.stat > 0);
           const statText = sh.hit
             ? `${formatNumber(sh.stat)} ${cat.unit}`
@@ -1543,16 +1554,26 @@
             : hasStat
             ? `${formatNumber(sh.stat)} ${cat.unit}`
             : `Not in Top ${sh.maxKnownRank || 360}`;
-          const statColor = sh.hit ? "var(--sport-secondary)" : hasStat || sh.rawStat > 0 ? "#fca5a5" : "var(--text-secondary)";
+          const statColor = !sh.hit
+            ? (hasStat || sh.rawStat > 0 ? "#fca5a5" : "var(--text-secondary)")
+            : sh.rank >= 90
+            ? "#d8b4fe"
+            : sh.rank >= 75
+            ? "#6ee7b7"
+            : sh.rank >= 50
+            ? "#93c5fd"
+            : "#fcd34d";
           const ptsChip = sh.hit ? `+${sh.pts} pts` : `0 pts`;
           slotsHtml.push(`
             <div class="sniper-slot ${slotCls}">
-              <div class="ss-top">
-                <span>SHOT #${i + 1}</span>
-                <span>${badgeEmoji}</span>
+              <div class="ss-row-top">
+                <div class="ss-left">
+                  <span class="ss-shot-num">SHOT #${i + 1}</span>
+                  <span class="ss-player" title="${escapeHtml(sh.name)}">${escapeHtml(sh.name)}</span>
+                </div>
+                <span class="ss-badge ${slotCls}">${badgeText}</span>
               </div>
-              <div class="ss-player" title="${escapeHtml(sh.name)}">${escapeHtml(sh.name)}</div>
-              <div class="ss-stat-row">
+              <div class="ss-row-bottom">
                 <span class="ss-stat" style="color:${statColor}">${statText}</span>
                 <span class="ss-pts-chip ${sh.hit ? "hit" : "miss"}">${ptsChip}</span>
               </div>
@@ -1560,32 +1581,40 @@
           `);
         } else {
           slotsHtml.push(`
-            <div class="sniper-slot ${isCurrent ? "active-shot" : ""}">
-              <div class="ss-top">
-                <span>SHOT #${i + 1}</span>
-                <span>${isCurrent ? "🎯 UP NOW" : "🔒"}</span>
+            <div class="sniper-slot ${isCurrent ? "active-shot" : "empty-shot"}">
+              <div class="ss-row-top">
+                <div class="ss-left">
+                  <span class="ss-shot-num">SHOT #${i + 1}</span>
+                  <span class="ss-player ss-placeholder">${isCurrent ? "UP NOW" : "SHOT " + (i + 1)}</span>
+                </div>
+                <span class="ss-badge-status">${isCurrent ? "• • •" : "—"}</span>
               </div>
-              <div class="ss-player" style="color:var(--text-muted);font-weight:600;">
-                ${isCurrent ? "Hunt #90–#100..." : "Empty Slot"}
+              <div class="ss-row-bottom">
+                <span class="ss-stat ss-hint">${isCurrent ? "Hunt #90–#100..." : "Empty Slot"}</span>
               </div>
-              <div class="ss-pts" style="color:var(--text-muted);">Max +100 PTS</div>
             </div>
           `);
         }
       }
 
+      const headerLabel = state.gameOver
+        ? `Tier: <strong>${gInfo.label}</strong>`
+        : shots.length === 0
+        ? `Daily Challenge: <strong>5 Shots Remaining</strong>`
+        : `Progress: <strong>Shot ${shots.length + 1} of 5</strong>`;
+
       strip.innerHTML = `
-        <div class="daily-sniper-card">
-          <div class="sniper-header-row">
-            <span class="sniper-grade-label">
-              Grade: <strong>${gInfo.grade} (${gInfo.label})</strong>
-            </span>
-            <div class="sniper-score-big">
-              ${formatNumber(p.score)} <span class="sniper-score-max">/ 490 PTS</span>
-            </div>
-          </div>
+        <div class="daily-sniper-card ${state.gameOver ? "game-over" : ""}">
           <div class="sniper-slots-grid">
             ${slotsHtml.join("")}
+          </div>
+          <div class="sniper-header-row">
+            <span class="sniper-grade-label">
+              ${headerLabel}
+            </span>
+            <div class="sniper-score-big">
+              ${formatNumber(p.score)} <span class="sniper-score-max">PTS</span>
+            </div>
           </div>
         </div>
       `;
@@ -1818,19 +1847,25 @@
 
     if (state.gameOver) {
       if (state.isDaily) {
+        const cat = getActiveCategory();
+        const dist = getDailyDistribution(state.sport, state.dailySubmode);
+        const winner = state.players[0];
+        const pRank = winner ? calculatePlayerPercentile(state.sport, state.dailySubmode, winner, dist) : null;
+        const pBadge = pRank ? `<div class="dc-percentile-pill ${pRank.isBusted ? "busted" : ""}">${pRank.text}</div>` : "";
         promptEl.innerHTML = `
-          <strong>✅ Daily Complete!</strong>
+          <div class="dc-badge">🏆 DAILY COMPLETE!</div>
+          ${pBadge}
           <span class="prompt-inline-actions">
-            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">📲 Share Score</button>
-            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">📊 Summary</button>
+            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">Share Score</button>
+            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">Summary & Distro</button>
           </span>
         `;
       } else {
         promptEl.innerHTML = `
           <strong>Match Complete!</strong> — Share your result, inspect the board below, or start a new match.
           <span class="prompt-inline-actions">
-            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">📲 Share Result</button>
-            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">📊 Summary</button>
+            <button type="button" class="prompt-inline-btn" id="promptShareScoreBtn">Share Result</button>
+            <button type="button" class="prompt-inline-btn secondary" id="promptOpenModalBtn">Summary</button>
           </span>
         `;
       }
@@ -1841,6 +1876,9 @@
       const pModal = document.getElementById("promptOpenModalBtn");
       if (pModal) {
         pModal.addEventListener("click", () => {
+          if (state.isDaily) {
+            renderDailyDistributionSection(state.sport, state.dailySubmode);
+          }
           document.getElementById("gameOverModal").classList.remove("hidden");
         });
       }
@@ -1852,10 +1890,10 @@
     if (state.mode === "top100") {
       if (state.isDaily && state.dailySubmode === "sniper") {
         const shotNum = Math.min(state.dailyMaxShots, (activePlayer.sniperShots ? activePlayer.sniperShots.length : 0) + 1);
-        promptEl.innerHTML = `🎯 <strong>Shot ${shotNum} of ${state.dailyMaxShots}</strong> • Hunt #90–#100`;
+        promptEl.innerHTML = `<strong>Shot ${shotNum} of ${state.dailyMaxShots}</strong> • Aim for #90–#100`;
       } else if (activePlayer.eliminated && state.redemptionEnabled) {
         const redMin = Math.max(1, state.cutoff - 10);
-        promptEl.innerHTML = `🐦‍🔥 <strong>${escapeHtml(activePlayer.name)}'s REDEMPTION SHOT!</strong> — Eliminated! Snipe a player ranked <strong>#${redMin}–#${state.cutoff}</strong> to earn <strong>1 Life ❤️ back + those points!</strong>`;
+        promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s REDEMPTION SHOT!</strong> — Eliminated! Snipe a player ranked <strong>#${redMin}–#${state.cutoff}</strong> to earn <strong>1 Life ❤️ back + those points!</strong>`;
       } else {
         promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Turn</strong> — Snipe a player in the Top ${state.cutoff} (#${state.cutoff} = ${state.cutoff} pts)!`;
       }
@@ -1863,7 +1901,7 @@
       const cat = getActiveCategory();
       const remaining = state.targetGoal - activePlayer.score;
       if (state.isDaily) {
-        promptEl.innerHTML = `⚡ <strong>Pick ${activePlayer.picks.length + 1} of ${state.maxPicks}</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong>`;
+        promptEl.innerHTML = `<strong>Pick ${activePlayer.picks.length + 1} of ${state.maxPicks}</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> without going over`;
       } else {
         promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Pick (${activePlayer.picks.length + 1}/${state.maxPicks})</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> to hit target!`;
       }
@@ -2005,21 +2043,42 @@
       .map((p, idx) => {
         const pct = Math.min(100, Math.round((p.score / state.targetGoal) * 100));
         const slotsHtml = [];
+        let runningTotal = 0;
         for (let s = 0; s < state.maxPicks; s++) {
           const pick = p.picks[s];
           if (pick) {
+            runningTotal += pick.stat || 0;
+            const runningPct = Math.min(100, Math.round((runningTotal / state.targetGoal) * 100));
             slotsHtml.push(`
               <div class="tpb-slot filled ${pick.bustedPick ? "busted" : ""}">
-                <div style="font-weight:700;font-size:0.82rem;">${escapeHtml(pick.name)}</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:${pick.bustedPick ? "#fca5a5" : "var(--sport-secondary)"};">
-                  ${pick.bustedPick ? `${formatNumber(pick.stat)} ${cat.unit} (BUST 💥)` : `+${formatNumber(pick.stat)} ${cat.unit}`}
+                <div class="tpb-row-top">
+                  <div class="tpb-left">
+                    <span class="tpb-pick-num">PICK #${s + 1}</span>
+                    <span class="tpb-player" title="${escapeHtml(pick.name)}">${escapeHtml(pick.name)}</span>
+                  </div>
+                  <span class="tpb-badge ${pick.bustedPick ? "busted" : "locked"}">${pick.bustedPick ? "BUST 💥" : "✓"}</span>
+                </div>
+                <div class="tpb-row-bottom">
+                  <span class="tpb-stat ${pick.bustedPick ? "busted" : ""}">${pick.bustedPick ? `${formatNumber(pick.stat)} ${cat.unit} (BUST)` : `+${formatNumber(pick.stat)} ${cat.unit}`}</span>
+                  <span class="tpb-running">Total: ${formatNumber(runningTotal)} / ${formatNumber(state.targetGoal)} ${cat.unit} (${runningPct}%)</span>
                 </div>
               </div>
             `);
           } else {
+            const isCurrent = !state.gameOver && s === p.picks.length;
             slotsHtml.push(`
-              <div class="tpb-slot">
-                <div style="font-size:0.75rem;color:var(--text-muted);">Pick #${s + 1}</div>
+              <div class="tpb-slot empty ${isCurrent ? "current" : ""}">
+                <div class="tpb-row-top">
+                  <div class="tpb-left">
+                    <span class="tpb-pick-num">PICK #${s + 1}</span>
+                    <span class="tpb-player-placeholder">${isCurrent ? "Draft next player..." : "Open Draft Slot"}</span>
+                  </div>
+                  <span class="tpb-badge-status">${isCurrent ? "Drafting" : "Ready"}</span>
+                </div>
+                <div class="tpb-row-bottom">
+                  <span class="tpb-stat-placeholder">—</span>
+                  <span class="tpb-running-placeholder">—</span>
+                </div>
               </div>
             `);
           }
@@ -2797,6 +2856,9 @@
 
     document.getElementById("playerSearchInput").disabled = true;
     document.getElementById("submitGuessBtn").disabled = true;
+    if (state.isDaily) {
+      document.getElementById("feedbackBanner").classList.add("hidden");
+    }
     syncFirstVisitTipBanner();
     renderHeaderState();
     renderCategoryBanner();
@@ -2875,8 +2937,8 @@
     if (state.isDaily && state.dailySubmode === "sniper") {
       const gInfo = getSniperGrade(winner.score);
       document.getElementById("gameOverBadge").textContent = `🎯 DAILY #${activeDailyNum} COMPLETE`;
-      document.getElementById("gameOverTitle").textContent = `${formatNumber(winner.score)} / 490 PTS (${gInfo.grade})`;
-      document.getElementById("gameOverSubtitle").textContent = `${gInfo.label} • ${cat.title}`;
+      document.getElementById("gameOverTitle").textContent = `${formatNumber(winner.score)} PTS (${gInfo.label})`;
+      document.getElementById("gameOverSubtitle").textContent = `${gInfo.grade} Grade • ${cat.title}`;
     } else if (state.isDaily && state.dailySubmode === "target") {
       const diff = Math.abs(state.targetGoal - winner.score);
       const pct = Math.min(100, ((winner.score / state.targetGoal) * 100)).toFixed(1);
@@ -2890,6 +2952,17 @@
           ? `Final Score: ${formatNumber(winner.score)} ${state.mode === "top100" ? "PTS" : cat.unit}`
           : `🏆 ${winner.name} Wins!`;
       document.getElementById("gameOverSubtitle").textContent = reasonText;
+    }
+
+    if (state.isDaily) {
+      renderDailyDistributionSection(state.sport, state.dailySubmode);
+      const standingsEl = document.getElementById("finalStandingsList");
+      if (standingsEl) standingsEl.classList.add("hidden");
+    } else {
+      const distroSec = document.getElementById("dailyDistroSection");
+      if (distroSec) distroSec.classList.add("hidden");
+      const standingsEl = document.getElementById("finalStandingsList");
+      if (standingsEl) standingsEl.classList.remove("hidden");
     }
 
     const standingsEl = document.getElementById("finalStandingsList");
@@ -3201,7 +3274,7 @@
     const diffMs = Math.max(0, tomorrow.getTime() - now.getTime());
     const hrs = Math.floor(diffMs / 3600000);
     const mins = Math.floor((diffMs % 3600000) / 60000);
-    return `⏳ Next: ${hrs}h ${mins}m`;
+    return `Next: ${hrs}h ${mins}m`;
   }
 
   function hashString(str) {
@@ -3301,6 +3374,490 @@
     }
   }
 
+  // --- Daily 6-Game Score Distribution & Percentile System ---
+  function getOrCreateClientId() {
+    try {
+      let cid = localStorage.getItem("statsnipes_client_token");
+      if (!cid) {
+        cid = "c_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+        localStorage.setItem("statsnipes_client_token", cid);
+      }
+      return cid;
+    } catch (e) {
+      return "anon_" + Date.now();
+    }
+  }
+
+  function submitDailyScoreToBackend(comp) {
+    if (!comp || state.dailyPracticeReplay) return;
+    try {
+      const payload = {
+        date: comp.date,
+        sport: comp.sport,
+        submode: comp.submode,
+        score: Number(comp.score) || 0,
+        targetGoal: comp.targetGoal ? Number(comp.targetGoal) : null,
+        busted: Boolean(comp.busted || (comp.submode === "target" && comp.targetGoal && comp.score > comp.targetGoal)),
+        clientId: getOrCreateClientId()
+      };
+      fetch("/api/score", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(() => {});
+    } catch (e) {
+      // Network/offline - ignore
+    }
+  }
+
+  const liveDistroCache = new Map();
+
+  function fetchLiveDailyDistribution(sport, submode, dateStr, comp) {
+    const cacheKey = `${sport}_${submode}_${dateStr}`;
+    const userScore = comp ? Number(comp.score) || 0 : "";
+    const isBusted = comp && (comp.busted || (submode === "target" && comp.targetGoal && comp.score > comp.targetGoal)) ? "1" : "0";
+    const url = `/api/distro?date=${encodeURIComponent(dateStr)}&sport=${encodeURIComponent(sport)}&submode=${encodeURIComponent(submode)}${userScore !== "" ? `&userScore=${userScore}&busted=${isBusted}` : ""}`;
+
+    fetch(url)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!data || !data.live || !data.totalPlayers) return;
+        liveDistroCache.set(cacheKey, data);
+        if (activeDistroSport === sport && activeDistroSubmode === submode) {
+          applyLiveDistributionData(sport, submode, comp, data);
+        }
+      })
+      .catch(() => {});
+  }
+
+  function applyLiveDistributionData(sport, submode, comp, data) {
+    const totEl = document.getElementById("distroTotalPlayers");
+    if (totEl && data.totalPlayers) {
+      totEl.textContent = `${formatNumber(data.totalPlayers)} Players Today`;
+    }
+
+    const heroEl = document.getElementById("distroHeroPill");
+    if (heroEl && comp) {
+      const isBusted = Boolean(comp.busted || (submode === "target" && comp.targetGoal && comp.score > comp.targetGoal));
+      if (isBusted) {
+        heroEl.className = "distro-percentile-banner busted";
+        heroEl.innerHTML = "BUSTED TODAY · BOTTOM 22% OF PLAYERS";
+      } else if (data.percentile !== null && data.percentile !== undefined) {
+        heroEl.className = "distro-percentile-banner";
+        heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${data.percentile}%</span> OF TODAY'S PLAYERS`;
+      }
+    }
+  }
+
+  function getDailyDistribution(sport, submode, dateStr = "") {
+    const dKey = dateStr || state.dailyDateStr || getTodayString();
+    const seedStr = `statsnipes_distro_v2_${sport}_${submode}_${dKey}`;
+    const seed = Math.abs(hashString(seedStr)) || 4242;
+    const totalPlayers = 1150 + (seed % 350);
+
+    let labels, ranges, weights;
+    if (submode === "sniper") {
+      const var1 = ((seed >> 2) % 5) - 2;
+      const var2 = ((seed >> 5) % 5) - 2;
+      const var3 = ((seed >> 8) % 5) - 2;
+
+      const w0 = Math.max(8, 12 + var1);
+      const w1 = Math.max(25, 31 + var2);
+      const w2 = Math.max(28, 34 - var1);
+      const w3 = Math.max(10, 15 - var2);
+      const w4 = Math.max(3, 6 + var3);
+      const w5 = Math.max(1, 100 - (w0 + w1 + w2 + w3 + w4));
+
+      weights = [w0, w1, w2, w3, w4, w5];
+      labels = ["0–99", "100–199", "200–299", "300–399", "400–449", "450–500"];
+      ranges = [[0, 99], [100, 199], [200, 299], [300, 399], [400, 449], [450, 500]];
+    } else {
+      const var1 = ((seed >> 3) % 5) - 2;
+      const var2 = ((seed >> 6) % 5) - 2;
+
+      const w_bust = Math.max(16, 22 + var1);
+      const w_low = Math.max(6, 10 + var2);
+      const w_mid = Math.max(20, 24 - var1);
+      const w_high = Math.max(20, 25 - var2);
+      const w_laser = Math.max(8, 13 + ((seed >> 9) % 3));
+      const w_bull = Math.max(3, 100 - (w_bust + w_low + w_mid + w_high + w_laser));
+
+      weights = [w_bust, w_low, w_mid, w_high, w_laser, w_bull];
+      labels = ["Bust 💥", "<60%", "60–79%", "80–89%", "90–95%", "96–100% 🎯"];
+      ranges = [[-1, -1], [0, 59.9], [60, 79.9], [80, 89.9], [90, 95.9], [96, 100]];
+    }
+
+    const counts = weights.map((w) => Math.round(totalPlayers * (w / 100)));
+    const diff = totalPlayers - counts.reduce((a, b) => a + b, 0);
+    counts[2] = Math.max(1, counts[2] + diff);
+
+    return {
+      sport,
+      submode,
+      date: dKey,
+      totalPlayers,
+      labels,
+      ranges,
+      counts,
+      weights: counts.map((c) => Math.round((c / totalPlayers) * 100))
+    };
+  }
+
+  function calculatePlayerPercentile(sport, submode, winner, dist) {
+    if (!winner) return null;
+    const score = Number(winner.score) || 0;
+    const d = dist || getDailyDistribution(sport, submode);
+
+    if (submode === "sniper") {
+      let bIdx = 0;
+      if (score < 100) bIdx = 0;
+      else if (score < 200) bIdx = 1;
+      else if (score < 300) bIdx = 2;
+      else if (score < 400) bIdx = 3;
+      else if (score < 450) bIdx = 4;
+      else bIdx = 5;
+
+      const [rMin, rMax] = d.ranges[bIdx];
+      const frac = rMax > rMin ? Math.max(0, Math.min(1, (score - rMin) / (rMax - rMin))) : 0.5;
+
+      let below = 0;
+      for (let i = 0; i < bIdx; i++) below += d.counts[i];
+      below += Math.round(d.counts[bIdx] * frac);
+
+      const pVal = Math.max(1, Math.min(99, Math.round((below / d.totalPlayers) * 100)));
+      return {
+        bucketIndex: bIdx,
+        percentile: pVal,
+        text: `🔥 Better than ${pVal}% of players today`,
+        isBusted: false,
+        displayScore: `${formatNumber(score)} PTS`
+      };
+    } else {
+      const targetGoal = Number(winner.targetGoal || state.targetGoal) || 1;
+      const isBusted = Boolean(winner.busted || score > targetGoal);
+      if (isBusted) {
+        return {
+          bucketIndex: 0,
+          percentile: null,
+          text: `💥 Busted today · Ranked in the bottom 22%`,
+          isBusted: true,
+          displayScore: `Busted (${formatNumber(score)} / ${formatNumber(targetGoal)})`
+        };
+      }
+      const pct = Math.min(100, (score / targetGoal) * 100);
+      let bIdx = 1;
+      if (pct < 60) bIdx = 1;
+      else if (pct < 80) bIdx = 2;
+      else if (pct < 90) bIdx = 3;
+      else if (pct < 96) bIdx = 4;
+      else bIdx = 5;
+
+      const [rMin, rMax] = d.ranges[bIdx];
+      const frac = rMax > rMin ? Math.max(0, Math.min(1, (pct - rMin) / (rMax - rMin))) : 0.5;
+
+      let below = d.counts[0]; // All busted players are below non-busted
+      for (let i = 1; i < bIdx; i++) below += d.counts[i];
+      below += Math.round(d.counts[bIdx] * frac);
+
+      const pVal = Math.max(1, Math.min(99, Math.round((below / d.totalPlayers) * 100)));
+      return {
+        bucketIndex: bIdx,
+        percentile: pVal,
+        text: `🔥 Better than ${pVal}% of players today`,
+        isBusted: false,
+        displayScore: `${pct.toFixed(1)}% Accuracy`
+      };
+    }
+  }
+
+  const DAILY_SNIPER_TIERS = [
+    { icon: "🎯", range: "0–99", label: "Rookie", desc: "Plenty of deep-cut board left to explore." },
+    { icon: "🏀", range: "100–199", label: "Role Player", desc: "Solid pulls on the board. Finding your range." },
+    { icon: "🎒", range: "200–299", label: "Deep Bag", desc: "Reaching deep into niche sports history." },
+    { icon: "🏹", range: "300–399", label: "Sharpshooter", desc: "Serious recall with pinpoint accuracy." },
+    { icon: "⚡", range: "400–449", label: "Master Sniper", desc: "Clutch deep bag knowledge. Elite trivia tier." },
+    { icon: "👑", range: "450+", label: "Hall of Fame", desc: "Legendary sports recall. Pure perfection." },
+  ];
+
+  const DAILY_TARGET_TIERS = [
+    { icon: "💥", range: "Bust 💥", label: "Over the Limit", desc: "Busted past the target goal." },
+    { icon: "🧊", range: "<60%", label: "Cold Streak", desc: "Left too much stat room on the table." },
+    { icon: "📈", range: "60–79%", label: "Solid Run", desc: "Safe drafting with a solid foundation." },
+    { icon: "🎯", range: "80–89%", label: "Contender", desc: "Right in the ballpark of the target." },
+    { icon: "⚡", range: "90–95%", label: "Laser Precision", desc: "Down to the wire. Elite target control." },
+    { icon: "👑", range: "96–100% 🎯", label: "Bullseye", desc: "Flawless drafting right at the number." },
+  ];
+
+  function buildBellCurveSVG(sport, submode, comp, dist) {
+    const W = 500;
+    const H = 150;
+    const padL = 35;
+    const padR = 465;
+    const plotW = padR - padL; // 430
+    const baseY = 118;
+    const peakH = 88;
+
+    const nPts = 60;
+    const points = [];
+    let userX = null;
+    let userY = null;
+    let ticks = [];
+
+    if (submode === "sniper") {
+      const mean = 220;
+      const sigma = 95;
+      for (let i = 0; i <= nPts; i++) {
+        const x = padL + (i / nPts) * plotW;
+        const scoreVal = (i / nPts) * 500;
+        const norm = Math.exp(-Math.pow(scoreVal - mean, 2) / (2 * Math.pow(sigma, 2)));
+        const y = baseY - norm * peakH;
+        points.push({ x, y });
+      }
+
+      ticks = [
+        { label: "0", x: padL },
+        { label: "100", x: padL + 0.2 * plotW },
+        { label: "200", x: padL + 0.4 * plotW },
+        { label: "300", x: padL + 0.6 * plotW },
+        { label: "400", x: padL + 0.8 * plotW },
+        { label: "500", x: padR },
+      ];
+
+      if (comp) {
+        const s = Math.max(0, Math.min(500, Number(comp.score) || 0));
+        userX = padL + (s / 500) * plotW;
+        const norm = Math.exp(-Math.pow(s - mean, 2) / (2 * Math.pow(sigma, 2)));
+        userY = baseY - norm * peakH;
+      }
+    } else {
+      const bustSplit = padL + 0.16 * plotW;
+      const accW = padR - bustSplit;
+
+      ticks = [
+        { label: "Bust", x: padL + 0.08 * plotW },
+        { label: "60%", x: bustSplit + ((60 - 40) / 60) * accW },
+        { label: "80%", x: bustSplit + ((80 - 40) / 60) * accW },
+        { label: "90%", x: bustSplit + ((90 - 40) / 60) * accW },
+        { label: "100%", x: padR },
+      ];
+
+      const meanAcc = 86;
+      const sigmaAcc = 14;
+
+      for (let i = 0; i <= nPts; i++) {
+        const x = padL + (i / nPts) * plotW;
+        let y = baseY;
+        if (x < bustSplit) {
+          const bustFrac = (x - padL) / (bustSplit - padL);
+          const bustNorm = Math.exp(-Math.pow(bustFrac - 0.5, 2) / (2 * 0.08));
+          y = baseY - bustNorm * (peakH * 0.38);
+        } else {
+          const accVal = 40 + ((x - bustSplit) / accW) * 60;
+          const norm = Math.exp(-Math.pow(accVal - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+          y = baseY - norm * peakH;
+        }
+        points.push({ x, y });
+      }
+
+      if (comp) {
+        const isBusted = Boolean(comp.busted || (comp.targetGoal && comp.score > comp.targetGoal));
+        if (isBusted) {
+          userX = padL + 0.08 * plotW;
+          const bustNorm = Math.exp(-Math.pow(0.5 - 0.5, 2) / (2 * 0.08));
+          userY = baseY - bustNorm * (peakH * 0.38);
+        } else {
+          const targetGoal = Number(comp.targetGoal) || 1;
+          const acc = Math.max(40, Math.min(100, (Number(comp.score) / targetGoal) * 100));
+          userX = bustSplit + ((acc - 40) / 60) * accW;
+          const norm = Math.exp(-Math.pow(acc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+          userY = baseY - norm * peakH;
+        }
+      }
+    }
+
+    let curvePath = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+    for (let i = 1; i < points.length; i++) {
+      curvePath += ` L ${points[i].x.toFixed(1)} ${points[i].y.toFixed(1)}`;
+    }
+
+    let fillPath = "";
+    if (userX !== null) {
+      fillPath = `M ${points[0].x.toFixed(1)} ${baseY}`;
+      for (let i = 0; i < points.length; i++) {
+        if (points[i].x <= userX) {
+          fillPath += ` L ${points[i].x.toFixed(1)} ${points[i].y.toFixed(1)}`;
+        } else {
+          fillPath += ` L ${userX.toFixed(1)} ${userY.toFixed(1)}`;
+          break;
+        }
+      }
+      fillPath += ` L ${userX.toFixed(1)} ${baseY} Z`;
+    }
+
+    return `
+      <svg class="distro-graph-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Score Distribution Bell Curve">
+        <defs>
+          <linearGradient id="bellCurveFillGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.52" />
+            <stop offset="70%" stop-color="#38bdf8" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+          </linearGradient>
+          <filter id="kGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Baseline -->
+        <line x1="${padL - 10}" y1="${baseY}" x2="${padR + 10}" y2="${baseY}" stroke="#334155" stroke-width="1.5" stroke-linecap="round" />
+
+        <!-- Shaded fill up to user score -->
+        ${fillPath ? `<path d="${fillPath}" fill="url(#bellCurveFillGrad)" />` : ""}
+
+        <!-- Bell Curve Line -->
+        <path d="${curvePath}" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- X-Axis Ticks -->
+        ${ticks.map((t) => {
+          const isUnderUser = userX !== null && Math.abs(t.x - userX) < 18;
+          return `
+            <line x1="${t.x.toFixed(1)}" y1="${baseY}" x2="${t.x.toFixed(1)}" y2="${baseY + 4}" stroke="#475569" stroke-width="1" />
+            ${!isUnderUser ? `<text x="${t.x.toFixed(1)}" y="${baseY + 16}" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">${t.label}</text>` : ""}
+          `;
+        }).join("")}
+
+        <!-- User Needle & YOU marker -->
+        ${userX !== null ? `
+          <line x1="${userX.toFixed(1)}" y1="${baseY}" x2="${userX.toFixed(1)}" y2="${userY.toFixed(1)}" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" />
+          <circle cx="${userX.toFixed(1)}" cy="${userY.toFixed(1)}" r="4.5" fill="#f43f5e" filter="url(#kGlow)" />
+          <circle cx="${userX.toFixed(1)}" cy="${userY.toFixed(1)}" r="2" fill="#ffffff" />
+          <text x="${userX.toFixed(1)}" y="${baseY + 17}" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle" letter-spacing="0.06em">YOU</text>
+        ` : ""}
+      </svg>
+    `;
+  }
+
+  let activeDistroSport = "NBA";
+  let activeDistroSubmode = "sniper";
+
+  function renderDailyDistributionSection(selectedSport, selectedSubmode) {
+    const sec = document.getElementById("dailyDistroSection");
+    if (!sec) return;
+    if (!state.isDaily) {
+      sec.classList.add("hidden");
+      return;
+    }
+    sec.classList.remove("hidden");
+
+    if (selectedSport) activeDistroSport = selectedSport;
+    if (selectedSubmode) activeDistroSubmode = selectedSubmode;
+
+    const sp = activeDistroSport;
+    const sm = activeDistroSubmode;
+    const dKey = state.dailyDateStr || getTodayString();
+    const dist = getDailyDistribution(sp, sm, dKey);
+    const comp = getDailyCompletion(sp, sm, dKey);
+    const cat = getDailyCategoryForSport(sp, sm, dKey);
+
+    // 1. Total players
+    const totEl = document.getElementById("distroTotalPlayers");
+    if (totEl) totEl.textContent = `${formatNumber(dist.totalPlayers)} Players Today`;
+
+    // 2. Render 6 tabs
+    const tabsEl = document.getElementById("distroGameTabs");
+    if (tabsEl) {
+      const games = [
+        { sport: "NBA", submode: "sniper", label: "🏀 NBA Sniper" },
+        { sport: "NBA", submode: "target", label: "🏀 NBA Target" },
+        { sport: "NFL", submode: "sniper", label: "🏈 NFL Sniper" },
+        { sport: "NFL", submode: "target", label: "🏈 NFL Target" },
+        { sport: "MLB", submode: "sniper", label: "⚾ MLB Sniper" },
+        { sport: "MLB", submode: "target", label: "⚾ MLB Target" },
+      ];
+      tabsEl.innerHTML = games.map((g) => {
+        const isActive = g.sport === sp && g.submode === sm;
+        const gComp = getDailyCompletion(g.sport, g.submode, dKey);
+        let statusTxt = "Play";
+        if (gComp) {
+          statusTxt = g.submode === "sniper" ? `${formatNumber(gComp.score)} PTS` : `${Math.min(100, ((gComp.score / (gComp.targetGoal || 1)) * 100)).toFixed(1)}%`;
+        }
+        return `
+          <button type="button" class="distro-tab ${isActive ? "active" : ""}" data-dsport="${g.sport}" data-dmode="${g.submode}" role="tab" aria-selected="${isActive}">
+            <span class="distro-tab-name">${g.label}</span>
+            <span class="distro-tab-score ${gComp ? "done" : ""}">${gComp ? "✓ " + statusTxt : statusTxt}</span>
+          </button>
+        `;
+      }).join("");
+
+      tabsEl.querySelectorAll(".distro-tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          renderDailyDistributionSection(btn.getAttribute("data-dsport"), btn.getAttribute("data-dmode"));
+        });
+      });
+    }
+
+    // 3. User Percentile Rank
+    const pRank = comp ? calculatePlayerPercentile(sp, sm, comp, dist) : null;
+
+    // 4. Meta row
+    const titleEl = document.getElementById("dgmTitle");
+    const scoreEl = document.getElementById("dgmUserScore");
+    if (titleEl) titleEl.textContent = cat ? cat.title : `${sp} Challenge`;
+    if (scoreEl) {
+      scoreEl.textContent = pRank ? `Your Result: ${pRank.displayScore}` : `Not Played Today`;
+    }
+
+    // 5. Bell Curve SVG
+    const graphWrap = document.getElementById("distroGraphWrap");
+    if (graphWrap) {
+      graphWrap.innerHTML = buildBellCurveSVG(sp, sm, comp, dist);
+    }
+
+    // 6. Hero Percentile Banner
+    const heroEl = document.getElementById("distroHeroPill");
+    if (heroEl) {
+      if (comp && pRank) {
+        heroEl.className = `distro-percentile-banner ${pRank.isBusted ? "busted" : ""}`;
+        if (pRank.isBusted) {
+          heroEl.innerHTML = `BUSTED TODAY · BOTTOM 22% OF PLAYERS`;
+        } else {
+          heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${pRank.percentile}%</span> OF TODAY'S PLAYERS`;
+        }
+      } else {
+        heroEl.className = "distro-percentile-banner unplayed";
+        heroEl.textContent = `PLAY TODAY'S ${sp} ${sm.toUpperCase()} TO SEE WHERE YOU RANK`;
+      }
+    }
+
+    // 7. Daily Tiers Table
+    const tiersListEl = document.getElementById("distroTiersList");
+    if (tiersListEl) {
+      const tiers = sm === "sniper" ? DAILY_SNIPER_TIERS : DAILY_TARGET_TIERS;
+      const userTierIdx = (comp && pRank) ? pRank.bucketIndex : -1;
+      tiersListEl.innerHTML = tiers.map((t, idx) => {
+        const isActive = idx === userTierIdx;
+        return `
+          <div class="ktc-row ${isActive ? "is-active" : ""}">
+            <span class="ktc-icon">${t.icon}</span>
+            <span class="ktc-range">${t.range}</span>
+            <div class="ktc-body">
+              <span class="ktc-label">${t.label}.</span>
+              <span class="ktc-desc">${t.desc}</span>
+            </div>
+            ${isActive ? `<span class="ktc-you-tag">◀ YOU</span>` : ""}
+          </div>
+        `;
+      }).join("");
+    }
+
+    // 8. Fetch real-time live distribution from Cloudflare D1 Backend
+    fetchLiveDailyDistribution(sp, sm, dKey, comp);
+  }
+
   function getDailyCompletion(sport, submode = "sniper", dateStr = "") {
     try {
       const raw = localStorage.getItem(getDailyStorageKey(sport, submode, dateStr));
@@ -3354,6 +3911,10 @@
     } catch (e) {
       // Ignore
     }
+
+    // Submit official score to Cloudflare D1 Backend
+    submitDailyScoreToBackend(payload);
+
     return payload;
   }
 
@@ -3372,6 +3933,10 @@
     const prof = getDailyProfile();
     const streakPart = prof.currentStreak > 0 && !isArchive ? ` · 🔥 ${prof.currentStreak}d` : "";
 
+    const dist = getDailyDistribution(cat.sport, state.dailySubmode, dKey);
+    const pRank = calculatePlayerPercentile(cat.sport, state.dailySubmode, winner, dist);
+    const percentilePart = pRank && pRank.percentile ? ` · Better than ${pRank.percentile}% of players today` : "";
+
     if (state.dailySubmode === "sniper") {
       const gInfo = getSniperGrade(winner.score);
       const shots = winner.sniperShots || [];
@@ -3379,10 +3944,11 @@
       return [
         `🎯 StatSnipes #${dailyNum}${isArchive ? " (Archive)" : ""} (${getSportIcon(cat.sport)} ${cat.sport})`,
         `${cat.title}`,
-        `${formatNumber(winner.score)} / 490 · Grade ${gInfo.grade}${streakPart}`,
+        `${formatNumber(winner.score)} PTS · ${gInfo.label}${streakPart}`,
+        percentilePart ? `${percentilePart.trim().replace(/^·\s*/, "")}` : "",
         `[ ${squares} ]`,
         `statsnipes.com`
-      ].join("\n");
+      ].filter(Boolean).join("\n");
     } else {
       const pct = Math.min(100, (winner.score / state.targetGoal) * 100).toFixed(1);
       const squares =
@@ -3391,9 +3957,10 @@
         `⚡ StatSnipes #${dailyNum}${isArchive ? " (Archive)" : ""} (${getSportIcon(cat.sport)} Target Stat)`,
         `${cat.title}`,
         `${formatNumber(winner.score)} / ${formatNumber(state.targetGoal)} ${cat.unit} (${pct}%)${streakPart}`,
+        percentilePart ? `${percentilePart.trim().replace(/^·\s*/, "")}` : "",
         `[ ${squares} ]`,
         `statsnipes.com`
-      ].join("\n");
+      ].filter(Boolean).join("\n");
     }
   }
 
@@ -3539,7 +4106,7 @@
   function copyCurrentResultText(btnEl) {
     const text = buildMatchShareText();
     shareOrCopyPayload({
-      shareData: { title: "StatSnipes", text },
+      shareData: { text },
       clipboardText: text,
       btnEl,
       sharedLabel: "✅ Shared!",
@@ -3560,8 +4127,8 @@
       const num = Math.max(1, rawNum);
       const doneS = Boolean(getDailyCompletion(state.sport, "sniper", ds));
       const doneT = Boolean(getDailyCompletion(state.sport, "target", ds));
-      const checkMark = doneS && doneT ? " ✅" : doneS || doneT ? " ☑️" : "";
-      const labelPrefix = i === 0 ? `🔥 Today` : i === 1 ? `📅 Yesterday` : `📅 #${num} (${ds})`;
+      const checkMark = doneS && doneT ? " ✓" : doneS || doneT ? " ·" : "";
+      const labelPrefix = i === 0 ? `Today` : i === 1 ? `Yesterday` : `#${num} (${ds})`;
       opts.push(`<option value="${ds}" ${ds === activeDate ? "selected" : ""}>${labelPrefix}${checkMark}</option>`);
     }
     sel.innerHTML = opts.join("");
@@ -3578,7 +4145,7 @@
       : `DAILY STATSNIPES #${dailyNum}`;
     const cdEl = document.getElementById("dailyCountdownLabel");
     if (cdEl) {
-      cdEl.textContent = isArchive ? `📅 ${activeDate}` : getNextDailyCountdownText();
+      cdEl.textContent = isArchive ? activeDate : getNextDailyCountdownText();
     }
 
     populateDailyArchiveSelect();
@@ -3592,8 +4159,15 @@
     const streakEl = document.getElementById("dailyStreakSummary");
     if (streakEl) {
       streakEl.innerHTML = `
-        <span class="daily-stat-pill">✅ ${dateDoneCount}/6</span>
+        <span class="daily-stat-pill" id="topDistroBtn" style="cursor:pointer;" title="View Today's 6-Game Score Distribution & Percentiles">📊 ${dateDoneCount}/6 Complete</span>
       `;
+      const btn = document.getElementById("topDistroBtn");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          renderDailyDistributionSection(state.sport, state.dailySubmode);
+          document.getElementById("gameOverModal").classList.remove("hidden");
+        });
+      }
     }
 
     const leaguePillsEl = document.getElementById("dailyLeaguePills");
@@ -3607,7 +4181,7 @@
           const progTxt = lgDone === 2 ? "✓ 2/2" : `${lgDone}/2`;
           return `
             <button type="button" class="daily-league-btn ${lg === state.sport ? "active" : ""} ${lgDone === 2 ? "all-done" : ""}" data-dailyleague="${lg}" role="tab" aria-selected="${lg === state.sport}">
-              <span>${getSportIcon(lg)} ${lg}</span>
+              <span>${lg}</span>
               <span class="dl-prog ${progCls}">${progTxt}</span>
             </button>
           `;
@@ -3626,7 +4200,7 @@
 
     const gamesLabelEl = document.getElementById("dailyGamesGroupLabel");
     if (gamesLabelEl) {
-      gamesLabelEl.textContent = `${getSportIcon(state.sport)} ${state.sport} DAILY GAMES`;
+      gamesLabelEl.textContent = `${state.sport} DAILY GAMES`;
     }
 
     const container = document.getElementById("dailySportCards");
@@ -3646,23 +4220,23 @@
 
     const sniperBadge = doneSniper
       ? `<span class="completed-check">✓ ${formatNumber(doneSniper.score)}</span>`
-      : `<span style="color:var(--sport-secondary);font-size:0.72rem;font-weight:800;">Play →</span>`;
+      : `<span style="color:var(--sport-secondary);font-size:0.72rem;font-weight:700;">Play</span>`;
 
     const targetPct = doneTarget
       ? Math.min(100, ((doneTarget.score / (doneTarget.targetGoal || targetCat.defaultTarget)) * 100)).toFixed(1)
       : null;
     const targetBadge = doneTarget
       ? `<span class="completed-check">✓ ${targetPct}%</span>`
-      : `<span style="color:var(--sport-secondary);font-size:0.72rem;font-weight:800;">Play →</span>`;
+      : `<span style="color:var(--sport-secondary);font-size:0.72rem;font-weight:700;">Play</span>`;
 
     container.innerHTML = `
       <button type="button" class="daily-card-btn ${state.dailySubmode === "sniper" ? "active" : ""}" data-dailysubmode="sniper" title="${escapeHtml(sniperCat.title)}">
-        <span class="dc-mode-title">🎯 5-Shot Sniper</span>
+        <span class="dc-mode-title">5-Shot Sniper</span>
         ${sniperBadge}
       </button>
 
       <button type="button" class="daily-card-btn ${state.dailySubmode === "target" ? "active" : ""}" data-dailysubmode="target" title="${escapeHtml(targetCat.title)} • Target: ${formatNumber(targetCat.defaultTarget)} ${targetCat.unit}">
-        <span class="dc-mode-title">⚡ Target Stat</span>
+        <span class="dc-mode-title">Target Stat</span>
         ${targetBadge}
       </button>
     `;

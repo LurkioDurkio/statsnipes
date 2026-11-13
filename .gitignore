@@ -2,3 +2,4 @@
 .wrangler/
 node_modules/
 *.zip
+_wrangler.jsonc.bak
