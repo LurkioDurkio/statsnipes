@@ -3432,21 +3432,68 @@
   }
 
   function applyLiveDistributionData(sport, submode, comp, data) {
+    if (activeDistroSport !== sport || activeDistroSubmode !== submode) return;
+    const dKey = state.dailyDateStr || getTodayString();
+    const dist = getDailyDistribution(sport, submode, dKey);
+
+    // 1. Total players
     const totEl = document.getElementById("distroTotalPlayers");
-    if (totEl && data.totalPlayers) {
-      totEl.textContent = `${formatNumber(data.totalPlayers)} Players Today`;
+    if (totEl && data.totalPlayers !== undefined) {
+      totEl.textContent = `${formatNumber(data.totalPlayers)} Player${data.totalPlayers === 1 ? "" : "s"} Today`;
     }
 
+    // 2. Hero banner with live percentile
     const heroEl = document.getElementById("distroHeroPill");
-    if (heroEl && comp) {
-      const isBusted = Boolean(comp.busted || (submode === "target" && comp.targetGoal && comp.score > comp.targetGoal));
-      if (isBusted) {
-        heroEl.className = "distro-percentile-banner busted";
-        heroEl.innerHTML = "BUSTED TODAY · BOTTOM 22% OF PLAYERS";
-      } else if (data.percentile !== null && data.percentile !== undefined) {
-        heroEl.className = "distro-percentile-banner";
-        heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${data.percentile}%</span> OF TODAY'S PLAYERS`;
+    if (heroEl) {
+      if (comp) {
+        const isBusted = Boolean(comp.busted || (submode === "target" && comp.targetGoal && comp.score > comp.targetGoal));
+        if (isBusted) {
+          heroEl.className = "distro-percentile-banner busted";
+          heroEl.innerHTML = "BUSTED TODAY · BOTTOM 22% OF PLAYERS";
+        } else if (data.totalPlayers === 1) {
+          heroEl.className = "distro-percentile-banner";
+          heroEl.innerHTML = `TOP SCORE TODAY · <span class="kpb-pct">#1</span> OF TODAY'S PLAYERS`;
+        } else if (data.percentile !== null && data.percentile !== undefined) {
+          heroEl.className = "distro-percentile-banner";
+          heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${data.percentile}%</span> OF TODAY'S PLAYERS`;
+        }
+      } else {
+        heroEl.className = "distro-percentile-banner unplayed";
+        heroEl.textContent = `PLAY TODAY'S ${sport} ${submode.toUpperCase()} TO SEE WHERE YOU RANK`;
       }
+    }
+
+    // 3. Re-render Bell Curve SVG with live D1 distribution
+    const graphWrap = document.getElementById("distroGraphWrap");
+    if (graphWrap) {
+      graphWrap.innerHTML = buildBellCurveSVG(sport, submode, comp, dist, data);
+    }
+
+    // 4. Update Daily Tiers Table with live tier highlighting & counts
+    const tiersListEl = document.getElementById("distroTiersList");
+    if (tiersListEl) {
+      const pRank = comp ? calculatePlayerPercentile(sport, submode, comp, dist) : null;
+      const tiers = submode === "sniper" ? DAILY_SNIPER_TIERS : DAILY_TARGET_TIERS;
+      const userTierIdx = (comp && pRank) ? pRank.bucketIndex : -1;
+      tiersListEl.innerHTML = tiers.map((t, idx) => {
+        const isActive = idx === userTierIdx;
+        const count = data.counts ? (data.counts[idx] || 0) : null;
+        const pctStr = (data.totalPlayers > 0 && count !== null)
+          ? `${Math.round((count / data.totalPlayers) * 100)}%`
+          : "";
+        return `
+          <div class="ktc-row ${isActive ? "is-active" : ""}">
+            <span class="ktc-icon">${t.icon}</span>
+            <span class="ktc-range">${t.range}</span>
+            <div class="ktc-body">
+              <span class="ktc-label">${t.label}.</span>
+              <span class="ktc-desc">${t.desc}</span>
+            </div>
+            ${pctStr ? `<span class="ktc-pct-pill" style="font-family:'JetBrains Mono',monospace;font-size:0.64rem;padding:0.1rem 0.35rem;border-radius:4px;background:#1e293b;color:#94a3b8;margin-right:4px;">${pctStr} (${count})</span>` : ""}
+            ${isActive ? `<span class="ktc-you-tag">◀ YOU</span>` : ""}
+          </div>
+        `;
+      }).join("");
     }
   }
 
@@ -3589,7 +3636,7 @@
     { icon: "👑", range: "96–100% 🎯", label: "Bullseye", desc: "Flawless drafting right at the number." },
   ];
 
-  function buildBellCurveSVG(sport, submode, comp, dist) {
+  function buildBellCurveSVG(sport, submode, comp, dist, liveData) {
     const W = 500;
     const H = 150;
     const padL = 35;
@@ -3603,10 +3650,26 @@
     let userX = null;
     let userY = null;
     let ticks = [];
+    let avgX = null;
+    let avgY = null;
+    let avgScoreLabel = null;
 
     if (submode === "sniper") {
-      const mean = 220;
-      const sigma = 95;
+      let mean = 220;
+      let sigma = 95;
+
+      if (liveData && liveData.totalPlayers > 0 && liveData.avgScore !== null && liveData.avgScore !== undefined) {
+        const priorWeight = Math.max(1, 6 - Math.min(5, liveData.totalPlayers));
+        mean = Math.round((220 * priorWeight + liveData.avgScore * liveData.totalPlayers) / (priorWeight + liveData.totalPlayers));
+        sigma = 90;
+
+        avgScoreLabel = liveData.avgScore;
+        const boundedAvg = Math.max(0, Math.min(500, liveData.avgScore));
+        avgX = padL + (boundedAvg / 500) * plotW;
+        const normAvg = Math.exp(-Math.pow(boundedAvg - mean, 2) / (2 * Math.pow(sigma, 2)));
+        avgY = baseY - normAvg * peakH;
+      }
+
       for (let i = 0; i <= nPts; i++) {
         const x = padL + (i / nPts) * plotW;
         const scoreVal = (i / nPts) * 500;
@@ -3642,8 +3705,26 @@
         { label: "100%", x: padR },
       ];
 
-      const meanAcc = 86;
-      const sigmaAcc = 14;
+      let meanAcc = 86;
+      let sigmaAcc = 14;
+      let bustHeightFactor = 0.38;
+
+      if (liveData && liveData.totalPlayers > 0) {
+        if (liveData.avgAccuracy !== null && liveData.avgAccuracy !== undefined) {
+          const priorWeight = Math.max(1, 6 - Math.min(5, liveData.totalPlayers));
+          meanAcc = Number(((86 * priorWeight + liveData.avgAccuracy * liveData.totalPlayers) / (priorWeight + liveData.totalPlayers)).toFixed(1));
+
+          avgScoreLabel = `${liveData.avgAccuracy}%`;
+          const boundedAcc = Math.max(40, Math.min(100, liveData.avgAccuracy));
+          avgX = bustSplit + ((boundedAcc - 40) / 60) * accW;
+          const normAcc = Math.exp(-Math.pow(boundedAcc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+          avgY = baseY - normAcc * peakH;
+        }
+        if (liveData.counts && liveData.counts.length) {
+          const bustRatio = (liveData.counts[0] || 0) / liveData.totalPlayers;
+          bustHeightFactor = Math.max(0.18, Math.min(0.60, bustRatio * 1.2));
+        }
+      }
 
       for (let i = 0; i <= nPts; i++) {
         const x = padL + (i / nPts) * plotW;
@@ -3651,7 +3732,7 @@
         if (x < bustSplit) {
           const bustFrac = (x - padL) / (bustSplit - padL);
           const bustNorm = Math.exp(-Math.pow(bustFrac - 0.5, 2) / (2 * 0.08));
-          y = baseY - bustNorm * (peakH * 0.38);
+          y = baseY - bustNorm * (peakH * bustHeightFactor);
         } else {
           const accVal = 40 + ((x - bustSplit) / accW) * 60;
           const norm = Math.exp(-Math.pow(accVal - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
@@ -3665,7 +3746,7 @@
         if (isBusted) {
           userX = padL + 0.08 * plotW;
           const bustNorm = Math.exp(-Math.pow(0.5 - 0.5, 2) / (2 * 0.08));
-          userY = baseY - bustNorm * (peakH * 0.38);
+          userY = baseY - bustNorm * (peakH * bustHeightFactor);
         } else {
           const targetGoal = Number(comp.targetGoal) || 1;
           const acc = Math.max(40, Math.min(100, (Number(comp.score) / targetGoal) * 100));
@@ -3721,6 +3802,13 @@
         <!-- Bell Curve Line -->
         <path d="${curvePath}" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 
+        <!-- Live Community Average Indicator (when distinct from user needle) -->
+        ${(avgX !== null && (userX === null || Math.abs(avgX - userX) >= 28)) ? `
+          <line x1="${avgX.toFixed(1)}" y1="${baseY}" x2="${avgX.toFixed(1)}" y2="${Math.max(22, avgY).toFixed(1)}" stroke="#06b6d4" stroke-dasharray="3,3" stroke-width="1.5" />
+          <circle cx="${avgX.toFixed(1)}" cy="${Math.max(22, avgY).toFixed(1)}" r="3" fill="#06b6d4" />
+          <text x="${avgX.toFixed(1)}" y="${Math.max(16, avgY - 6).toFixed(1)}" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle">AVG ${avgScoreLabel}</text>
+        ` : ""}
+
         <!-- X-Axis Ticks -->
         ${ticks.map((t) => {
           const isUnderUser = userX !== null && Math.abs(t.x - userX) < 18;
@@ -3763,9 +3851,18 @@
     const comp = getDailyCompletion(sp, sm, dKey);
     const cat = getDailyCategoryForSport(sp, sm, dKey);
 
+    const cacheKey = `${sp}_${sm}_${dKey}`;
+    const cachedLive = liveDistroCache.get(cacheKey) || null;
+
     // 1. Total players
     const totEl = document.getElementById("distroTotalPlayers");
-    if (totEl) totEl.textContent = `${formatNumber(dist.totalPlayers)} Players Today`;
+    if (totEl) {
+      if (cachedLive && cachedLive.totalPlayers !== undefined) {
+        totEl.textContent = `${formatNumber(cachedLive.totalPlayers)} Player${cachedLive.totalPlayers === 1 ? "" : "s"} Today`;
+      } else {
+        totEl.textContent = `${formatNumber(dist.totalPlayers)} Players Today`;
+      }
+    }
 
     // 2. Render 6 tabs
     const tabsEl = document.getElementById("distroGameTabs");
@@ -3814,7 +3911,7 @@
     // 5. Bell Curve SVG
     const graphWrap = document.getElementById("distroGraphWrap");
     if (graphWrap) {
-      graphWrap.innerHTML = buildBellCurveSVG(sp, sm, comp, dist);
+      graphWrap.innerHTML = buildBellCurveSVG(sp, sm, comp, dist, cachedLive);
     }
 
     // 6. Hero Percentile Banner
@@ -3824,6 +3921,12 @@
         heroEl.className = `distro-percentile-banner ${pRank.isBusted ? "busted" : ""}`;
         if (pRank.isBusted) {
           heroEl.innerHTML = `BUSTED TODAY · BOTTOM 22% OF PLAYERS`;
+        } else if (cachedLive && cachedLive.totalPlayers === 1) {
+          heroEl.className = "distro-percentile-banner";
+          heroEl.innerHTML = `TOP SCORE TODAY · <span class="kpb-pct">#1</span> OF TODAY'S PLAYERS`;
+        } else if (cachedLive && cachedLive.percentile !== null && cachedLive.percentile !== undefined) {
+          heroEl.className = "distro-percentile-banner";
+          heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${cachedLive.percentile}%</span> OF TODAY'S PLAYERS`;
         } else {
           heroEl.innerHTML = `BETTER THAN <span class="kpb-pct">${pRank.percentile}%</span> OF TODAY'S PLAYERS`;
         }
@@ -3840,6 +3943,10 @@
       const userTierIdx = (comp && pRank) ? pRank.bucketIndex : -1;
       tiersListEl.innerHTML = tiers.map((t, idx) => {
         const isActive = idx === userTierIdx;
+        const count = cachedLive && cachedLive.counts ? (cachedLive.counts[idx] || 0) : null;
+        const pctStr = (cachedLive && cachedLive.totalPlayers > 0 && count !== null)
+          ? `${Math.round((count / cachedLive.totalPlayers) * 100)}%`
+          : "";
         return `
           <div class="ktc-row ${isActive ? "is-active" : ""}">
             <span class="ktc-icon">${t.icon}</span>
@@ -3848,6 +3955,7 @@
               <span class="ktc-label">${t.label}.</span>
               <span class="ktc-desc">${t.desc}</span>
             </div>
+            ${pctStr ? `<span class="ktc-pct-pill" style="font-family:'JetBrains Mono',monospace;font-size:0.64rem;padding:0.1rem 0.35rem;border-radius:4px;background:#1e293b;color:#94a3b8;margin-right:4px;">${pctStr} (${count})</span>` : ""}
             ${isActive ? `<span class="ktc-you-tag">◀ YOU</span>` : ""}
           </div>
         `;

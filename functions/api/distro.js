@@ -38,14 +38,21 @@ export async function onRequestGet({ request, env }) {
       let percentile = null;
 
       if (total > 0 && userScore !== null) {
-        const belowQ = await env.DB.prepare(`
-          SELECT COUNT(*) AS below
-          FROM daily_scores
-          WHERE date = ? AND sport = ? AND submode = 'sniper' AND score < ?
-        `).bind(date, sport, userScore).first();
+        if (total === 1) {
+          percentile = 99;
+        } else {
+          const rankQ = await env.DB.prepare(`
+            SELECT 
+              COUNT(CASE WHEN score < ? THEN 1 END) AS below,
+              COUNT(CASE WHEN score = ? THEN 1 END) AS ties
+            FROM daily_scores
+            WHERE date = ? AND sport = ? AND submode = 'sniper'
+          `).bind(userScore, userScore, date, sport).first();
 
-        const below = (belowQ && belowQ.below) || 0;
-        percentile = Math.max(1, Math.min(99, Math.round((below / total) * 100)));
+          const below = (rankQ && rankQ.below) || 0;
+          const ties = (rankQ && rankQ.ties) || 1;
+          percentile = Math.max(1, Math.min(99, Math.round(((below + 0.5 * ties) / total) * 100)));
+        }
       }
 
       result = {
@@ -80,16 +87,20 @@ export async function onRequestGet({ request, env }) {
       if (total > 0 && userScore !== null) {
         if (isBusted) {
           percentile = null;
+        } else if (total === 1) {
+          percentile = 99;
         } else {
-          const belowQ = await env.DB.prepare(`
-            SELECT COUNT(*) AS below
+          const rankQ = await env.DB.prepare(`
+            SELECT 
+              COUNT(CASE WHEN busted = 1 OR (busted = 0 AND score < ?) THEN 1 END) AS below,
+              COUNT(CASE WHEN busted = 0 AND score = ? THEN 1 END) AS ties
             FROM daily_scores
-            WHERE date = ? AND sport = ? AND submode = 'target' 
-              AND (busted = 1 OR (busted = 0 AND score < ?))
-          `).bind(date, sport, userScore).first();
+            WHERE date = ? AND sport = ? AND submode = 'target'
+          `).bind(userScore, userScore, date, sport).first();
 
-          const below = (belowQ && belowQ.below) || 0;
-          percentile = Math.max(1, Math.min(99, Math.round((below / total) * 100)));
+          const below = (rankQ && rankQ.below) || 0;
+          const ties = (rankQ && rankQ.ties) || 1;
+          percentile = Math.max(1, Math.min(99, Math.round(((below + 0.5 * ties) / total) * 100)));
         }
       }
 
