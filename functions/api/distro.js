@@ -66,17 +66,17 @@ export async function onRequestGet({ request, env }) {
         percentile
       };
     } else {
-      // Target Stat mode
+      // Target Stat mode - accuracy distribution across 6 tiers (<60%, 60-69%, 70-79%, 80-89%, 90-95%, 96-100%)
       const q = await env.DB.prepare(`
         SELECT 
           COUNT(*) AS total,
-          AVG(CASE WHEN busted = 0 AND target_goal > 0 THEN (score * 100.0 / target_goal) END) AS avgAcc,
-          COUNT(CASE WHEN busted = 1 THEN 1 END) AS c0,
-          COUNT(CASE WHEN busted = 0 AND target_goal > 0 AND (score * 1.0 / target_goal) < 0.60 THEN 1 END) AS c1,
-          COUNT(CASE WHEN busted = 0 AND target_goal > 0 AND (score * 1.0 / target_goal) >= 0.60 AND (score * 1.0 / target_goal) < 0.80 THEN 1 END) AS c2,
-          COUNT(CASE WHEN busted = 0 AND target_goal > 0 AND (score * 1.0 / target_goal) >= 0.80 AND (score * 1.0 / target_goal) < 0.90 THEN 1 END) AS c3,
-          COUNT(CASE WHEN busted = 0 AND target_goal > 0 AND (score * 1.0 / target_goal) >= 0.90 AND (score * 1.0 / target_goal) < 0.96 THEN 1 END) AS c4,
-          COUNT(CASE WHEN busted = 0 AND target_goal > 0 AND (score * 1.0 / target_goal) >= 0.96 THEN 1 END) AS c5
+          AVG(CASE WHEN target_goal > 0 THEN (score * 100.0 / target_goal) END) AS avgAcc,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) < 0.60 THEN 1 END) AS c0,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) >= 0.60 AND (score * 1.0 / target_goal) < 0.70 THEN 1 END) AS c1,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) >= 0.70 AND (score * 1.0 / target_goal) < 0.80 THEN 1 END) AS c2,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) >= 0.80 AND (score * 1.0 / target_goal) < 0.90 THEN 1 END) AS c3,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) >= 0.90 AND (score * 1.0 / target_goal) < 0.96 THEN 1 END) AS c4,
+          COUNT(CASE WHEN target_goal > 0 AND (score * 1.0 / target_goal) >= 0.96 THEN 1 END) AS c5
         FROM daily_scores
         WHERE date = ? AND sport = ? AND submode = 'target'
       `).bind(date, sport).first();
@@ -85,15 +85,13 @@ export async function onRequestGet({ request, env }) {
       let percentile = null;
 
       if (total > 0 && userScore !== null) {
-        if (isBusted) {
-          percentile = null;
-        } else if (total === 1) {
+        if (total === 1) {
           percentile = 99;
         } else {
           const rankQ = await env.DB.prepare(`
             SELECT 
-              COUNT(CASE WHEN busted = 1 OR (busted = 0 AND score < ?) THEN 1 END) AS below,
-              COUNT(CASE WHEN busted = 0 AND score = ? THEN 1 END) AS ties
+              COUNT(CASE WHEN score < ? THEN 1 END) AS below,
+              COUNT(CASE WHEN score = ? THEN 1 END) AS ties
             FROM daily_scores
             WHERE date = ? AND sport = ? AND submode = 'target'
           `).bind(userScore, userScore, date, sport).first();

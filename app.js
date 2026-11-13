@@ -3523,21 +3523,21 @@
       const var1 = ((seed >> 3) % 5) - 2;
       const var2 = ((seed >> 6) % 5) - 2;
 
-      const w_bust = Math.max(16, 22 + var1);
-      const w_low = Math.max(6, 10 + var2);
-      const w_mid = Math.max(20, 24 - var1);
-      const w_high = Math.max(20, 25 - var2);
-      const w_laser = Math.max(8, 13 + ((seed >> 9) % 3));
-      const w_bull = Math.max(3, 100 - (w_bust + w_low + w_mid + w_high + w_laser));
+      const w0 = Math.max(8, 12 + var1);  // <60%
+      const w1 = Math.max(12, 16 + var2); // 60–69%
+      const w2 = Math.max(20, 26 - var1); // 70–79%
+      const w3 = Math.max(24, 30 - var2); // 80–89%
+      const w4 = Math.max(10, 12 + ((seed >> 9) % 3)); // 90–95%
+      const w5 = Math.max(3, 100 - (w0 + w1 + w2 + w3 + w4)); // 96–100%
 
-      weights = [w_bust, w_low, w_mid, w_high, w_laser, w_bull];
-      labels = ["Bust 💥", "<60%", "60–79%", "80–89%", "90–95%", "96–100% 🎯"];
-      ranges = [[-1, -1], [0, 59.9], [60, 79.9], [80, 89.9], [90, 95.9], [96, 100]];
+      weights = [w0, w1, w2, w3, w4, w5];
+      labels = ["<60%", "60–69%", "70–79%", "80–89%", "90–95%", "96–100% 🎯"];
+      ranges = [[0, 59.9], [60, 69.9], [70, 79.9], [80, 89.9], [90, 95.9], [96, 100]];
     }
 
     const counts = weights.map((w) => Math.round(totalPlayers * (w / 100)));
     const diff = totalPlayers - counts.reduce((a, b) => a + b, 0);
-    counts[2] = Math.max(1, counts[2] + diff);
+    counts[3] = Math.max(1, counts[3] + diff);
 
     return {
       sport,
@@ -3582,19 +3582,10 @@
       };
     } else {
       const targetGoal = Number(winner.targetGoal || state.targetGoal) || 1;
-      const isBusted = Boolean(winner.busted || score > targetGoal);
-      if (isBusted) {
-        return {
-          bucketIndex: 0,
-          percentile: null,
-          text: `💥 Busted today · Ranked in the bottom 22%`,
-          isBusted: true,
-          displayScore: `Busted (${formatNumber(score)} / ${formatNumber(targetGoal)})`
-        };
-      }
-      const pct = Math.min(100, (score / targetGoal) * 100);
-      let bIdx = 1;
-      if (pct < 60) bIdx = 1;
+      const pct = Math.min(100, Math.max(0, (score / targetGoal) * 100));
+      let bIdx = 0;
+      if (pct < 60) bIdx = 0;
+      else if (pct < 70) bIdx = 1;
       else if (pct < 80) bIdx = 2;
       else if (pct < 90) bIdx = 3;
       else if (pct < 96) bIdx = 4;
@@ -3603,8 +3594,8 @@
       const [rMin, rMax] = d.ranges[bIdx];
       const frac = rMax > rMin ? Math.max(0, Math.min(1, (pct - rMin) / (rMax - rMin))) : 0.5;
 
-      let below = d.counts[0]; // All busted players are below non-busted
-      for (let i = 1; i < bIdx; i++) below += d.counts[i];
+      let below = 0;
+      for (let i = 0; i < bIdx; i++) below += d.counts[i];
       below += Math.round(d.counts[bIdx] * frac);
 
       const pVal = Math.max(1, Math.min(99, Math.round((below / d.totalPlayers) * 100)));
@@ -3628,10 +3619,10 @@
   ];
 
   const DAILY_TARGET_TIERS = [
-    { icon: "💥", range: "Bust 💥", label: "Over the Limit", desc: "Busted past the target goal." },
     { icon: "🧊", range: "<60%", label: "Cold Streak", desc: "Left too much stat room on the table." },
-    { icon: "📈", range: "60–79%", label: "Solid Run", desc: "Safe drafting with a solid foundation." },
-    { icon: "🎯", range: "80–89%", label: "Contender", desc: "Right in the ballpark of the target." },
+    { icon: "🏀", range: "60–69%", label: "Solid Base", desc: "Safe drafting with a conservative foundation." },
+    { icon: "📈", range: "70–79%", label: "Role Player", desc: "Finding your range, getting closer to the mark." },
+    { icon: "🎯", range: "80–89%", label: "Contender", desc: "Right in the ballpark of the target number." },
     { icon: "⚡", range: "90–95%", label: "Laser Precision", desc: "Down to the wire. Elite target control." },
     { icon: "👑", range: "96–100% 🎯", label: "Bullseye", desc: "Flawless drafting right at the number." },
   ];
@@ -3694,66 +3685,43 @@
         userY = baseY - norm * peakH;
       }
     } else {
-      const bustSplit = padL + 0.16 * plotW;
-      const accW = padR - bustSplit;
-
       ticks = [
-        { label: "Bust", x: padL + 0.08 * plotW },
-        { label: "60%", x: bustSplit + ((60 - 40) / 60) * accW },
-        { label: "80%", x: bustSplit + ((80 - 40) / 60) * accW },
-        { label: "90%", x: bustSplit + ((90 - 40) / 60) * accW },
+        { label: "40%", x: padL },
+        { label: "60%", x: padL + 0.333 * plotW },
+        { label: "70%", x: padL + 0.5 * plotW },
+        { label: "80%", x: padL + 0.667 * plotW },
+        { label: "90%", x: padL + 0.833 * plotW },
         { label: "100%", x: padR },
       ];
 
-      let meanAcc = 86;
+      let meanAcc = 82;
       let sigmaAcc = 14;
-      let bustHeightFactor = 0.38;
 
-      if (liveData && liveData.totalPlayers > 0) {
-        if (liveData.avgAccuracy !== null && liveData.avgAccuracy !== undefined) {
-          const priorWeight = Math.max(1, 6 - Math.min(5, liveData.totalPlayers));
-          meanAcc = Number(((86 * priorWeight + liveData.avgAccuracy * liveData.totalPlayers) / (priorWeight + liveData.totalPlayers)).toFixed(1));
+      if (liveData && liveData.totalPlayers > 0 && liveData.avgAccuracy !== null && liveData.avgAccuracy !== undefined) {
+        const priorWeight = Math.max(1, 6 - Math.min(5, liveData.totalPlayers));
+        meanAcc = Number(((82 * priorWeight + liveData.avgAccuracy * liveData.totalPlayers) / (priorWeight + liveData.totalPlayers)).toFixed(1));
 
-          avgScoreLabel = `${liveData.avgAccuracy}%`;
-          const boundedAcc = Math.max(40, Math.min(100, liveData.avgAccuracy));
-          avgX = bustSplit + ((boundedAcc - 40) / 60) * accW;
-          const normAcc = Math.exp(-Math.pow(boundedAcc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
-          avgY = baseY - normAcc * peakH;
-        }
-        if (liveData.counts && liveData.counts.length) {
-          const bustRatio = (liveData.counts[0] || 0) / liveData.totalPlayers;
-          bustHeightFactor = Math.max(0.18, Math.min(0.60, bustRatio * 1.2));
-        }
+        avgScoreLabel = `${liveData.avgAccuracy}%`;
+        const boundedAcc = Math.max(40, Math.min(100, liveData.avgAccuracy));
+        avgX = padL + ((boundedAcc - 40) / 60) * plotW;
+        const normAcc = Math.exp(-Math.pow(boundedAcc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+        avgY = baseY - normAcc * peakH;
       }
 
       for (let i = 0; i <= nPts; i++) {
         const x = padL + (i / nPts) * plotW;
-        let y = baseY;
-        if (x < bustSplit) {
-          const bustFrac = (x - padL) / (bustSplit - padL);
-          const bustNorm = Math.exp(-Math.pow(bustFrac - 0.5, 2) / (2 * 0.08));
-          y = baseY - bustNorm * (peakH * bustHeightFactor);
-        } else {
-          const accVal = 40 + ((x - bustSplit) / accW) * 60;
-          const norm = Math.exp(-Math.pow(accVal - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
-          y = baseY - norm * peakH;
-        }
+        const accVal = 40 + (i / nPts) * 60;
+        const norm = Math.exp(-Math.pow(accVal - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+        const y = baseY - norm * peakH;
         points.push({ x, y });
       }
 
       if (comp) {
-        const isBusted = Boolean(comp.busted || (comp.targetGoal && comp.score > comp.targetGoal));
-        if (isBusted) {
-          userX = padL + 0.08 * plotW;
-          const bustNorm = Math.exp(-Math.pow(0.5 - 0.5, 2) / (2 * 0.08));
-          userY = baseY - bustNorm * (peakH * bustHeightFactor);
-        } else {
-          const targetGoal = Number(comp.targetGoal) || 1;
-          const acc = Math.max(40, Math.min(100, (Number(comp.score) / targetGoal) * 100));
-          userX = bustSplit + ((acc - 40) / 60) * accW;
-          const norm = Math.exp(-Math.pow(acc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
-          userY = baseY - norm * peakH;
-        }
+        const targetGoal = Number(comp.targetGoal) || 1;
+        const acc = Math.max(40, Math.min(100, (Number(comp.score) / targetGoal) * 100));
+        userX = padL + ((acc - 40) / 60) * plotW;
+        const norm = Math.exp(-Math.pow(acc - meanAcc, 2) / (2 * Math.pow(sigmaAcc, 2)));
+        userY = baseY - norm * peakH;
       }
     }
 
