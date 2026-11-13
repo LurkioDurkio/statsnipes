@@ -1334,20 +1334,24 @@ body.is-daily-mode .top-header .sport-switcher {
   box-shadow: none;
   padding: 0.4rem 0 0.6rem 0;
   margin-bottom: 0.2rem;
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 #gameArena.daily-layout .cat-banner-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   width: 100%;
+  margin: 0 auto;
 }
 
 #gameArena.daily-layout .category-title {
+  width: 100%;
+  max-width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 3.8vw, 2.75rem);
+  font-size: clamp(1.35rem, 3.8vw, 2.75rem);
   font-weight: 900;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -1355,10 +1359,8 @@ body.is-daily-mode .top-header .sport-switcher {
   line-height: 1.15;
   text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
-  word-break: normal;
+  word-break: break-word;
   overflow-wrap: break-word;
-  text-wrap: balance;
-  hyphens: none;
 }
 
 #gameArena.daily-layout .category-subtitle {
@@ -3787,8 +3789,9 @@ body.is-daily-mode .top-header .sport-switcher {
   }
 
   #gameArena.daily-layout .category-title {
-    font-size: clamp(1.22rem, 5vw, 1.6rem);
-    line-height: 1.18;
+    font-size: clamp(0.92rem, 3.8vw, 1.15rem);
+    line-height: 1.22;
+    padding: 0;
   }
 
   .daily-objective-text {
