@@ -185,6 +185,11 @@
     }
   }
 
+  function cleanCategoryTitle(title) {
+    if (!title || typeof title !== "string") return "";
+    return title.replace(/^(?:NBA|NFL|MLB)\s+[-:–—]?\s*/i, "").trim();
+  }
+
   function hydrateNicheCategory(raw) {
     if (!raw) return null;
     if (raw.players) return raw;
@@ -200,8 +205,8 @@
       id: raw.id,
       sport: raw.sport,
       dailyOnly: true,
-      title: raw.title,
-      subtitle: raw.subtitle,
+      title: cleanCategoryTitle(raw.title),
+      subtitle: cleanCategoryTitle(raw.subtitle || raw.title),
       unit: raw.unit,
       sortDir: raw.sortDir || "desc",
       defaultTarget: raw.defaultTarget,
@@ -512,16 +517,22 @@
 
   // Helper: Get current category object
   function getActiveCategory() {
+    let cat = null;
     if (state.categoryId === "__custom__" && state.customCategory) {
-      return state.customCategory;
+      cat = state.customCategory;
+    } else {
+      cat = (
+        ALL_CATEGORIES.find((c) => c.id === state.categoryId) ||
+        DAILY_NICHE_CATEGORIES.find((c) => c.id === state.categoryId) ||
+        findHydratedNicheById(state.categoryId) ||
+        ALL_CATEGORIES.find((c) => c.sport === state.sport) ||
+        ALL_CATEGORIES[0]
+      );
     }
-    return (
-      ALL_CATEGORIES.find((c) => c.id === state.categoryId) ||
-      DAILY_NICHE_CATEGORIES.find((c) => c.id === state.categoryId) ||
-      findHydratedNicheById(state.categoryId) ||
-      ALL_CATEGORIES.find((c) => c.sport === state.sport) ||
-      ALL_CATEGORIES[0]
-    );
+    if (cat && cat.title) {
+      cat.title = cleanCategoryTitle(cat.title);
+    }
+    return cat;
   }
 
   function getCategoryExtraRankMap(cat) {
@@ -3329,8 +3340,8 @@
         id: entry.id,
         sport: entry.sport,
         dailyOnly: true,
-        title: entry.title,
-        subtitle: entry.title,
+        title: cleanCategoryTitle(entry.title),
+        subtitle: cleanCategoryTitle(entry.title),
         unit: entry.unit,
         defaultTarget: entry.defaultTarget,
         shard: entry.shard,

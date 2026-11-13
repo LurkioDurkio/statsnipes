@@ -1,5 +1,5 @@
 :root {
-  --font-display: 'Barlow Condensed', 'Impact', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
@@ -1347,14 +1347,18 @@ body.is-daily-mode .top-header .sport-switcher {
 
 #gameArena.daily-layout .category-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  font-size: clamp(1.45rem, 3.8vw, 2.75rem);
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
-  line-height: 1.1;
+  line-height: 1.15;
   text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  hyphens: none;
 }
 
 #gameArena.daily-layout .category-subtitle {
@@ -3780,6 +3784,11 @@ body.is-daily-mode .top-header .sport-switcher {
     box-shadow: none;
     padding: 0.35rem 0 0.5rem;
     margin-bottom: 0.35rem;
+  }
+
+  #gameArena.daily-layout .category-title {
+    font-size: clamp(1.22rem, 5vw, 1.6rem);
+    line-height: 1.18;
   }
 
   .daily-objective-text {
