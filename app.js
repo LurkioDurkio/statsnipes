@@ -4037,13 +4037,13 @@
         `statsnipes.com`
       ].filter(Boolean).join("\n");
     } else {
-      const pct = Math.min(100, (winner.score / state.targetGoal) * 100).toFixed(1);
+      const pct = state.targetGoal > 0 ? Math.min(100, (winner.score / state.targetGoal) * 100).toFixed(1) : "0.0";
       const squares =
         (winner.picks || []).map((pk) => (pk.bustedPick ? "🟥" : "🟩")).join(" ") || "⬜ ⬜ ⬜ ⬜ ⬜";
       return [
         `⚡ StatSnipes #${dailyNum}${isArchive ? " (Archive)" : ""} (${getSportIcon(cat.sport)} Target Stat)`,
         `${cat.title}`,
-        `${formatNumber(winner.score)} / ${formatNumber(state.targetGoal)} ${cat.unit} (${pct}%)${streakPart}`,
+        `${pct}% of Target${streakPart}`,
         percentilePart ? `${percentilePart.trim().replace(/^·\s*/, "")}` : "",
         `[ ${squares} ]`,
         `statsnipes.com`
