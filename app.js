@@ -448,7 +448,7 @@
       }
     ],
     playerCount: 1,
-    playerNamesConfig: ["Player 1", "Player 2", "Player 3", "Player 4"],
+    playerNamesConfig: ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"],
     currentTurnIndex: 0,
     guessedNames: new Set(), // normalized lowercase names
     revealedRanks: new Map(), // rank -> { playerObj, pickedBy }
@@ -5064,7 +5064,7 @@
 
     const playersEl = document.getElementById("onlineLobbyPlayers");
     if (playersEl) {
-      const maxP = roomState.maxPlayers || 4;
+      const maxP = roomState.maxPlayers || 6;
       const slotsHtml = [];
       for (let i = 0; i < maxP; i++) {
         const p = (roomState.players || [])[i];
@@ -5110,7 +5110,7 @@
         statusEl.textContent = "Enter your name above and click Join Room to hop in!";
       } else if (isHost) {
         statusEl.textContent = count < 2
-          ? "Copy & text the invite link above to up to 3 friends. Start button unlocks once someone joins!"
+          ? "Copy & text the invite link above to up to 5 friends. Start button unlocks once someone joins!"
           : `${count} players in lobby! Ready when you are.`;
       } else {
         statusEl.textContent = "You're in! Waiting for the host to start the match...";
@@ -5137,7 +5137,7 @@
           clientId,
           playerName: hostName,
           config,
-          maxPlayers: 4
+          maxPlayers: 6
         })
       });
       const data = await res.json();

@@ -109,7 +109,7 @@ export async function onRequestPost({ request, env }) {
       }
 
       const safeName = String(playerName || "Host").trim().slice(0, 18) || "Host";
-      const safeMax = Math.max(2, Math.min(4, Number(maxPlayers) || 4));
+      const safeMax = Math.max(2, Math.min(6, Number(maxPlayers) || 6));
 
       const initialState = {
         roomCode,
@@ -195,8 +195,8 @@ export async function onRequestPost({ request, env }) {
         return jsonRes({ error: "This match has already started." }, 409);
       }
 
-      if (roomState.players.length >= (roomState.maxPlayers || 4)) {
-        return jsonRes({ error: "This room is already full (max 4 players)." }, 409);
+      if (roomState.players.length >= (roomState.maxPlayers || 6)) {
+        return jsonRes({ error: "This room is already full (max 6 players)." }, 409);
       }
 
       roomState.players.push({

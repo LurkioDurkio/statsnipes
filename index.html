@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=48" />
+  <link rel="stylesheet" href="styles.css?v=49" />
 </head>
 <body data-sport="NBA">
   <!-- Top Broadcast Header -->
@@ -160,7 +160,7 @@
       <div class="setup-header">
         <div>
           <h2>🛠️ Custom Game & Multiplayer Setup</h2>
-          <p>Configure your StatSnipes rules, players, lives, and stat category — play solo or pass-and-play with up to 4 friends!</p>
+          <p>Configure your StatSnipes rules, players, lives, and stat category — play solo, pass-and-play, or online with up to 6 friends!</p>
         </div>
         <button class="close-setup-btn" id="closeSetupBtn">✕ Back to Arena</button>
       </div>
@@ -349,16 +349,18 @@
         <!-- Column 3: Players (1 to 4 Players) -->
         <div class="setup-card">
           <div class="setup-card-header-inline">
-            <h3>3. Players (1–4)</h3>
+            <h3>3. Players (1–6)</h3>
           </div>
 
           <div class="form-group">
             <label>Number of Players</label>
-            <div class="segmented-control" id="setupPlayerCount">
+            <div class="segmented-control" id="setupPlayerCount" style="flex-wrap:wrap;">
               <button type="button" class="seg-btn active" data-val="1">1P Solo</button>
-              <button type="button" class="seg-btn" data-val="2">2P H2H</button>
-              <button type="button" class="seg-btn" data-val="3">3P Crew</button>
-              <button type="button" class="seg-btn" data-val="4">4P Squad</button>
+              <button type="button" class="seg-btn" data-val="2">2P</button>
+              <button type="button" class="seg-btn" data-val="3">3P</button>
+              <button type="button" class="seg-btn" data-val="4">4P</button>
+              <button type="button" class="seg-btn" data-val="5">5P</button>
+              <button type="button" class="seg-btn" data-val="6">6P</button>
             </div>
           </div>
 
@@ -378,6 +380,14 @@
             <div class="player-input-row hidden">
               <span class="p-badge p-4">P4</span>
               <input type="text" class="studio-input player-name-field" data-idx="3" value="Player 4" maxlength="18" />
+            </div>
+            <div class="player-input-row hidden">
+              <span class="p-badge p-5">P5</span>
+              <input type="text" class="studio-input player-name-field" data-idx="4" value="Player 5" maxlength="18" />
+            </div>
+            <div class="player-input-row hidden">
+              <span class="p-badge p-6">P6</span>
+              <input type="text" class="studio-input player-name-field" data-idx="5" value="Player 6" maxlength="18" />
             </div>
           </div>
 
@@ -777,11 +787,11 @@
 
       <div class="rules-content hidden" id="rulesCouchPane">
         <div class="rule-block">
-          <h3>🔥 Endless Top 100 Survival <span class="rule-sub-tag">1–4 Players</span></h3>
+          <h3>🔥 Endless Top 100 Survival <span class="rule-sub-tag">1–6 Players</span></h3>
           <ul>
             <li><strong>3 Lives ❤️❤️❤️:</strong> Every pick inside the Top 100 scores its exact rank (<strong>#1</strong> = 1 pt, <strong>#100</strong> = 100 pts). Guessing <strong>#101+</strong> costs a life!</li>
             <li><strong>🐦‍🔥 #90–#100 Revival:</strong> Eliminated players stay in rotation for a clutch <strong>#90–#100</strong> snipe to win back <strong>+1 Life ❤️</strong> (toggleable).</li>
-            <li><strong>Custom Filters &amp; Pass-and-Play:</strong> Use the category dropdowns, <strong>🎲 Mystery Bag</strong>, or <strong>🛠️ Setup &amp; Couch</strong> to filter stats, teams, eras, and add 2–4 local players or a Shot Clock.</li>
+            <li><strong>Custom Filters &amp; Pass-and-Play:</strong> Use the category dropdowns, <strong>🎲 Mystery Bag</strong>, or <strong>🛠️ Setup &amp; Couch</strong> to filter stats, teams, eras, and add 2–6 local players, play online, or add a Shot Clock.</li>
           </ul>
         </div>
 
@@ -837,7 +847,7 @@
         <!-- Populated dynamically with 1-4 player slots -->
       </div>
 
-      <p class="online-lobby-status" id="onlineLobbyStatus">Share the invite link with up to 3 friends to play turn-by-turn online!</p>
+      <p class="online-lobby-status" id="onlineLobbyStatus">Share the invite link with up to 5 friends to play turn-by-turn online!</p>
 
       <div class="modal-actions" id="onlineLobbyActions">
         <button type="button" class="secondary-btn" id="leaveOnlineRoomBtn">Leave Room</button>
@@ -853,6 +863,6 @@
   <script src="data/extra_players.js?v=21"></script>
   <script src="data/seasons_data.js?v=21"></script>
   <script src="data/niche/manifest.js?v=42"></script>
-  <script src="app.js?v=50"></script>
+  <script src="app.js?v=51"></script>
 </body>
 </html>
