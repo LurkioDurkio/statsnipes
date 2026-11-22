@@ -467,7 +467,21 @@
     customCategory: null,
 
     // Undo history stack for reverting misclicks / accidental guesses
-    undoStack: []
+    undoStack: [],
+    lastBannerPayload: null
+  };
+
+  // Online Couch Mode (Multiplayer Room) State
+  const onlineRoom = {
+    active: false,
+    roomCode: "",
+    version: 0,
+    isHost: false,
+    myClientId: "",
+    pollTimer: null,
+    lastRemoteState: null,
+    isApplyingRemote: false,
+    lastBannerKey: ""
   };
 
   // Sport Metric Definitions for Dynamic Season, Era & Constraint Builder
@@ -1898,15 +1912,37 @@
     const activePlayer = state.players[state.currentTurnIndex];
     if (!activePlayer) return;
 
+    // Enforce turn input lock in Online Couch Mode
+    const searchInput = document.getElementById("playerSearchInput");
+    const submitBtn = document.getElementById("submitGuessBtn");
+    if (onlineRoom.active) {
+      const myTurn = isMyOnlineTurn();
+      if (searchInput) {
+        searchInput.disabled = !myTurn;
+        searchInput.placeholder = myTurn
+          ? `🎯 YOUR TURN — Search ${state.sport || "NBA"} player...`
+          : `⏳ Waiting for ${activePlayer.name}'s pick...`;
+      }
+      if (submitBtn) {
+        submitBtn.disabled = !myTurn;
+      }
+    }
+
+    const turnTag = onlineRoom.active
+      ? (isMyOnlineTurn()
+          ? `<span class="online-turn-tag yours">🟢 YOUR TURN</span> `
+          : `<span class="online-turn-tag waiting">⏳ WAITING</span> `)
+      : "";
+
     if (state.mode === "top100") {
       if (state.isDaily && state.dailySubmode === "sniper") {
         const shotNum = Math.min(state.dailyMaxShots, (activePlayer.sniperShots ? activePlayer.sniperShots.length : 0) + 1);
         promptEl.innerHTML = `<strong>Shot ${shotNum} of ${state.dailyMaxShots}</strong> • Aim for #90–#100`;
       } else if (activePlayer.eliminated && state.redemptionEnabled) {
         const redMin = Math.max(1, state.cutoff - 10);
-        promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s REDEMPTION SHOT!</strong> — Eliminated! Snipe a player ranked <strong>#${redMin}–#${state.cutoff}</strong> to earn <strong>1 Life ❤️ back + those points!</strong>`;
+        promptEl.innerHTML = `${turnTag}<strong>${escapeHtml(activePlayer.name)}'s REDEMPTION SHOT!</strong> — Eliminated! Snipe a player ranked <strong>#${redMin}–#${state.cutoff}</strong> to earn <strong>1 Life ❤️ back + those points!</strong>`;
       } else {
-        promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Turn</strong> — Snipe a player in the Top ${state.cutoff} (#${state.cutoff} = ${state.cutoff} pts)!`;
+        promptEl.innerHTML = `${turnTag}<strong>${escapeHtml(activePlayer.name)}'s Turn</strong> — Snipe a player in the Top ${state.cutoff} (#${state.cutoff} = ${state.cutoff} pts)!`;
       }
     } else {
       const cat = getActiveCategory();
@@ -1914,7 +1950,7 @@
       if (state.isDaily) {
         promptEl.innerHTML = `<strong>Pick ${activePlayer.picks.length + 1} of ${state.maxPicks}</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> without going over`;
       } else {
-        promptEl.innerHTML = `<strong>${escapeHtml(activePlayer.name)}'s Pick (${activePlayer.picks.length + 1}/${state.maxPicks})</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> to hit target!`;
+        promptEl.innerHTML = `${turnTag}<strong>${escapeHtml(activePlayer.name)}'s Pick (${activePlayer.picks.length + 1}/${state.maxPicks})</strong> — Need <strong>${formatNumber(Math.max(0, remaining))} ${cat.unit}</strong> to hit target!`;
       }
     }
   }
@@ -2162,6 +2198,17 @@
 
   function handleGuessSubmission(rawName) {
     if (state.gameOver) return;
+    if (onlineRoom.active && !isMyOnlineTurn()) {
+      const activePlayer = state.players[state.currentTurnIndex];
+      showFeedbackBanner({
+        tierClass: "tier-safe",
+        rankBadge: "⏳",
+        title: `Waiting on ${activePlayer ? activePlayer.name : "opponent"}`,
+        subtitle: "It's not your turn yet — your input will unlock as soon as they pick.",
+        pointsText: "HOLD"
+      });
+      return;
+    }
     const query = (rawName || "").trim();
     if (!query) return;
 
@@ -2773,6 +2820,7 @@
   }
 
   function showFeedbackBanner({ tierClass, rankBadge, title, subtitle, pointsText, pointsSubText = "" }) {
+    state.lastBannerPayload = { tierClass, rankBadge, title, subtitle, pointsText, pointsSubText };
     const fb = document.getElementById("feedbackBanner");
     fb.className = `feedback-banner ${tierClass}`;
     fb.innerHTML = `
@@ -2852,6 +2900,10 @@
     renderScoreboard();
     renderTurnPrompt();
 
+    if (onlineRoom.active && !onlineRoom.isApplyingRemote) {
+      syncOnlineRoomState();
+    }
+
     if (state.shotClockSeconds > 0) {
       startShotClock();
     }
@@ -2928,19 +2980,45 @@
       }
     } else {
       // Record Couch Series stats if multiplayer match (and not just board reveal with 0 picks)
-      if (state.playerCount > 1 && !state.seriesRecordedForMatch && state.pickHistory.length > 0) {
+      if (!onlineRoom.active && state.playerCount > 1 && !state.seriesRecordedForMatch && state.pickHistory.length > 0) {
         recordMatchInCouchSeries(winner, cat);
+      }
+      if (onlineRoom.active && !onlineRoom.isApplyingRemote && onlineRoom.lastRemoteState) {
+        if (!state.seriesRecordedForMatch && state.pickHistory.length > 0) {
+          state.seriesRecordedForMatch = true;
+          const rSeries = onlineRoom.lastRemoteState.series || { gamesPlayed: 0, winsByClientId: {}, pointsByClientId: {} };
+          rSeries.gamesPlayed = (rSeries.gamesPlayed || 0) + 1;
+          const winCid = winner && winner.clientId;
+          if (winCid) {
+            rSeries.winsByClientId[winCid] = (rSeries.winsByClientId[winCid] || 0) + 1;
+          }
+          state.players.forEach((p) => {
+            if (p.clientId) {
+              rSeries.pointsByClientId[p.clientId] = (rSeries.pointsByClientId[p.clientId] || 0) + (p.score || 0);
+            }
+          });
+          onlineRoom.lastRemoteState.series = rSeries;
+        }
+        syncOnlineRoomState(reasonText);
       }
       renderCouchSeriesBar();
       if (sharePreviewEl) sharePreviewEl.classList.add("hidden");
       if (shareLegendEl) shareLegendEl.classList.add("hidden");
-      if (playAgainBtn) playAgainBtn.textContent = "🔄 Play Again";
+      if (playAgainBtn) {
+        if (onlineRoom.active) {
+          playAgainBtn.textContent = onlineRoom.isHost ? "🔄 Next Game in Room" : "⏳ Waiting for Host...";
+          playAgainBtn.disabled = !onlineRoom.isHost;
+        } else {
+          playAgainBtn.textContent = "🔄 Play Again";
+          playAgainBtn.disabled = false;
+        }
+      }
       if (shareBtn) {
         shareBtn.removeAttribute("data-orig-label");
         shareBtn.textContent = "📲 Share Result";
       }
       if (undoModalBtn) {
-        undoModalBtn.classList.toggle("hidden", state.undoStack.length === 0);
+        undoModalBtn.classList.toggle("hidden", onlineRoom.active || state.undoStack.length === 0);
       }
     }
 
@@ -4486,6 +4564,53 @@
   function renderCouchSeriesBar() {
     const bar = document.getElementById("couchSeriesBar");
     if (!bar) return;
+
+    if (onlineRoom.active && !state.isDaily) {
+      bar.classList.remove("hidden");
+      const rState = onlineRoom.lastRemoteState;
+      const rSeries = (rState && rState.series) || { gamesPlayed: 0, winsByClientId: {}, pointsByClientId: {} };
+      const maxWins = Math.max(0, ...state.players.map((p) => (rSeries.winsByClientId && rSeries.winsByClientId[p.clientId]) || 0));
+      const pillsHtml = state.players
+        .map((p, idx) => {
+          const wins = (rSeries.winsByClientId && rSeries.winsByClientId[p.clientId]) || 0;
+          const pts = (rSeries.pointsByClientId && rSeries.pointsByClientId[p.clientId]) || 0;
+          const isLeader = maxWins > 0 && wins === maxWins;
+          const isMe = p.clientId === onlineRoom.myClientId;
+          return `
+            <div class="cs-player-pill ${isLeader ? "series-leader" : ""}">
+              <span class="p-badge p-${idx + 1}" style="width:20px;height:20px;font-size:0.65rem;border-radius:5px;">P${idx + 1}</span>
+              <strong>${isLeader ? "👑 " : ""}${escapeHtml(p.name)}${isMe ? " (You)" : ""}</strong>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--sport-secondary);">${wins}W</span>
+              <span style="color:var(--text-secondary);font-size:0.7rem;">(${formatNumber(pts)} pts)</span>
+            </div>
+          `;
+        })
+        .join("");
+
+      bar.innerHTML = `
+        <div class="cs-left">
+          <span class="online-room-bar-badge">🌐 ONLINE ROOM • ${escapeHtml(onlineRoom.roomCode)}</span>
+          <div class="cs-standings-pills">
+            ${pillsHtml}
+          </div>
+        </div>
+        <div class="online-room-bar-actions">
+          <button type="button" class="online-bar-btn" id="onlineBarCopyBtn">📋 Invite Link</button>
+          <button type="button" class="online-bar-btn danger" id="onlineBarLeaveBtn">🚪 Leave Room</button>
+        </div>
+      `;
+
+      const copyBtn = document.getElementById("onlineBarCopyBtn");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", (e) => copyOnlineRoomInviteLink(e.currentTarget));
+      }
+      const leaveBtn = document.getElementById("onlineBarLeaveBtn");
+      if (leaveBtn) {
+        leaveBtn.addEventListener("click", () => leaveOnlineRoom());
+      }
+      return;
+    }
+
     const series = getCouchSeries();
 
     if (state.isDaily || (state.playerCount <= 1 && (!series.matchesPlayed || series.matchesPlayed === 0))) {
@@ -4741,9 +4866,550 @@
     return url.toString();
   }
 
+  // ==========================================
+  // 11. Online Couch Mode (Multiplayer Rooms)
+  // ==========================================
+  function isMyOnlineTurn() {
+    if (!onlineRoom.active || state.gameOver) return false;
+    const activePlayer = state.players[state.currentTurnIndex];
+    return Boolean(activePlayer && activePlayer.clientId === onlineRoom.myClientId);
+  }
+
+  function getOnlineRoomInviteUrl(code = onlineRoom.roomCode) {
+    const url = new URL(window.location.href.split("?")[0]);
+    if (code) url.searchParams.set("room", code);
+    return url.toString();
+  }
+
+  function copyOnlineRoomInviteLink(btnEl) {
+    const shareUrl = getOnlineRoomInviteUrl();
+    shareOrCopyPayload({
+      shareData: {
+        title: `Join my StatSnipes Room (${onlineRoom.roomCode})`,
+        text: `Hop in my StatSnipes online couch game! Room code: ${onlineRoom.roomCode}`,
+        url: shareUrl
+      },
+      clipboardText: shareUrl,
+      btnEl,
+      sharedLabel: "✅ Shared!",
+      copiedLabel: "✅ Invite Copied!"
+    });
+  }
+
+  function captureCurrentMatchConfig(fromSetup = false) {
+    if (fromSetup) {
+      const activeSportBtn = document.querySelector("#setupSportSelect .seg-btn.active");
+      const activeModeCard = document.querySelector("#setupModeSelect .radio-card.active");
+      const sport = activeSportBtn ? activeSportBtn.dataset.val : "NBA";
+      const mode = activeModeCard ? activeModeCard.dataset.val : "top100";
+      const dynCat = buildCategoryFromPrefix("setup", sport);
+      const stat = document.getElementById("setupStatSelect")?.value || "pts";
+      const tf = document.getElementById("setupTimeframeSelect")?.value || "alltime";
+      const yr = document.getElementById("setupYearSelect")?.value || "";
+      const yrend = document.getElementById("setupYearEndSelect")?.value || "";
+      const team = document.getElementById("setupTeamSelect")?.value || "ALL";
+      const con = document.getElementById("setupConstraintSelect")?.value || "none";
+      const redCheck = document.getElementById("setupRedemptionCheck");
+      const missCheck = document.getElementById("setupShowMissRankCheck");
+
+      return {
+        sport,
+        mode,
+        categoryId: dynCat.id,
+        categoryTitle: dynCat.title,
+        categorySubtitle: dynCat.subtitle,
+        customSpec: { stat, tf, yr, yrend, team, con },
+        cutoff: parseInt(document.getElementById("setupCutoffSelect")?.value, 10) || 100,
+        maxLives: parseInt(document.getElementById("setupLivesSelect")?.value, 10) || 3,
+        winCondition: document.getElementById("setupWinCondSelect")?.value || "points",
+        redemptionEnabled: redCheck ? redCheck.checked : true,
+        showMissRank: missCheck ? missCheck.checked : true,
+        targetGoal: parseInt(document.getElementById("setupTargetInput")?.value, 10) || dynCat.defaultTarget || 100000,
+        maxPicks: parseInt(document.getElementById("setupPicksSelect")?.value, 10) || 5,
+        bustRule: document.getElementById("setupBustRuleSelect")?.value || "bust",
+        shotClockSeconds: parseInt(document.getElementById("setupTimerSelect")?.value, 10) || 0,
+        boardHints: document.getElementById("setupBoardHintSelect")?.value === "team"
+      };
+    }
+
+    const cat = getActiveCategory();
+    const stat = document.getElementById("explorerStatSelect")?.value || "";
+    const tf = document.getElementById("explorerTimeframeSelect")?.value || "alltime";
+    const yr = document.getElementById("explorerYearSelect")?.value || "";
+    const yrend = document.getElementById("explorerYearEndSelect")?.value || "";
+    const team = document.getElementById("explorerTeamSelect")?.value || "ALL";
+    const con = document.getElementById("explorerConstraintSelect")?.value || "none";
+
+    return {
+      sport: cat.sport,
+      mode: state.mode || "top100",
+      categoryId: cat.id,
+      categoryTitle: cat.title,
+      categorySubtitle: cat.subtitle,
+      shard: cat.shard || null,
+      customSpec: stat ? { stat, tf, yr, yrend, team, con } : null,
+      cutoff: state.cutoff || 100,
+      maxLives: state.maxLives || 3,
+      winCondition: state.winCondition || "points",
+      redemptionEnabled: Boolean(state.redemptionEnabled),
+      showMissRank: Boolean(state.showMissRank),
+      targetGoal: state.targetGoal || cat.defaultTarget || 100000,
+      maxPicks: state.maxPicks || 5,
+      bustRule: state.bustRule || "bust",
+      shotClockSeconds: state.shotClockSeconds || 0,
+      boardHints: Boolean(state.boardHints)
+    };
+  }
+
+  async function applyOnlineRoomConfig(cfg) {
+    if (!cfg) return;
+    state.isDaily = false;
+    state.sport = cfg.sport || "NBA";
+    state.mode = cfg.mode || "top100";
+    state.cutoff = cfg.cutoff || 100;
+    state.maxLives = cfg.maxLives || 3;
+    state.winCondition = cfg.winCondition || "points";
+    state.redemptionEnabled = cfg.redemptionEnabled !== undefined ? cfg.redemptionEnabled : true;
+    state.showMissRank = cfg.showMissRank !== undefined ? cfg.showMissRank : true;
+    state.targetGoal = cfg.targetGoal || 100000;
+    state.maxPicks = cfg.maxPicks || 5;
+    state.bustRule = cfg.bustRule || "bust";
+    state.shotClockSeconds = cfg.shotClockSeconds || 0;
+    state.boardHints = Boolean(cfg.boardHints);
+
+    document.body.setAttribute("data-sport", state.sport);
+    populateExplorerControls(state.sport);
+
+    if (cfg.shard && typeof ensureDailyShardLoaded === "function") {
+      await ensureDailyShardLoaded(cfg.shard);
+    }
+
+    if (cfg.customSpec && cfg.customSpec.stat) {
+      const statEl = document.getElementById("explorerStatSelect");
+      const tfEl = document.getElementById("explorerTimeframeSelect");
+      const teamEl = document.getElementById("explorerTeamSelect");
+      const conEl = document.getElementById("explorerConstraintSelect");
+      if (statEl) statEl.value = cfg.customSpec.stat;
+      if (tfEl) tfEl.value = cfg.customSpec.tf || "alltime";
+      updateYearVisibility("explorer", state.sport);
+      const yrEl = document.getElementById("explorerYearSelect");
+      const yrEndEl = document.getElementById("explorerYearEndSelect");
+      if (yrEl && cfg.customSpec.yr) yrEl.value = cfg.customSpec.yr;
+      if (yrEndEl && cfg.customSpec.yrend) yrEndEl.value = cfg.customSpec.yrend;
+      if (teamEl && cfg.customSpec.team) teamEl.value = cfg.customSpec.team;
+      if (conEl && cfg.customSpec.con) conEl.value = cfg.customSpec.con;
+
+      const built = buildCategoryFromPrefix("explorer", state.sport);
+      if (built.id === "__custom__") {
+        state.customCategory = built;
+        state.categoryId = "__custom__";
+      } else {
+        state.customCategory = null;
+        state.categoryId = built.id;
+      }
+    } else if (cfg.categoryId) {
+      state.customCategory = null;
+      state.categoryId = cfg.categoryId;
+    }
+  }
+
+  function renderOnlineRoomModal(roomState) {
+    const modal = document.getElementById("onlineRoomModal");
+    if (!modal || !roomState) return;
+    modal.classList.remove("hidden");
+
+    const codeEl = document.getElementById("onlineRoomCodeText");
+    if (codeEl) codeEl.textContent = roomState.roomCode || onlineRoom.roomCode;
+
+    const metaEl = document.getElementById("onlineRoomMeta");
+    const cfg = roomState.config || {};
+    if (metaEl) {
+      const modeText = cfg.mode === "target"
+        ? `Target Stat (${formatNumber(cfg.targetGoal || 100000)}, ${cfg.maxPicks || 5} picks)`
+        : `Top ${cfg.cutoff || 100} Survival (${cfg.maxLives || 3} lives)`;
+      metaEl.innerHTML = `
+        <div><strong>${getSportIcon(cfg.sport || "NBA")} ${escapeHtml(cfg.sport || "NBA")} • ${escapeHtml(modeText)}</strong></div>
+        <div>${escapeHtml(cfg.categoryTitle || "Custom Stat Challenge")}</div>
+      `;
+    }
+
+    const myCid = onlineRoom.myClientId;
+    const amInRoom = (roomState.players || []).some((p) => p.clientId === myCid);
+    const joinBox = document.getElementById("onlineJoinBox");
+    if (joinBox) {
+      joinBox.classList.toggle("hidden", amInRoom);
+      const guestInput = document.getElementById("onlineGuestNameInput");
+      if (!amInRoom && guestInput && !guestInput.value) {
+        const savedName = localStorage.getItem("statsnipes_online_name") || "";
+        if (savedName) guestInput.value = savedName;
+      }
+    }
+
+    const playersEl = document.getElementById("onlineLobbyPlayers");
+    if (playersEl) {
+      const maxP = roomState.maxPlayers || 4;
+      const slotsHtml = [];
+      for (let i = 0; i < maxP; i++) {
+        const p = (roomState.players || [])[i];
+        if (p) {
+          const isHostSlot = p.clientId === roomState.hostClientId;
+          const isMeSlot = p.clientId === myCid;
+          slotsHtml.push(`
+            <div class="online-lobby-slot filled">
+              <div class="ols-left">
+                <span class="p-badge p-${i + 1}">P${i + 1}</span>
+                <span>${escapeHtml(p.name)}${isMeSlot ? " (You)" : ""}</span>
+              </div>
+              <span class="ols-tag ${isHostSlot ? "host" : ""}">${isHostSlot ? "HOST" : "READY"}</span>
+            </div>
+          `);
+        } else {
+          slotsHtml.push(`
+            <div class="online-lobby-slot empty">
+              <div class="ols-left">
+                <span class="p-badge p-${i + 1}">P${i + 1}</span>
+                <span>Waiting for friend...</span>
+              </div>
+              <span style="font-size:0.75rem;color:#64748b;">Open Slot</span>
+            </div>
+          `);
+        }
+      }
+      playersEl.innerHTML = slotsHtml.join("");
+    }
+
+    const startBtn = document.getElementById("startOnlineMatchBtn");
+    const statusEl = document.getElementById("onlineLobbyStatus");
+    const isHost = roomState.hostClientId === myCid;
+    const count = (roomState.players || []).length;
+
+    if (startBtn) {
+      startBtn.classList.toggle("hidden", !isHost || !amInRoom);
+      startBtn.disabled = count < 2;
+      startBtn.textContent = count < 2 ? "Waiting for 1+ Friend to Join..." : `🚀 Start Online Match (${count}P)`;
+    }
+    if (statusEl) {
+      if (!amInRoom) {
+        statusEl.textContent = "Enter your name above and click Join Room to hop in!";
+      } else if (isHost) {
+        statusEl.textContent = count < 2
+          ? "Copy & text the invite link above to up to 3 friends. Start button unlocks once someone joins!"
+          : `${count} players in lobby! Ready when you are.`;
+      } else {
+        statusEl.textContent = "You're in! Waiting for the host to start the match...";
+      }
+    }
+  }
+
+  async function createOnlineRoom(fromSetup = false) {
+    const clientId = getOrCreateClientId();
+    onlineRoom.myClientId = clientId;
+    const p1Input = document.querySelector('.player-name-field[data-idx="0"]');
+    const savedName = localStorage.getItem("statsnipes_online_name") || "";
+    const hostName = (fromSetup && p1Input && p1Input.value.trim() && p1Input.value.trim() !== "Player 1")
+      ? p1Input.value.trim()
+      : (savedName || "Host");
+
+    const config = captureCurrentMatchConfig(fromSetup);
+    try {
+      const res = await fetch("/api/room", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "create",
+          clientId,
+          playerName: hostName,
+          config,
+          maxPlayers: 4
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.roomCode) {
+        alert(data.error || "Could not create online room.");
+        return;
+      }
+      onlineRoom.active = true;
+      onlineRoom.roomCode = data.roomCode;
+      onlineRoom.version = data.version;
+      onlineRoom.isHost = true;
+      onlineRoom.lastRemoteState = data.state;
+      onlineRoom.lastBannerKey = "";
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("room", data.roomCode);
+      window.history.replaceState({}, "", url.toString());
+
+      document.getElementById("customSetupPanel").classList.add("hidden");
+      renderOnlineRoomModal(data.state);
+      startOnlineRoomPolling();
+    } catch (err) {
+      alert("Network error creating online room. Please try again.");
+    }
+  }
+
+  async function openOnlineRoomByCode(code) {
+    const clientId = getOrCreateClientId();
+    onlineRoom.myClientId = clientId;
+    onlineRoom.roomCode = code;
+    try {
+      const res = await fetch(`/api/room?code=${encodeURIComponent(code)}`);
+      const data = await res.json();
+      if (!res.ok || !data.state) {
+        alert(data.error || "Online room not found or expired.");
+        launchDailyChallenge(state.sport || "NBA", "sniper", false, getTodayString(), { silentBoot: true });
+        return;
+      }
+      onlineRoom.active = true;
+      onlineRoom.version = data.version;
+      onlineRoom.isHost = data.state.hostClientId === clientId;
+      onlineRoom.lastRemoteState = data.state;
+
+      await applyRemoteRoomState(data.state, data.version);
+      startOnlineRoomPolling();
+    } catch (err) {
+      alert("Could not connect to online room.");
+      launchDailyChallenge(state.sport || "NBA", "sniper", false, getTodayString(), { silentBoot: true });
+    }
+  }
+
+  async function joinOnlineRoom() {
+    const input = document.getElementById("onlineGuestNameInput");
+    const name = (input && input.value.trim()) || "Friend";
+    localStorage.setItem("statsnipes_online_name", name);
+
+    try {
+      const res = await fetch("/api/room", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "join",
+          code: onlineRoom.roomCode,
+          clientId: onlineRoom.myClientId || getOrCreateClientId(),
+          playerName: name
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Could not join room.");
+        return;
+      }
+      onlineRoom.version = data.version;
+      onlineRoom.lastRemoteState = data.state;
+      await applyRemoteRoomState(data.state, data.version);
+    } catch (err) {
+      alert("Network error joining room.");
+    }
+  }
+
+  async function startOnlineRoomMatch() {
+    if (!onlineRoom.active || !onlineRoom.isHost) return;
+    try {
+      const res = await fetch("/api/room", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "start",
+          code: onlineRoom.roomCode,
+          clientId: onlineRoom.myClientId
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Could not start online match.");
+        return;
+      }
+      onlineRoom.lastBannerKey = "";
+      await applyRemoteRoomState(data.state, data.version);
+    } catch (err) {
+      alert("Network error starting online match.");
+    }
+  }
+
+  function startOnlineRoomPolling() {
+    stopOnlineRoomPolling();
+    onlineRoom.pollTimer = setInterval(async () => {
+      if (!onlineRoom.active || !onlineRoom.roomCode) return;
+      try {
+        const res = await fetch(
+          `/api/room?code=${encodeURIComponent(onlineRoom.roomCode)}&v=${onlineRoom.version || 0}`
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.unchanged) return;
+        if (data.state && data.version !== onlineRoom.version) {
+          await applyRemoteRoomState(data.state, data.version);
+        }
+      } catch (e) {
+        // Ignore transient poll errors
+      }
+    }, 2000);
+  }
+
+  function stopOnlineRoomPolling() {
+    if (onlineRoom.pollTimer) {
+      clearInterval(onlineRoom.pollTimer);
+      onlineRoom.pollTimer = null;
+    }
+  }
+
+  async function syncOnlineRoomState(gameOverReason = "") {
+    if (!onlineRoom.active || !onlineRoom.lastRemoteState) return;
+    const prev = onlineRoom.lastRemoteState;
+    const nextState = {
+      ...prev,
+      status: state.gameOver ? "finished" : "playing",
+      players: state.players,
+      currentTurnIndex: state.currentTurnIndex,
+      guessedNames: Array.from(state.guessedNames),
+      revealedRanks: Array.from(state.revealedRanks.entries()),
+      pickHistory: state.pickHistory,
+      lastBanner: state.lastBannerPayload || null,
+      gameOver: Boolean(state.gameOver),
+      gameOverReason: gameOverReason || prev.gameOverReason || ""
+    };
+    onlineRoom.lastRemoteState = nextState;
+
+    try {
+      const res = await fetch("/api/room", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "sync",
+          code: onlineRoom.roomCode,
+          clientId: onlineRoom.myClientId,
+          expectedVersion: onlineRoom.version,
+          nextState
+        })
+      });
+      const data = await res.json();
+      if (data.conflict && data.state) {
+        await applyRemoteRoomState(data.state, data.version);
+      } else if (res.ok && data.version) {
+        onlineRoom.version = data.version;
+      }
+    } catch (e) {
+      // Ignore transient network errors
+    }
+  }
+
+  async function applyRemoteRoomState(roomState, version) {
+    onlineRoom.isApplyingRemote = true;
+    try {
+      const wasGameOver = Boolean(state.gameOver);
+      const prevTurnMyTurn = isMyOnlineTurn();
+
+      onlineRoom.version = version;
+      onlineRoom.lastRemoteState = roomState;
+      onlineRoom.isHost = roomState.hostClientId === onlineRoom.myClientId;
+
+      if (roomState.status === "lobby") {
+        renderOnlineRoomModal(roomState);
+        return;
+      }
+
+      document.getElementById("onlineRoomModal").classList.add("hidden");
+      document.getElementById("customSetupPanel").classList.add("hidden");
+
+      // Ensure category & rules match the room config
+      const cfg = roomState.config || {};
+      if (!state._onlineConfigApplied || state._onlineConfigApplied !== JSON.stringify(cfg)) {
+        await applyOnlineRoomConfig(cfg);
+        state._onlineConfigApplied = JSON.stringify(cfg);
+      }
+
+      state.isDaily = false;
+      state.playerCount = (roomState.players || []).length;
+      state.players = roomState.players || [];
+      state.currentTurnIndex = roomState.currentTurnIndex || 0;
+      state.guessedNames = new Set(roomState.guessedNames || []);
+      state.revealedRanks = new Map(roomState.revealedRanks || []);
+      state.pickHistory = roomState.pickHistory || [];
+      state.gameOver = Boolean(roomState.gameOver);
+      state.undoStack = [];
+
+      if (!state.gameOver) {
+        document.getElementById("gameOverModal").classList.add("hidden");
+        state.boardRevealedPostgame = false;
+        state.seriesRecordedForMatch = false;
+      }
+
+      renderHeaderState();
+      renderCategoryBanner();
+      renderCouchSeriesBar();
+      renderScoreboard();
+      renderTurnPrompt();
+      renderMainArena();
+      renderPickFeed();
+      updateUndoButtonState();
+
+      if (roomState.lastBanner) {
+        const bKey = JSON.stringify(roomState.lastBanner) + "_" + version;
+        if (bKey !== onlineRoom.lastBannerKey) {
+          onlineRoom.lastBannerKey = bKey;
+          showFeedbackBanner(roomState.lastBanner);
+        }
+      } else {
+        document.getElementById("feedbackBanner").className = "feedback-banner hidden";
+      }
+
+      if (!state.gameOver && !prevTurnMyTurn && isMyOnlineTurn()) {
+        sfx.playSafeHit();
+      }
+
+      if (state.gameOver && !wasGameOver) {
+        finishGame(roomState.gameOverReason || "Match complete!", { autoOpenModal: true, silentSfx: false });
+      }
+    } finally {
+      onlineRoom.isApplyingRemote = false;
+    }
+  }
+
+  async function leaveOnlineRoom() {
+    stopOnlineRoomPolling();
+    if (onlineRoom.active && onlineRoom.roomCode) {
+      fetch("/api/room", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "leave",
+          code: onlineRoom.roomCode,
+          clientId: onlineRoom.myClientId
+        })
+      }).catch(() => {});
+    }
+    onlineRoom.active = false;
+    onlineRoom.roomCode = "";
+    onlineRoom.version = 0;
+    onlineRoom.isHost = false;
+    onlineRoom.lastRemoteState = null;
+    state._onlineConfigApplied = null;
+
+    document.getElementById("onlineRoomModal").classList.add("hidden");
+    const searchInput = document.getElementById("playerSearchInput");
+    const submitBtn = document.getElementById("submitGuessBtn");
+    if (searchInput) {
+      searchInput.disabled = false;
+      searchInput.placeholder = `Search ${state.sport || "NBA"} player...`;
+    }
+    if (submitBtn) submitBtn.disabled = false;
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("room");
+    window.history.replaceState({}, "", url.toString());
+
+    state.playerCount = 1;
+    startMatch();
+  }
+
   function applyUrlChallengeParams() {
     try {
       const params = new URLSearchParams(window.location.search);
+      const roomCode = (params.get("room") || "").trim().toUpperCase();
+      if (roomCode) {
+        openOnlineRoomByCode(roomCode);
+        return true;
+      }
+
       const sp = (params.get("sport") || "").toUpperCase();
       if (["NBA", "NFL", "MLB"].includes(sp)) {
         state.sport = sp;
@@ -5125,8 +5791,22 @@
       });
     }
 
-    // New Match Quick Button (Practice Replay in Daily, Fresh Match in Endless)
+    // New Match Quick Button (Practice Replay in Daily, Fresh Match in Endless, Rematch in Online Room)
     document.getElementById("newGameQuickBtn").addEventListener("click", () => {
+      if (onlineRoom.active) {
+        if (onlineRoom.isHost) {
+          startOnlineRoomMatch();
+        } else {
+          showFeedbackBanner({
+            tierClass: "tier-safe",
+            rankBadge: "🌐",
+            title: "Host Controls New Match",
+            subtitle: "Ask the room host to start the next game!",
+            pointsText: "ONLINE"
+          });
+        }
+        return;
+      }
       if (state.isDaily) {
         launchDailyChallenge(state.sport, state.dailySubmode, true, state.dailyDateStr);
       } else {
@@ -5304,6 +5984,13 @@
 
     // Game Over Modal Actions
     document.getElementById("playAgainModalBtn").addEventListener("click", () => {
+      if (onlineRoom.active) {
+        if (onlineRoom.isHost) {
+          document.getElementById("gameOverModal").classList.add("hidden");
+          startOnlineRoomMatch();
+        }
+        return;
+      }
       if (state.isDaily) {
         launchDailyChallenge(state.sport, state.dailySubmode, true);
       } else {
@@ -5438,6 +6125,51 @@
       document.getElementById("customSetupPanel").classList.add("hidden");
       startMatch();
     });
+
+    // Online Couch Mode (Multiplayer Room) Event Bindings
+    const createFromSetupBtn = document.getElementById("createOnlineRoomFromSetupBtn");
+    if (createFromSetupBtn) {
+      createFromSetupBtn.addEventListener("click", () => createOnlineRoom(true));
+    }
+    const createFromArenaBtn = document.getElementById("createOnlineRoomFromArenaBtn");
+    if (createFromArenaBtn) {
+      createFromArenaBtn.addEventListener("click", () => createOnlineRoom(false));
+    }
+    const copyRoomBtn = document.getElementById("copyOnlineRoomLinkBtn");
+    if (copyRoomBtn) {
+      copyRoomBtn.addEventListener("click", (e) => copyOnlineRoomInviteLink(e.currentTarget));
+    }
+    const joinRoomBtn = document.getElementById("confirmJoinRoomBtn");
+    if (joinRoomBtn) {
+      joinRoomBtn.addEventListener("click", () => joinOnlineRoom());
+    }
+    const guestNameInput = document.getElementById("onlineGuestNameInput");
+    if (guestNameInput) {
+      guestNameInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          joinOnlineRoom();
+        }
+      });
+    }
+    const startRoomBtn = document.getElementById("startOnlineMatchBtn");
+    if (startRoomBtn) {
+      startRoomBtn.addEventListener("click", () => startOnlineRoomMatch());
+    }
+    const leaveRoomBtn = document.getElementById("leaveOnlineRoomBtn");
+    if (leaveRoomBtn) {
+      leaveRoomBtn.addEventListener("click", () => leaveOnlineRoom());
+    }
+    const closeRoomModalBtn = document.getElementById("closeOnlineRoomModalBtn");
+    if (closeRoomModalBtn) {
+      closeRoomModalBtn.addEventListener("click", () => {
+        if (onlineRoom.lastRemoteState && onlineRoom.lastRemoteState.status === "lobby") {
+          leaveOnlineRoom();
+        } else {
+          document.getElementById("onlineRoomModal").classList.add("hidden");
+        }
+      });
+    }
   }
 
   // Init — land directly on Today's Daily Challenge by default (or load shared URL challenge)

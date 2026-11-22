@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=47" />
+  <link rel="stylesheet" href="styles.css?v=48" />
 </head>
 <body data-sport="NBA">
   <!-- Top Broadcast Header -->
@@ -382,7 +382,10 @@
           </div>
 
           <button type="button" class="launch-match-btn" id="startCustomGameBtn">
-            🚀 Launch StatSnipes Match
+            🚀 Launch Local Match
+          </button>
+          <button type="button" class="online-room-launch-btn" id="createOnlineRoomFromSetupBtn">
+            🌐 Play Online w/ Friends (Share Link)
           </button>
         </div>
       </div>
@@ -411,6 +414,9 @@
               </button>
               <button type="button" class="banner-action-btn share-link-btn" id="shareChallengeLinkBtn" title="Copy a direct link to this exact category & rules to send to friends!">
                 Share Link
+              </button>
+              <button type="button" class="banner-action-btn online-invite-btn" id="createOnlineRoomFromArenaBtn" title="Create a live online multiplayer room & copy invite link for friends!">
+                🌐 Play Online
               </button>
               <button type="button" class="banner-action-btn mobile-filter-toggle" id="mobileFilterToggleBtn" aria-expanded="false">
                 Filters ▾
@@ -793,6 +799,53 @@
     </div>
   </div>
 
+  <!-- Online Couch Mode Lobby Modal -->
+  <div class="modal-backdrop hidden" id="onlineRoomModal" role="dialog" aria-modal="true" aria-labelledby="onlineRoomModalTitle">
+    <div class="modal-card online-room-card">
+      <div class="modal-header-row">
+        <div>
+          <div class="online-room-kicker">🌐 ONLINE COUCH MODE</div>
+          <h2 id="onlineRoomModalTitle">Multiplayer Room</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeOnlineRoomModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="online-room-code-box" id="onlineRoomCodeBox">
+        <div>
+          <span class="orc-label">ROOM CODE</span>
+          <strong class="orc-code" id="onlineRoomCodeText">------</strong>
+        </div>
+        <div class="orc-actions">
+          <button type="button" class="primary-btn orc-copy-btn" id="copyOnlineRoomLinkBtn">📋 Copy Invite Link</button>
+        </div>
+      </div>
+
+      <div class="online-room-meta" id="onlineRoomMeta">
+        <!-- Populated dynamically: Sport, Mode, Category, Rules -->
+      </div>
+
+      <!-- Guest Name / Join Bar (shown when opening someone else's link before joining) -->
+      <div class="online-join-box hidden" id="onlineJoinBox">
+        <label for="onlineGuestNameInput">Your Display Name</label>
+        <div class="online-join-row">
+          <input type="text" id="onlineGuestNameInput" class="studio-input" placeholder="Enter your name..." maxlength="18" />
+          <button type="button" class="primary-btn" id="confirmJoinRoomBtn">Join Room</button>
+        </div>
+      </div>
+
+      <div class="online-lobby-players" id="onlineLobbyPlayers">
+        <!-- Populated dynamically with 1-4 player slots -->
+      </div>
+
+      <p class="online-lobby-status" id="onlineLobbyStatus">Share the invite link with up to 3 friends to play turn-by-turn online!</p>
+
+      <div class="modal-actions" id="onlineLobbyActions">
+        <button type="button" class="secondary-btn" id="leaveOnlineRoomBtn">Leave Room</button>
+        <button type="button" class="primary-btn hidden" id="startOnlineMatchBtn">🚀 Start Online Match</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="data/nba_data.js?v=21"></script>
   <script src="data/nfl_data.js?v=21"></script>
@@ -800,6 +853,6 @@
   <script src="data/extra_players.js?v=21"></script>
   <script src="data/seasons_data.js?v=21"></script>
   <script src="data/niche/manifest.js?v=42"></script>
-  <script src="app.js?v=47"></script>
+  <script src="app.js?v=48"></script>
 </body>
 </html>

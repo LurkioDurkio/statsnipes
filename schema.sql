@@ -15,3 +15,11 @@ CREATE TABLE IF NOT EXISTS daily_scores (
 
 CREATE INDEX IF NOT EXISTS idx_daily_lookup ON daily_scores (date, sport, submode);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_unique_daily_submission ON daily_scores (date, sport, submode, client_id);
+
+-- Online Couch Mode Multiplayer Rooms
+CREATE TABLE IF NOT EXISTS online_rooms (
+  room_code TEXT PRIMARY KEY,
+  state_json TEXT NOT NULL,
+  version INTEGER NOT NULL DEFAULT 1,
+  updated_at INTEGER NOT NULL
+);

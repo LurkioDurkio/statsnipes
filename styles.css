@@ -4362,3 +4362,225 @@ body.is-daily-mode .top-header .sport-switcher {
     justify-content: center;
   }
 }
+
+
+/* ==========================================
+   Online Couch Mode (Multiplayer Room & Lobby)
+   ========================================== */
+.online-room-launch-btn {
+  width: 100%;
+  margin-top: 0.65rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.35), rgba(30, 58, 138, 0.4));
+  color: #e0f2fe;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.online-room-launch-btn:hover {
+  transform: translateY(-1px);
+  border-color: #38bdf8;
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.55), rgba(30, 58, 138, 0.6));
+}
+
+.banner-action-btn.online-invite-btn {
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(14, 116, 144, 0.25);
+  color: #bae6fd;
+}
+
+.banner-action-btn.online-invite-btn:hover {
+  border-color: #38bdf8;
+  background: rgba(14, 116, 144, 0.45);
+  color: #ffffff;
+}
+
+.online-room-card {
+  max-width: 520px;
+  width: 94%;
+}
+
+.online-room-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  margin-bottom: 0.2rem;
+}
+
+.online-room-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.85rem;
+}
+
+.orc-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.orc-code {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+}
+
+.orc-copy-btn {
+  padding: 0.55rem 0.9rem !important;
+  font-size: 0.85rem !important;
+  white-space: nowrap;
+}
+
+.online-room-meta {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.online-room-meta strong {
+  color: #ffffff;
+}
+
+.online-join-box {
+  margin-top: 0.9rem;
+}
+
+.online-join-box label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 0.35rem;
+}
+
+.online-join-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.online-join-row .studio-input {
+  flex: 1;
+}
+
+.online-lobby-players {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.95rem;
+}
+
+.online-lobby-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 0.9rem;
+}
+
+.online-lobby-slot.filled {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(14, 116, 144, 0.15);
+}
+
+.online-lobby-slot.empty {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.ols-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.ols-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+}
+
+.ols-tag.host {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.online-lobby-status {
+  margin-top: 0.8rem;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.online-room-bar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(14, 116, 144, 0.28);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.online-room-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.online-bar-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.28rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.online-bar-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.online-bar-btn.danger {
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
