@@ -424,6 +424,7 @@
     maxPicks: 5,
     bustRule: "bust", // 'bust' | 'closest'
     shotClockSeconds: 0,
+    hintsEnabled: false,
     boardHints: false,
     boardFilter: "all",
     boardRevealedPostgame: false,
@@ -1509,7 +1510,7 @@
       document.getElementById("bannerStatSummary").classList.toggle("hidden", state.isDaily);
       document.getElementById("boardFoundCount").textContent = `${state.revealedRanks.size} / ${state.cutoff}`;
       document.getElementById("cutoffRankLabel").textContent = `#${state.cutoff}`;
-      document.getElementById("getClueBtn").classList.toggle("hidden", state.isDaily);
+      document.getElementById("getClueBtn").classList.toggle("hidden", state.isDaily || !state.hintsEnabled);
       const redBtn = document.getElementById("toggleRedemptionQuickBtn");
       if (redBtn) {
         redBtn.classList.toggle("hidden", state.isDaily);
@@ -2011,8 +2012,11 @@
     document.getElementById("boardFoundCount").textContent = `${state.revealedRanks.size} / ${boardCutoff}`;
 
     const toggleCluesBtn = document.getElementById("toggleBoardCluesBtn");
-    toggleCluesBtn.textContent = `🔍 Team Clues: ${state.boardHints ? "On" : "Off"}`;
-    toggleCluesBtn.classList.toggle("active", state.boardHints);
+    if (toggleCluesBtn) {
+      toggleCluesBtn.classList.toggle("hidden", !state.hintsEnabled);
+      toggleCluesBtn.textContent = `🔍 Team Clues: ${state.boardHints ? "On" : "Off"}`;
+      toggleCluesBtn.classList.toggle("active", state.boardHints);
+    }
     toggleCluesBtn.classList.toggle("hidden", Boolean(state.boardRevealedPostgame));
 
     const grid = document.getElementById("top100Grid");
@@ -4943,6 +4947,7 @@
         maxPicks: parseInt(document.getElementById("setupPicksSelect")?.value, 10) || 5,
         bustRule: document.getElementById("setupBustRuleSelect")?.value || "bust",
         shotClockSeconds: parseInt(document.getElementById("setupTimerSelect")?.value, 10) || 0,
+        hintsEnabled: (document.getElementById("setupBoardHintSelect")?.value || "none") !== "none",
         boardHints: document.getElementById("setupBoardHintSelect")?.value === "team"
       };
     }
@@ -4972,6 +4977,7 @@
       maxPicks: state.maxPicks || 5,
       bustRule: state.bustRule || "bust",
       shotClockSeconds: state.shotClockSeconds || 0,
+      hintsEnabled: Boolean(state.hintsEnabled),
       boardHints: Boolean(state.boardHints)
     };
   }
@@ -4990,7 +4996,8 @@
     state.maxPicks = cfg.maxPicks || 5;
     state.bustRule = cfg.bustRule || "bust";
     state.shotClockSeconds = cfg.shotClockSeconds || 0;
-    state.boardHints = Boolean(cfg.boardHints);
+    state.hintsEnabled = Boolean(cfg.hintsEnabled);
+    state.boardHints = Boolean(cfg.hintsEnabled && cfg.boardHints);
 
     document.body.setAttribute("data-sport", state.sport);
     populateExplorerControls(state.sport);
@@ -6146,7 +6153,9 @@
       state.maxPicks = parseInt(document.getElementById("setupPicksSelect").value, 10) || 5;
       state.bustRule = document.getElementById("setupBustRuleSelect").value;
       state.shotClockSeconds = parseInt(document.getElementById("setupTimerSelect").value, 10) || 0;
-      state.boardHints = document.getElementById("setupBoardHintSelect").value === "team";
+      const hintSetting = document.getElementById("setupBoardHintSelect").value || "none";
+      state.hintsEnabled = hintSetting !== "none";
+      state.boardHints = hintSetting === "team";
 
       state.playerCount = activePlayerCountBtn ? parseInt(activePlayerCountBtn.dataset.val, 10) : 1;
       document.querySelectorAll(".player-name-field").forEach((field, idx) => {
