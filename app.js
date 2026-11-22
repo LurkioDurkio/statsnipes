@@ -1300,6 +1300,21 @@
 
   // 4. Initialize or Reset Match
   function startMatch(skipAnalytics = false) {
+    if (onlineRoom.active && !onlineRoom.isApplyingRemote && !onlineRoom.isStartingMatch) {
+      if (onlineRoom.isHost) {
+        startOnlineRoomMatch(true);
+      } else if (onlineRoom.lastRemoteState && onlineRoom.lastRemoteState.status !== "lobby") {
+        applyRemoteRoomState(onlineRoom.lastRemoteState, onlineRoom.version);
+        showFeedbackBanner({
+          tierClass: "tier-safe",
+          rankBadge: "🌐",
+          title: "Host Controls Room Settings",
+          subtitle: "Only the room host can change the category or start a new match.",
+          pointsText: "ONLINE"
+        });
+      }
+      return;
+    }
     if (!state.isDaily) dailyLaunchSeq += 1;
     stopShotClock();
     const cat = getActiveCategory();
@@ -5201,17 +5216,22 @@
     }
   }
 
-  async function startOnlineRoomMatch() {
+  async function startOnlineRoomMatch(useCurrentConfig = false) {
     if (!onlineRoom.active || !onlineRoom.isHost) return;
+    onlineRoom.isStartingMatch = true;
     try {
+      const payload = {
+        action: "start",
+        code: onlineRoom.roomCode,
+        clientId: onlineRoom.myClientId
+      };
+      if (useCurrentConfig) {
+        payload.config = captureCurrentMatchConfig(false);
+      }
       const res = await fetch("/api/room", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "start",
-          code: onlineRoom.roomCode,
-          clientId: onlineRoom.myClientId
-        })
+        body: JSON.stringify(payload)
       });
       const data = await res.json();
       if (!res.ok) {
@@ -5219,9 +5239,12 @@
         return;
       }
       onlineRoom.lastBannerKey = "";
+      state._onlineConfigApplied = null;
       await applyRemoteRoomState(data.state, data.version);
     } catch (err) {
       alert("Network error starting online match.");
+    } finally {
+      onlineRoom.isStartingMatch = false;
     }
   }
 
@@ -5795,7 +5818,7 @@
     document.getElementById("newGameQuickBtn").addEventListener("click", () => {
       if (onlineRoom.active) {
         if (onlineRoom.isHost) {
-          startOnlineRoomMatch();
+          startOnlineRoomMatch(true);
         } else {
           showFeedbackBanner({
             tierClass: "tier-safe",
@@ -5987,7 +6010,7 @@
       if (onlineRoom.active) {
         if (onlineRoom.isHost) {
           document.getElementById("gameOverModal").classList.add("hidden");
-          startOnlineRoomMatch();
+          startOnlineRoomMatch(true);
         }
         return;
       }
