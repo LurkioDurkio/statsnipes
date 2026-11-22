@@ -4995,11 +4995,13 @@
     document.body.setAttribute("data-sport", state.sport);
     populateExplorerControls(state.sport);
 
-    if (cfg.shard && typeof ensureDailyShardLoaded === "function") {
-      await ensureDailyShardLoaded(cfg.shard);
-    }
-
-    if (cfg.customSpec && cfg.customSpec.stat) {
+    if (cfg.shard && cfg.categoryId) {
+      if (typeof ensureDailyShardLoaded === "function") {
+        await ensureDailyShardLoaded(cfg.shard);
+      }
+      state.customCategory = null;
+      state.categoryId = cfg.categoryId;
+    } else if (cfg.customSpec && cfg.customSpec.stat) {
       const statEl = document.getElementById("explorerStatSelect");
       const tfEl = document.getElementById("explorerTimeframeSelect");
       const teamEl = document.getElementById("explorerTeamSelect");
@@ -5364,6 +5366,12 @@
       renderMainArena();
       renderPickFeed();
       updateUndoButtonState();
+
+      if (state.shotClockSeconds > 0 && !state.gameOver) {
+        startShotClock();
+      } else {
+        stopShotClock();
+      }
 
       if (roomState.lastBanner) {
         const bKey = JSON.stringify(roomState.lastBanner) + "_" + version;
